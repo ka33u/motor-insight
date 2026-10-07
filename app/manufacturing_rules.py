@@ -16,6 +16,9 @@ def parsed(value,kind):
 
 
 def issues(dataset,row):
+    if dataset.startswith('launch_'):
+        from .launch_contract import issues as launch_issues
+        return launch_issues(dataset,row)
     if dataset in {'order_baselines','order_baseline_links','order_baseline_bom'}:
         from .order_baseline_contract import issues as baseline_issues
         return baseline_issues(dataset,row)

@@ -1,0 +1,2 @@
+.launch-state{display:inline-block;padding:4px 8px;border-radius:6px;font-size:12px;background:#e8edf3;color:#334b63;white-space:nowrap}
+.launch-state.satisfied{background:#e4f3ee;color:#236650}.launch-state.blocked{background:#fae8e3;color:#994533}.launch-state.unknown{background:#fff0d7;color:#79561f}.launch-state.not_required{background:#f0f2f5;color:#637184}

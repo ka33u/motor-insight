@@ -180,3 +180,6 @@ register_joint(register)
 
 from .order_baseline_schema import register_order_baseline
 register_order_baseline(register)
+
+from .launch_schema import register_launch
+register_launch(register)

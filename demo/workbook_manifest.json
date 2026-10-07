@@ -200,6 +200,11 @@
       "filename": "40_订单与BOM基线_模拟.xlsx",
       "sha256": "94c24845ac0e353612e9ef3e79e9c61203d163bca6f540c8fe109b7970c54ee1",
       "mapping": {}
+    },
+    {
+      "filename": "41_投产条件核对_模拟.xlsx",
+      "sha256": "f4558b2e95490c5cc65bce352906803f7aaf6d18d835f820a23add56ce08dde7",
+      "mapping": {}
     }
   ],
   "legacy_plan_rows": [

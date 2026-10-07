@@ -5,6 +5,8 @@ ROLES={'admin':'平台管理员','analyst':'经营分析师','quality':'质量�
 FINANCIAL={'costs','invoices','payments','bi_receivables','ar_opening','ar_events'}
 FINANCIAL.update({'purchase_terms','ap_invoices','ap_invoice_lines','ap_payments','ap_payment_plans','ap_allocations','ap_adjustments'})
 PERSONNEL={'attendance','skills','labor_entries'}
+from .launch_schema import DATASETS as LAUNCH_DATASETS
+PERSONNEL.update(LAUNCH_DATASETS)
 PERSONNEL.update({'crew_studies','crew_credentials','crew_candidates','crew_windows','crew_blocks'})
 PERSONNEL.update({'joint_studies','joint_bindings','joint_demands','joint_supplies'})
 PERSONNEL.update({'order_baselines','order_baseline_links','order_baseline_bom'})

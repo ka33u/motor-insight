@@ -192,3 +192,6 @@ urlpatterns += [path('api/model-cards',model_cards.collection),path('api/model-c
  path('api/model-cards/<uuid:key>',model_cards.detail),path('api/model-cards/<uuid:key>/history',model_cards.history),
  path('api/model-cards/<uuid:key>/archive',model_cards.archive),path('api/model-cards/<uuid:key>/run',model_cards.run),
  path('api/model-cards/<uuid:key>/export',model_cards.export),path('api/model-cards/<uuid:key>/evidence',model_cards.evidence),path('api/model-cards/<uuid:key>/result-export',model_cards.result_export)]
+
+from app import launch_views
+urlpatterns += [path('api/launch-review',launch_views.studies),path('api/launch-review/<str:key>',launch_views.board),path('api/launch-review/<str:key>/sources',launch_views.sources),path('api/launch-review/<str:key>/tasks/<str:task_id>',launch_views.detail),path('api/launch-review/<str:key>/export',launch_views.export)]
