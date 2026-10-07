@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {pageWireframe,pageSlots,pageRoles} from '../static/topic_pages.js';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const d={code:'PAGE.ORDER.001',title:'<img src=x onerror=evil()>',question:'为何 <script>alert(1)</script>？',cadence:'每日',sections:[{id:'ONE',title:'<svg onload=evil()>',role:'result',note:'核对 A&B',cards:[{slot:1,span:2,title:'<a href=javascript:evil()>',note:'先查来源'}]},{id:'TWO',title:'对象',role:'objects',note:'',cards:[{slot:0,span:1,title:'',note:'<script>evil()</script>'}]}],navigation:[]};
+const before=JSON.stringify(d),html=pageWireframe(d,esc);
+assert.equal(JSON.stringify(d),before);assert.deepEqual(pageSlots(d),[1,0]);assert.equal(Object.keys(pageRoles).length,5);
+assert(!/<script|<img|<svg|<a\b[^>]*href=javascript:/.test(html));assert(html.includes('&lt;img')&&html.includes('A&amp;B'));assert(html.includes('不包含经营数值')&&html.includes('样本由原模型给出'));assert(!/NaN|undefined|\[object Object\]/.test(html));
+assert.equal((html.match(/<article /g)||[]).length,2);assert.equal((html.match(/page-wide/g)||[]).length,1);
+const many=structuredClone(d);many.sections=[{id:'ALL',title:'解释',role:'explain',note:'',cards:Array.from({length:12},(_,slot)=>({slot,span:1,title:'',note:''}))}];assert.equal((pageWireframe(many,esc).match(/<article /g)||[]).length,12);assert.deepEqual(pageSlots(many),Array.from({length:12},(_,i)=>i));
+const app=fs.readFileSync(new URL('../static/app.js',import.meta.url),'utf8'),topics=fs.readFileSync(new URL('../static/topics.js',import.meta.url),'utf8'),index=fs.readFileSync(new URL('../templates/index.html',import.meta.url),'utf8');
+assert(app.includes("'topic-pages':topicPageWorkspace.render"));assert(app.includes('isCurrent:token=>token===routeSerial'));assert(index.includes('/static/topic_pages.css?v={{ asset_version }}'));assert(topics.includes('if(page)applyPage(root,page.definition,esc)'));assert(topics.includes('page_context:prepared.context_token'));
+console.log(JSON.stringify({success:true,pure_js_checks:12,untrusted_text_escaped:true,all_slots_in_preview:true,input_not_mutated:true,route_integration_present:true,browser_acceptance:false,mobile_acceptance:false}));

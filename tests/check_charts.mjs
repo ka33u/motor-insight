@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const source=fs.readFileSync(new URL('../static/app.js',import.meta.url),'utf8');
+const fn=source.slice(source.indexOf('function chart('),source.indexOf('const nav='));
+const context=vm.createContext({esc:String,num:(v)=>String(v)});vm.runInContext(fn,context);
+const svg=vm.runInContext("chart(Array.from({length:20},(_,i)=>({name:'g'+i,value:1})), 'name','value','donut')",context);
+assert(svg.includes('>20</text>'));assert(svg.includes('其余 12 组'));
+assert.equal((svg.match(/<circle /g)||[]).length,9);
+assert(vm.runInContext("chart([{name:'zero denominator',value:null}])",context).includes('分母为零'));
+const mixed=vm.runInContext("chart([{name:'A',value:2},{name:'B',value:null},{name:'C',value:4}],'name','value','line')",context);
+assert.equal((mixed.match(/<polyline /g)||[]).length,2);assert(mixed.includes('无有效值'));
+assert(vm.runInContext("chart([{name:'A',value:-2},{name:'B',value:4}],'name','value','donut')",context).includes('存在负值'));
+console.log('Chart semantics: full denominator, other groups, null gap, zero denominator and negative composition checks passed.');

@@ -1,0 +1,14 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';
+import {cardStatus,definitionDiff,personalModelCardTopicMarkup} from '../static/model_cards.js';
+let checks=0;const check=fn=>{fn();checks++};
+const card={id:'ID1',metadata:{code:'MODEL.DEP.COUNT',question:'<img src=x onerror=alert(1)>'},binding:{source_model:{id:7,version:1}},current_model:{name:'部门记录数',version:1},current_archived:false,definition_state:'same',review_due:false};
+check(()=>assert.equal(cardStatus(card),'登记定义一致'));check(()=>assert.equal(cardStatus({...card,review_due:true}),'到复查日期'));check(()=>assert.equal(cardStatus({...card,definition_state:'changed',review_due:true}),'定义依据已变化'));check(()=>assert.equal(cardStatus({...card,current_archived:true}),'已归档'));
+const binding={source_model:{id:1,definition:{a:1,b:2}},resolved_definition:{metrics:[{agg:'count'}]},metric:null,grouping:null,dataset_contract:{grain:'一个部门'},rules_hash:'abc'};
+check(()=>assert.deepEqual(definitionDiff(binding,structuredClone(binding)),[]));check(()=>assert.deepEqual(definitionDiff(binding,{...binding,rules_hash:'changed'}),['rules_hash']));check(()=>assert.deepEqual(definitionDiff(binding,{...binding,source_model:{definition:{b:2,a:1},id:1}}),[]));
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),panel=(a,b,c)=>a+b+c,table=(headers,rows)=>JSON.stringify({headers,rows});let calls=0;
+const html=await personalModelCardTopicMarkup({layout:[{model_id:7}]},{api:async()=>{calls++;return{rows:[card]}},esc,panel,table});
+check(()=>assert.equal(calls,1));check(()=>assert(html.includes('MODEL.DEP.COUNT')));check(()=>assert(html.includes('&lt;img')));check(()=>assert(!html.includes('<img')));check(()=>assert(html.includes('#model-cards?id=ID1')));
+const empty=await personalModelCardTopicMarkup({layout:[{model_id:8}]},{api:async()=>({rows:[card]}),esc,panel,table});check(()=>assert(empty.includes('尚无本人')));
+const root=new URL('../',import.meta.url),source=fs.readFileSync(new URL('static/model_cards.js',root),'utf8'),app=fs.readFileSync(new URL('static/app.js',root),'utf8'),topics=fs.readFileSync(new URL('static/topics.js',root),'utf8');
+check(()=>assert(source.includes('m!==getModalRevision()')));check(()=>assert(source.includes('previewSerial')));check(()=>assert(source.includes('实际计算以引用模型')));check(()=>assert(app.includes("'model-cards':modelCardWorkspace.render")));check(()=>assert(topics.includes('personalModelCardTopicMarkup(topic')));
+const proof={success:true,pure_checks:checks,browser_acceptance:false,mobile_acceptance:false};fs.writeFileSync(new URL('data/model_cards_presentation_checks.json',root),JSON.stringify(proof,null,2)+'\n');console.log(JSON.stringify(proof));

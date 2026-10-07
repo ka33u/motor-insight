@@ -1,0 +1,67 @@
+# MotorInsight · 电机智造数据与决策平台
+
+面向全流程自制、小批量定制电机工厂，把部门 Excel、订单、工序、检测和原件组织为可追溯的数据、统一指标和岗位决策界面。
+
+当前为**合成数据演示版本**。用友 U8 和 MES 的真实接口未接入。模拟结果用于研究、验算和功能验证，正式业务批准仍须在企业授权流程中执行。
+
+## 快速运行
+
+需要 Python 3.12。应用运行不依赖 Node.js；部分 Excel 生成脚本使用 Codex 的 artifact-tool，仓库已经附带导出的原始工作簿。
+
+```sh
+python3.12 -m venv .venv
+.venv/bin/python -m pip install --require-hashes -r requirements.lock
+.venv/bin/python scripts/bootstrap_demo.py
+.venv/bin/python scripts/serve.py start
+```
+
+打开 <http://127.0.0.1:8765>。
+
+初始化仅用于**不存在的新数据库**，依次通过平台正常服务导入38份模拟Excel，再恢复52个分析模型、21个专题等合成分析配置。遇到无效引用或冲突会停下，不自动批准；不会覆盖本机已有数据库。
+
+演示账号：`demo_admin`、`demo_analyst`、`demo_quality`、`demo_operations`、`demo_finance`、`demo_viewer`。本地演示口令为 `MotorDemo!2026`；这些是随演示重新生成的账号，不包含作者本机账号或登录会话。真实部署需配置独立密钥、关闭演示模式并建立正式账号体系。
+
+```sh
+.venv/bin/python scripts/serve.py status
+.venv/bin/python scripts/serve.py stop
+```
+
+## 功能范围
+
+| 领域 | 当前功能 |
+|---|---|
+| 数据采集 | Excel预览、字段映射、类型与引用检查、重复跳过、冲突隔离、修复及来源留痕 |
+| 主数据与身份 | 订单行、配置、工单、材料批次、部件、单台SN、检测会话；自定义编码与版本 |
+| 分析与专题 | 受控维度、分组、度量、派生、趋势、分布、透视、散点、模型保存与专题编排 |
+| 业务工作台 | 交付、质量、采购、库存、在制、成本资金、售后和协同跟进 |
+| 制造能力 | 资源/人员日历、有限资源试排、人员与设备联立试排、班次OEE及损失时间 |
+| 证据与治理 | Excel行追溯、原件服务、指标口径版本、角色访问、受控导出与审计 |
+
+完整候选设计见 [BI方案](outputs/BI需求与呈现方案.html) 与 [382项需求](outputs/BI完整382项需求清单.txt)：26个领域、63项建议指标、17页蓝图，分别标记模拟部分覆盖和待建设。候选设计并不代表所有功能已验收。
+
+初始化通过原始Excel重建业务事实，不复制作者的业务操作历史、账号状态、私有页面或设备原件归档。Excel中保留的外部文件标识须通过归档与关联服务重新上传、核对，未归档时显示资料缺口。已导入记录的历史人工更正须另行演练，不将其默认为原始Excel内容。
+
+## 目录
+
+- `app/`、`config/`：Django接口、业务规则、分析、权限与迁移。
+- `static/`、`templates/`：平台界面。
+- `tests/`：规则、接口、权限及计算边界测试。
+- `scripts/`：模拟输入生成、校验、初始化、运行与本地恢复工具。
+- `data/bi_design.json`：BI需求、指标建议与呈现目录。
+- `demo/analysis_configuration.json`：不含凭据的合成分析配置。
+- `outputs/`：38份原始模拟Excel与可离线阅读的BI方案。
+- `docs/`：业务口径及功能说明。
+
+本地数据库、会话、凭据、日志、依赖运行环境、完整备份与恢复演练目录均不纳入仓库。本地恢复工具需要另外生成恢复包。
+
+## 检查与持续迭代
+
+```sh
+.venv/bin/python scripts/repository_check.py
+.venv/bin/python manage.py check
+.venv/bin/python manage.py test --noinput
+```
+
+GitHub Actions 在提交后执行文件检查、Django检查和完整测试。每个可核验增量记入 [CHANGELOG](CHANGELOG.md)，检查通过后常规提交与同步，保持历史可追踪。
+
+优先完善：BI阅读与定义、物料/设备/人员联立试排、现场原件采集、真实岗位及手机交互验收。最新页面浏览器交互尚未完成验收。

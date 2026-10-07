@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {percent,minutes,lossRows,summaryMarkup,exportPath} from '../static/oee.js';
+const data=JSON.parse(await fs.readFile(new URL('../data/oee_scenario.json',import.meta.url),'utf8')),first=data.profiles[0],mixed=data.profiles[2],esc=s=>String(s).replaceAll('<','&lt;').replaceAll('>','&gt;');
+assert.equal(percent(0),'0%');assert.equal(percent(null),'未定义');assert.equal(minutes(0),'0');assert.equal(minutes(null),'未计算');
+const rows=lossRows(first.summary);assert.equal(rows.reduce((a,r)=>a+r.seconds,0),25200);assert.ok(Math.abs(rows.reduce((a,r)=>a+r.share,0)-1)<1e-12);
+const board={...first,windows:[{},{}],issues:[]};assert.match(summaryMarkup(board,esc),/53.57%/);assert.match(summaryMarkup({...mixed,windows:[{},{}],issues:[]},esc),/混配置理想良品时间占比/);assert.match(summaryMarkup({state:'paused',summary:null,issues:['<script>']},esc),/&lt;script&gt;/);assert.ok(!summaryMarkup({state:'paused',summary:first.summary,issues:[]},esc).includes('53.57%'));
+assert.throws(()=>exportPath('OE',null,'json'));assert.throws(()=>exportPath('OE','test','html'));const path=exportPath('OE/?','receipt-test','csv');assert.match(path,/OE%2F%3F/);assert.match(path,/format=csv/);
+const source=await fs.readFile(new URL('../static/oee.js',import.meta.url),'utf8');assert.ok(source.includes('getModalRevision'));assert.ok(source.includes('serial===current'));assert.ok(source.includes('URL.revokeObjectURL'));assert.ok(source.includes('response.ok'));assert.ok(!source.includes('prompt('));
+console.log(JSON.stringify({success:true,pure_js_and_structure_checks:18,browser_acceptance:false,mobile_acceptance:false,download_acceptance:false}));

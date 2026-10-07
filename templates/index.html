@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MotorInsight · 电机智造数据与决策平台</title><link rel="stylesheet" href="/static/topic_linkage.css?v={{ asset_version }}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d6551'/%3E%3Ctext x='6' y='24' fill='%23dbea9b' font-size='25'%3E↗%3C/text%3E%3C/svg%3E"><link rel="stylesheet" href="{% static 'app.css' %}?v={{ asset_version }}"><link rel="stylesheet" href="{% static 'catalog_planning.css' %}?v={{ asset_version }}"><link rel="stylesheet" href="/static/targets.css?v={{ asset_version }}"><link rel="stylesheet" href="/static/logistics.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/assembly_plans.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/coordination_hub.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/stocktake.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/inventory_age.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/material_lots.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/purchase_commitments.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/receipt_flow.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/incoming_quality.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/material_certificates.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/wip_flow.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/metrology.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/metrology_evidence.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/import_mapping.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/issue_workspace.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/bi_card_summary.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/bi_field_catalog.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/device_transform.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/device_collection.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/device_intake.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/credentials.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/spc.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/spc_workspace.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/msa.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/finite_schedule.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/crew_schedule.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/model_card_results.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/topic_pages.css?v={{ asset_version }}">
+<link rel="stylesheet" href="/static/oee.css?v={{ asset_version }}">
+</head>
+<body data-demo="{{ demo|yesno:'true,false' }}">
+  <div id="app"><div class="boot">MotorInsight · 正在读取平台</div></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <dialog id="detail"><div class="dialog-top"><strong id="dialog-title"></strong><button id="dialog-close" aria-label="关闭弹窗">×</button></div><div id="dialog-content"></div></dialog>
+  <script type="importmap">{{ module_imports|safe }}</script>
+  <script type="module" src="{% static 'app.js' %}?v={{ asset_version }}"></script>
+</body></html>

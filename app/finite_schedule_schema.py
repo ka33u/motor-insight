@@ -1,0 +1,10 @@
+"""Independent trial assumptions, never remaining quantities of real orders."""
+DATASETS=('schedule_studies','schedule_jobs','schedule_tasks','schedule_edges','schedule_options','schedule_windows','schedule_blocks')
+def register_schedule(register):
+ register('schedule_studies','有限资源试排方案','36_有限资源试排','id:试排方案号:str;name:方案名称:str;version:假设版本:str;baseline:假设起点:datetime;horizon_end:试排截至:datetime;job_count:声明批次数:int;task_count:声明任务数:int;edge_count:声明依赖总数:int;option_count:声明候选数:int;window_count:声明资源窗口数:int;block_count:声明不可用段数:int;owner_id:负责工号:str:employees;scope:业务范围说明:str;assumptions:约束边界:str;reference:假设依据号:str')
+ register('schedule_jobs','试排模拟批次','36_有限资源试排','id:试排批次号:str;study_id:试排方案号:str:schedule_studies;product_id:配置编码:str:products;route_version:工艺路线版本:str;qty:独立模拟台数:int;released:最早可开工:datetime;due:假设应完成:datetime;priority:优先级:int;family:换型族:str;task_count:声明工序数:int;edge_count:声明依赖数:int;reference:批次假设依据:str')
+ register('schedule_tasks','试排工序任务','36_有限资源试排','id:试排任务号:str;job_id:试排批次号:str:schedule_jobs;route_id:工艺路线行:str:routes;portion:批内模拟份号:str;lot_qty:任务处理台数:int;unit_minutes:假设每台加工分钟:float;basis:工时假设依据:str')
+ register('schedule_edges','试排前后依赖','36_有限资源试排','id:试排依赖号:str;study_id:试排方案号:str:schedule_studies;from_task_id:前序任务号:str:schedule_tasks;to_task_id:后序任务号:str:schedule_tasks;dependency_id:路线依赖依据:str:route_dependencies;lag_minutes:假设最小等待分钟:float;basis:等待假设依据:str')
+ register('schedule_options','试排候选资源','36_有限资源试排','id:候选资源号:str;task_id:试排任务号:str:schedule_tasks;resource_id:资源位编码:str:production_resources;setup_minutes:首次或跨族换型分钟:float;basis:候选资源假设依据:str')
+ register('schedule_windows','试排资源窗口','36_有限资源试排','id:试排窗口号:str;study_id:试排方案号:str:schedule_studies;resource_id:资源位编码:str:production_resources;started:假设窗口开始:datetime;finished:假设窗口结束:datetime;basis:可用窗口假设依据:str')
+ register('schedule_blocks','试排不可用窗口','36_有限资源试排','id:试排占用号:str;study_id:试排方案号:str:schedule_studies;resource_id:资源位编码:str:production_resources;started:不可用开始:datetime;finished:不可用结束:datetime;reason:不可用原因:str;basis:不可用假设依据:str')

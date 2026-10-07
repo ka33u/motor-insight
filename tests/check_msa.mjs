@@ -1,0 +1,24 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';
+import {interactionChart,componentBars,measure} from '../static/msa.js';
+const load=id=>JSON.parse(fs.readFileSync(new URL('../data/msa_board_MSA2609-'+id+'.json',import.meta.url),'utf8'));const normal=load('0001'),paused=load('0005');let checks=0;
+function check(fn){fn();checks++}
+check(()=>assert.equal((interactionChart(normal).match(/<circle /g)||[]).length,90));
+check(()=>assert.equal((interactionChart(normal).match(/<path /g)||[]).length,3));
+check(()=>assert(interactionChart(normal).includes('不是生产时间')));
+check(()=>assert(interactionChart(normal).includes('role="button"')));
+check(()=>assert.equal((interactionChart(normal).match(/tabindex="0"/g)||[]).length,90));
+check(()=>assert(!/NaN|Infinity|undefined/.test(interactionChart(normal))));
+check(()=>assert(!interactionChart(paused).includes('<svg')));
+check(()=>assert(interactionChart(load('0008')).includes('二值')));
+check(()=>assert(!/NaN|Infinity/.test(interactionChart(load('0009')))));
+check(()=>assert.equal((componentBars(normal.result,'variance_percent').match(/msa-bar-track/g)||[]).length,4));
+check(()=>assert.equal((componentBars(normal.result,'study_percent').match(/msa-bar-track/g)||[]).length,4));
+check(()=>assert(!componentBars(normal.result,'variance_percent').includes('测量系统（')));
+check(()=>assert(componentBars(null,'variance_percent').includes('前提未满足')));
+check(()=>assert(componentBars(load('0009').result,'variance_percent').includes('未计算')));
+check(()=>assert.equal(measure(0),'0'));check(()=>assert.equal(measure(null),'未计算'));
+check(()=>assert(measure(1e-10).includes('e-')));
+check(()=>assert(!interactionChart({...normal,study:{...normal.study,unit:'<script>'}}).includes('<script>')));
+const root=new URL('../',import.meta.url),source=fs.readFileSync(new URL('static/msa.js',root),'utf8');
+check(()=>assert(source.includes('m!==getModalRevision()')));check(()=>assert(source.includes('throw Error(\'来源分页不完整')));check(()=>assert(source.includes('encodeURIComponent(b.dataset.msaPart)')));
+fs.writeFileSync(new URL('data/msa_presentation_checks.json',root),JSON.stringify({success:true,pure_checks:checks,browser_rendering:false,mobile_acceptance:false},null,2)+'\n');console.log(JSON.stringify({success:true,checks}));

@@ -1,0 +1,6 @@
+.spc-saved-context{display:flex;flex-wrap:wrap;gap:12px;padding:14px 18px;margin:10px 0;background:var(--paper,#fff);border:1px solid var(--line,#dfe5e3);border-radius:10px}
+.spc-saved-context span{color:var(--muted,#61706b);font-size:12px}
+.spc-saved-context code{overflow-wrap:anywhere}
+#spc-view-editor input[type=checkbox]{width:auto}
+#spc-view-editor .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){#spc-view-editor .form-grid{grid-template-columns:1fr}.spc-saved-context{display:block}.spc-saved-context span{display:block;margin-top:6px}}

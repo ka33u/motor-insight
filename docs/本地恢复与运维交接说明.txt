@@ -1,0 +1,95 @@
+序流 · 本地恢复与运维交接说明
+验收日期：2026-10-07；业务数据均为合成模拟数据
+
+本说明适合当前预算谨慎、IT人员少的演示阶段。已把完整应用恢复到同一台电脑的独立目录，创建新的Python环境、离线安装依赖、启动服务并执行真实HTTP操作。现有U8、momo MES与现场检测电脑均未连接。
+
+一、交接时应保留什么
+
+应用恢复使用以下三个文件，位于主平台 data/recovery-packages/：
+  motor-full-20261007-topic-linkage-r2-bi-v9.zip
+  motor-full-20261007-topic-linkage-r2-bi-v9.zip.sha256
+  motor-full-20261007-topic-linkage-r2-bi-v9-recover.py
+该ZIP的SHA256：
+  cc1e22daf15ffeb1858d946dc1698a5ed9769c41e97a2d32885337a279c131bf
+ZIP包含1,033个应用、数据及离线依赖文件；其中448份被数据库引用的原件为47份Excel存档、401份设备原件。32份有效部门Excel之外还保留历史批次；不能把47个导入批次误读为47份有效部门数据。
+
+恢复包中的应用版本已做完整恢复验收。本说明、当前 scripts/accept_restored_application.py 及 data/application_restore_* 验收报告在恢复包生成后补充，单独留在主平台目录。它们未被追写进上述已经校验的ZIP。
+outputs/BI设计_v9_离线资料包.zip 是设计阅读资料；scripts/backup.py 的产物是数据备份。完整应用迁移请使用 recovery.py 生成的应用恢复包。
+
+恢复包保留原账号、私有文件所有权、授权状态和审计历史，不把私有原件自动授予其他账号。只使用来源可信的恢复脚本和恢复包，摘要核对用于检测文件损坏。
+
+二、已经实际验证的结果
+
+恢复目录：
+  /Users/zhangyu/数据底座/motor-platform/data/recovery-rehearsals/application-20261007-topic-linkage-r2
+临时验收地址：http://127.0.0.1:8876；验收后已关闭。当前主平台仍在 http://127.0.0.1:8765。
+
+恢复时，48张表的结构与内容保持一致，仅47个Excel存档位置改为新目录；路径标准化后逐表摘要一致。新环境使用CPython 3.12.14，五个锁定版本的依赖均从包内wheel离线安装，未复用主应用的虚拟环境。Django系统检查与迁移检查通过。
+新环境的全部2,053项测试通过，用时233.120秒。34个数据页面接口返回成功；管理员、分析师、质量、生产计划、财务、只读六类账号的登录、专题范围与相关权限边界完成HTTP核对。
+
+重点业务操作的结果：
+  • 重传同一份Excel返回原导入批次，没有提交新事实或增加批次。
+  • 工单MO2609-000001同时约束专题的当前与对照；四张卡的完整来源分别为20台整机、49条工序、1张工单、1张工单，两侧和所有分页一致。
+  • 个人视角保存重开、结果快照保存及当前复盘通过；四张卡结果、整范围摘要与冻结结果的CSV接口均完成核对。
+  • 新目录的Excel存档、设备派生文件二进制读取与原摘要一致；24条转换结果的回执与会话依据保持有效。
+  • 历史采集的5条回执所引用原件完整；新目录两次稳定观察可识别5条可采集观察。本次没有新采集、新关联、授权、检测放行或业务批准。
+
+验收操作只发生在恢复副本：新增1个管理员私有视角、1个私有快照、13条正常操作审计及6个登录会话，账号仅更新最后登录时间；既有行均保留，其余43张表完整一致。主库的48张表及全部字节、450份既有来源/文件与16个受保护计算和原件模块保持不变。
+BI仍为26个领域、382项候选需求、63项建议指标定义、17页蓝图；111项“模拟部分覆盖”、271项“待建设”。恢复验收没有改变需求覆盖状态或正式发布指标。
+
+三、重新启动哪一套系统
+
+在主平台目录执行：
+  cd '/Users/zhangyu/数据底座/motor-platform'
+  .venv/bin/python scripts/serve.py status
+  .venv/bin/python scripts/serve.py start
+主平台日志：data/server.log；停止使用同目录的 scripts/serve.py stop。
+
+如需复查已恢复的副本，先切到副本目录，再明确使用8876端口：
+  cd '/Users/zhangyu/数据底座/motor-platform/data/recovery-rehearsals/application-20261007-topic-linkage-r2'
+  .venv/bin/python scripts/serve.py start --port 8876
+  .venv/bin/python scripts/serve.py status --port 8876
+复查结束：
+  .venv/bin/python scripts/serve.py stop --port 8876
+副本日志：data/server-8876.log；PID登记按目录和端口区分。脚本核对进程所属目录与端口，端口被其他应用占用时应选择新端口，不能直接终止不明进程。
+浏览器访问哪个端口，就操作该目录里的数据库。副本中的新增视角和快照不会自动同步回主平台。
+
+四、从包恢复到另一个新目录
+
+目标电脑需先具备CPython 3.12与venv功能；Python解释器本身未打包。恢复脚本支持的环境为macOS/Linux，Windows及异机恢复仍需另行实测。
+下例在当前主目录执行，目标路径必须不存在，父目录须已存在；示例命名 review-new 不代表已经执行：
+
+  .venv/bin/python data/recovery-packages/motor-full-20261007-topic-linkage-r2-bi-v9-recover.py verify data/recovery-packages/motor-full-20261007-topic-linkage-r2-bi-v9.zip --sha256 cc1e22daf15ffeb1858d946dc1698a5ed9769c41e97a2d32885337a279c131bf
+
+  .venv/bin/python data/recovery-packages/motor-full-20261007-topic-linkage-r2-bi-v9-recover.py restore data/recovery-packages/motor-full-20261007-topic-linkage-r2-bi-v9.zip --target data/recovery-rehearsals/review-new --sha256 cc1e22daf15ffeb1858d946dc1698a5ed9769c41e97a2d32885337a279c131bf
+
+独立电脑使用该电脑的CPython 3.12执行同一脚本，并替换包和新目标的路径。恢复完成应看到 data/recovery-restore.json 的 status=ready，且不存在 .restore-in-progress。恢复不自动启动服务；切入新目录后，用该目录的新 .venv/bin/python 和单独端口启动。
+恢复脚本拒绝覆盖已有目标，依赖安装禁用网络并要求锁定摘要，系统检查与迁移检查也在新目录执行。不能仅复制 platform.sqlite3 后沿用旧Excel绝对路径，或者把旧 .venv 直接当作新安装环境。
+
+若恢复失败，保留新目标中的 .restore-in-progress 与 data/recovery-install.log，根据首个错误排查。包校验失败先核对传输完整性；Python版本不符先准备3.12；安装或迁移检查失败先看日志。失败目录不会自动覆盖或清空，修复后换另一个不存在的新目录重新恢复。
+
+五、日常维护与BI核对
+
+安排一名系统保管人登记：应用目录、Python版本、使用端口、包文件名和摘要、生成日期、业务截止日期。部门数据负责人负责Excel字段与业务口径，系统保管人负责导入回执、原件和恢复文件；两种职责可由现有人兼任。
+重要导入或版本更新前生成完整包，在当前应用目录执行：
+  .venv/bin/python scripts/recovery.py pack
+命令返回新ZIP、校验文件和恢复脚本路径。随后用返回的ZIP路径及其SHA256运行 scripts/recovery.py verify。使用新文件名保留上一版本，不覆盖唯一可用包。先在独立目录完成恢复与关键操作核对，再决定是否替换正式使用目录。
+
+每次更新后的最低核对：打开登录页；按账号查看经营/交付/质量/生产专题；选一张真实已导入的模拟工单，核对台数与来源；导出同范围摘要与明细；读取一份Excel存档和一份检测原件。财务字段、私有文件及未授权账号的访问也应核对。
+业务截止仍是2026-10-01 18:00（上海时间）；恢复当天日期不会把业务事实自动推进。比较结果时应同时保留筛选、定义版本、对象粒度、单位和数据截止。个人视角重新计算当前事实；结果快照保留当次结果，二者用途不同。
+迁移目录会改变设备观察中的路径等依据。历史回执仍可读原件；再次采集需在新目录重新观察和核对，不能直接执行旧电脑上冻结的待采集清单。
+scripts/accept_restored_application.py 是本次固定版本的验收脚本，会写入副本视角、快照、登录与审计，且要求主库摘要和包版本完全吻合。它不是日常巡检脚本，也不应在已完成验收的副本上反复运行。
+
+六、验收证据与剩余范围
+
+主目录可查：
+  data/application_restore_bootstrap_result.json：实际恢复输出
+  data/application_restore_baseline_validation.json：启动前48表与原件核对
+  data/application_restore_http_validation.json：34个接口及业务操作结果
+  data/application_restore_final_validation.json：恢复后的逐表/旧行/原件与源文件核对
+  data/application_restore_http_validation.log：本次HTTP验收日志
+  data/topic_linkage_preservation.json：主库、450文件与16模块保留核对
+副本 data/application_restore_full_tests.log：新环境的2,053项测试记录
+副本 data/recovery-install.log、data/recovery-restore.json：离线安装与就绪记录
+
+已验证范围是同机独立目录的SQLite演示应用恢复及原生HTTP业务流程。浏览器实际布局、手机、键盘操作、实际点击下载、异机/Windows恢复、PostgreSQL与正式生产部署仍未验收；U8/MES、真实设备采集、工厂业务签认与整体系统建设仍需继续。现有证据不能作为上述事项已经完成的证明。

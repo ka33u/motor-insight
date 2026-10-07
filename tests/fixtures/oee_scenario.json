@@ -1,0 +1,1942 @@
+{
+  "synthetic": true,
+  "tables": {
+    "oee_studies": [
+      {
+        "id": "OE-260925-001",
+        "name": "完整单配置采集",
+        "resource_id": "SB-08-01-W01",
+        "version": "OEE-CAPTURE-SIM-V1",
+        "capture_state": "完整",
+        "scope": "终检独立资源位白班，两段计划生产；案例彼此独立，不能合成全厂产出。",
+        "assumptions": "全部窗口、停止、节拍和报产为独立合成采集；理想90/120秒每台不来自真实技术标准。登记时刻不是单台加工时刻；首次经过只计一次，返工后通过不补入首次良品。",
+        "reference": "SIM-OEE-260925-001",
+        "window_count": 2,
+        "event_count": 3,
+        "cycle_count": 1,
+        "output_count": 7
+      },
+      {
+        "id": "OE-260925-002",
+        "name": "停止重叠与休息外片段",
+        "resource_id": "SB-08-01-W01",
+        "version": "OEE-CAPTURE-SIM-V1",
+        "capture_state": "完整",
+        "scope": "终检独立资源位白班，两段计划生产；案例彼此独立，不能合成全厂产出。",
+        "assumptions": "全部窗口、停止、节拍和报产为独立合成采集；理想90/120秒每台不来自真实技术标准。登记时刻不是单台加工时刻；首次经过只计一次，返工后通过不补入首次良品。",
+        "reference": "SIM-OEE-260925-002",
+        "window_count": 2,
+        "event_count": 5,
+        "cycle_count": 1,
+        "output_count": 7
+      },
+      {
+        "id": "OE-260925-003",
+        "name": "混配置分窗采集",
+        "resource_id": "SB-08-01-W01",
+        "version": "OEE-CAPTURE-SIM-V1",
+        "capture_state": "完整",
+        "scope": "终检独立资源位白班，两段计划生产；案例彼此独立，不能合成全厂产出。",
+        "assumptions": "全部窗口、停止、节拍和报产为独立合成采集；理想90/120秒每台不来自真实技术标准。登记时刻不是单台加工时刻；首次经过只计一次，返工后通过不补入首次良品。",
+        "reference": "SIM-OEE-260925-003",
+        "window_count": 2,
+        "event_count": 3,
+        "cycle_count": 2,
+        "output_count": 7
+      },
+      {
+        "id": "OE-260925-004",
+        "name": "完整采集但零产出",
+        "resource_id": "SB-08-01-W01",
+        "version": "OEE-CAPTURE-SIM-V1",
+        "capture_state": "完整",
+        "scope": "终检独立资源位白班，两段计划生产；案例彼此独立，不能合成全厂产出。",
+        "assumptions": "全部窗口、停止、节拍和报产为独立合成采集；理想90/120秒每台不来自真实技术标准。登记时刻不是单台加工时刻；首次经过只计一次，返工后通过不补入首次良品。",
+        "reference": "SIM-OEE-260925-004",
+        "window_count": 2,
+        "event_count": 3,
+        "cycle_count": 1,
+        "output_count": 0
+      },
+      {
+        "id": "OE-260925-005",
+        "name": "未登记理想节拍",
+        "resource_id": "SB-08-01-W01",
+        "version": "OEE-CAPTURE-SIM-V1",
+        "capture_state": "完整",
+        "scope": "终检独立资源位白班，两段计划生产；案例彼此独立，不能合成全厂产出。",
+        "assumptions": "全部窗口、停止、节拍和报产为独立合成采集；理想90/120秒每台不来自真实技术标准。登记时刻不是单台加工时刻；首次经过只计一次，返工后通过不补入首次良品。",
+        "reference": "SIM-OEE-260925-005",
+        "window_count": 2,
+        "event_count": 3,
+        "cycle_count": 0,
+        "output_count": 7
+      },
+      {
+        "id": "OE-260925-006",
+        "name": "产出分类未确认",
+        "resource_id": "SB-08-01-W01",
+        "version": "OEE-CAPTURE-SIM-V1",
+        "capture_state": "完整",
+        "scope": "终检独立资源位白班，两段计划生产；案例彼此独立，不能合成全厂产出。",
+        "assumptions": "全部窗口、停止、节拍和报产为独立合成采集；理想90/120秒每台不来自真实技术标准。登记时刻不是单台加工时刻；首次经过只计一次，返工后通过不补入首次良品。",
+        "reference": "SIM-OEE-260925-006",
+        "window_count": 2,
+        "event_count": 3,
+        "cycle_count": 1,
+        "output_count": 7
+      },
+      {
+        "id": "OE-260925-007",
+        "name": "班次采集未闭合",
+        "resource_id": "SB-08-01-W01",
+        "version": "OEE-CAPTURE-SIM-V1",
+        "capture_state": "未闭合",
+        "scope": "终检独立资源位白班，两段计划生产；案例彼此独立，不能合成全厂产出。",
+        "assumptions": "全部窗口、停止、节拍和报产为独立合成采集；理想90/120秒每台不来自真实技术标准。登记时刻不是单台加工时刻；首次经过只计一次，返工后通过不补入首次良品。",
+        "reference": "SIM-OEE-260925-007",
+        "window_count": 2,
+        "event_count": 3,
+        "cycle_count": 1,
+        "output_count": 7
+      },
+      {
+        "id": "OE-260925-008",
+        "name": "计划窗口重叠",
+        "resource_id": "SB-08-01-W01",
+        "version": "OEE-CAPTURE-SIM-V1",
+        "capture_state": "完整",
+        "scope": "终检独立资源位白班，两段计划生产；案例彼此独立，不能合成全厂产出。",
+        "assumptions": "全部窗口、停止、节拍和报产为独立合成采集；理想90/120秒每台不来自真实技术标准。登记时刻不是单台加工时刻；首次经过只计一次，返工后通过不补入首次良品。",
+        "reference": "SIM-OEE-260925-008",
+        "window_count": 3,
+        "event_count": 3,
+        "cycle_count": 1,
+        "output_count": 7
+      },
+      {
+        "id": "OE-260925-009",
+        "name": "晚于业务截止的采集",
+        "resource_id": "SB-08-01-W01",
+        "version": "OEE-CAPTURE-SIM-V1",
+        "capture_state": "完整",
+        "scope": "终检独立资源位白班，两段计划生产；案例彼此独立，不能合成全厂产出。",
+        "assumptions": "全部窗口、停止、节拍和报产为独立合成采集；理想90/120秒每台不来自真实技术标准。登记时刻不是单台加工时刻；首次经过只计一次，返工后通过不补入首次良品。",
+        "reference": "SIM-OEE-260925-009",
+        "window_count": 2,
+        "event_count": 3,
+        "cycle_count": 1,
+        "output_count": 7
+      },
+      {
+        "id": "OE-260925-010",
+        "name": "无计划生产窗口",
+        "resource_id": "SB-08-01-W01",
+        "version": "OEE-CAPTURE-SIM-V1",
+        "capture_state": "完整",
+        "scope": "终检独立资源位白班，两段计划生产；案例彼此独立，不能合成全厂产出。",
+        "assumptions": "全部窗口、停止、节拍和报产为独立合成采集；理想90/120秒每台不来自真实技术标准。登记时刻不是单台加工时刻；首次经过只计一次，返工后通过不补入首次良品。",
+        "reference": "SIM-OEE-260925-010",
+        "window_count": 0,
+        "event_count": 0,
+        "cycle_count": 0,
+        "output_count": 0
+      }
+    ],
+    "oee_windows": [
+      {
+        "id": "OE-260925-001-W01",
+        "study_id": "OE-260925-001",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T12:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-001-W02",
+        "study_id": "OE-260925-001",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T13:00:00",
+        "finished": "2026-09-25T16:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-002-W01",
+        "study_id": "OE-260925-002",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T12:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-002-W02",
+        "study_id": "OE-260925-002",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T13:00:00",
+        "finished": "2026-09-25T16:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-003-W01",
+        "study_id": "OE-260925-003",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T12:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-003-W02",
+        "study_id": "OE-260925-003",
+        "product_id": "CP.00002.A",
+        "started": "2026-09-25T13:00:00",
+        "finished": "2026-09-25T16:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-004-W01",
+        "study_id": "OE-260925-004",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T12:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-004-W02",
+        "study_id": "OE-260925-004",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T13:00:00",
+        "finished": "2026-09-25T16:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-005-W01",
+        "study_id": "OE-260925-005",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T12:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-005-W02",
+        "study_id": "OE-260925-005",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T13:00:00",
+        "finished": "2026-09-25T16:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-006-W01",
+        "study_id": "OE-260925-006",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T12:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-006-W02",
+        "study_id": "OE-260925-006",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T13:00:00",
+        "finished": "2026-09-25T16:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-007-W01",
+        "study_id": "OE-260925-007",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T12:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-007-W02",
+        "study_id": "OE-260925-007",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T13:00:00",
+        "finished": "2026-09-25T16:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-008-W01",
+        "study_id": "OE-260925-008",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T12:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-008-W02",
+        "study_id": "OE-260925-008",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T13:00:00",
+        "finished": "2026-09-25T16:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-008-W03",
+        "study_id": "OE-260925-008",
+        "product_id": "CP.00001.A",
+        "started": "2026-09-25T09:00:00",
+        "finished": "2026-09-25T11:00:00",
+        "unit": "台",
+        "basis": "刻意登记重叠，用于暂停核对。"
+      },
+      {
+        "id": "OE-260925-009-W01",
+        "study_id": "OE-260925-009",
+        "product_id": "CP.00001.A",
+        "started": "2026-10-02T08:00:00",
+        "finished": "2026-10-02T12:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      },
+      {
+        "id": "OE-260925-009-W02",
+        "study_id": "OE-260925-009",
+        "product_id": "CP.00001.A",
+        "started": "2026-10-02T13:00:00",
+        "finished": "2026-10-02T16:00:00",
+        "unit": "台",
+        "basis": "合成计划生产窗口；12至13点未计划生产，排除。"
+      }
+    ],
+    "oee_events": [
+      {
+        "id": "OE-260925-001-E01",
+        "study_id": "OE-260925-001",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T08:15:00",
+        "kind": "换型",
+        "reference": "OE-260925-001-REF01",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-001-E02",
+        "study_id": "OE-260925-001",
+        "started": "2026-09-25T10:00:00",
+        "finished": "2026-09-25T10:20:00",
+        "kind": "故障",
+        "reference": "OE-260925-001-REF02",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-001-E03",
+        "study_id": "OE-260925-001",
+        "started": "2026-09-25T14:00:00",
+        "finished": "2026-09-25T14:25:00",
+        "kind": "待料",
+        "reference": "OE-260925-001-REF03",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-002-E01",
+        "study_id": "OE-260925-002",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T08:15:00",
+        "kind": "换型",
+        "reference": "OE-260925-002-REF01",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-002-E02",
+        "study_id": "OE-260925-002",
+        "started": "2026-09-25T10:00:00",
+        "finished": "2026-09-25T10:20:00",
+        "kind": "故障",
+        "reference": "OE-260925-002-REF02",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-002-E03",
+        "study_id": "OE-260925-002",
+        "started": "2026-09-25T14:00:00",
+        "finished": "2026-09-25T14:25:00",
+        "kind": "待料",
+        "reference": "OE-260925-002-REF03",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-002-E04",
+        "study_id": "OE-260925-002",
+        "started": "2026-09-25T10:10:00",
+        "finished": "2026-09-25T10:35:00",
+        "kind": "其他停止",
+        "reference": "OE-260925-002-REF04",
+        "basis": "合成重叠或休息外片段，原因时长不相加；停止合计按窗口交集并集。"
+      },
+      {
+        "id": "OE-260925-002-E05",
+        "study_id": "OE-260925-002",
+        "started": "2026-09-25T11:50:00",
+        "finished": "2026-09-25T12:10:00",
+        "kind": "故障",
+        "reference": "OE-260925-002-REF05",
+        "basis": "合成重叠或休息外片段，原因时长不相加；停止合计按窗口交集并集。"
+      },
+      {
+        "id": "OE-260925-003-E01",
+        "study_id": "OE-260925-003",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T08:15:00",
+        "kind": "换型",
+        "reference": "OE-260925-003-REF01",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-003-E02",
+        "study_id": "OE-260925-003",
+        "started": "2026-09-25T10:00:00",
+        "finished": "2026-09-25T10:20:00",
+        "kind": "故障",
+        "reference": "OE-260925-003-REF02",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-003-E03",
+        "study_id": "OE-260925-003",
+        "started": "2026-09-25T14:00:00",
+        "finished": "2026-09-25T14:25:00",
+        "kind": "待料",
+        "reference": "OE-260925-003-REF03",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-004-E01",
+        "study_id": "OE-260925-004",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T08:15:00",
+        "kind": "换型",
+        "reference": "OE-260925-004-REF01",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-004-E02",
+        "study_id": "OE-260925-004",
+        "started": "2026-09-25T10:00:00",
+        "finished": "2026-09-25T10:20:00",
+        "kind": "故障",
+        "reference": "OE-260925-004-REF02",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-004-E03",
+        "study_id": "OE-260925-004",
+        "started": "2026-09-25T14:00:00",
+        "finished": "2026-09-25T14:25:00",
+        "kind": "待料",
+        "reference": "OE-260925-004-REF03",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-005-E01",
+        "study_id": "OE-260925-005",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T08:15:00",
+        "kind": "换型",
+        "reference": "OE-260925-005-REF01",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-005-E02",
+        "study_id": "OE-260925-005",
+        "started": "2026-09-25T10:00:00",
+        "finished": "2026-09-25T10:20:00",
+        "kind": "故障",
+        "reference": "OE-260925-005-REF02",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-005-E03",
+        "study_id": "OE-260925-005",
+        "started": "2026-09-25T14:00:00",
+        "finished": "2026-09-25T14:25:00",
+        "kind": "待料",
+        "reference": "OE-260925-005-REF03",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-006-E01",
+        "study_id": "OE-260925-006",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T08:15:00",
+        "kind": "换型",
+        "reference": "OE-260925-006-REF01",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-006-E02",
+        "study_id": "OE-260925-006",
+        "started": "2026-09-25T10:00:00",
+        "finished": "2026-09-25T10:20:00",
+        "kind": "故障",
+        "reference": "OE-260925-006-REF02",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-006-E03",
+        "study_id": "OE-260925-006",
+        "started": "2026-09-25T14:00:00",
+        "finished": "2026-09-25T14:25:00",
+        "kind": "待料",
+        "reference": "OE-260925-006-REF03",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-007-E01",
+        "study_id": "OE-260925-007",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T08:15:00",
+        "kind": "换型",
+        "reference": "OE-260925-007-REF01",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-007-E02",
+        "study_id": "OE-260925-007",
+        "started": "2026-09-25T10:00:00",
+        "finished": "2026-09-25T10:20:00",
+        "kind": "故障",
+        "reference": "OE-260925-007-REF02",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-007-E03",
+        "study_id": "OE-260925-007",
+        "started": "2026-09-25T14:00:00",
+        "finished": "2026-09-25T14:25:00",
+        "kind": "待料",
+        "reference": "OE-260925-007-REF03",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-008-E01",
+        "study_id": "OE-260925-008",
+        "started": "2026-09-25T08:00:00",
+        "finished": "2026-09-25T08:15:00",
+        "kind": "换型",
+        "reference": "OE-260925-008-REF01",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-008-E02",
+        "study_id": "OE-260925-008",
+        "started": "2026-09-25T10:00:00",
+        "finished": "2026-09-25T10:20:00",
+        "kind": "故障",
+        "reference": "OE-260925-008-REF02",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-008-E03",
+        "study_id": "OE-260925-008",
+        "started": "2026-09-25T14:00:00",
+        "finished": "2026-09-25T14:25:00",
+        "kind": "待料",
+        "reference": "OE-260925-008-REF03",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-009-E01",
+        "study_id": "OE-260925-009",
+        "started": "2026-10-02T08:00:00",
+        "finished": "2026-10-02T08:15:00",
+        "kind": "换型",
+        "reference": "OE-260925-009-REF01",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-009-E02",
+        "study_id": "OE-260925-009",
+        "started": "2026-10-02T10:00:00",
+        "finished": "2026-10-02T10:20:00",
+        "kind": "故障",
+        "reference": "OE-260925-009-REF02",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      },
+      {
+        "id": "OE-260925-009-E03",
+        "study_id": "OE-260925-009",
+        "started": "2026-10-02T14:00:00",
+        "finished": "2026-10-02T14:25:00",
+        "kind": "待料",
+        "reference": "OE-260925-009-REF03",
+        "basis": "独立合成停止记录；窗口内停止计损失，不从计划生产分母中扣除。"
+      }
+    ],
+    "oee_cycles": [
+      {
+        "id": "OE-260925-001-C01",
+        "study_id": "OE-260925-001",
+        "product_id": "CP.00001.A",
+        "seconds_per_unit": 90.0,
+        "unit": "台",
+        "method": "独立合成理想条件假设",
+        "basis": "模拟假设，不以历史平均工时替代理想节拍，实际节拍须技术与生产确认。"
+      },
+      {
+        "id": "OE-260925-002-C01",
+        "study_id": "OE-260925-002",
+        "product_id": "CP.00001.A",
+        "seconds_per_unit": 90.0,
+        "unit": "台",
+        "method": "独立合成理想条件假设",
+        "basis": "模拟假设，不以历史平均工时替代理想节拍，实际节拍须技术与生产确认。"
+      },
+      {
+        "id": "OE-260925-003-C01",
+        "study_id": "OE-260925-003",
+        "product_id": "CP.00001.A",
+        "seconds_per_unit": 90.0,
+        "unit": "台",
+        "method": "独立合成理想条件假设",
+        "basis": "模拟假设，不以历史平均工时替代理想节拍，实际节拍须技术与生产确认。"
+      },
+      {
+        "id": "OE-260925-003-C02",
+        "study_id": "OE-260925-003",
+        "product_id": "CP.00002.A",
+        "seconds_per_unit": 120.0,
+        "unit": "台",
+        "method": "独立合成理想条件假设",
+        "basis": "模拟假设，不以历史平均工时替代理想节拍，实际节拍须技术与生产确认。"
+      },
+      {
+        "id": "OE-260925-004-C01",
+        "study_id": "OE-260925-004",
+        "product_id": "CP.00001.A",
+        "seconds_per_unit": 90.0,
+        "unit": "台",
+        "method": "独立合成理想条件假设",
+        "basis": "模拟假设，不以历史平均工时替代理想节拍，实际节拍须技术与生产确认。"
+      },
+      {
+        "id": "OE-260925-006-C01",
+        "study_id": "OE-260925-006",
+        "product_id": "CP.00001.A",
+        "seconds_per_unit": 90.0,
+        "unit": "台",
+        "method": "独立合成理想条件假设",
+        "basis": "模拟假设，不以历史平均工时替代理想节拍，实际节拍须技术与生产确认。"
+      },
+      {
+        "id": "OE-260925-007-C01",
+        "study_id": "OE-260925-007",
+        "product_id": "CP.00001.A",
+        "seconds_per_unit": 90.0,
+        "unit": "台",
+        "method": "独立合成理想条件假设",
+        "basis": "模拟假设，不以历史平均工时替代理想节拍，实际节拍须技术与生产确认。"
+      },
+      {
+        "id": "OE-260925-008-C01",
+        "study_id": "OE-260925-008",
+        "product_id": "CP.00001.A",
+        "seconds_per_unit": 90.0,
+        "unit": "台",
+        "method": "独立合成理想条件假设",
+        "basis": "模拟假设，不以历史平均工时替代理想节拍，实际节拍须技术与生产确认。"
+      },
+      {
+        "id": "OE-260925-009-C01",
+        "study_id": "OE-260925-009",
+        "product_id": "CP.00001.A",
+        "seconds_per_unit": 90.0,
+        "unit": "台",
+        "method": "独立合成理想条件假设",
+        "basis": "模拟假设，不以历史平均工时替代理想节拍，实际节拍须技术与生产确认。"
+      }
+    ],
+    "oee_outputs": [
+      {
+        "id": "OE-260925-001-P101",
+        "study_id": "OE-260925-001",
+        "window_id": "OE-260925-001-W01",
+        "reported": "2026-09-25T08:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-001-P102",
+        "study_id": "OE-260925-001",
+        "window_id": "OE-260925-001-W01",
+        "reported": "2026-09-25T09:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-001-P103",
+        "study_id": "OE-260925-001",
+        "window_id": "OE-260925-001-W01",
+        "reported": "2026-09-25T10:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 24,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-001-P104",
+        "study_id": "OE-260925-001",
+        "window_id": "OE-260925-001-W01",
+        "reported": "2026-09-25T11:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 25,
+        "rework_qty": 0,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-001-P201",
+        "study_id": "OE-260925-001",
+        "window_id": "OE-260925-001-W02",
+        "reported": "2026-09-25T13:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-001-P202",
+        "study_id": "OE-260925-001",
+        "window_id": "OE-260925-001-W02",
+        "reported": "2026-09-25T14:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-001-P203",
+        "study_id": "OE-260925-001",
+        "window_id": "OE-260925-001-W02",
+        "reported": "2026-09-25T15:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 19,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-002-P101",
+        "study_id": "OE-260925-002",
+        "window_id": "OE-260925-002-W01",
+        "reported": "2026-09-25T08:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-002-P102",
+        "study_id": "OE-260925-002",
+        "window_id": "OE-260925-002-W01",
+        "reported": "2026-09-25T09:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-002-P103",
+        "study_id": "OE-260925-002",
+        "window_id": "OE-260925-002-W01",
+        "reported": "2026-09-25T10:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 24,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-002-P104",
+        "study_id": "OE-260925-002",
+        "window_id": "OE-260925-002-W01",
+        "reported": "2026-09-25T11:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 25,
+        "rework_qty": 0,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-002-P201",
+        "study_id": "OE-260925-002",
+        "window_id": "OE-260925-002-W02",
+        "reported": "2026-09-25T13:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-002-P202",
+        "study_id": "OE-260925-002",
+        "window_id": "OE-260925-002-W02",
+        "reported": "2026-09-25T14:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-002-P203",
+        "study_id": "OE-260925-002",
+        "window_id": "OE-260925-002-W02",
+        "reported": "2026-09-25T15:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 19,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-003-P101",
+        "study_id": "OE-260925-003",
+        "window_id": "OE-260925-003-W01",
+        "reported": "2026-09-25T08:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-003-P102",
+        "study_id": "OE-260925-003",
+        "window_id": "OE-260925-003-W01",
+        "reported": "2026-09-25T09:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-003-P103",
+        "study_id": "OE-260925-003",
+        "window_id": "OE-260925-003-W01",
+        "reported": "2026-09-25T10:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 24,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-003-P104",
+        "study_id": "OE-260925-003",
+        "window_id": "OE-260925-003-W01",
+        "reported": "2026-09-25T11:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 25,
+        "rework_qty": 0,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-003-P201",
+        "study_id": "OE-260925-003",
+        "window_id": "OE-260925-003-W02",
+        "reported": "2026-09-25T13:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-003-P202",
+        "study_id": "OE-260925-003",
+        "window_id": "OE-260925-003-W02",
+        "reported": "2026-09-25T14:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-003-P203",
+        "study_id": "OE-260925-003",
+        "window_id": "OE-260925-003-W02",
+        "reported": "2026-09-25T15:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 19,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-005-P101",
+        "study_id": "OE-260925-005",
+        "window_id": "OE-260925-005-W01",
+        "reported": "2026-09-25T08:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-005-P102",
+        "study_id": "OE-260925-005",
+        "window_id": "OE-260925-005-W01",
+        "reported": "2026-09-25T09:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-005-P103",
+        "study_id": "OE-260925-005",
+        "window_id": "OE-260925-005-W01",
+        "reported": "2026-09-25T10:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 24,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-005-P104",
+        "study_id": "OE-260925-005",
+        "window_id": "OE-260925-005-W01",
+        "reported": "2026-09-25T11:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 25,
+        "rework_qty": 0,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-005-P201",
+        "study_id": "OE-260925-005",
+        "window_id": "OE-260925-005-W02",
+        "reported": "2026-09-25T13:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-005-P202",
+        "study_id": "OE-260925-005",
+        "window_id": "OE-260925-005-W02",
+        "reported": "2026-09-25T14:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-005-P203",
+        "study_id": "OE-260925-005",
+        "window_id": "OE-260925-005-W02",
+        "reported": "2026-09-25T15:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 19,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-006-P101",
+        "study_id": "OE-260925-006",
+        "window_id": "OE-260925-006-W01",
+        "reported": "2026-09-25T08:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 22,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 1,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-006-P102",
+        "study_id": "OE-260925-006",
+        "window_id": "OE-260925-006-W01",
+        "reported": "2026-09-25T09:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-006-P103",
+        "study_id": "OE-260925-006",
+        "window_id": "OE-260925-006-W01",
+        "reported": "2026-09-25T10:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 24,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-006-P104",
+        "study_id": "OE-260925-006",
+        "window_id": "OE-260925-006-W01",
+        "reported": "2026-09-25T11:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 25,
+        "rework_qty": 0,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-006-P201",
+        "study_id": "OE-260925-006",
+        "window_id": "OE-260925-006-W02",
+        "reported": "2026-09-25T13:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-006-P202",
+        "study_id": "OE-260925-006",
+        "window_id": "OE-260925-006-W02",
+        "reported": "2026-09-25T14:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-006-P203",
+        "study_id": "OE-260925-006",
+        "window_id": "OE-260925-006-W02",
+        "reported": "2026-09-25T15:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 19,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-007-P101",
+        "study_id": "OE-260925-007",
+        "window_id": "OE-260925-007-W01",
+        "reported": "2026-09-25T08:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-007-P102",
+        "study_id": "OE-260925-007",
+        "window_id": "OE-260925-007-W01",
+        "reported": "2026-09-25T09:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-007-P103",
+        "study_id": "OE-260925-007",
+        "window_id": "OE-260925-007-W01",
+        "reported": "2026-09-25T10:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 24,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-007-P104",
+        "study_id": "OE-260925-007",
+        "window_id": "OE-260925-007-W01",
+        "reported": "2026-09-25T11:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 25,
+        "rework_qty": 0,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-007-P201",
+        "study_id": "OE-260925-007",
+        "window_id": "OE-260925-007-W02",
+        "reported": "2026-09-25T13:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-007-P202",
+        "study_id": "OE-260925-007",
+        "window_id": "OE-260925-007-W02",
+        "reported": "2026-09-25T14:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-007-P203",
+        "study_id": "OE-260925-007",
+        "window_id": "OE-260925-007-W02",
+        "reported": "2026-09-25T15:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 19,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-008-P101",
+        "study_id": "OE-260925-008",
+        "window_id": "OE-260925-008-W01",
+        "reported": "2026-09-25T08:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-008-P102",
+        "study_id": "OE-260925-008",
+        "window_id": "OE-260925-008-W01",
+        "reported": "2026-09-25T09:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-008-P103",
+        "study_id": "OE-260925-008",
+        "window_id": "OE-260925-008-W01",
+        "reported": "2026-09-25T10:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 24,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-008-P104",
+        "study_id": "OE-260925-008",
+        "window_id": "OE-260925-008-W01",
+        "reported": "2026-09-25T11:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 25,
+        "rework_qty": 0,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-008-P201",
+        "study_id": "OE-260925-008",
+        "window_id": "OE-260925-008-W02",
+        "reported": "2026-09-25T13:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-008-P202",
+        "study_id": "OE-260925-008",
+        "window_id": "OE-260925-008-W02",
+        "reported": "2026-09-25T14:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-008-P203",
+        "study_id": "OE-260925-008",
+        "window_id": "OE-260925-008-W02",
+        "reported": "2026-09-25T15:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 19,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-009-P101",
+        "study_id": "OE-260925-009",
+        "window_id": "OE-260925-009-W01",
+        "reported": "2026-10-02T08:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-009-P102",
+        "study_id": "OE-260925-009",
+        "window_id": "OE-260925-009-W01",
+        "reported": "2026-10-02T09:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 23,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-009-P103",
+        "study_id": "OE-260925-009",
+        "window_id": "OE-260925-009-W01",
+        "reported": "2026-10-02T10:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 24,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-009-P104",
+        "study_id": "OE-260925-009",
+        "window_id": "OE-260925-009-W01",
+        "reported": "2026-10-02T11:59:00",
+        "unit": "台",
+        "total_qty": 25,
+        "good_first_qty": 25,
+        "rework_qty": 0,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-009-P201",
+        "study_id": "OE-260925-009",
+        "window_id": "OE-260925-009-W02",
+        "reported": "2026-10-02T13:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-009-P202",
+        "study_id": "OE-260925-009",
+        "window_id": "OE-260925-009-W02",
+        "reported": "2026-10-02T14:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 18,
+        "rework_qty": 1,
+        "scrap_qty": 1,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      },
+      {
+        "id": "OE-260925-009-P203",
+        "study_id": "OE-260925-009",
+        "window_id": "OE-260925-009-W02",
+        "reported": "2026-10-02T15:59:00",
+        "unit": "台",
+        "total_qty": 20,
+        "good_first_qty": 19,
+        "rework_qty": 1,
+        "scrap_qty": 0,
+        "unknown_qty": 0,
+        "basis": "按关联窗口登记一次首次经过与互斥分类；合成小时汇总，不代表实际单台加工时刻。"
+      }
+    ]
+  },
+  "schemas": {
+    "oee_studies": {
+      "key": "oee_studies",
+      "label": "班次效率方案",
+      "department": "38_设备效率",
+      "version": 1,
+      "primary_key": "id",
+      "fields": [
+        {
+          "name": "id",
+          "label": "效率方案号",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "name",
+          "label": "方案名称",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "resource_id",
+          "label": "独立资源位",
+          "type": "str",
+          "required": true,
+          "reference": "production_resources"
+        },
+        {
+          "name": "version",
+          "label": "采集版本",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "capture_state",
+          "label": "采集闭合状态",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "window_count",
+          "label": "声明生产窗口数",
+          "type": "int",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "event_count",
+          "label": "声明停止事件数",
+          "type": "int",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "cycle_count",
+          "label": "声明理想节拍数",
+          "type": "int",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "output_count",
+          "label": "声明报产行数",
+          "type": "int",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "scope",
+          "label": "采集范围",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "assumptions",
+          "label": "采集假设",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "reference",
+          "label": "方案依据号",
+          "type": "str",
+          "required": true,
+          "reference": null
+        }
+      ]
+    },
+    "oee_windows": {
+      "key": "oee_windows",
+      "label": "效率生产窗口",
+      "department": "38_设备效率",
+      "version": 1,
+      "primary_key": "id",
+      "fields": [
+        {
+          "name": "id",
+          "label": "生产窗口号",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "study_id",
+          "label": "效率方案号",
+          "type": "str",
+          "required": true,
+          "reference": "oee_studies"
+        },
+        {
+          "name": "product_id",
+          "label": "产品配置",
+          "type": "str",
+          "required": true,
+          "reference": "products"
+        },
+        {
+          "name": "started",
+          "label": "计划生产开始",
+          "type": "datetime",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "finished",
+          "label": "计划生产结束",
+          "type": "datetime",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "unit",
+          "label": "产出单位",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "basis",
+          "label": "窗口依据",
+          "type": "str",
+          "required": true,
+          "reference": null
+        }
+      ]
+    },
+    "oee_events": {
+      "key": "oee_events",
+      "label": "效率停止事件",
+      "department": "38_设备效率",
+      "version": 1,
+      "primary_key": "id",
+      "fields": [
+        {
+          "name": "id",
+          "label": "停止事件号",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "study_id",
+          "label": "效率方案号",
+          "type": "str",
+          "required": true,
+          "reference": "oee_studies"
+        },
+        {
+          "name": "started",
+          "label": "停止开始",
+          "type": "datetime",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "finished",
+          "label": "停止结束",
+          "type": "datetime",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "kind",
+          "label": "停止类别",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "reference",
+          "label": "事件依据号",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "basis",
+          "label": "事件说明",
+          "type": "str",
+          "required": true,
+          "reference": null
+        }
+      ]
+    },
+    "oee_cycles": {
+      "key": "oee_cycles",
+      "label": "配置理想节拍",
+      "department": "38_设备效率",
+      "version": 1,
+      "primary_key": "id",
+      "fields": [
+        {
+          "name": "id",
+          "label": "节拍依据号",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "study_id",
+          "label": "效率方案号",
+          "type": "str",
+          "required": true,
+          "reference": "oee_studies"
+        },
+        {
+          "name": "product_id",
+          "label": "产品配置",
+          "type": "str",
+          "required": true,
+          "reference": "products"
+        },
+        {
+          "name": "seconds_per_unit",
+          "label": "理想秒每单位",
+          "type": "float",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "unit",
+          "label": "产出单位",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "method",
+          "label": "节拍制定方法",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "basis",
+          "label": "节拍依据",
+          "type": "str",
+          "required": true,
+          "reference": null
+        }
+      ]
+    },
+    "oee_outputs": {
+      "key": "oee_outputs",
+      "label": "班次产出分类",
+      "department": "38_设备效率",
+      "version": 1,
+      "primary_key": "id",
+      "fields": [
+        {
+          "name": "id",
+          "label": "报产行号",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "study_id",
+          "label": "效率方案号",
+          "type": "str",
+          "required": true,
+          "reference": "oee_studies"
+        },
+        {
+          "name": "window_id",
+          "label": "生产窗口号",
+          "type": "str",
+          "required": true,
+          "reference": "oee_windows"
+        },
+        {
+          "name": "reported",
+          "label": "报产登记时间",
+          "type": "datetime",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "unit",
+          "label": "产出单位",
+          "type": "str",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "total_qty",
+          "label": "首次经过数量",
+          "type": "int",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "good_first_qty",
+          "label": "首次良品数",
+          "type": "int",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "rework_qty",
+          "label": "需返工数",
+          "type": "int",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "scrap_qty",
+          "label": "报废数",
+          "type": "int",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "unknown_qty",
+          "label": "分类未确认数",
+          "type": "int",
+          "required": true,
+          "reference": null
+        },
+        {
+          "name": "basis",
+          "label": "报产依据",
+          "type": "str",
+          "required": true,
+          "reference": null
+        }
+      ]
+    }
+  },
+  "profiles": [
+    {
+      "id": "OE-260925-001",
+      "name": "完整单配置采集",
+      "state": "ready",
+      "summary": {
+        "planned_seconds": 25200.0,
+        "stop_seconds": 3600.0,
+        "run_seconds": 21600.0,
+        "ideal_seconds": 14400.0,
+        "good_ideal_seconds": 13500.0,
+        "speed_loss_seconds": 7200.0,
+        "quality_loss_seconds": 900.0,
+        "availability": 0.8571428571428571,
+        "performance": 0.6666666666666666,
+        "quality": 0.9375,
+        "oee": 0.5357142857142857,
+        "good_ideal_time_share": 0.5357142857142857,
+        "mixed_configuration": false,
+        "counts": {
+          "total_qty": 160,
+          "good_first_qty": 150,
+          "rework_qty": 6,
+          "scrap_qty": 4,
+          "unknown_qty": 0
+        },
+        "unit": "台",
+        "measure_label": "独立资源位OEE",
+        "loss_conservation_seconds": 0.0
+      },
+      "issues": []
+    },
+    {
+      "id": "OE-260925-002",
+      "name": "停止重叠与休息外片段",
+      "state": "ready",
+      "summary": {
+        "planned_seconds": 25200.0,
+        "stop_seconds": 5100.0,
+        "run_seconds": 20100.0,
+        "ideal_seconds": 14400.0,
+        "good_ideal_seconds": 13500.0,
+        "speed_loss_seconds": 5700.0,
+        "quality_loss_seconds": 900.0,
+        "availability": 0.7976190476190477,
+        "performance": 0.7164179104477612,
+        "quality": 0.9375,
+        "oee": 0.5357142857142857,
+        "good_ideal_time_share": 0.5357142857142857,
+        "mixed_configuration": false,
+        "counts": {
+          "total_qty": 160,
+          "good_first_qty": 150,
+          "rework_qty": 6,
+          "scrap_qty": 4,
+          "unknown_qty": 0
+        },
+        "unit": "台",
+        "measure_label": "独立资源位OEE",
+        "loss_conservation_seconds": 0.0
+      },
+      "issues": []
+    },
+    {
+      "id": "OE-260925-003",
+      "name": "混配置分窗采集",
+      "state": "ready",
+      "summary": {
+        "planned_seconds": 25200.0,
+        "stop_seconds": 3600.0,
+        "run_seconds": 21600.0,
+        "ideal_seconds": 16200.0,
+        "good_ideal_seconds": 15150.0,
+        "speed_loss_seconds": 5400.0,
+        "quality_loss_seconds": 1050.0,
+        "availability": 0.8571428571428571,
+        "performance": null,
+        "quality": null,
+        "oee": null,
+        "good_ideal_time_share": 0.6011904761904762,
+        "mixed_configuration": true,
+        "counts": {
+          "total_qty": 160,
+          "good_first_qty": 150,
+          "rework_qty": 6,
+          "scrap_qty": 4,
+          "unknown_qty": 0
+        },
+        "unit": "台",
+        "measure_label": "混配置理想良品时间占比",
+        "loss_conservation_seconds": 0.0
+      },
+      "issues": []
+    },
+    {
+      "id": "OE-260925-004",
+      "name": "完整采集但零产出",
+      "state": "ready",
+      "summary": {
+        "planned_seconds": 25200.0,
+        "stop_seconds": 3600.0,
+        "run_seconds": 21600.0,
+        "ideal_seconds": 0.0,
+        "good_ideal_seconds": 0.0,
+        "speed_loss_seconds": 21600.0,
+        "quality_loss_seconds": 0.0,
+        "availability": 0.8571428571428571,
+        "performance": 0.0,
+        "quality": null,
+        "oee": 0.0,
+        "good_ideal_time_share": 0.0,
+        "mixed_configuration": false,
+        "counts": {
+          "total_qty": 0,
+          "good_first_qty": 0,
+          "rework_qty": 0,
+          "scrap_qty": 0,
+          "unknown_qty": 0
+        },
+        "unit": "台",
+        "measure_label": "独立资源位OEE",
+        "loss_conservation_seconds": 0.0
+      },
+      "issues": []
+    },
+    {
+      "id": "OE-260925-005",
+      "name": "未登记理想节拍",
+      "state": "paused",
+      "summary": null,
+      "issues": [
+        "配置和单位须有且仅有一个理想节拍：OE-260925-005-W01",
+        "配置和单位须有且仅有一个理想节拍：OE-260925-005-W02"
+      ]
+    },
+    {
+      "id": "OE-260925-006",
+      "name": "产出分类未确认",
+      "state": "paused",
+      "summary": null,
+      "issues": [
+        "产出分类尚未确认：OE-260925-006-W01"
+      ]
+    },
+    {
+      "id": "OE-260925-007",
+      "name": "班次采集未闭合",
+      "state": "paused",
+      "summary": null,
+      "issues": [
+        "班次采集尚未闭合"
+      ]
+    },
+    {
+      "id": "OE-260925-008",
+      "name": "计划窗口重叠",
+      "state": "paused",
+      "summary": null,
+      "issues": [
+        "计划生产窗口重叠，不能重复占用同一资源位"
+      ]
+    },
+    {
+      "id": "OE-260925-009",
+      "name": "晚于业务截止的采集",
+      "state": "paused",
+      "summary": null,
+      "issues": [
+        "实际采集窗口晚于业务截止，不能算历史实绩",
+        "报产登记时间不在关联窗口或晚于截止：OE-260925-009-P101",
+        "报产登记时间不在关联窗口或晚于截止：OE-260925-009-P102",
+        "报产登记时间不在关联窗口或晚于截止：OE-260925-009-P103",
+        "报产登记时间不在关联窗口或晚于截止：OE-260925-009-P104",
+        "停止事件晚于业务截止：OE-260925-009-E01",
+        "停止事件晚于业务截止：OE-260925-009-E02",
+        "停止事件晚于业务截止：OE-260925-009-E03",
+        "报产登记时间不在关联窗口或晚于截止：OE-260925-009-P201",
+        "报产登记时间不在关联窗口或晚于截止：OE-260925-009-P202",
+        "报产登记时间不在关联窗口或晚于截止：OE-260925-009-P203"
+      ]
+    },
+    {
+      "id": "OE-260925-010",
+      "name": "无计划生产窗口",
+      "state": "paused",
+      "summary": null,
+      "issues": [
+        "未登记计划生产窗口"
+      ]
+    }
+  ]
+}

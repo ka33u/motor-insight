@@ -1,0 +1,2693 @@
+[
+  {
+    "model": "app.governedmetric",
+    "pk": 1,
+    "fields": {
+      "key": "DELIVERY_OTIF",
+      "dataset": "bi_order_lines",
+      "owner": "demo_admin",
+      "created_at": "2026-10-03T03:22:11.935Z"
+    }
+  },
+  {
+    "model": "app.governedmetric",
+    "pk": 2,
+    "fields": {
+      "key": "QUALITY_FIRST_PASS",
+      "dataset": "bi_units",
+      "owner": "demo_admin",
+      "created_at": "2026-10-03T03:22:11.939Z"
+    }
+  },
+  {
+    "model": "app.governedmetric",
+    "pk": 3,
+    "fields": {
+      "key": "RESOURCE_OCCUPANCY",
+      "dataset": "bi_resource_day",
+      "owner": "demo_admin",
+      "created_at": "2026-10-03T03:22:11.941Z"
+    }
+  },
+  {
+    "model": "app.governedmetric",
+    "pk": 4,
+    "fields": {
+      "key": "RECEIVABLE_BALANCE",
+      "dataset": "bi_receivables",
+      "owner": "demo_admin",
+      "created_at": "2026-10-03T03:22:11.944Z"
+    }
+  },
+  {
+    "model": "app.metricversion",
+    "pk": 1,
+    "fields": {
+      "metric": 1,
+      "version": 1,
+      "revision": 4,
+      "status": "retired",
+      "payload": {
+        "change_reason": "首次建立模拟指标，待独立业务岗位核对样例后审核。",
+        "filters": [],
+        "name": "按期足量发货率",
+        "business_definition": "以交付计划行为计数对象，承诺日当天及之前累计发货达到约定量视为按期足量。",
+        "purpose": "识别交付偏差，进入订单工作台协调逾期对象。",
+        "business_owner": "销售 / 生产计划",
+        "clock": "当前导入快照；承诺日早于快照日期的计划才纳入分母，承诺日当天仍可履约。分析日期按订单现承诺日选择对象，不重放历史。",
+        "unit": "%",
+        "exclusions": "采用发货版，未实现完整签收、取消退货与冻结承诺历史；缺少计划的订单需另查数据质量。",
+        "comparison": "同承诺口径、产品配置和观察截止点比较；产品族分组的比率按分子分母汇总后相除。",
+        "review_role": "operations",
+        "measure": {
+          "agg": "ratio",
+          "field": "on_time_plan_count",
+          "denominator": "due_plan_count"
+        }
+      },
+      "calculation_hash": "f960921755db975fd9ce507eb3b7f771bc42662d65df41ac2260195e0a9f2aab",
+      "contributors": [
+        "demo_admin"
+      ],
+      "submitted_by": "demo_admin",
+      "reviewed_by": "demo_operations",
+      "review_note": "模拟停用：v1时间说明未区分专题下单日与工作台承诺日，并有计算规则指纹变更；已在v2复核。保留v1历史，引用v1的模型须明确迁移，不自动替换。",
+      "evidence": {},
+      "published_at": "2026-10-03T03:24:08.996Z",
+      "retired_at": "2026-10-03T03:29:06.651Z",
+      "created_at": "2026-10-03T03:22:11.936Z",
+      "updated_at": "2026-10-03T03:29:06.651Z"
+    }
+  },
+  {
+    "model": "app.metricversion",
+    "pk": 2,
+    "fields": {
+      "metric": 2,
+      "version": 1,
+      "revision": 2,
+      "status": "draft",
+      "payload": {
+        "change_reason": "首次建立模拟指标，待独立业务岗位核对样例后审核。",
+        "filters": [],
+        "name": "首次完整有效检测合格率",
+        "business_definition": "按装配队列SN，最早有效且完整的检测会话合格计入分子，已有此类检测的SN计入分母。",
+        "purpose": "识别首检质量差异，配合完整检测覆盖与未检清单复核。",
+        "business_owner": "质量工程",
+        "clock": "按装配队列选对象，截至模拟快照读取检测；不是按检测发生日统计的期间检测率。",
+        "unit": "%",
+        "exclusions": "无完整有效检测的SN不进入分母，需要同时看检测覆盖率；作废会话排除，复测不会冲掉首败。",
+        "comparison": "同配置、检验规范版本与样本规模比较；不能把复测合格率替代首检。",
+        "review_role": "quality",
+        "measure": {
+          "agg": "ratio",
+          "field": "first_pass_count",
+          "denominator": "first_tested_count"
+        }
+      },
+      "calculation_hash": "2f34b49b1c1160146c13427da92fc0cc8b3b7de29fc9bc93bc62a51169af1274",
+      "contributors": [
+        "demo_admin"
+      ],
+      "submitted_by": "",
+      "reviewed_by": "",
+      "review_note": "",
+      "evidence": {},
+      "published_at": null,
+      "retired_at": null,
+      "created_at": "2026-10-03T03:22:11.939Z",
+      "updated_at": "2026-10-03T03:27:08.427Z"
+    }
+  },
+  {
+    "model": "app.metricversion",
+    "pk": 3,
+    "fields": {
+      "metric": 3,
+      "version": 1,
+      "revision": 2,
+      "status": "draft",
+      "payload": {
+        "change_reason": "首次建立模拟指标，待独立业务岗位核对样例后审核。",
+        "filters": [],
+        "name": "资源排班占用率",
+        "business_definition": "按独立资源位及日期，将有效占用时长合计除以排班可用时长合计。",
+        "purpose": "检查排班负荷和资源时间冲突，为计划协调提供证据。",
+        "business_owner": "生产计划 / 设备",
+        "clock": "按资源日选期间，跨日事件分摊；范围截至模拟快照。",
+        "unit": "%",
+        "exclusions": "资源容量或时间完整性异常时暂停计算；不含尚未接入的实际团队合机与维修人员工时。",
+        "comparison": "按独立工位和同类工序比较；这是排班占用率，不是OEE。",
+        "review_role": "operations",
+        "measure": {
+          "agg": "ratio",
+          "field": "busy_minutes",
+          "denominator": "available_minutes"
+        }
+      },
+      "calculation_hash": "73decdd9ac954ad76b7056fa006f6b09205b5e819ef77fb862fef884bbf09cc3",
+      "contributors": [
+        "demo_admin"
+      ],
+      "submitted_by": "",
+      "reviewed_by": "",
+      "review_note": "",
+      "evidence": {},
+      "published_at": null,
+      "retired_at": null,
+      "created_at": "2026-10-03T03:22:11.942Z",
+      "updated_at": "2026-10-03T03:27:08.432Z"
+    }
+  },
+  {
+    "model": "app.metricversion",
+    "pk": 4,
+    "fields": {
+      "metric": 4,
+      "version": 1,
+      "revision": 2,
+      "status": "draft",
+      "payload": {
+        "change_reason": "首次建立模拟指标，待独立业务岗位核对样例后审核。",
+        "filters": [],
+        "name": "已开票未核销余额",
+        "business_definition": "按发票归集截至快照已核销回款，以含税票面额扣除核销额形成余额。",
+        "purpose": "核对催收对象与核销缺口，不作为会计收入或现金预测。",
+        "business_owner": "财务 / 销售",
+        "clock": "当前快照存量；按开票日选择对象不代表恢复某日历史账龄。",
+        "unit": "分",
+        "exclusions": "完整红字冲销、贷项与退货净额未接入；发票不等同收入确认。",
+        "comparison": "统一人民币整数分；单位换算和跨币种合并需另立口径。",
+        "review_role": "finance",
+        "measure": {
+          "agg": "sum",
+          "field": "balance_cents"
+        }
+      },
+      "calculation_hash": "ed3301c1e8cfac4ca93862a6c77f0f2b1808c10c046cbb93951cace90f0c5d2f",
+      "contributors": [
+        "demo_admin"
+      ],
+      "submitted_by": "",
+      "reviewed_by": "",
+      "review_note": "",
+      "evidence": {},
+      "published_at": null,
+      "retired_at": null,
+      "created_at": "2026-10-03T03:22:11.944Z",
+      "updated_at": "2026-10-03T03:27:08.436Z"
+    }
+  },
+  {
+    "model": "app.metricversion",
+    "pk": 5,
+    "fields": {
+      "metric": 1,
+      "version": 2,
+      "revision": 5,
+      "status": "retired",
+      "payload": {
+        "name": "按期足量发货率",
+        "business_owner": "销售 / 生产计划",
+        "business_definition": "以交付计划行为计数对象，承诺日当天及之前累计发货达到约定量视为按期足量。",
+        "purpose": "识别交付偏差，进入订单工作台协调逾期对象。",
+        "clock": "当前导入快照；承诺日早于快照日期的计划纳入分母，承诺日当天仍可履约。专题日期按下单日选择订单队列；交付工作台另按现承诺日筛选。两者均不重放历史状态。",
+        "unit": "%",
+        "exclusions": "采用发货版，未实现完整签收、取消退货与冻结承诺历史；缺少计划的订单需另查数据质量。",
+        "comparison": "同承诺口径、产品配置和观察截止点比较；产品族分组的比率按分子分母汇总后相除。",
+        "change_reason": "纠正v1对专题日期筛选的文字描述，明确下单日与交付工作台承诺日的区别；计算公式及模拟样例不变。另纳入指标解析规则指纹复核。",
+        "review_role": "operations",
+        "measure": {
+          "agg": "ratio",
+          "field": "on_time_plan_count",
+          "denominator": "due_plan_count"
+        },
+        "filters": []
+      },
+      "calculation_hash": "da7502eb74c360ebe291bf4b1e7b705d4b71d11cca3e751d45dc1e2730ec9e22",
+      "contributors": [
+        "demo_admin"
+      ],
+      "submitted_by": "demo_admin",
+      "reviewed_by": "demo_operations",
+      "review_note": "共享计算指纹已更新，指标已按同一口径复核为v3，并显式迁移模型44。保留v2历史定义与审核证据。",
+      "evidence": {},
+      "published_at": "2026-10-03T03:28:40.208Z",
+      "retired_at": "2026-10-03T05:58:33.757Z",
+      "created_at": "2026-10-03T03:27:31.575Z",
+      "updated_at": "2026-10-03T05:58:33.757Z"
+    }
+  },
+  {
+    "model": "app.metricversion",
+    "pk": 6,
+    "fields": {
+      "metric": 1,
+      "version": 3,
+      "revision": 5,
+      "status": "retired",
+      "payload": {
+        "name": "按期足量发货率",
+        "business_owner": "销售 / 生产计划",
+        "business_definition": "以交付计划行为计数对象，承诺日当天及之前累计发货达到约定量视为按期足量。",
+        "purpose": "识别交付偏差，进入订单工作台协调逾期对象。",
+        "clock": "当前导入快照；承诺日早于快照日期的计划纳入分母，承诺日当天仍可履约。专题日期按下单日选择订单队列；交付工作台另按现承诺日筛选。两者均不重放历史状态。",
+        "unit": "%",
+        "exclusions": "采用发货版，未实现完整签收、取消退货与冻结承诺历史；缺少计划的订单需另查数据质量。",
+        "comparison": "同承诺口径、产品配置和观察截止点比较；产品族分组的比率按分子分母汇总后相除。",
+        "change_reason": "共享分析引擎新增未发布派生公式、单位校验及图形主指标，计算指纹随之更新。交付指标公式、固定范围和日期边界不变；用同一Excel快照重新核对15/165。",
+        "review_role": "operations",
+        "measure": {
+          "agg": "ratio",
+          "field": "on_time_plan_count",
+          "denominator": "due_plan_count"
+        },
+        "filters": []
+      },
+      "calculation_hash": "231e7c1d396aa1ebdfa93345f3b3918ea990f252ca120845d4d36986177496a2",
+      "contributors": [
+        "demo_admin"
+      ],
+      "submitted_by": "demo_admin",
+      "reviewed_by": "demo_operations",
+      "review_note": "保留v3原定义和审核样例；计算引擎扩展后已完成v4模拟复核，演练模型44显式选择v4。",
+      "evidence": {},
+      "published_at": "2026-10-03T05:58:33.749Z",
+      "retired_at": "2026-10-03T10:18:41.287Z",
+      "created_at": "2026-10-03T05:58:33.374Z",
+      "updated_at": "2026-10-03T10:18:41.287Z"
+    }
+  },
+  {
+    "model": "app.metricversion",
+    "pk": 7,
+    "fields": {
+      "metric": 1,
+      "version": 4,
+      "revision": 5,
+      "status": "retired",
+      "payload": {
+        "name": "按期足量发货率",
+        "business_owner": "销售 / 生产计划",
+        "business_definition": "以交付计划行为计数对象，承诺日当天及之前累计发货达到约定量视为按期足量。",
+        "purpose": "识别交付偏差，进入订单工作台协调逾期对象。",
+        "clock": "当前导入快照；承诺日早于快照日期的计划纳入分母，承诺日当天仍可履约。专题日期按下单日选择订单队列；交付工作台另按现承诺日筛选。两者均不重放历史状态。",
+        "unit": "%",
+        "exclusions": "采用发货版，未实现完整签收、取消退货与冻结承诺历史；缺少计划的订单需另查数据质量。",
+        "comparison": "同承诺口径、产品配置和观察截止点比较；产品族分组的比率按分子分母汇总后相除。",
+        "change_reason": "业务分组引擎扩展后的模拟复核：46个旧模型汇总及来源数量逐项与升级前一致，交付公式、固定范围及日期定义不变。",
+        "review_role": "operations",
+        "measure": {
+          "agg": "ratio",
+          "field": "on_time_plan_count",
+          "denominator": "due_plan_count"
+        },
+        "filters": []
+      },
+      "calculation_hash": "f6815a706b1f19c2e2be0af931c640d869b45b17bc0aa1f72d7fe2144356868f",
+      "contributors": [
+        "demo_admin"
+      ],
+      "submitted_by": "demo_admin",
+      "reviewed_by": "demo_admin",
+      "review_note": "逐层分析代码升级后已通过模拟独立账号复核并发布v5，原分析模型44已显式迁移且结果不变；停用v4保留历史定义、审核记录与旧快照，不自动替换个人视角。",
+      "evidence": {},
+      "published_at": "2026-10-03T10:18:41.284Z",
+      "retired_at": "2026-10-03T19:17:29.828Z",
+      "created_at": "2026-10-03T10:18:41.211Z",
+      "updated_at": "2026-10-03T19:17:29.828Z"
+    }
+  },
+  {
+    "model": "app.metricversion",
+    "pk": 8,
+    "fields": {
+      "metric": 1,
+      "version": 5,
+      "revision": 5,
+      "status": "retired",
+      "payload": {
+        "name": "按期足量发货率",
+        "business_owner": "销售 / 生产计划",
+        "business_definition": "以交付计划行为计数对象，承诺日当天及之前累计发货达到约定量视为按期足量。",
+        "purpose": "识别交付偏差，进入订单工作台协调逾期对象。",
+        "clock": "当前导入快照；承诺日早于快照日期的计划纳入分母，承诺日当天仍可履约。专题日期按下单日选择订单队列；交付工作台另按现承诺日筛选。两者均不重放历史状态。",
+        "unit": "%",
+        "exclusions": "采用发货版，未实现完整签收、取消退货与冻结承诺历史；缺少计划的订单需另查数据质量。",
+        "comparison": "同承诺口径、产品配置和观察截止点比较；产品族分组的比率按分子分母汇总后相除。",
+        "change_reason": "逐层分析引擎扩展后的模拟复核：48个旧模型的数值、来源范围、比率分子分母及派生结果与升级前一致；交付公式、固定范围和日期定义不变。新增逐层分组沿同一事实粒度重算。",
+        "review_role": "operations",
+        "measure": {
+          "agg": "ratio",
+          "field": "on_time_plan_count",
+          "denominator": "due_plan_count"
+        },
+        "filters": []
+      },
+      "calculation_hash": "c18d326c2e4f2504efb11097f512aa091e1b0776e7fc3891bbbaea1ae52fc5f4",
+      "contributors": [
+        "demo_admin"
+      ],
+      "submitted_by": "demo_admin",
+      "reviewed_by": "demo_operations",
+      "review_note": "模型44经模拟复核后显式迁移到v6，停用旧v5；保留原口径、计算指纹、审核样例和历史快照。",
+      "evidence": {},
+      "published_at": "2026-10-03T19:13:03.404Z",
+      "retired_at": "2026-10-03T20:23:07.283Z",
+      "created_at": "2026-10-03T19:09:45.431Z",
+      "updated_at": "2026-10-03T20:23:07.283Z"
+    }
+  },
+  {
+    "model": "app.metricversion",
+    "pk": 9,
+    "fields": {
+      "metric": 1,
+      "version": 6,
+      "revision": 5,
+      "status": "retired",
+      "payload": {
+        "name": "按期足量发货率",
+        "business_owner": "销售 / 生产计划",
+        "business_definition": "以交付计划行为计数对象，承诺日当天及之前累计发货达到约定量视为按期足量。",
+        "purpose": "识别交付偏差，进入订单工作台协调逾期对象。",
+        "clock": "当前导入快照；承诺日早于快照日期的计划纳入分母，承诺日当天仍可履约。专题日期按下单日选择订单队列；交付工作台另按现承诺日筛选。两者均不重放历史状态。",
+        "unit": "%",
+        "exclusions": "采用发货版，未实现完整签收、取消退货与冻结承诺历史；缺少计划的订单需另查数据质量。",
+        "comparison": "同承诺口径、产品配置和观察截止点比较；产品族分组的比率按分子分母汇总后相除。",
+        "change_reason": "透视聚合扩展后的模拟复核：49个既有模型的数值、来源范围、比率分子分母及派生结果与升级前一致；交付公式、固定范围和日期定义不变。透视格与行列合计从各自来源重算。",
+        "review_role": "operations",
+        "measure": {
+          "agg": "ratio",
+          "field": "on_time_plan_count",
+          "denominator": "due_plan_count"
+        },
+        "filters": []
+      },
+      "calculation_hash": "aeb8f5c1183aac4f6c229bf08214b65079e3a9dbe5504d31f4113fc3e8bf82a9",
+      "contributors": [
+        "demo_admin"
+      ],
+      "submitted_by": "demo_admin",
+      "reviewed_by": "demo_operations",
+      "review_note": "新计算引擎已经完成v7模拟复核，模型44显式选择v7；保留v6定义、证据和历史快照。",
+      "evidence": {},
+      "published_at": "2026-10-03T20:23:07.275Z",
+      "retired_at": "2026-10-04T08:30:01.696Z",
+      "created_at": "2026-10-03T20:23:06.898Z",
+      "updated_at": "2026-10-04T08:30:01.696Z"
+    }
+  },
+  {
+    "model": "app.metricversion",
+    "pk": 10,
+    "fields": {
+      "metric": 1,
+      "version": 7,
+      "revision": 5,
+      "status": "retired",
+      "payload": {
+        "name": "按期足量发货率",
+        "business_owner": "销售 / 生产计划",
+        "business_definition": "以交付计划行为计数对象，承诺日当天及之前累计发货达到约定量视为按期足量。",
+        "purpose": "识别交付偏差，进入订单工作台协调逾期对象。",
+        "clock": "当前导入快照；承诺日早于快照日期的计划纳入分母，承诺日当天仍可履约。专题日期按下单日选择订单队列；交付工作台另按现承诺日筛选。两者均不重放历史状态。",
+        "unit": "%",
+        "exclusions": "采用发货版，未实现完整签收、取消退货与冻结承诺历史；缺少计划的订单需另查数据质量。",
+        "comparison": "同承诺口径、产品配置和观察截止点比较；产品族分组的比率按分子分母汇总后相除。",
+        "change_reason": "分组散点引擎扩展后的模拟复核：50个既有模型数值、来源数和计算分量与升级前逐项一致；交付公式、固定范围、日期口径保持不变。",
+        "review_role": "operations",
+        "measure": {
+          "agg": "ratio",
+          "field": "on_time_plan_count",
+          "denominator": "due_plan_count"
+        },
+        "filters": []
+      },
+      "calculation_hash": "9b8a2956962131284ad8eb41780331471953c0a09285735f4a6bfaef57edccd3",
+      "contributors": [
+        "demo_admin"
+      ],
+      "submitted_by": "demo_admin",
+      "reviewed_by": "demo_operations",
+      "review_note": "新计算引擎已经完成v8模拟复核，模型44显式选择v8；保留v7定义、证据和历史快照。",
+      "evidence": {},
+      "published_at": "2026-10-04T08:30:01.688Z",
+      "retired_at": "2026-10-04T12:13:03.764Z",
+      "created_at": "2026-10-04T08:30:01.627Z",
+      "updated_at": "2026-10-04T12:13:03.764Z"
+    }
+  },
+  {
+    "model": "app.metricversion",
+    "pk": 11,
+    "fields": {
+      "metric": 1,
+      "version": 8,
+      "revision": 4,
+      "status": "published",
+      "payload": {
+        "name": "按期足量发货率",
+        "business_owner": "销售 / 生产计划",
+        "business_definition": "以交付计划行为计数对象，承诺日当天及之前累计发货达到约定量视为按期足量。",
+        "purpose": "识别交付偏差，进入订单工作台协调逾期对象。",
+        "clock": "当前导入快照；承诺日早于快照日期的计划纳入分母，承诺日当天仍可履约。专题日期按下单日选择订单队列；交付工作台另按现承诺日筛选。两者均不重放历史状态。",
+        "unit": "%",
+        "exclusions": "采用发货版，未实现完整签收、取消退货与冻结承诺历史；缺少计划的订单需另查数据质量。",
+        "comparison": "同承诺口径、产品配置和观察截止点比较；产品族分组的比率按分子分母汇总后相除。",
+        "change_reason": "中位数及可配置分位数聚合扩展后的模拟复核：51个既有模型数值、来源数和计算分量与升级前逐项一致；交付公式、固定范围、日期口径保持不变。",
+        "review_role": "operations",
+        "measure": {
+          "agg": "ratio",
+          "field": "on_time_plan_count",
+          "denominator": "due_plan_count"
+        },
+        "filters": []
+      },
+      "calculation_hash": "9d9a5af3d45172eca16790d628a36bc6acbe18d1e2a811a66a5b5fbff7037fe3",
+      "contributors": [
+        "demo_admin"
+      ],
+      "submitted_by": "demo_admin",
+      "reviewed_by": "demo_operations",
+      "review_note": "模拟独立岗位复核：51个旧模型结果与来源数量不变，交付按期足量15/有效到期165，结果9.090909%。仅演练账号审核，不代表工厂业务批准。",
+      "evidence": {},
+      "published_at": "2026-10-04T12:13:03.756Z",
+      "retired_at": null,
+      "created_at": "2026-10-04T12:13:03.694Z",
+      "updated_at": "2026-10-04T12:13:03.756Z"
+    }
+  },
+  {
+    "model": "app.businessgrouping",
+    "pk": "9321f6c2-62de-4174-b052-1ab381d24c03",
+    "fields": {
+      "owner": "demo_admin",
+      "code": "MOTOR.POWER.BAND",
+      "revision": 2,
+      "archived": false,
+      "created_at": "2026-10-03T10:20:06.443Z",
+      "updated_at": "2026-10-03T10:27:56.105Z"
+    }
+  },
+  {
+    "model": "app.businessgrouping",
+    "pk": "dd7149cb-73d7-4658-be88-455e732050ca",
+    "fields": {
+      "owner": "demo_admin",
+      "code": "MOTOR.FAMILY.CLASS",
+      "revision": 1,
+      "archived": false,
+      "created_at": "2026-10-03T10:28:47.108Z",
+      "updated_at": "2026-10-03T10:28:47.108Z"
+    }
+  },
+  {
+    "model": "app.businessgroupingversion",
+    "pk": 1,
+    "fields": {
+      "grouping": "9321f6c2-62de-4174-b052-1ab381d24c03",
+      "version": 1,
+      "payload": {
+        "name": "电机功率分段（模拟）",
+        "dataset": "bi_units",
+        "field": "power_kw",
+        "mode": "range",
+        "note": "用于观察整机功率结构；分段为模拟管理口径，同功率段不等同同配置，不能据此推断跨配置效率或质量差异的原因。",
+        "rules": [
+          {
+            "label": "01 · 2.2kW以下",
+            "lower": "0",
+            "upper": "2.2"
+          },
+          {
+            "label": "02 · 2.2至7.5kW",
+            "lower": "2.2",
+            "upper": "7.5"
+          },
+          {
+            "label": "03 · 7.5kW及以上",
+            "lower": "7.5",
+            "upper": null
+          }
+        ]
+      },
+      "payload_hash": "a49ad866acc1d6e85725a595ed64ce5c4e160faf0748722ab1e9e6aac6c9d44f",
+      "created_by": "demo_admin",
+      "created_at": "2026-10-03T10:20:06.444Z"
+    }
+  },
+  {
+    "model": "app.businessgroupingversion",
+    "pk": 2,
+    "fields": {
+      "grouping": "9321f6c2-62de-4174-b052-1ab381d24c03",
+      "version": 2,
+      "payload": {
+        "name": "电机功率分段（模拟）",
+        "dataset": "bi_units",
+        "field": "power_kw",
+        "mode": "range",
+        "note": "用于观察整机功率结构；分段为模拟管理口径，同功率段不等同同配置，不能据此推断跨配置效率或质量差异的原因。",
+        "rules": [
+          {
+            "label": "01 · 3kW以下",
+            "lower": "0",
+            "upper": "3"
+          },
+          {
+            "label": "02 · 3至7.5kW",
+            "lower": "3",
+            "upper": "7.5"
+          },
+          {
+            "label": "03 · 7.5kW及以上",
+            "lower": "7.5",
+            "upper": null
+          }
+        ]
+      },
+      "payload_hash": "ca19b8507c10a8d394e3e7a17a3f7e611f70e20d3e9cf4ae5b5f0f0da9827e9d",
+      "created_by": "demo_admin",
+      "created_at": "2026-10-03T10:27:56.105Z"
+    }
+  },
+  {
+    "model": "app.businessgroupingversion",
+    "pk": 3,
+    "fields": {
+      "grouping": "dd7149cb-73d7-4658-be88-455e732050ca",
+      "version": 1,
+      "payload": {
+        "name": "产品族归类（模拟）",
+        "dataset": "bi_units",
+        "field": "family",
+        "mode": "enum",
+        "note": "按产品族编码精确归类，用于演示枚举分类；系列归类不替代技术配置和订单要求。",
+        "rules": [
+          {
+            "label": "通用系列（YE3/YE4）",
+            "values": [
+              "YE3",
+              "YE4"
+            ]
+          },
+          {
+            "label": "变频系列（YVF2）",
+            "values": [
+              "YVF2"
+            ]
+          }
+        ]
+      },
+      "payload_hash": "94a8e8266c4d953a327e3f77eccd02d5444051bdf96639d1fa8ceba47617dbc7",
+      "created_by": "demo_admin",
+      "created_at": "2026-10-03T10:28:47.108Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 1,
+    "fields": {
+      "name": "订单状态分布",
+      "dataset": "orders",
+      "definition": {
+        "dimension": "status",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.294Z",
+      "updated_at": "2026-10-02T16:14:13.294Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 2,
+    "fields": {
+      "name": "产品族配置数量",
+      "dataset": "products",
+      "definition": {
+        "dimension": "family",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "donut",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.294Z",
+      "updated_at": "2026-10-02T16:14:13.294Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 3,
+    "fields": {
+      "name": "交付计划数量",
+      "dataset": "delivery_plans",
+      "definition": {
+        "dimension": "due",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "qty"
+          }
+        ],
+        "filters": [],
+        "chart": "line",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.295Z",
+      "updated_at": "2026-10-02T16:14:13.295Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 4,
+    "fields": {
+      "name": "每日发货台数",
+      "dataset": "shipments",
+      "definition": {
+        "dimension": "shipped",
+        "grain": "day",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "qty"
+          }
+        ],
+        "filters": [],
+        "chart": "line",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.295Z",
+      "updated_at": "2026-10-02T16:14:13.295Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 5,
+    "fields": {
+      "name": "每日装配台数",
+      "dataset": "units",
+      "definition": {
+        "dimension": "assembly_at",
+        "grain": "day",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "line",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.296Z",
+      "updated_at": "2026-10-02T16:14:13.296Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 6,
+    "fields": {
+      "name": "工序报工事件",
+      "dataset": "operations",
+      "definition": {
+        "dimension": "process",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.296Z",
+      "updated_at": "2026-10-02T16:14:13.296Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 7,
+    "fields": {
+      "name": "检测会话结论",
+      "dataset": "test_sessions",
+      "definition": {
+        "dimension": "result",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "donut",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.297Z",
+      "updated_at": "2026-10-02T16:14:13.297Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 8,
+    "fields": {
+      "name": "不合格处置状态",
+      "dataset": "nonconformities",
+      "definition": {
+        "dimension": "status",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.297Z",
+      "updated_at": "2026-10-02T16:14:13.297Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 9,
+    "fields": {
+      "name": "来料检验结论",
+      "dataset": "incoming_inspections",
+      "definition": {
+        "dimension": "result",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.298Z",
+      "updated_at": "2026-10-02T16:14:13.298Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 10,
+    "fields": {
+      "name": "采购行执行状态",
+      "dataset": "purchase_lines",
+      "definition": {
+        "dimension": "status",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "donut",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.298Z",
+      "updated_at": "2026-10-02T16:14:13.298Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 11,
+    "fields": {
+      "name": "库存业务笔数",
+      "dataset": "inventory_movements",
+      "definition": {
+        "dimension": "movement",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.299Z",
+      "updated_at": "2026-10-02T16:14:13.299Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 12,
+    "fields": {
+      "name": "承运商发货台数",
+      "dataset": "shipments",
+      "definition": {
+        "dimension": "carrier",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "qty"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.299Z",
+      "updated_at": "2026-10-02T16:14:13.299Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 13,
+    "fields": {
+      "name": "研发项目状态",
+      "dataset": "projects",
+      "definition": {
+        "dimension": "status",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.299Z",
+      "updated_at": "2026-10-02T16:14:13.299Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 14,
+    "fields": {
+      "name": "工艺路线标准分钟",
+      "dataset": "routes",
+      "definition": {
+        "dimension": "process",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "avg",
+            "field": "minutes"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.300Z",
+      "updated_at": "2026-10-02T16:14:13.300Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 15,
+    "fields": {
+      "name": "维修工单状态",
+      "dataset": "maintenance",
+      "definition": {
+        "dimension": "status",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.300Z",
+      "updated_at": "2026-10-02T16:14:13.300Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 16,
+    "fields": {
+      "name": "停机原因次数",
+      "dataset": "downtime",
+      "definition": {
+        "dimension": "reason",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.301Z",
+      "updated_at": "2026-10-02T16:14:13.301Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 17,
+    "fields": {
+      "name": "生产与间接工时",
+      "dataset": "attendance",
+      "definition": {
+        "dimension": "date",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "productive_hours"
+          }
+        ],
+        "filters": [],
+        "chart": "line",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.301Z",
+      "updated_at": "2026-10-02T16:14:13.301Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 18,
+    "fields": {
+      "name": "技能授权分布",
+      "dataset": "skills",
+      "definition": {
+        "dimension": "process",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.302Z",
+      "updated_at": "2026-10-02T16:14:13.302Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 19,
+    "fields": {
+      "name": "暂估成本构成（分）",
+      "dataset": "costs",
+      "definition": {
+        "dimension": "category",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "amount_cents"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.302Z",
+      "updated_at": "2026-10-02T16:14:13.302Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 20,
+    "fields": {
+      "name": "开票未税金额（分）",
+      "dataset": "invoices",
+      "definition": {
+        "dimension": "issued",
+        "grain": "day",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "net_cents"
+          }
+        ],
+        "filters": [],
+        "chart": "line",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.303Z",
+      "updated_at": "2026-10-02T16:14:13.303Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 21,
+    "fields": {
+      "name": "车间用电量（kWh）",
+      "dataset": "energy",
+      "definition": {
+        "dimension": "workshop",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "kwh"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.303Z",
+      "updated_at": "2026-10-02T16:14:13.303Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 22,
+    "fields": {
+      "name": "安环整改状态",
+      "dataset": "ehs",
+      "definition": {
+        "dimension": "status",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "donut",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.304Z",
+      "updated_at": "2026-10-02T16:14:13.304Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 23,
+    "fields": {
+      "name": "售后问题分布",
+      "dataset": "service",
+      "definition": {
+        "dimension": "failure",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.304Z",
+      "updated_at": "2026-10-02T16:14:13.304Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 24,
+    "fields": {
+      "name": "售后处理状态",
+      "dataset": "service",
+      "definition": {
+        "dimension": "status",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "donut",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T16:14:13.305Z",
+      "updated_at": "2026-10-02T16:14:13.305Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 25,
+    "fields": {
+      "name": "装配日与整机数量",
+      "dataset": "units",
+      "definition": {
+        "dimension": "assembly_at",
+        "grain": "day",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "created_at": "2026-10-02T16:46:36.102Z",
+      "updated_at": "2026-10-02T16:46:36.102Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 26,
+    "fields": {
+      "name": "客户订单金额（分）",
+      "dataset": "bi_order_lines",
+      "definition": {
+        "dimension": "customer",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "order_net_cents"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.304Z",
+      "updated_at": "2026-10-02T23:43:53.304Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 27,
+    "fields": {
+      "name": "产品族按期足量交付率（%）",
+      "dataset": "bi_order_lines",
+      "definition": {
+        "dimension": "family",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "ratio",
+            "field": "on_time_plan_count",
+            "denominator": "due_plan_count"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.305Z",
+      "updated_at": "2026-10-02T23:43:53.305Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 28,
+    "fields": {
+      "name": "客户逾期未交台数",
+      "dataset": "bi_order_lines",
+      "definition": {
+        "dimension": "customer",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "overdue_qty"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.305Z",
+      "updated_at": "2026-10-02T23:43:53.305Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 29,
+    "fields": {
+      "name": "产品族装配完成率（%）",
+      "dataset": "bi_work_orders",
+      "definition": {
+        "dimension": "family",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "ratio",
+            "field": "produced_qty",
+            "denominator": "planned_qty"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.305Z",
+      "updated_at": "2026-10-02T23:43:53.305Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 30,
+    "fields": {
+      "name": "工单未完成装配台数",
+      "dataset": "bi_work_orders",
+      "definition": {
+        "dimension": "id",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "pending_qty"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.305Z",
+      "updated_at": "2026-10-02T23:43:53.305Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 31,
+    "fields": {
+      "name": "产品族首检合格率（%）",
+      "dataset": "bi_units",
+      "definition": {
+        "dimension": "family",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "ratio",
+            "field": "first_pass_count",
+            "denominator": "first_tested_count"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.306Z",
+      "updated_at": "2026-10-02T23:43:53.306Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 32,
+    "fields": {
+      "name": "整机最新检测状态",
+      "dataset": "bi_units",
+      "definition": {
+        "dimension": "latest_result",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "donut",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.306Z",
+      "updated_at": "2026-10-02T23:43:53.306Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 33,
+    "fields": {
+      "name": "供应商按期足量到货率（%）",
+      "dataset": "bi_purchase",
+      "definition": {
+        "dimension": "supplier",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "ratio",
+            "field": "on_time_line_count",
+            "denominator": "due_line_count"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.306Z",
+      "updated_at": "2026-10-02T23:43:53.306Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 34,
+    "fields": {
+      "name": "采购缺口明细（分物料）",
+      "dataset": "bi_purchase",
+      "definition": {
+        "dimension": "material",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "overdue_qty"
+          }
+        ],
+        "filters": [],
+        "chart": "table",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.306Z",
+      "updated_at": "2026-10-02T23:43:53.306Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 35,
+    "fields": {
+      "name": "库存参考金额构成（分）",
+      "dataset": "bi_inventory",
+      "definition": {
+        "dimension": "category",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "reference_value_cents"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.306Z",
+      "updated_at": "2026-10-02T23:43:53.306Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 36,
+    "fields": {
+      "name": "库存余额（分计量单位）",
+      "dataset": "bi_inventory",
+      "definition": {
+        "dimension": "unit",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "balance_qty"
+          }
+        ],
+        "filters": [],
+        "chart": "table",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.307Z",
+      "updated_at": "2026-10-02T23:43:53.307Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 37,
+    "fields": {
+      "name": "产品族暂估成本（分）",
+      "dataset": "bi_work_orders",
+      "definition": {
+        "dimension": "family",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "total_cost_cents"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.307Z",
+      "updated_at": "2026-10-02T23:43:53.307Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 38,
+    "fields": {
+      "name": "未核销应收账龄（分）",
+      "dataset": "bi_receivables",
+      "definition": {
+        "dimension": "aging_bucket",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "balance_cents"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.307Z",
+      "updated_at": "2026-10-02T23:43:53.307Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 39,
+    "fields": {
+      "name": "车间去重停机分钟",
+      "dataset": "bi_equipment_day",
+      "definition": {
+        "dimension": "workshop",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "downtime_minutes"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.307Z",
+      "updated_at": "2026-10-02T23:43:53.307Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 40,
+    "fields": {
+      "name": "车间能源日费用（分）",
+      "dataset": "bi_energy_day",
+      "definition": {
+        "dimension": "date",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "energy_cost_cents"
+          }
+        ],
+        "filters": [],
+        "chart": "line",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-02T23:43:53.307Z",
+      "updated_at": "2026-10-02T23:43:53.307Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 41,
+    "fields": {
+      "name": "工序排班占用率（%）",
+      "dataset": "bi_resource_day",
+      "definition": {
+        "dimension": "process",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "ratio",
+            "field": "busy_minutes",
+            "denominator": "available_minutes"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-03T01:13:29.271Z",
+      "updated_at": "2026-10-03T01:13:29.271Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 42,
+    "fields": {
+      "name": "资源日作业分钟",
+      "dataset": "bi_resource_day",
+      "definition": {
+        "dimension": "date",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "busy_minutes"
+          }
+        ],
+        "filters": [],
+        "chart": "line",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-03T01:13:29.272Z",
+      "updated_at": "2026-10-03T01:13:29.272Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 43,
+    "fields": {
+      "name": "作业工时分类（分钟）",
+      "dataset": "labor_entries",
+      "definition": {
+        "dimension": "activity",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "field": "minutes"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "created_at": "2026-10-03T01:13:29.272Z",
+      "updated_at": "2026-10-03T01:13:29.272Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 44,
+    "fields": {
+      "name": "按产品族交付达成 · 发布指标",
+      "dataset": "bi_order_lines",
+      "definition": {
+        "drilldown": [],
+        "derived": [],
+        "display_metric": "m0",
+        "metric_ref": {
+          "key": "DELIVERY_OTIF",
+          "version": 8
+        },
+        "dimension": "family",
+        "grain": "value",
+        "metrics": [],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 10,
+      "owner": "demo_admin",
+      "is_public": true,
+      "created_at": "2026-10-03T03:24:56.523Z",
+      "updated_at": "2026-10-04T12:13:03.761Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 45,
+    "fields": {
+      "name": "产品族暂估单位成本 · 派生演练",
+      "dataset": "bi_work_orders",
+      "definition": {
+        "derived": [
+          {
+            "label": "暂估单位成本",
+            "expression": "m0 / m2",
+            "unit": "元/台"
+          },
+          {
+            "label": "非材料单位成本",
+            "expression": "(m0 - m1) / m2",
+            "unit": "元/台"
+          },
+          {
+            "label": "材料成本占比",
+            "expression": "m1 / m0",
+            "unit": "%"
+          }
+        ],
+        "display_metric": "d0",
+        "dimension": "family",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "label": "暂估总成本（分）",
+            "field": "total_cost_cents"
+          },
+          {
+            "agg": "sum",
+            "label": "材料成本（分）",
+            "field": "material_cost_cents"
+          },
+          {
+            "agg": "sum",
+            "label": "装配台数",
+            "field": "produced_qty"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "desc"
+      },
+      "version": 2,
+      "owner": "demo_admin",
+      "is_public": false,
+      "created_at": "2026-10-03T05:53:05.897Z",
+      "updated_at": "2026-10-03T05:58:33.368Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 46,
+    "fields": {
+      "name": "产品族材料成本占比 · 派生演练",
+      "dataset": "bi_work_orders",
+      "definition": {
+        "derived": [
+          {
+            "label": "暂估单位成本",
+            "expression": "m0 / m2",
+            "unit": "元/台"
+          },
+          {
+            "label": "非材料单位成本",
+            "expression": "(m0 - m1) / m2",
+            "unit": "元/台"
+          },
+          {
+            "label": "材料成本占比",
+            "expression": "m1 / m0",
+            "unit": "%"
+          }
+        ],
+        "display_metric": "d2",
+        "dimension": "family",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "label": "暂估总成本（分）",
+            "field": "total_cost_cents"
+          },
+          {
+            "agg": "sum",
+            "label": "材料成本（分）",
+            "field": "material_cost_cents"
+          },
+          {
+            "agg": "sum",
+            "label": "装配台数",
+            "field": "produced_qty"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "desc"
+      },
+      "version": 2,
+      "owner": "demo_admin",
+      "is_public": false,
+      "created_at": "2026-10-03T05:54:31.149Z",
+      "updated_at": "2026-10-03T05:58:33.370Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 47,
+    "fields": {
+      "name": "整机功率结构 · 固定分组v1",
+      "dataset": "bi_units",
+      "definition": {
+        "grouping_ref": {
+          "id": "9321f6c2-62de-4174-b052-1ab381d24c03",
+          "version": 1,
+          "hash": "a49ad866acc1d6e85725a595ed64ce5c4e160faf0748722ab1e9e6aac6c9d44f"
+        },
+        "derived": [],
+        "display_metric": "m0",
+        "dimension": "power_kw",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "created_at": "2026-10-03T10:21:11.865Z",
+      "updated_at": "2026-10-03T10:21:11.865Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 48,
+    "fields": {
+      "name": "整机系列结构 · 固定分组v1",
+      "dataset": "bi_units",
+      "definition": {
+        "grouping_ref": {
+          "id": "dd7149cb-73d7-4658-be88-455e732050ca",
+          "version": 1,
+          "hash": "94a8e8266c4d953a327e3f77eccd02d5444051bdf96639d1fa8ceba47617dbc7"
+        },
+        "derived": [],
+        "display_metric": "m0",
+        "dimension": "family",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "field": null
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "created_at": "2026-10-03T10:28:47.732Z",
+      "updated_at": "2026-10-03T10:28:47.732Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 49,
+    "fields": {
+      "name": "工单成本 · 产品族→配置→工单",
+      "dataset": "bi_work_orders",
+      "definition": {
+        "drilldown": [
+          {
+            "dimension": "product_id",
+            "grain": "value"
+          },
+          {
+            "dimension": "id",
+            "grain": "value"
+          }
+        ],
+        "derived": [
+          {
+            "label": "暂估单位成本",
+            "expression": "m0 / m2",
+            "unit": "元/台"
+          },
+          {
+            "label": "非材料单位成本",
+            "expression": "(m0 - m1) / m2",
+            "unit": "元/台"
+          },
+          {
+            "label": "材料成本占比",
+            "expression": "m1 / m0",
+            "unit": "%"
+          }
+        ],
+        "display_metric": "d0",
+        "dimension": "family",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "label": "暂估总成本（分）",
+            "field": "total_cost_cents"
+          },
+          {
+            "agg": "sum",
+            "label": "材料成本（分）",
+            "field": "material_cost_cents"
+          },
+          {
+            "agg": "sum",
+            "label": "装配台数",
+            "field": "produced_qty"
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "desc"
+      },
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "created_at": "2026-10-03T18:50:51.498Z",
+      "updated_at": "2026-10-03T18:50:51.498Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 50,
+    "fields": {
+      "name": "工单成本透视 · 产品族 × 工单状态",
+      "dataset": "bi_work_orders",
+      "definition": {
+        "pivot": {
+          "dimension": "status",
+          "grain": "value"
+        },
+        "drilldown": [
+          {
+            "dimension": "product_id",
+            "grain": "value"
+          },
+          {
+            "dimension": "id",
+            "grain": "value"
+          }
+        ],
+        "derived": [
+          {
+            "label": "暂估单位成本",
+            "expression": "m0 / m2",
+            "unit": "元/台"
+          },
+          {
+            "label": "非材料单位成本",
+            "expression": "(m0 - m1) / m2",
+            "unit": "元/台"
+          },
+          {
+            "label": "材料成本占比",
+            "expression": "m1 / m0",
+            "unit": "%"
+          }
+        ],
+        "display_metric": "d0",
+        "dimension": "family",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "label": "暂估总成本（分）",
+            "field": "total_cost_cents"
+          },
+          {
+            "agg": "sum",
+            "label": "材料成本（分）",
+            "field": "material_cost_cents"
+          },
+          {
+            "agg": "sum",
+            "label": "装配台数",
+            "field": "produced_qty"
+          }
+        ],
+        "filters": [],
+        "chart": "pivot",
+        "sort": "desc"
+      },
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "created_at": "2026-10-03T20:09:04.876Z",
+      "updated_at": "2026-10-03T20:09:04.876Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 51,
+    "fields": {
+      "name": "配置产量与暂估单位成本 · 散点",
+      "dataset": "bi_work_orders",
+      "definition": {
+        "scatter": {
+          "x": "m1",
+          "y": "d0"
+        },
+        "drilldown": [],
+        "derived": [
+          {
+            "label": "暂估单位成本",
+            "expression": "m0 / m1",
+            "unit": "元/台"
+          }
+        ],
+        "display_metric": "d0",
+        "dimension": "product_id",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "sum",
+            "label": "暂估总成本（分）",
+            "field": "total_cost_cents"
+          },
+          {
+            "agg": "sum",
+            "label": "装配台数",
+            "field": "produced_qty"
+          }
+        ],
+        "filters": [],
+        "chart": "scatter",
+        "sort": "desc"
+      },
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "created_at": "2026-10-04T08:37:40.790Z",
+      "updated_at": "2026-10-04T08:37:40.790Z"
+    }
+  },
+  {
+    "model": "app.analysismodel",
+    "pk": 52,
+    "fields": {
+      "name": "作业登记时长 · 中位数与P90/P95",
+      "dataset": "labor_entries",
+      "definition": {
+        "drilldown": [],
+        "derived": [],
+        "display_metric": "m3",
+        "dimension": "activity",
+        "grain": "value",
+        "metrics": [
+          {
+            "agg": "count",
+            "label": "记录数",
+            "field": null
+          },
+          {
+            "agg": "avg",
+            "label": "平均分钟",
+            "field": "minutes"
+          },
+          {
+            "agg": "median",
+            "label": "中位数分钟",
+            "field": "minutes"
+          },
+          {
+            "agg": "percentile",
+            "label": "P90分钟",
+            "field": "minutes",
+            "percentile": 90
+          },
+          {
+            "agg": "percentile",
+            "label": "P95分钟",
+            "field": "minutes",
+            "percentile": 95
+          }
+        ],
+        "filters": [],
+        "chart": "bar",
+        "sort": "dimension"
+      },
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "created_at": "2026-10-04T12:12:39.116Z",
+      "updated_at": "2026-10-04T12:12:39.116Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 1,
+    "fields": {
+      "name": "经营 / 销售",
+      "description": "模拟数据专题；卡片口径和来源可检查，可复制模型构建自己的专题。",
+      "layout": [
+        {
+          "model_id": 1,
+          "span": 1
+        },
+        {
+          "model_id": 2,
+          "span": 1
+        },
+        {
+          "model_id": 26,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 2,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-02T23:43:53.308Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 2,
+    "fields": {
+      "name": "订单交付",
+      "description": "模拟数据专题；卡片口径和来源可检查，可复制模型构建自己的专题。",
+      "layout": [
+        {
+          "model_id": 3,
+          "span": 1
+        },
+        {
+          "model_id": 4,
+          "span": 1
+        },
+        {
+          "model_id": 27,
+          "span": 1
+        },
+        {
+          "model_id": 28,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 2,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-02T23:43:53.308Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 3,
+    "fields": {
+      "name": "生产执行",
+      "description": "模拟数据专题；卡片口径和来源可检查，可复制模型构建自己的专题。",
+      "layout": [
+        {
+          "model_id": 5,
+          "span": 1
+        },
+        {
+          "model_id": 6,
+          "span": 1
+        },
+        {
+          "model_id": 29,
+          "span": 1
+        },
+        {
+          "model_id": 30,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 2,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-02T23:43:53.308Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 4,
+    "fields": {
+      "name": "终检质量",
+      "description": "模拟数据专题；卡片口径和来源可检查，可复制模型构建自己的专题。",
+      "layout": [
+        {
+          "model_id": 7,
+          "span": 1
+        },
+        {
+          "model_id": 8,
+          "span": 1
+        },
+        {
+          "model_id": 31,
+          "span": 1
+        },
+        {
+          "model_id": 32,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 2,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-02T23:43:53.309Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 5,
+    "fields": {
+      "name": "采购供应",
+      "description": "模拟数据专题；卡片口径和来源可检查，可复制模型构建自己的专题。",
+      "layout": [
+        {
+          "model_id": 9,
+          "span": 1
+        },
+        {
+          "model_id": 10,
+          "span": 1
+        },
+        {
+          "model_id": 33,
+          "span": 1
+        },
+        {
+          "model_id": 34,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 2,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-02T23:43:53.309Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 6,
+    "fields": {
+      "name": "仓储物流",
+      "description": "模拟数据专题；卡片口径和来源可检查，可复制模型构建自己的专题。",
+      "layout": [
+        {
+          "model_id": 11,
+          "span": 1
+        },
+        {
+          "model_id": 12,
+          "span": 1
+        },
+        {
+          "model_id": 35,
+          "span": 1
+        },
+        {
+          "model_id": 36,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 2,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-02T23:43:53.309Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 7,
+    "fields": {
+      "name": "研发工艺",
+      "description": "模拟数据专题；卡片口径和来源可检查，可复制模型构建自己的专题。",
+      "layout": [
+        {
+          "model_id": 13,
+          "span": 1
+        },
+        {
+          "model_id": 14,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-02T16:14:13.308Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 8,
+    "fields": {
+      "name": "设备工装",
+      "description": "模拟数据专题；卡片口径和来源可检查，可复制模型构建自己的专题。",
+      "layout": [
+        {
+          "model_id": 15,
+          "span": 1
+        },
+        {
+          "model_id": 16,
+          "span": 1
+        },
+        {
+          "model_id": 39,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 2,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-02T23:43:53.310Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 9,
+    "fields": {
+      "name": "人员工时",
+      "description": "模拟数据专题；卡片口径和来源可检查，可复制模型构建自己的专题。",
+      "layout": [
+        {
+          "model_id": 17,
+          "span": 1
+        },
+        {
+          "model_id": 18,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-02T16:14:13.309Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 10,
+    "fields": {
+      "name": "成本资金",
+      "description": "模拟数据专题；卡片口径和来源可检查，可复制模型构建自己的专题。",
+      "layout": [
+        {
+          "model_id": 19,
+          "span": 1
+        },
+        {
+          "model_id": 20,
+          "span": 1
+        },
+        {
+          "model_id": 37,
+          "span": 1
+        },
+        {
+          "model_id": 38,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 2,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-02T23:43:53.310Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 11,
+    "fields": {
+      "name": "能源安环",
+      "description": "模拟数据专题；卡片口径和来源可检查，可复制模型构建自己的专题。",
+      "layout": [
+        {
+          "model_id": 21,
+          "span": 1
+        },
+        {
+          "model_id": 22,
+          "span": 1
+        },
+        {
+          "model_id": 40,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 2,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-02T23:43:53.310Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 12,
+    "fields": {
+      "name": "售后服务",
+      "description": "模拟数据专题；卡片口径和来源可检查，可复制模型构建自己的专题。",
+      "layout": [
+        {
+          "model_id": 23,
+          "span": 1
+        },
+        {
+          "model_id": 24,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-02T16:14:13.311Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 13,
+    "fields": {
+      "name": "每日产出复盘（自定义示例）",
+      "description": "自定义模型与质量会话组合：产出按装配日，质量图按检测会话；两个口径分别阅读。",
+      "layout": [
+        {
+          "model_id": 25,
+          "span": 2
+        },
+        {
+          "model_id": 7,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "updated_at": "2026-10-02T16:50:02.636Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 14,
+    "fields": {
+      "name": "资源与工时",
+      "description": "独立资源位、排班停机与工时成本；点击导航中的资源与工时查看时间轴。全部为模拟数据。",
+      "layout": [
+        {
+          "model_id": 41,
+          "span": 1
+        },
+        {
+          "model_id": 42,
+          "span": 1
+        },
+        {
+          "model_id": 43,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 1,
+      "owner": "system",
+      "is_public": true,
+      "updated_at": "2026-10-03T01:13:29.274Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 15,
+    "fields": {
+      "name": "发布指标 · 交付口径演练",
+      "description": "使用已模拟审核发布的交付指标；具体版本以分析卡口径为准。日期按下单日选择订单队列，状态仍截至模拟快照。停用版本和显式迁移记录保留；真实业务口径仍待工厂负责人验收。",
+      "layout": [
+        {
+          "model_id": 44,
+          "span": 2
+        }
+      ],
+      "filters": {},
+      "version": 3,
+      "owner": "demo_admin",
+      "is_public": true,
+      "updated_at": "2026-10-03T10:32:24.174Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 16,
+    "fields": {
+      "name": "成本水平与构成 · 自定义派生演练",
+      "description": "模拟未结账成本：左侧比较按总成本与总装配量计算的单位成本，右侧比较材料占比。日期按工单计划完工日选队列，状态仍截至固定快照；产品族包含不同配置，差异不能直接解释为效率高低。",
+      "layout": [
+        {
+          "model_id": 45,
+          "span": 1
+        },
+        {
+          "model_id": 46,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "updated_at": "2026-10-03T05:55:34.821Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 17,
+    "fields": {
+      "name": "整机结构 · 可复用业务分组",
+      "description": "用固定v1规则比较功率分段与产品系列结构。4,500台合成模拟电机；日期按装配日选择对象，分类不替代技术配置，差异不直接代表质量或效率变化。功率规则另有v2，旧模型继续引用v1。",
+      "layout": [
+        {
+          "model_id": 47,
+          "span": 1
+        },
+        {
+          "model_id": 48,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "updated_at": "2026-10-03T10:29:30.609Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 18,
+    "fields": {
+      "name": "成本逐层核查 · 产品族到工单",
+      "description": "从产品族进入配置与工单，按各层原始记录重算暂估单位成本及材料占比。支持两组范围独立下钻、同范围来源和导出。全部为模拟未结账成本；配置结构差异不直接代表效率差异。",
+      "layout": [
+        {
+          "model_id": 49,
+          "span": 1
+        }
+      ],
+      "filters": {},
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "updated_at": "2026-10-03T19:03:17.908Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 19,
+    "fields": {
+      "name": "工单成本透视 · 结构与状态",
+      "description": "模拟工单成本按产品族与状态交叉核查；全部合计从来源重算，单位成本为空时可检查未装配工单。",
+      "layout": [
+        {
+          "model_id": 50,
+          "span": 2
+        }
+      ],
+      "filters": {},
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "updated_at": "2026-10-03T20:12:16.892Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 20,
+    "fields": {
+      "name": "产量与成本结构 · 双指标探索",
+      "description": "以配置为分组，比较装配台数与模拟暂估单位成本；保留工单和成本来源。配置、批量、期间及未结账状态不同，图中位置不代表规模效应或经营改善。",
+      "layout": [
+        {
+          "model_id": 51,
+          "span": 2
+        }
+      ],
+      "filters": {},
+      "version": 2,
+      "owner": "demo_admin",
+      "is_public": false,
+      "updated_at": "2026-10-04T08:49:18.210Z"
+    }
+  },
+  {
+    "model": "app.topic",
+    "pk": 21,
+    "fields": {
+      "name": "作业登记时长 · 典型水平与高分位",
+      "description": "按每条模拟作业工时记录等权，比较平均分钟、中位数、P90与P95。记录时长不等于单台节拍或完整换型周期；作业、配置和工单结构不同，不能直接解释为效率高低。",
+      "layout": [
+        {
+          "model_id": 52,
+          "span": 2
+        }
+      ],
+      "filters": {},
+      "version": 1,
+      "owner": "demo_admin",
+      "is_public": false,
+      "updated_at": "2026-10-04T12:15:49.075Z"
+    }
+  }
+]

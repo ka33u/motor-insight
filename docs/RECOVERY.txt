@@ -1,0 +1,60 @@
+电机数据平台：完整恢复包使用说明
+适用范围：本地 SQLite 模拟系统。已固定 CPython 3.12 和五个运行依赖。
+支持脚本路径：macOS / Linux。其他实体机器和操作系统须单独演练，不承诺已验证。
+
+一、一个恢复点包含三个文件
+1. motor-full-日期-编号.zip：应用代码、数据库一致性快照、Excel原件、检测原件、
+   18份当前示例工作簿（以打包时为准）、BI离线文件、固定依赖wheel及SHA-256清单。
+2. 同名 .zip.sha256：整包校验值。
+3. 同名 -recover.py：只依赖Python标准库的启动恢复工具。
+请将三者放在同一目录。恢复包保留账号、密码摘要、配置、会话和历史审计；
+应保存在受控位置。摘要检测文件损坏，不能证明来源身份；只运行可信来源的恢复包和脚本。
+不包含宿主Python解释器、.venv、node_modules、环境变量/根目录.env、旧备份或运行PID。
+重新生成复杂模拟工作簿所用的Node工具另有依赖，本包保证已导入系统的运行和保留XLSX。
+
+二、在现有系统制作完整包
+在 motor-platform 目录运行：
+  ./.venv/bin/python scripts/recovery.py pack
+输出位于 data/recovery-packages/；命令返回三个文件的完整路径和整包摘要。
+只读取当前数据；数据库使用SQLite一致性备份。原件缺失、hash不符、外部路径、
+依赖缺失或打包期间文件改变时失败。请在版本发布完成、无代码编辑时制作。
+不会覆盖同名已有恢复包。日常只备份数据仍可使用 scripts/backup.py；该旧格式不能
+直接交给完整恢复工具，它不包含应用和离线依赖。
+
+三、在新目录验证并恢复
+目标主机先安装可用的 CPython 3.12（含venv与ensurepip）和系统时区资料。
+把下方 RECOVER 和 BUNDLE 分别替换成实际 -recover.py 与 .zip 文件名：
+  python3.12 RECOVER verify BUNDLE
+  python3.12 RECOVER restore BUNDLE --target /绝对路径/motor-restored
+默认核对同目录 .zip.sha256，也可显式传 --sha256 加可信的64位校验值。
+目标父目录须存在，目标目录必须不存在。即使已有目标为空目录，也拒绝覆盖。
+恢复先在临时目录校验所有文件、数据库、原件和依赖，再保留一个新的目标目录。
+依赖仅从包内wheel安装：不连网、不继承系统site-packages，不接受原环境数据库覆盖变量。
+venv直接建立在最终路径，避免搬动venv导致启动脚本路径失效。
+成功后生成 data/recovery-restore.json（status=ready），并完成Django系统及迁移检查。
+只改ImportBatch原件路径；业务记录、编码序列、模型、专题、快照、账号和审计内容保留。
+历史审计文字中的旧路径是当时证据，不批量改写。
+
+四、独立启动、检查与停止
+进入新目标目录：
+  ./.venv/bin/python scripts/serve.py start --port 8766
+  ./.venv/bin/python scripts/serve.py status --port 8766
+  ./.venv/bin/python scripts/serve.py stop --port 8766
+默认端口8765保持兼容；多端口各有PID和日志。服务仅监听127.0.0.1。
+同时检查原系统时，可用 http://localhost:8766 打开恢复副本，原系统继续使用
+http://127.0.0.1:8765，避免同一浏览器的session cookie相互影响。
+请用恢复时保留的账号登录；不要重新初始化数据。检查订单、模型、专题、来源文件和检测原件。
+若端口被其他程序占用，请换端口；启动器不会认领或终止其他程序。
+此启动方式是Django本地演示服务，不是生产Web部署，也不连接真实U8/MES。
+
+五、失败或中断
+外层或逐文件校验失败时，不创建目标目录。
+若依赖安装/检查阶段失败，新的隔离目录保留 .restore-in-progress 标记和诊断日志，
+启动器拒绝启动该副本；现有系统不受影响。查看该标记及 data/recovery-install.log。
+修复Python/磁盘等问题后，选择另一个全新的目录重试。不要删标记冒充恢复成功，
+不要把失败副本的文件覆盖到正在使用的系统，也不要直接移动已建立的venv目录。
+
+六、验收边界
+恢复校验检查全部应用及Django表的行数、规范化内容摘要、结构摘要、外键和完整性，
+其中仅ImportBatch.file_path按可迁移相对身份规范化；不是只比较业务记录总数。
+真实异机、生产并发、PostgreSQL、HTTPS、账号运营和现场源系统接入仍需后续验收。

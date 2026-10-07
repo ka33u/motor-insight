@@ -1,0 +1,308 @@
+{
+  "mapping": {
+    "采购部_供方清单": {
+      "dataset": "suppliers",
+      "fields": {
+        "供方编号": "id",
+        "供方全称": "name",
+        "主要供货": "category",
+        "所在地区": "region",
+        "周期_自然日": "lead_days",
+        "供方资格登记": "qualified"
+      },
+      "ignore": [
+        "个人采集备注"
+      ]
+    },
+    "销售部_客户资料": {
+      "dataset": "customers",
+      "fields": {
+        "往来客户号": "id",
+        "客户全称": "name",
+        "市场区域": "region",
+        "使用行业": "industry",
+        "合同账期_天": "payment_days",
+        "业务责任人工号": "owner_id"
+      },
+      "ignore": [
+        "个人采集备注"
+      ]
+    },
+    "仓储部_物料卡片": {
+      "dataset": "materials",
+      "fields": {
+        "料号": "id",
+        "材料名称": "name",
+        "分类名称": "category",
+        "材料规格": "spec",
+        "基本计量单位": "unit",
+        "参考单价_分": "unit_cost_cents",
+        "优先供方编码": "supplier_id",
+        "安全缓冲数量": "safety_qty"
+      },
+      "ignore": [
+        "个人采集备注"
+      ]
+    },
+    "个人备注_不导入": {
+      "skip": true
+    },
+    "导入说明": {
+      "skip": true
+    },
+    "字段字典": {
+      "skip": true
+    }
+  },
+  "canonical": {
+    "suppliers": [
+      {
+        "id": "GY00001",
+        "name": "模拟工业供应商01",
+        "category": "铜线",
+        "region": "江苏",
+        "lead_days": 5,
+        "qualified": true
+      },
+      {
+        "id": "GY00002",
+        "name": "模拟工业供应商02",
+        "category": "轴承",
+        "region": "山东",
+        "lead_days": 10,
+        "qualified": true
+      },
+      {
+        "id": "GY00003",
+        "name": "模拟工业供应商03",
+        "category": "铝材",
+        "region": "广东",
+        "lead_days": 5,
+        "qualified": true
+      },
+      {
+        "id": "GY00004",
+        "name": "模拟工业供应商04",
+        "category": "漆料",
+        "region": "浙江",
+        "lead_days": 10,
+        "qualified": true
+      },
+      {
+        "id": "GY00005",
+        "name": "模拟工业供应商05",
+        "category": "机加工件",
+        "region": "江苏",
+        "lead_days": 21,
+        "qualified": true
+      }
+    ],
+    "customers": [
+      {
+        "id": "KH00001",
+        "name": "海川泵业01（模拟）",
+        "region": "西南",
+        "industry": "风机",
+        "payment_days": 30,
+        "owner_id": "E00114"
+      },
+      {
+        "id": "KH00002",
+        "name": "江南装备02（模拟）",
+        "region": "西南",
+        "industry": "水泵",
+        "payment_days": 45,
+        "owner_id": "E00066"
+      },
+      {
+        "id": "KH00003",
+        "name": "江南环保03（模拟）",
+        "region": "华北",
+        "industry": "环保设备",
+        "payment_days": 60,
+        "owner_id": "E00066"
+      },
+      {
+        "id": "KH00004",
+        "name": "华东环保04（模拟）",
+        "region": "华东",
+        "industry": "压缩机",
+        "payment_days": 30,
+        "owner_id": "E00098"
+      },
+      {
+        "id": "KH00005",
+        "name": "北方环保05（模拟）",
+        "region": "西南",
+        "industry": "环保设备",
+        "payment_days": 45,
+        "owner_id": "E00002"
+      }
+    ],
+    "materials": [
+      {
+        "id": "01.01.0001",
+        "name": "无取向硅钢-01",
+        "category": "硅钢",
+        "spec": "50W470/01",
+        "unit": "kg",
+        "unit_cost_cents": 740,
+        "supplier_id": "GY00002",
+        "safety_qty": 200.0
+      },
+      {
+        "id": "01.01.0002",
+        "name": "无取向硅钢-02",
+        "category": "硅钢",
+        "spec": "50W470/02",
+        "unit": "kg",
+        "unit_cost_cents": 760,
+        "supplier_id": "GY00004",
+        "safety_qty": 200.0
+      },
+      {
+        "id": "01.01.0003",
+        "name": "无取向硅钢-03",
+        "category": "硅钢",
+        "spec": "50W470/03",
+        "unit": "kg",
+        "unit_cost_cents": 780,
+        "supplier_id": "GY00006",
+        "safety_qty": 200.0
+      },
+      {
+        "id": "01.01.0004",
+        "name": "无取向硅钢-04",
+        "category": "硅钢",
+        "spec": "50W470/04",
+        "unit": "kg",
+        "unit_cost_cents": 800,
+        "supplier_id": "GY00008",
+        "safety_qty": 200.0
+      },
+      {
+        "id": "01.01.0005",
+        "name": "无取向硅钢-05",
+        "category": "硅钢",
+        "spec": "50W470/05",
+        "unit": "kg",
+        "unit_cost_cents": 820,
+        "supplier_id": "GY00010",
+        "safety_qty": 200.0
+      }
+    ]
+  },
+  "references": [
+    {
+      "dataset": "employees",
+      "values": {
+        "id": "E00114",
+        "name": "模拟员工114",
+        "department_id": "D02",
+        "role": "销售专员",
+        "skill_level": "高级",
+        "hourly_cents": 5400,
+        "active": true
+      }
+    },
+    {
+      "dataset": "employees",
+      "values": {
+        "id": "E00066",
+        "name": "模拟员工066",
+        "department_id": "D02",
+        "role": "销售专员",
+        "skill_level": "高级",
+        "hourly_cents": 6700,
+        "active": true
+      }
+    },
+    {
+      "dataset": "employees",
+      "values": {
+        "id": "E00098",
+        "name": "模拟员工098",
+        "department_id": "D02",
+        "role": "销售专员",
+        "skill_level": "高级",
+        "hourly_cents": 3300,
+        "active": true
+      }
+    },
+    {
+      "dataset": "employees",
+      "values": {
+        "id": "E00002",
+        "name": "模拟员工002",
+        "department_id": "D02",
+        "role": "销售专员",
+        "skill_level": "初级",
+        "hourly_cents": 5600,
+        "active": true
+      }
+    },
+    {
+      "dataset": "suppliers",
+      "values": {
+        "id": "GY00002",
+        "name": "模拟工业供应商02",
+        "category": "轴承",
+        "region": "山东",
+        "lead_days": 10,
+        "qualified": true
+      }
+    },
+    {
+      "dataset": "suppliers",
+      "values": {
+        "id": "GY00004",
+        "name": "模拟工业供应商04",
+        "category": "漆料",
+        "region": "浙江",
+        "lead_days": 10,
+        "qualified": true
+      }
+    },
+    {
+      "dataset": "suppliers",
+      "values": {
+        "id": "GY00006",
+        "name": "模拟工业供应商06",
+        "category": "硅钢",
+        "region": "浙江",
+        "lead_days": 10,
+        "qualified": true
+      }
+    },
+    {
+      "dataset": "suppliers",
+      "values": {
+        "id": "GY00008",
+        "name": "模拟工业供应商08",
+        "category": "轴承",
+        "region": "山东",
+        "lead_days": 15,
+        "qualified": true
+      }
+    },
+    {
+      "dataset": "suppliers",
+      "values": {
+        "id": "GY00010",
+        "name": "模拟工业供应商10",
+        "category": "漆料",
+        "region": "江苏",
+        "lead_days": 7,
+        "qualified": true
+      }
+    }
+  ],
+  "expected_status": {
+    "duplicate": 15,
+    "conflict": 1,
+    "invalid": 1
+  },
+  "selected_rows": 17,
+  "ignored_data_rows": 1,
+  "synthetic": true
+}

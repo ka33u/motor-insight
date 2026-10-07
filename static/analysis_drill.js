@@ -1,0 +1,43 @@
+import {quantileExplanation} from './quantiles.js';
+export function drillEditor({root,definition,fields,esc}){
+ let levels=structuredClone(definition.drilldown||[]);
+ const collect=()=>[...root.querySelectorAll('.drill-level')].map(r=>({dimension:r.querySelector('[name="dimension"]').value,grain:r.querySelector('[name="grain"]').value}));
+ function draw(){root.innerHTML=`<details ${levels.length?'open':''}><summary>逐层分析路径 · ${levels.length}个后续层级</summary><p class="panel-note">从当前分组开始，最多继续3层；各层保持同一来源粒度。</p><div>${levels.map((l,i)=>`<div class="drill-level"><label>第${i+1}层<select name="dimension">${fields.map(f=>`<option value="${esc(f.name)}" ${l.dimension===f.name?'selected':''}>${esc(f.label)}</option>`).join('')}</select></label><label>日期粒度<select name="grain">${[['value','原始值'],['day','按日'],['month','按月']].map(([v,n])=>`<option value="${v}" ${l.grain===v?'selected':''}>${n}</option>`).join('')}</select></label><button type="button" data-drill-remove="${i}" aria-label="删除第${i+1}层">×</button></div>`).join('')}</div><button id="drill-add" type="button" ${levels.length>=3?'disabled':''}>＋ 添加下钻层级</button></details>`;
+  root.querySelector('#drill-add').onclick=()=>{levels=collect();levels.push({dimension:fields.find(f=>f.name==='id')?.name||fields[0].name,grain:'value'});draw()};
+  root.querySelectorAll('[data-drill-remove]').forEach(b=>b.onclick=()=>{levels=collect();levels.splice(+b.dataset.drillRemove,1);draw()});
+  root.querySelectorAll('.drill-level [name="dimension"]').forEach(s=>s.onchange=()=>{if(!['date','datetime'].includes(fields.find(f=>f.name===s.value)?.type))s.closest('.drill-level').querySelector('[name="grain"]').value='value'});
+ }
+ draw();return {collect:()=>({drilldown:collect()})};
+}
+
+export function createAnalysisExplorer({api,esc,num,table,modal,toast,$,$$,getModalRevision,isCurrent,getRouteToken,sourceLinks}){
+ let serial=0;
+ return async function open(model,scope={},scopeLabel='当前分析范围'){
+  const base={dataset:model.dataset,definition:structuredClone(model.definition),scope:structuredClone(scope)},route=getRouteToken();
+  let path=[],revision=null,last=null,page=1;
+  const payload=extra=>({...base,path,revision,...extra});
+  const display=v=>typeof v==='number'?num(v,4):esc(v??'—');
+  async function load(title,call,draw){const id=++serial;modal(title,'<p class="empty">正在按相同来源与口径重算…</p>');const rev=getModalRevision();try{const d=await call();if(id!==serial||!isCurrent(route)||!$('#detail').open||rev!==getModalRevision())return;draw(d)}catch(e){if(id!==serial||!isCurrent(route)||!$('#detail').open||rev!==getModalRevision())return;$('#dialog-content').innerHTML=`<p class="inline-error" role="alert">${esc(e.message)}</p><button id="drill-refresh">重新读取根层</button>`;$('#drill-refresh').onclick=()=>{revision=null;path=[];page=1;board()}}}
+  async function download(kind,group){const rev=getModalRevision();try{const d=await api('analyze/explore/export',{method:'POST',body:payload({kind,...(group==null?{}:{group})})});if(!isCurrent(route)||rev!==getModalRevision()||!$('#detail').open)return;$('#drill-download-ready')?.remove();const ready=document.createElement('p');ready.id='drill-download-ready';ready.className='source';ready.innerHTML=`已生成${num(d.rows)}行；文件保留当前路径和计算依据。<a href="${esc(d.download_url)}" download="${esc(d.filename)}">下载CSV ↓</a> · 5分钟内有效，仅当前账号可下载。`;$('#dialog-content').prepend(ready);toast('文件已生成，请点击下载CSV')}catch(e){toast(e.message)}}
+  function bars(d){const r=d.result,shown=r.rows.slice(0,18),key=r.display_metric,valid=shown.filter(x=>typeof x[key]==='number'&&Number.isFinite(x[key]));
+   if(!shown.length)return '<p class="empty">当前范围没有来源对象，不补零或回退全部范围。</p>';
+   const lo=Math.min(0,...valid.map(x=>x[key])),hi=Math.max(0,...valid.map(x=>x[key])),span=hi-lo||1,zero=-lo/span*100;
+   return `<div class="drill-bars" aria-label="${esc(r.display_label)}分组对比">${shown.map((x,i)=>{const value=x[key],ok=typeof value==='number'&&Number.isFinite(value);return `<button class="drill-bar-row" data-drill-plot="${i}" title="${esc((d.can_expand?'展开':'查看来源')+' '+x.dimension)}"><span class="drill-name">${esc(x.dimension)}</span><span class="drill-track"><i class="drill-zero" style="left:${zero}%"></i>${ok?`<i class="drill-value" style="left:${(Math.min(0,value)-lo)/span*100}%;width:${Math.abs(value)/span*100}%"></i>`:''}</span><b>${display(value)}</b></button>`}).join('')}</div>${r.rows.length>18?'<p class="panel-note">图形仅显示前18组；下方表格和结果导出包含本次已返回的全部分组。</p>':''}`;
+  }
+  function draw(d){last=d;revision=d.revision;path=d.path;const r=d.result,ls=d.levels;const start=(page-1)*25,shown=r.rows.slice(start,start+25);
+   modal(model.name+' · 逐层分析',`<p class="source">${esc(scopeLabel)} · ${esc(r.scope.date_label)} · 状态截至 ${esc(d.revision.as_of.replace('T',' '))}<br>来源粒度：${esc(r.grain)}；当前 ${num(r.matched)} 行、${num(r.groups)} 个分组。</p><nav class="drill-trail" aria-label="下钻返回路径"><button data-drill-back="0">根层 · ${esc(ls[0].label)}</button>${path.map((v,i)=>`<span>→</span><button data-drill-back="${i+1}">${esc(v)}</button>`).join('')}</nav><h3>按${esc(ls[path.length].label)}查看${d.can_expand?' → 下一层：'+esc(ls[path.length+1].label):' · 已到末层'}</h3><p class="panel-note">${esc(d.notice)}</p>${r.metric_receipt?`<p class="source">发布指标 ${esc(r.metric_receipt.key)} v${r.metric_receipt.version} · ${esc(r.metric_receipt.unit)}</p>`:''}<h4>${esc(r.display_label)}</h4>${bars(d)}${quantileExplanation(r,esc)}<div class="toolbar"><button id="drill-export-result">导出当前层结果</button><button id="drill-all-source">查看当前层来源</button></div>${r.truncated?'<p class="inline-error">超过1000组，仅返回前1000组；图表、表格和结果导出不代表全部分组，请缩小范围。</p>':''}${table([r.dimension_label,...r.labels,'来源行数','继续查看'],shown.map((x,i)=>[esc(x.dimension),...r.measures.map(m=>display(x[m.key])),num(x.row_count),`${d.can_expand?`<button data-drill-open="${start+i}">展开 ↗</button> `:''}<button data-drill-source="${start+i}">来源</button>`]))}<div class="pagination"><span>第${page} / ${Math.max(1,Math.ceil(r.rows.length/25))}页 · 已返回${num(r.rows.length)}组</span><button id="drill-prev" ${page<=1?'disabled':''}>上一页分组</button><button id="drill-next" ${page*25>=r.rows.length?'disabled':''}>下一页分组</button></div><details><summary>查看定义、路径与比率分子分母</summary><pre class="code-block">${esc(JSON.stringify({definition:base.definition,scope:base.scope,path,components:r.components,derived_notes:r.derived_notes,revision},null,2))}</pre></details>`);
+   const expand=i=>{const row=r.rows[i];if(!d.can_expand)return sources(row.dimension);path=[...path,row.dimension];page=1;return board()};
+   $$('[data-drill-back]',$('#dialog-content')).forEach(b=>b.onclick=()=>{path=path.slice(0,+b.dataset.drillBack);page=1;board()});
+   $$('[data-drill-plot]',$('#dialog-content')).forEach(b=>b.onclick=()=>expand(+b.dataset.drillPlot));
+   $$('[data-drill-open]',$('#dialog-content')).forEach(b=>b.onclick=()=>expand(+b.dataset.drillOpen));
+   $$('[data-drill-source]',$('#dialog-content')).forEach(b=>b.onclick=()=>sources(r.rows[+b.dataset.drillSource].dimension));
+   $('#drill-prev').onclick=()=>{page--;draw(last)};$('#drill-next').onclick=()=>{page++;draw(last)};$('#drill-all-source').onclick=()=>sources(null);$('#drill-export-result').onclick=()=>download('result');
+  }
+  function board(){return load(model.name+' · 逐层分析',()=>api('analyze/explore',{method:'POST',body:payload({})}),draw)}
+  function sources(group,sourcePage=1){return load(model.name+' · 下钻来源',()=>api('analyze/explore/evidence',{method:'POST',body:payload({page:sourcePage,...(group==null?{}:{group})})}),d=>{
+   modal(model.name+' · 下钻来源',`<p class="source">${esc(scopeLabel)} · ${path.map(esc).join(' → ')||'根层'} · ${group==null?'当前层全部来源':esc(group)}<br>${num(d.total)}条来源，字段受当前账号权限控制。</p><div class="toolbar"><button id="drill-source-back">返回当前层</button><button id="drill-export-source">导出同范围来源</button></div>${table([...d.fields.map(f=>f.label),'原始来源'],d.rows.map(r=>[...d.fields.map(f=>display(r.values[f.name])),r.source?`${esc(r.source.file)}<br>${esc(r.source.sheet)} · 第${r.source.row}行${d.can_download_original?`<br><a href="/api/imports/${esc(r.source.batch)}/file">下载原件 ↓</a>`:''}`:sourceLinks(r.references)]))}<div class="pagination"><span>第${sourcePage} / ${Math.max(1,Math.ceil(d.total/30))}页</span><button id="drill-source-prev" ${sourcePage<=1?'disabled':''}>上一页来源</button><button id="drill-source-next" ${sourcePage*30>=d.total?'disabled':''}>下一页来源</button></div>`);
+   $('#drill-source-back').onclick=()=>board();$('#drill-export-source').onclick=()=>download('evidence',group);$('#drill-source-prev').onclick=()=>sources(group,sourcePage-1);$('#drill-source-next').onclick=()=>sources(group,sourcePage+1);$$('[data-lineage]',$('#dialog-content')).forEach(a=>a.onclick=()=>$('#detail').close());
+  })}
+  await board();
+ };
+}
