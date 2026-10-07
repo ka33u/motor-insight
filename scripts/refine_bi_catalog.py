@@ -720,7 +720,8 @@ def refine(d):
     from refine_bi_joint_schedule import refine_joint
     from refine_bi_order_baseline import refine_order_baseline
     from refine_bi_launch import refine_launch
-    return refine_reading(refine_launch(refine_order_baseline(refine_joint(refine_oee(refine_pages(refine_crew(refine_schedule(refine_exports(refine_results(refine_cards(refine_msa(refine_workspace(refine_spc(result))))))))))))))
+    from refine_bi_first_piece import refine_first_piece
+    return refine_first_piece(refine_reading(refine_launch(refine_order_baseline(refine_joint(refine_oee(refine_pages(refine_crew(refine_schedule(refine_exports(refine_results(refine_cards(refine_msa(refine_workspace(refine_spc(result)))))))))))))))
 
 
 if __name__=='__main__':

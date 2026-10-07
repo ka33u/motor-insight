@@ -77,6 +77,9 @@ if f.get('joint_schedule_trial'):
 if f.get('order_baseline_trial'):
     c=f['order_baseline_trial']
     parts.append(section('order-baseline-design','订单与BOM基线：覆盖缺口、双交期和版本差异','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','arithmetic','coverage','time','presentation','boundary']])))
+if f.get('first_piece_evidence'):
+    c=f['first_piece_evidence']
+    parts.append(section('first-piece-design','首件证据：实测与计量依据同屏核对','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','evidence','presentation','boundary']])))
 if f.get('launch_review'):
     c=f['launch_review']
     parts.append(section('launch-review-design','投产条件：从排得进到开工依据核对','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','time','capacity','evidence','presentation','boundary']])))
@@ -85,6 +88,7 @@ document=document.replace('href="#spc"','href="#spc-trial"').replace('href="#msa
 document=document.replace('href="#oee"','href="#oee-design"')
 document=document.replace('href="#joint-schedule"','href="#joint-schedule-design"')
 document=document.replace('href="#order-baselines"','href="#order-baseline-design"')
+document=document.replace('href="#first-piece"','href="#first-piece-design"')
 document=document.replace('href="#launch-review"','href="#launch-review-design"')
 output.write_text(document)
 print(output)

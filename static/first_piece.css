@@ -1,0 +1,4 @@
+.first-piece-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:18px 0}
+.first-piece-count{display:flex;flex-direction:column;gap:6px;padding:16px;background:#f0f4f7;border:1px solid #d8e1e8;border-radius:10px;color:#25394a;text-decoration:none}
+.first-piece-count b{font-size:26px}.first-piece-count small{color:#516577}.first-piece-count.ready{border-top:3px solid #28766d}.first-piece-count.out,.first-piece-count.attention{border-top:3px solid #af5439}.first-piece-count.metrology,.first-piece-count.missing{border-top:3px solid #bd892b}
+.first-piece-state{display:inline-block;padding:4px 8px;border-radius:5px;background:#edf1f5;color:#35475b}.first-piece-state.ready{background:#e2f1eb;color:#245b48}.first-piece-state.out,.first-piece-state.attention{background:#fcebe5;color:#853b27}.first-piece-state.metrology,.first-piece-state.missing{background:#fff0d7;color:#795420}

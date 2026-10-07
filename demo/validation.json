@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "0.12.0",
+  "version": "0.13.0",
   "record_count": 230509,
   "record_hash_digest": "1aabec876fb88c68558efa7dd974616de9e3eb178d02d6999b953dd95c689b9a",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
@@ -10,18 +10,30 @@
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2495,
+  "tests": 2517,
   "fresh_xlsx_replay": true,
   "effective_workbooks": 40,
   "original_workbooks": 41,
-  "prior_business_facts_preserved": 226239,
-  "new_business_facts": 4270,
+  "prior_business_facts_preserved": 230509,
+  "new_business_facts": 0,
   "raw_contracts": 148,
-  "original_files_preserved": 455,
+  "original_files_preserved": 456,
   "native_http_roles": 6,
   "pure_js_presentation": true,
   "browser_validation": false,
   "mobile_validation": false,
   "actual_browser_download": false,
-  "real_systems_connected": false
+  "real_systems_connected": false,
+  "first_piece_summary": {
+    "plans": 288,
+    "ready": 219,
+    "waiting": 17,
+    "future": 0,
+    "out": 19,
+    "missing": 12,
+    "metrology": 13,
+    "attention": 8,
+    "work_orders": 32,
+    "measurements": 529
+  }
 }

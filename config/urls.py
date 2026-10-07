@@ -195,3 +195,6 @@ urlpatterns += [path('api/model-cards',model_cards.collection),path('api/model-c
 
 from app import launch_views
 urlpatterns += [path('api/launch-review',launch_views.studies),path('api/launch-review/<str:key>',launch_views.board),path('api/launch-review/<str:key>/sources',launch_views.sources),path('api/launch-review/<str:key>/tasks/<str:task_id>',launch_views.detail),path('api/launch-review/<str:key>/export',launch_views.export)]
+
+from app import first_piece_views
+urlpatterns += [path('api/first-piece',first_piece_views.board),path('api/first-piece/export',first_piece_views.export),path('api/first-piece/<str:key>',first_piece_views.detail)]
