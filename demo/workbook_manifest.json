@@ -1,0 +1,203 @@
+{
+  "type": "synthetic-only",
+  "source": "Latest committed original XLSX per filename; date correction before legacy plans.",
+  "workbooks": [
+    {
+      "filename": "01_基础档案_模拟.xlsx",
+      "sha256": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+      "mapping": {}
+    },
+    {
+      "filename": "02_研发工艺_模拟.xlsx",
+      "sha256": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+      "mapping": {}
+    },
+    {
+      "filename": "17_计划日期更正_模拟.xlsx",
+      "sha256": "933885b61c13990681b4405c9feea58e057cfb46744c4e364e9842413584c795",
+      "mapping": {}
+    },
+    {
+      "filename": "03_销售订单_模拟.xlsx",
+      "sha256": "19a50be02beb176c5688c36d09a346899f25db196775dff0dfd1dfb1f04b2838",
+      "mapping": {}
+    },
+    {
+      "filename": "04_计划生产_模拟.xlsx",
+      "sha256": "e0878bbab670999de652883eddd476ff6946efea26fb65fe95f1c3c4be22356e",
+      "mapping": {}
+    },
+    {
+      "filename": "05_采购供应_模拟.xlsx",
+      "sha256": "2e797b590d39667c3cacf3520a777202599583ddaf8336c2aac9baea17eed73f",
+      "mapping": {}
+    },
+    {
+      "filename": "06_仓储物流_模拟.xlsx",
+      "sha256": "3c716d1d5416d8f24aa7883532d412bbdadf4c83366414338a14889e198942d4",
+      "mapping": {}
+    },
+    {
+      "filename": "07_质量追溯_模拟.xlsx",
+      "sha256": "c5d28c3c5c205f4fd336795cb1abfcaca65bdede2812874739b9dba7d034ebee",
+      "mapping": {}
+    },
+    {
+      "filename": "08_设备工装_模拟.xlsx",
+      "sha256": "e1509b4604f0b5da101f1dbf0b5f7b88e2d0801f5df3335553922e821d61b827",
+      "mapping": {}
+    },
+    {
+      "filename": "09_人事工时_模拟.xlsx",
+      "sha256": "0457fa7d910afd17d5e910ca2c7696006362e80c6471e26a7d160c42f525ee13",
+      "mapping": {}
+    },
+    {
+      "filename": "10_财务成本_模拟.xlsx",
+      "sha256": "6bb28a8a94988bef5d293438b5143dc9c0f3c846ffc364592133404af76c39d7",
+      "mapping": {}
+    },
+    {
+      "filename": "11_能源安环_模拟.xlsx",
+      "sha256": "78eb0c3535d83e6a3bf1fedbeb2a2ef06b187b20f19d664ad355db0b3fc804cd",
+      "mapping": {}
+    },
+    {
+      "filename": "12_售后服务_模拟.xlsx",
+      "sha256": "8918a3a0f297c249bea19be2c87d49e509d0365b164790ea3e43d84e95c9bced",
+      "mapping": {}
+    },
+    {
+      "filename": "13_历史应收_模拟.xlsx",
+      "sha256": "bacdbafc595103218e819c0727497457ffb5c7d0e433c09b35188f0bbe1adf2b",
+      "mapping": {}
+    },
+    {
+      "filename": "14_售后过程_模拟.xlsx",
+      "sha256": "d56673c7e5adc1c8555b956722c8c7d27a06d1100723967b525ee4156d617c55",
+      "mapping": {}
+    },
+    {
+      "filename": "15_研发工艺过程_模拟.xlsx",
+      "sha256": "acc1ecdb5e0bf997c3606c4c527528a11d38abc344cccfce62ca463dfdbb1504",
+      "mapping": {}
+    },
+    {
+      "filename": "16_销售报价过程_模拟.xlsx",
+      "sha256": "993b7c6003d2afac6eae1c99c36c0515de13a0515a23d1d14d4e06e1ad9c9e94",
+      "mapping": {}
+    },
+    {
+      "filename": "18_工序检验_模拟.xlsx",
+      "sha256": "bc05da05845732d061358f811a497f8d3f7392592368225868e449f91d7ae9b0",
+      "mapping": {}
+    },
+    {
+      "filename": "19_供应商应付_模拟.xlsx",
+      "sha256": "d8852023f218e0dbce41529859017f3d2a81fbd76fcb13a747c1c173fef4b950",
+      "mapping": {}
+    },
+    {
+      "filename": "20_发运签收_模拟.xlsx",
+      "sha256": "c2e02da2258f7c4f8acf7c43e3f593506a795b8cfbf5a1104f5c6fe3bfdf8488",
+      "mapping": {}
+    },
+    {
+      "filename": "21_经营目标_模拟.xlsx",
+      "sha256": "3a3d2ffe0bf94fbda510a371f22548c52f2ec4c56ee268a9560cc7a916eed079",
+      "mapping": {}
+    },
+    {
+      "filename": "22_装配计划_模拟.xlsx",
+      "sha256": "2b99ef613e6c545ab513a5cc7e7afddc22c45399dbd95c75610c4009fcec06ca",
+      "mapping": {}
+    },
+    {
+      "filename": "23_库存盘点_模拟.xlsx",
+      "sha256": "896659e4af417085f7af980743d69453fdc27b94c083a53da017f4aa4b350e8a",
+      "mapping": {}
+    },
+    {
+      "filename": "24_库存批次资料_模拟.xlsx",
+      "sha256": "35fb622a10c797f8fdee8b5dd08a055e50bb2d5fbab31de026e67ec4554d51dd",
+      "mapping": {}
+    },
+    {
+      "filename": "25_采购承诺_模拟.xlsx",
+      "sha256": "a19824ae84260acf6001a7568c3a735dc37e391790e0bf5b3c284b35b8d2ded4",
+      "mapping": {}
+    },
+    {
+      "filename": "26_来料流程_模拟.xlsx",
+      "sha256": "b89014be2ec272f8267d80a5bb3fba1a97941ddb14bb0d288fa16810a7f9e6a6",
+      "mapping": {}
+    },
+    {
+      "filename": "27_来料特性_模拟.xlsx",
+      "sha256": "ae4a9d4375ea4a94cf6f57d4865867a4347620d9142b313e00260554327681d5",
+      "mapping": {}
+    },
+    {
+      "filename": "28_材质证明_模拟.xlsx",
+      "sha256": "d668fa53400a80637b5e3a3558b344dc3b78ca513001d8c6c0746e9ef6898956",
+      "mapping": {}
+    },
+    {
+      "filename": "29_在制流转_模拟.xlsx",
+      "sha256": "ce386b0d197f3e24c121cd84d66ab156fa3e725264c5c85796133ef62649bfb3",
+      "mapping": {}
+    },
+    {
+      "filename": "30_计量校准_模拟.xlsx",
+      "sha256": "cf0f20e610acad718ef64ab0fc8968e7cd98b2e0494966503abb74b5a58fc6b5",
+      "mapping": {}
+    },
+    {
+      "filename": "31_计量原件_模拟.xlsx",
+      "sha256": "6703f2c2d6c33624f1f9995fd91046fd4202b2a8c84b6c2a596a36e6e1f26f91",
+      "mapping": {}
+    },
+    {
+      "filename": "33_设备目录与待采集_模拟.xlsx",
+      "sha256": "f4a252276b8f951dcd2af0339e9745b33b5e88361e02b6a346a6510f6532b53e",
+      "mapping": {}
+    },
+    {
+      "filename": "34_过程稳定性采样_模拟.xlsx",
+      "sha256": "c0602b3cc7a93577cc4f902310147419e45b2d930bb708244664dc69bbe672b4",
+      "mapping": {}
+    },
+    {
+      "filename": "35_测量系统交叉采样_模拟.xlsx",
+      "sha256": "d9d0df61db79a50ab46ea837162e87c07d2ff71b1db98f50e8fded3b1b54d462",
+      "mapping": {
+        "采样说明": {
+          "skip": true
+        }
+      }
+    },
+    {
+      "filename": "36_有限资源试排_模拟.xlsx",
+      "sha256": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+      "mapping": {}
+    },
+    {
+      "filename": "37_资源人员联立试排_模拟.xlsx",
+      "sha256": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+      "mapping": {}
+    },
+    {
+      "filename": "38_班次设备效率_模拟.xlsx",
+      "sha256": "6424c1b54cff0dc9a86032ec6598f4d1d5e96ffb50219231ad7029fff9b2797e",
+      "mapping": {}
+    }
+  ],
+  "legacy_plan_rows": [
+    "MO2609-000208",
+    "MO2609-000224",
+    "MO2609-000240",
+    "MO2609-000256",
+    "MO2609-000272",
+    "MO2609-000288"
+  ]
+}

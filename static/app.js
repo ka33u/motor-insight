@@ -1,3 +1,4 @@
+import {decisionReadingMarkup} from './bi_decision_reading.js';
 import {createTopicPageWorkspace} from './topic_pages.js';
 import {createOeeWorkspace} from './oee.js';
 import {createModelCardWorkspace} from './model_cards.js';
@@ -291,11 +292,12 @@ async function showRecordHistory(recordId,page=1){
 async function renderCatalog(params,token){
  const d=await api('catalog');if(token!==routeSerial)return;
  const count=d.domains.reduce((s,x)=>s+x.items.length,0),f=d.framework;
- const catalogTabs=[['content','展示内容规划'],['methods','方法门槛与页面预演'],['coverage','需求覆盖矩阵'],['specification','分析定义设计'],['definition','BI定义与构成'],['presentation','如何呈现'],['pages',`${(d.page_blueprints||[]).length}个页面蓝图`],['requirements','完整需求目录'],['metrics','指标口径'],['roles','角色工作台'],['phases','实施与验收']];
+ const catalogTabs=[['brief','一页读懂BI'],['content','展示内容规划'],['methods','方法门槛与页面预演'],['coverage','需求覆盖矩阵'],['specification','分析定义设计'],['definition','BI定义与构成'],['presentation','如何呈现'],['pages',`${(d.page_blueprints||[]).length}个页面蓝图`],['requirements','完整需求目录'],['metrics','指标口径'],['roles','角色工作台'],['phases','实施与验收']];
  $('#main').innerHTML=header('BI 需求与呈现蓝图','从业务问题到指标口径、具体页面和处理闭环。候选目录按实际业务和数据条件裁剪。',`<a href="/api/catalog/download"><button>↓ 下载离线方案</button></a>`)+`<div class="notice"><span>${d.domains.length} 个领域 · ${count} 项候选需求 · ${d.metrics.length} 个指标定义 · ${(d.page_blueprints||[]).length} 个页面蓝图</span><span>v${d.version} · ${esc(d.designDate)}</span></div><div class="tabs">${catalogTabs.map(([key,label])=>`<button data-catalog-tab="${key}">${label}</button>`).join('')}</div><div id="catalog-body"></div>`;
  function fill(tab){$$('[data-catalog-tab]').forEach(b=>b.classList.toggle('active',b.dataset.catalogTab===tab));history.replaceState(null,'','#catalog?tab='+tab+(tab==='pages'&&params.get('page')?'&page='+encodeURIComponent(params.get('page')):tab==='metrics'&&params.get('metric')?'&metric='+encodeURIComponent(params.get('metric')):''));const root=$('#catalog-body');
  if(tab==='requirements'){const link=new URLSearchParams({tab});['domain','q','priority','status'].forEach(k=>{if(params.get(k))link.set(k,params.get(k))});history.replaceState(null,'','#catalog?'+link.toString());}
  if(['coverage','specification'].includes(tab))renderPlanningCatalog(root,tab,d,{esc,table,panel,params});
+ if(tab==='brief')root.innerHTML=decisionReadingMarkup(d,{esc,table,panel});
  if(tab==='content')renderBiContentPlanner(root,d,{esc,table,onOpenRequirements:filters=>{['q','domain','priority','status'].forEach(k=>filters[k]?params.set(k,filters[k]):params.delete(k));fill('requirements')}});
  if(tab==='methods')renderBiMethodWorkshop(root,d,{esc,table});
  if(tab==='definition')root.innerHTML=`${panel('BI 应该帮工厂完成什么？','适配：全流程自制 · 小批量定制 · 用友U8 · MES待上线',`<p class="catalog-hint">${esc(f.definition)}</p><p>${esc(f.factory_focus)}</p><div class="bi-chain">${f.surfaces.map((s,i)=>`<a href="${s.href}"><small>${String(i+1).padStart(2,'0')}</small><b>${esc(s.name)}</b><small>${esc(s.question)}</small></a>`).join('')}</div><p class="panel-note">先发现偏差 → 解释差异 → 定位对象 → 查看证据 → 处理与复查</p>`)}<div class="grid" style="margin-top:20px">${panel('数据如何成为可复用的分析','业务数据、指标定义、分析模型和专题各有职责',table(['对象','定义','要点'],f.objects.map(r=>r.map(esc))),'','span2')}${panel('统一指标契约','每个重要指标都应该能回答这些问题',`<dl class="definition-grid">${f.metric_contract.map(([a,b])=>`<dt>${esc(a)}</dt><dd>${esc(b)}</dd>`).join('')}</dl>`)}${panel('当前可操作范围','全部业务结果来自已导入的模拟Excel',`<p>现有系统提供导入校验、来源保留、9类跨表业务模型、汇总后派生与图形主指标、分析配置保存、专题布局、受控筛选、指标审核发布、SN追溯及批次排查快照。</p><div class="source" style="margin-top:15px">${esc(f.boundary)}</div><p class="panel-note">需求目录中的“模拟部分覆盖”说明已有基础，不表示完整需求已经验收，更不表示真实系统已接通。</p>`)}</div>`;
@@ -323,7 +325,7 @@ async function renderCatalog(params,token){
  if(tab==='phases'&&f.mvp){root.insertAdjacentHTML('afterbegin',panel(f.mvp.title,'低预算、IT人手少：先把一条业务证据链做通',`<p>${esc(f.mvp.content)}</p><p><b>试点验收：</b>${esc(f.mvp.gate)}</p><p><b>人员组织：</b>${esc(f.mvp.people)}</p><p class="panel-note">${esc(f.mvp.defer)}</p>`));root.insertAdjacentHTML('beforeend',panel('需求完整性检查','目录按业务实际启用；不是一次性建设承诺',table(['检查轴','覆盖范围'],d.coverage_audit.map(r=>r.map(esc))))+panel('按条件启用的专项模块','不假定本厂涉及全部产品或业务；与候选目录配套裁剪',table(['模块','适用条件','数据与问题','呈现'],f.conditional_modules.map(r=>r.map(esc)))));}
  if(tab==='metrics'&&params.get('metric')){$('#metric-search').value=params.get('metric');$('#metric-search').dispatchEvent(new Event('input'));}
  }
- fill(catalogTabs.some(([key])=>key===params.get('tab'))?params.get('tab'):'content');$$('[data-catalog-tab]').forEach(b=>b.addEventListener('click',()=>fill(b.dataset.catalogTab)));
+ fill(catalogTabs.some(([key])=>key===params.get('tab'))?params.get('tab'):'brief');$$('[data-catalog-tab]').forEach(b=>b.addEventListener('click',()=>fill(b.dataset.catalogTab)));
 }
 async function renderAudit(params,token){const rows=await api('audit');if(token!==routeSerial)return;$('#main').innerHTML=header('操作审计','记录导入、编码分配、模型保存、专题变更、导出和异常处置。展示最近100次操作。')+table(['发生时间','用户','操作','对象','明细'],rows.map((r,i)=>[esc(r.created_at.slice(0,19).replace('T',' ')),esc(r.actor),`<span class="mono">${esc(r.action)}</span>`,`${esc(r.object_type)}<br><span class="mono">${esc(r.object_id)}</span>`,`<button class="ghost" data-audit="${i}">检查内容 ↗</button>`]));$$('[data-audit]').forEach(b=>b.addEventListener('click',()=>modal('操作明细',`<pre class="code-block">${esc(JSON.stringify(rows[+b.dataset.audit].detail,null,2))}</pre>`)))}
 

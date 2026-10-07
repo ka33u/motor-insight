@@ -716,7 +716,8 @@ def refine(d):
     from refine_bi_crew_schedule import refine_crew
     from refine_bi_topic_pages import refine_pages
     from refine_bi_oee import refine_oee
-    return refine_oee(refine_pages(refine_crew(refine_schedule(refine_exports(refine_results(refine_cards(refine_msa(refine_workspace(refine_spc(result))))))))))
+    from bi_decision_reading import refine_reading
+    return refine_reading(refine_oee(refine_pages(refine_crew(refine_schedule(refine_exports(refine_results(refine_cards(refine_msa(refine_workspace(refine_spc(result)))))))))))
 
 
 if __name__=='__main__':

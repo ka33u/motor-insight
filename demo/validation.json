@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "record_count": 224061,
+  "record_hash_digest": "6df2bfe6bdf998f6e18412c93a23e6179e97d9cf10c91d08aa1c12b49bfa6ed8",
+  "public_configuration_counts": {
+    "app_record": 224061,
+    "app_analysismodel": 52,
+    "app_topic": 21,
+    "app_metricversion": 11
+  },
+  "tests": 2409,
+  "fresh_xlsx_replay": true,
+  "source_database_unchanged": true,
+  "browser_validation": false
+}
