@@ -1,4 +1,4 @@
-import json,tempfile
+import json,tempfile,uuid
 from pathlib import Path
 from datetime import datetime
 from django.conf import settings
@@ -23,6 +23,11 @@ class PlatformCase(TestCase):
     def record(self,dataset,values):
         row=self.row(dataset,values,'committed');return Record.objects.create(dataset=dataset,business_key=values['id'],values=values,record_hash=row.record_hash,source_row=row)
     def post(self,url,data):return self.client.post(url,json.dumps(data),content_type='application/json')
+    def checked_model_update(self,model,**changes):
+        candidate={key:model[key] for key in ('name','dataset','definition','is_public')};candidate.update(changes)
+        body=dict(version=model['version'],candidate=candidate,scope={},links=None)
+        preview=self.post(f'/api/models/{model["id"]}/change-preview',body);self.assertEqual(preview.status_code,200,preview.content)
+        return self.post(f'/api/models/{model["id"]}/change',dict(**body,receipt=preview.json()['receipt'],reason='测试核对新旧定义',acknowledged=True,request_id=str(uuid.uuid4())))
 
 class ImportSafetyTests(PlatformCase):
     def test_ids_and_blank_text(self):
@@ -80,7 +85,7 @@ class AnalysisTests(PlatformCase):
         self.client.force_login(self.admin);payload={'name':'按日分析','dataset':'units','definition':{'dimension':'assembly_at','grain':'day','metrics':[{'agg':'count'}],'chart':'line'}}
         r=self.post('/api/models',payload);self.assertEqual(r.status_code,200);saved=r.json()
         self.assertEqual(self.client.get('/api/models').json()[0]['definition'],payload['definition'])
-        r=self.post('/api/models',{**saved,'name':'修改后'});self.assertEqual(r.json()['version'],2)
+        r=self.checked_model_update(saved,name='修改后');self.assertEqual(r.json()['model']['version'],2)
         self.assertEqual(self.post('/api/models',saved).status_code,409)
         topic=self.post('/api/topics',{'name':'质量专题','layout':[{'model_id':saved['id'],'span':2}]}).json()
         self.assertEqual(Topic.objects.get(pk=topic['id']).layout,[{'model_id':saved['id'],'span':2}])

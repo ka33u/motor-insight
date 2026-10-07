@@ -322,15 +322,13 @@ def analysis_models(request):
             except ValidationError:continue
             permitted.append(model_info(m))
         return reply(permitted)
-    require(access.can_edit(request.user));data=body(request);validate_definition(request.user,data['dataset'],data['definition'])
+    require(access.can_edit(request.user));data=body(request)
+    if data.get('id'):return reply({'error':'模型更新需先预演定义、试算和依赖影响，请使用模型变更入口','code':'model_change_preview_required'},409)
+    validate_definition(request.user,data['dataset'],data['definition'])
     if data['definition'].get('grouping_ref') and data.get('is_public'):raise ValueError('个人业务分组模型暂只允许私有保存；共享分组尚未开放')
     if not str(data.get('name','')).strip():raise ValueError('请输入模型名称')
     with transaction.atomic():
-        if data.get('id'):
-            m=AnalysisModel.objects.select_for_update().get(pk=data['id']);require(m.owner==request.user.username or access.role(request.user)=='admin')
-            if data.get('version')!=m.version:return reply({'error':'模型已被更新，请刷新后编辑'},409)
-            before=model_info(m);m.version+=1
-        else:m=AnalysisModel(owner=request.user.username);before=None
+        m=AnalysisModel(owner=request.user.username);before=None
         m.name=str(data['name'])[:150];m.dataset=data['dataset'];m.definition=data['definition'];m.is_public=bool(data.get('is_public'));m.save()
         AuditEvent.objects.create(action='model.save',actor=request.user.username,object_type='AnalysisModel',object_id=str(m.pk),detail={'before':before,'after':model_info(m)})
     return reply(model_info(m))

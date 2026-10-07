@@ -628,3 +628,22 @@ class TopicPageRequest(models.Model):
     request_hash=models.CharField(max_length=64)
     response=models.JSONField()
     created_at=models.DateTimeField(default=spc_timezone.now,editable=False)
+
+class AnalysisModelChange(models.Model):
+    """An immutable checked change; definitions and review evidence, not business results."""
+    request_id=models.UUIDField(primary_key=True,editable=False)
+    actor=models.ForeignKey('auth.User',on_delete=models.PROTECT,related_name='analysis_model_changes')
+    model=models.ForeignKey(AnalysisModel,on_delete=models.PROTECT,related_name='changes')
+    from_version=models.PositiveIntegerField()
+    to_version=models.PositiveIntegerField()
+    request_hash=models.CharField(max_length=64)
+    payload=models.JSONField()
+    payload_hash=models.CharField(max_length=64)
+    created_at=models.DateTimeField(default=spc_timezone.now,editable=False)
+    class Meta:
+        constraints=[models.UniqueConstraint(fields=['model','to_version'],name='model_change_version_unique')]
+    def save(self,*args,**kwargs):
+        if not self._state.adding:
+            from django.core.exceptions import ValidationError
+            raise ValidationError('模型变更记录不可覆盖，请预演并保存新版本')
+        return super().save(*args,**kwargs)

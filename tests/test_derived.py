@@ -105,7 +105,7 @@ class DerivedIntegrationTests(PlatformCase):
         self.assertEqual(m['definition'],payload['definition'])
         t=self.post('/api/topics',{'name':'成本公式专题','layout':[{'model_id':m['id'],'span':2}],'is_public':True})
         self.assertEqual(t.status_code,200)
-        self.assertEqual(self.post('/api/models',{**m,'name':'改名'}).status_code,200)
+        self.assertEqual(self.checked_model_update(m,name='改名').status_code,200)
         self.assertEqual(self.post('/api/models',m).status_code,409)
         self.client.force_login(self.quality)
         self.assertEqual(self.client.get('/api/models').json(),[])

@@ -54,6 +54,8 @@ def main():
  '《BI个人专题页面编排说明_20261007.txt》说明页面入口与版本边界。设计ZIP不含数据库/凭据；应用恢复包独立保存。'])
  if d['framework'].get('object_hub'):
   c=d['framework']['object_hub'];lines.extend(['','统一对象检索增量',c['state'],c['boundary']])
+ if d['framework'].get('model_change_preview'):
+  c=d['framework']['model_change_preview'];lines.extend(['','模型更新预演增量',c['state'],c['boundary']])
  if d['framework'].get('topic_journey'):
   c=d['framework']['topic_journey'];lines.extend(['','跨专题探索增量',c['state'],c['boundary']])
  if d['framework'].get('oee_trial'):
