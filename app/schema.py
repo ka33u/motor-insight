@@ -183,3 +183,6 @@ register_order_baseline(register)
 
 from .launch_schema import register_launch
 register_launch(register)
+
+from .first_review_schema import register as register_first_review
+register_first_review(register)

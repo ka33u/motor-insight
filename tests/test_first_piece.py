@@ -210,7 +210,7 @@ class FirstPieceAPITests(PlatformCase):
         self.assertEqual(r.status_code, 200)
         self.assertIn('首件证据工作台', r.content.decode('utf-8-sig'))
         rows = list(csv.reader(io.StringIO(r.content.decode('utf-8-sig'))))
-        self.assertIn("'=1+1", rows[-1])
+        self.assertTrue(any("'=1+1" in row for row in rows))
         before = AuditEvent.objects.count()
         with patch('app.first_piece_views.AuditEvent.objects.create', side_effect=IntegrityError):
             self.assertEqual(self.export().status_code, 409)

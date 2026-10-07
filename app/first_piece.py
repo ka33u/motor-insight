@@ -11,7 +11,7 @@ TABLES = tuple(dict.fromkeys([*pq.TABLES, *mt.TABLES]))
 
 def rule_hash():
     return mt.digest({p: (Path(__file__).parent/p).read_text() for p in
-                      ('first_piece.py', 'first_piece_data.py', 'process_quality.py', 'metrology.py')})
+                      ('first_piece.py', 'first_piece_data.py', 'first_review.py', 'first_review_schema.py', 'process_quality.py', 'metrology.py')})
 
 
 def analyze(data, cutoff):

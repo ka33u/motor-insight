@@ -1,0 +1,20 @@
+// Pure presentation contracts; not browser/DOM/download acceptance.
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {firstReviewSummary,firstReviewCell,firstReviewDetail} from '../static/first_review.js';
+const root=new URL('../',import.meta.url),d=JSON.parse(fs.readFileSync(new URL('data/first_review_board.json',root),'utf8'));
+const all=JSON.parse(fs.readFileSync(new URL('data/first_review_example.json',root),'utf8'));
+const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+const h={esc,panel:(t,b)=>`<section><h2>${esc(t)}</h2>${b}</section>`,table:(headers,rows)=>`<table>${headers.map(esc).join('')}${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</table>`};
+const before=structuredClone(d),html=firstReviewSummary(d,h);
+assert.match(html,/实测证据 × 复核登记/);assert.match(html,/>189<\/a>/);
+const links=[...html.matchAll(/href="#first-piece\?([^"]+)"/g)].map(m=>new URLSearchParams(m[1]));
+assert.ok(links.some(p=>p.get('state')==='ready'&&p.get('review')==='matched'));
+assert.equal(Object.values(d.review_matrix).reduce((sum,row)=>sum+Object.values(row).reduce((a,b)=>a+b,0),0),288);
+assert.match(html,/一个计划只落入一格/);assert.deepEqual(before,d);
+const withdrawn=Object.values(all.reviews.rows).find(r=>r.state==='withdrawn');
+assert.match(firstReviewDetail(withdrawn,h),/复核登记已撤销/);assert.match(firstReviewDetail(withdrawn,h),/v2/);assert.match(firstReviewDetail(withdrawn,h),/v1/);
+for(const state of ['none','invalid','stale','contradicted','held','pending','matched'])assert.match(firstReviewCell(Object.values(all.reviews.rows).find(r=>r.state===state),h),new RegExp(all.reviews.labels[state]));
+const hostile=structuredClone(withdrawn);hostile.history[0].note='<img src=x onerror=1>';hostile.selected.reference='<script>x</script>';assert.doesNotMatch(firstReviewDetail(hostile,h),/<img|<script/);
+const proof={success:true,matrix_all_filtered_plans:true,matrix_drill_parameters:true,version_history:true,all_review_states:true,escaping:true,browser_acceptance:false,mobile_acceptance:false,actual_download_acceptance:false};
+fs.writeFileSync(new URL('data/first_review_ui.json',root),JSON.stringify(proof,null,2)+'\n');console.log(JSON.stringify(proof));

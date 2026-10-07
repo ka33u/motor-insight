@@ -205,6 +205,11 @@
       "filename": "41_投产条件核对_模拟.xlsx",
       "sha256": "f4558b2e95490c5cc65bce352906803f7aaf6d18d835f820a23add56ce08dde7",
       "mapping": {}
+    },
+    {
+      "filename": "42_首件复核登记_模拟.xlsx",
+      "sha256": "fde24df0071b4fb470841707de9a41c3191aeba7c053c749395adeea7dff4483",
+      "mapping": {}
     }
   ],
   "legacy_plan_rows": [

@@ -1,6 +1,6 @@
 """Bounded reads; instrument-use histories stay whole across identity changes."""
 from collections import defaultdict
-from . import first_piece as engine, spc_data, analytics, metrology
+from . import first_piece as engine, first_review, spc_data, analytics, metrology
 from .models import Record
 
 LIMIT = 50000
@@ -27,7 +27,7 @@ def load(study_id=''):
             take(ds, {'business_key__in': keys[start:start+300]})
 
     for ds in ('process_specs', 'process_check_plans', 'process_checks', 'process_readings',
-               'metrology_instruments', 'metrology_rules', 'metrology_calibrations', 'metrology_notices', 'metrology_reviews'):
+               'metrology_instruments', 'metrology_rules', 'metrology_calibrations', 'metrology_notices', 'metrology_reviews', first_review.DATASET):
         take(ds)
     # Include every version of a series that ever named a process reading, even
     # if a later row changes stage or removes the process reference.
@@ -45,6 +45,7 @@ def load(study_id=''):
     keyed('units', (r.get('object_id') for r in ops if r.get('object_type') == '整机'))
     keyed('equipment', (r.get('equipment_id') for r in ops))
     keyed('employees', (r.get('inspector_id') for r in vals('process_checks')))
+    keyed('employees', (r.get('reviewer_id') for r in vals(first_review.DATASET)))
     study = None
     if study_id:
         row = spc_data.queryset('launch_studies').get(business_key=study_id)
@@ -64,5 +65,5 @@ def load(study_id=''):
     facts = [dict(dataset=ds, key=k, values=r.values) for (ds, k), r in sorted(records.items())]
     result = engine.analyze(tables, analytics.AS_OF)
     target = engine.targets(tables, result, study, analytics.AS_OF) if study else None
-    return dict(result=result, targets=target, sources=sources,
+    return dict(result=result, targets=target, sources=sources, reviews=first_review.analyze(tables, result, analytics.AS_OF),
                 source_hash=metrology.digest(dict(facts=facts, sources=sources)), rule_hash=engine.rule_hash())
