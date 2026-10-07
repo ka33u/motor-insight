@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "0.14.0",
+  "version": "0.15.0",
   "record_count": 230802,
   "record_hash_digest": "cbcc34abae9f7093f534ff396b911f3f47e8fae1eadd28fd72493117f6dd9cf4",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
@@ -10,14 +10,14 @@
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2542,
-  "fresh_xlsx_replay": true,
+  "tests": 2569,
+  "fresh_xlsx_replay": false,
   "effective_workbooks": 41,
   "original_workbooks": 42,
-  "prior_business_facts_preserved": 230509,
-  "new_business_facts": 293,
+  "prior_business_facts_preserved": 230802,
+  "new_business_facts": 0,
   "raw_contracts": 149,
-  "original_files_preserved": 456,
+  "original_files_preserved": 457,
   "native_http_roles": 6,
   "pure_js_presentation": true,
   "browser_validation": false,
@@ -45,5 +45,20 @@
     "withdrawn": 1,
     "invalid": 3,
     "contradicted": 2
+  },
+  "last_fresh_xlsx_replay_version": "0.14.0",
+  "existing_replayed_database_verified": true,
+  "topic_journey": {
+    "modes": [
+      "inherit",
+      "objects",
+      "new"
+    ],
+    "same_scope_values_equal": true,
+    "original_scope_restored": true,
+    "date_roles_checked": true,
+    "all_main_database_bytes_unchanged": true,
+    "signed_scope_only_navigation": true,
+    "url_contains_only_local_handle": true
   }
 }

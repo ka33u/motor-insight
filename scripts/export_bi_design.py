@@ -77,6 +77,9 @@ if f.get('joint_schedule_trial'):
 if f.get('order_baseline_trial'):
     c=f['order_baseline_trial']
     parts.append(section('order-baseline-design','订单与BOM基线：覆盖缺口、双交期和版本差异','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','arithmetic','coverage','time','presentation','boundary']])))
+if f.get('topic_journey'):
+    c=f['topic_journey']
+    parts.append(section('topic-journey-design','跨专题探索：范围、日期角色与返回','<p>'+h(c['state'])+'</p>'+table(['内容','定义与边界'],[[k,c[k]] for k in ['definition','presentation','boundary']])))
 if f.get('first_piece_evidence'):
     c=f['first_piece_evidence']
     parts.append(section('first-piece-design','首件证据：实测与计量依据同屏核对','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','evidence','presentation','boundary']])))

@@ -1,4 +1,5 @@
 import {applyPage} from './topic_pages.js';
+import {bindJourney,journeyRoute,loadJourney,sameConfig} from './topic_journey.js';
 import {scopeSummaryMarkup} from './bi_card_summary.js';
 import {linkMarkup,linkPicker,linkText,markRows,bindMarks} from './topic_linkage.js';
 import {quantileExplanation} from './quantiles.js';
@@ -7,7 +8,7 @@ import {mountPivotComparison,pivotCell} from './pivot_comparison.js';
 import {derivedExplanation} from './derived.js';
 import {groupingExplanation} from './groupings.js';
 import {createTopicSnapshots} from './topic_snapshots.js';
-export function createTopicWorkspace({pivotWorkspace,openAnalysisExplorer,api,esc,num,tag,header,panel,table,chart,modal,toast,go,$,$$,on,getState,isCurrent,editTopic,sourceLinks,localTime}){
+export function createTopicWorkspace({pivotWorkspace,openAnalysisExplorer,api,esc,num,tag,header,panel,table,chart,modal,toast,go,$,$$,on,getState,isCurrent,editTopic,sourceLinks,localTime,getModalRevision}){
  const snapshots=createTopicSnapshots({pivotWorkspace,api,esc,num,header,panel,table,chart,modal,toast,go,$,$$,on,getState,isCurrent,localTime});
  const defaultConfig=()=>({scope:{},reference_scope:null,primary_label:'当前范围',reference_label:'对照范围'});
  const clean=s=>Object.fromEntries(Object.entries(s).filter(([,v])=>v!==''));
@@ -15,14 +16,22 @@ export function createTopicWorkspace({pivotWorkspace,openAnalysisExplorer,api,es
  const signed=v=>v==null?'—':(v>0?'+':'')+num(v,4);
  const close=()=>$('#detail').close();
  return async function render(params,token){
+  const journey=journeyRoute(params);
   const topics=await api('topics');if(!isCurrent(token))return;getState().topics=topics;
   const topic=topics.find(t=>t.id===Number(params.get('id')));
+  if(journey&&!topic)throw Error('探索路径中的专题已不可访问，请从专题列表重新进入');
   if(!topic){$('#main').innerHTML=header('专题空间','按业务问题组织分析。保存个人范围、比较两组对象，并从分组追溯到来源。',getState().user.can_edit?'<button class="primary" id="new-topic">＋ 创建专题</button>':'')+`<div class="cards">${topics.map((t,i)=>`<article class="topic-card"><div class="number">SPACE ${String(i+1).padStart(2,'0')} <span class="tag gray" style="float:right">v${t.version}</span></div><h2>${esc(t.name)}</h2><p>${esc(t.description)}</p><footer><small>${t.layout.length} 张分析卡 · ${t.is_public?'共享专题':'个人专题'}</small><a href="#topics?id=${t.id}">进入专题 ↗</a></footer></article>`).join('')}</div>`;on('#new-topic','click',()=>editTopic());return}
   if(params.get('snapshot'))return snapshots.render(topic,params.get('snapshot'),token);
   const page=params.get('page')?await api('topic-pages/'+encodeURIComponent(params.get('page'))+(params.get('page_version')?'?version='+encodeURIComponent(params.get('page_version')):'')):null;if(!isCurrent(token))return;
   if(page&&(page.topic_id!==topic.id||!page.ready)){ $('#main').innerHTML=header('个人页面需要核对','页面已归档、原专题或模型绑定已变，请在定义页核对后保存新版本。')+`<a href="#topic-pages?id=${encodeURIComponent(page.id)}">查看定义与历史 ↗</a>`;return; }
   const topicGo=fields=>go('topics',{...(page?{page:page.id,page_version:page.version}:{}),...fields});
   const [ctx,options]=await Promise.all([api(`topics/${topic.id}/workspace`),api('scopes')]);if(!isCurrent(token))return;
+  let arrival=null;
+  if(journey){
+   const receipt=loadJourney(sessionStorage,getState().user.username,journey.handle);
+   arrival=await api(`topics/${topic.id}/journey/resolve`,{method:'POST',body:{receipt,direction:journey.direction}});if(!isCurrent(token))return;
+   if(arrival.context_token!==ctx.context_token)throw Error('目标定义已变化，请从原专题重新预览');
+  }
   if(params.get('page_context')&&params.get('page_context')!==ctx.context_token)throw Error('目标专题定义变化，请回到原工作页重新准备导航');
   if(page&&JSON.stringify(page.current_binding.topic)!==JSON.stringify(ctx.binding))throw Error('个人页面与当前专题定义不一致，请重新读取');
   getState().topic=topic;const requested=params.get('view');let selected=ctx.views.find(v=>String(v.id)===requested)||null;
@@ -30,6 +39,7 @@ export function createTopicWorkspace({pivotWorkspace,openAnalysisExplorer,api,es
   const storageKey=`motor-topic-workspace:${getState().user.username}:${topic.id}`;let conf=defaultConfig(),last=null,serial=0,evidenceSerial=0;
   try{const saved=JSON.parse(sessionStorage.getItem(storageKey)||'null');if(saved?.scope&&Object.hasOwn(saved,'reference_scope'))conf=saved}catch{}
   if(selected)conf=structuredClone(selected.config);
+  if(arrival)conf=structuredClone(arrival.config);
   const coverage=key=>ctx.cards.filter(c=>c.available&&c.contract[key]).length;
   const scopeName=s=>[s.family||'全部产品族',s.customer_id?(options.customers.find(c=>c.id===s.customer_id)?.name||s.customer_id):'全部客户',(s.from||'不限开始')+' 至 '+(s.to||'不限结束')].join(' · ');
   const familyOptions=s=>'<option value="">全部产品族</option>'+[...new Set([...options.families,...(s.family?[s.family]:[])])].map(f=>`<option value="${esc(f)}" ${s.family===f?'selected':''}>${esc(f)}${options.families.includes(f)?'':' · 当前来源未找到'}</option>`).join('');
@@ -40,6 +50,12 @@ export function createTopicWorkspace({pivotWorkspace,openAnalysisExplorer,api,es
   function writeForm(){for(const [prefix,s] of [['scope',conf.scope],['reference',conf.reference_scope||{}]]){for(const [field,key] of [['family','family'],['customer','customer_id'],['from','from'],['to','to']])$('#'+prefix+'-'+field).value=s[key]||''}$('#topic-compare').checked=conf.reference_scope!==null;$('#reference-range').hidden=conf.reference_scope===null;$('#primary-label').value=conf.primary_label;$('#reference-label').value=conf.reference_label}
   $('#main').innerHTML=header(topic.name,topic.description,`<a href="#topics">← 所有专题</a>${ctx.topic.can_edit?'<button id="edit-topic">编辑布局</button>':''}`)+`<section class="panel topic-view-bar"><div class="toolbar"><label>个人分析视角<select id="topic-view-select"><option value="">临时分析 · 未保存</option>${ctx.views.map(v=>`<option value="${v.id}" ${selected?.id===v.id?'selected':''}>${esc(v.name)}${v.stale?' · 定义待核对':''}</option>`).join('')}</select></label><button id="topic-view-save">另存个人视角</button><button id="topic-view-update" ${!selected||selected.stale?'disabled':''}>更新此视角</button><button id="topic-view-manage">管理视角</button></div><p class="panel-note" id="topic-view-status">${selected?'已载入个人视角 v'+selected.version:'当前为临时分析'} · ${esc(ctx.notice)}</p>${selected?.stale?`<div class="notice warn"><span>专题或模型定义已变，已保存视角暂停运行。请核对差异后更新，或选择临时分析。</span><button id="topic-view-rebind">核对新定义</button></div>`:''}</section><details id="topic-scope-editor" class="panel topic-scope" ${selected?'':'open'}><summary>调整范围和对照条件</summary><form id="topic-scope-form" class="editor"><div class="topic-compare-controls"><label>当前范围名称<input id="primary-label" maxlength="30" value="${esc(conf.primary_label)}" required></label><label class="topic-check"><input id="topic-compare" type="checkbox" ${conf.reference_scope!==null?'checked':''}>启用范围对照</label><label>对照范围名称<input id="reference-label" maxlength="30" value="${esc(conf.reference_label)}" required></label></div>${scopeForm('scope',conf.scope,'当前范围')}<div id="reference-range" ${conf.reference_scope===null?'hidden':''}>${scopeForm('reference',conf.reference_scope||{},'对照范围')}</div><div class="toolbar"><button class="primary" type="submit">应用到专题</button><button type="button" id="scope-reset">重置范围</button></div></form><p class="panel-note">${esc(options.note)} 不支持条件的卡片暂停计算。更改条件后点击应用；保存视角仅保存已应用条件。</p><div id="scope-error" class="inline-error" role="alert"></div></details><div id="scope-summary"></div><div class="grid topic-result-grid" id="topic-results"></div>`;
   const root=$('#topic-results');
+  root.insertAdjacentHTML('beforebegin','<div class="toolbar"><button id="topic-journey-open">跨专题探索 ↗</button><span class="panel-note">逐卡核对范围，选择条件继承方式。</span></div>');
+  if(arrival){root.insertAdjacentHTML('beforebegin',`<div class="notice"><span>${arrival.direction==='return'?'已返回原专题的临时分析':esc(arrival.source.name)+' → '+esc(arrival.target.name)+' · '+esc(arrival.mode_label)}<br>${esc(arrival.return_notice)} 结果读取当前数据。刷新会恢复此路径的起始范围；后续调整可另存个人视角。</span>${arrival.direction==='forward'?'<button id="topic-journey-return">返回原专题与范围</button>':''}</div>`);on('#topic-journey-return','click',()=>go('topics',{id:arrival.source.id,journey_back:journey.handle}));}
+  bindJourney({api,esc,table,modal,toast,go,$,on,getModalRevision,isCurrent,token,topic,topics,ctx,username:getState().user.username,getApplied:()=>{
+   if(!last||!last.cards.some(c=>c.primary)||!sameConfig(conf,last.config)||!sameConfig(readForm(),conf))throw Error('请先应用当前条件并完成计算，再跨专题探索');
+   return structuredClone(last.config);
+  }});
   if(page){
    root.insertAdjacentHTML('beforebegin',`<section class="topic-page-heading"><small>${esc(page.code)} · 页面 v${page.version}${page.version!==page.current_version?' · 历史编排，结果仍按当前数据计算':''}</small><h2>${esc(page.definition.title)}</h2><p>${esc(page.definition.question)}</p><p>使用节奏：${esc(page.definition.cadence)}</p><a href="#topic-pages?id=${encodeURIComponent(page.id)}&version=${page.version}">定义与历史 ↗</a><div class="toolbar">${page.definition.navigation.map((n,i)=>`<button data-page-navigation="${i}">${esc(n.label)} · ${n.mode==='inherit'?'继承完整条件':'开始新范围'}</button>`).join('')}</div><p>页面版本保存阅读布局；结果快照固定当次数值。未保存的范围修改请先点击应用，再导航。</p></section>`);
    $$('[data-page-navigation]').forEach(button=>button.addEventListener('click',async()=>{button.disabled=true;try{

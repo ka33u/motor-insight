@@ -347,7 +347,7 @@ const openAnalysisExplorer=createAnalysisExplorer({api,esc,num,table,modal,toast
 const scatterWorkspace=createScatterWorkspace({api,esc,num,table,modal,toast,$,getModalRevision:()=>modalRevision,isCurrent:t=>t===routeSerial,getRouteToken:()=>routeSerial,sourceLinks});
 const pivotWorkspace=createPivotWorkspace({api,esc,num,table,modal,toast,$,getModalRevision:()=>modalRevision,isCurrent:t=>t===routeSerial,getRouteToken:()=>routeSerial,sourceLinks});
 const renderActionTasks=createActionTasks({api,esc,num,header,panel,table,tag,modal,toast,go,$,$$,on,isCurrent:t=>t===routeSerial,localTime}).render;
-const renderTopics=createTopicWorkspace({pivotWorkspace,openAnalysisExplorer,api,esc,num,tag,header,panel,table,chart,modal,toast,go,$,$$,on,localTime,getState:()=>state,isCurrent:token=>token===routeSerial,editTopic,sourceLinks});
+const renderTopics=createTopicWorkspace({pivotWorkspace,openAnalysisExplorer,api,esc,num,tag,header,panel,table,chart,modal,toast,go,$,$$,on,localTime,getState:()=>state,isCurrent:token=>token===routeSerial,editTopic,sourceLinks,getModalRevision:()=>modalRevision});
 const renderCoding=createCodingWorkspace({api,esc,num,tag,header,panel,table,modal,toast,go,$,$$,on,localTime,getState:()=>state,isCurrent:token=>token===routeSerial});
 const renderGroupings=createGroupingWorkspace({api,esc,num,header,panel,table,modal,toast,go,$,$$,on,localTime,getState:()=>state,isCurrent:token=>token===routeSerial});
 const renderAssets=createAssetWorkspace({api,esc,num,tag,header,panel,table,chart,modal,toast,go,$,$$,on,localTime,isCurrent:token=>token===routeSerial});

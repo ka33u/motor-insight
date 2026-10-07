@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import {randomUUID} from 'node:crypto';
+import {journeyRoute,saveJourney,loadJourney,sameConfig,previewMarkup} from '../static/topic_journey.js';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const table=(headers,rows)=>'<table><thead><tr>'+headers.map(h=>`<th>${esc(h)}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(c=>`<td>${c}</td>`).join('')+'</tr>').join('')+'</tbody></table>';
+class MemoryStorage {data=new Map();get length(){return this.data.size} key(n){return [...this.data.keys()][n]} getItem(k){return this.data.get(k)??null} setItem(k,v){this.data.set(k,String(v))} removeItem(k){this.data.delete(k)}}
+const config={scope:{family:'YE4',customer_id:'000019',from:'2026-09-25'},reference_scope:null,primary_label:'<img src=x onerror=evil()>',reference_label:'对照',links:{selections:[{kind:'configuration',value:'000003'}]}};
+const data={source:{name:'生产 <script>evil()</script>'},target:{name:'质量'},source_date_roles:['装配日'],target_date_roles:['检测发生日'],notice:'仅当前数据',return_notice:'返回临时分析',options:[{mode:'inherit',label:'完整继承',allowed:false,reasons:['日期角色不同'],config,removed:[],cards:[{slot:0,name:'<svg onload=evil()>',date_label:'检测发生日',ready:true,reasons:[]}]},{mode:'objects',label:'保留当前对象',allowed:true,reasons:[],config:{...config,scope:{family:'YE4',customer_id:'000019'}},removed:['开始日期','整个对照范围'],cards:[{slot:0,name:'质量',date_label:'检测发生日',ready:true,reasons:[]}]},{mode:'new',label:'开始新范围',allowed:true,reasons:[],config:{scope:{},reference_scope:null,primary_label:'当前范围',reference_label:'对照范围'},removed:['所有条件'],cards:[{slot:1,name:'当前不可访问',date_label:'不可核对',ready:false,reasons:['当前不可访问']}]}]};
+const before=JSON.stringify(data),html=previewMarkup(data,esc,table);
+assert.equal(JSON.stringify(data),before);assert(!/<script|<img|<svg/.test(html));assert(html.includes('000019')&&html.includes('000003'));
+assert(!/NaN|undefined|\[object Object\]/.test(html));assert.match(html,/data-journey-mode="inherit" disabled/);assert.match(html,/data-journey-mode="objects" >/);
+assert(html.includes('当前不可访问')&&html.includes('不修复不可用模型')&&html.includes('明确清除'));
+assert(sameConfig({a:{b:2,c:1}},{a:{c:1,b:2}}));assert(!sameConfig({reference_scope:null},{reference_scope:{}}));
+const storage=new MemoryStorage(),handle=randomUUID(),prepared={receipt:'signed-receipt-containing-conditions',expires_seconds:7200};
+saveJourney(storage,'user:甲',handle,prepared,1000);assert.equal(loadJourney(storage,'user:甲',handle,2000),prepared.receipt);
+assert.throws(()=>loadJourney(storage,'user:乙',handle,2000));
+for(const direction of ['journey','journey_back'])assert.deepEqual(journeyRoute(new URLSearchParams({id:'12',[direction]:handle})),{direction:direction==='journey'?'forward':'return',handle});
+for(const suffix of ['&view=1','&page=abc','&snapshot=x','&config={}','&id=13',`&journey_back=${handle}`,`&journey=${handle}`])assert.throws(()=>journeyRoute(new URLSearchParams(`id=12&journey=${handle}${suffix}`)));
+assert.throws(()=>journeyRoute(new URLSearchParams({id:'x',journey:handle})));assert.throws(()=>journeyRoute(new URLSearchParams({id:'12',journey:prepared.receipt})));assert.equal(journeyRoute(new URLSearchParams({id:'12',view:'1'})),null);
+for(let n=0;n<22;n++)saveJourney(storage,'user:甲',randomUUID(),prepared,2000+n);
+assert.equal(storage.length,20);assert.throws(()=>loadJourney(storage,'user:甲',handle,2500));
+const expired=randomUUID();saveJourney(storage,'user:甲',expired,prepared,1000);assert.throws(()=>loadJourney(storage,'user:甲',expired,7201000));
+const malformed=randomUUID();storage.setItem('motor-topic-journey:'+encodeURIComponent('user:甲')+':'+malformed,'{broken');assert.throws(()=>loadJourney(storage,'user:甲',malformed,2000));
+console.log(JSON.stringify({success:true,pure_js_markup_and_state:true,escaped_text:true,leading_zero_identifiers:true,disabled_modes_visible:true,ambiguous_routes_rejected:true,receipt_not_in_url:true,account_storage_separated:true,expired_and_evicted_paths_explicit:true,browser_acceptance:false,mobile_acceptance:false}));
