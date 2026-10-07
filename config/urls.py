@@ -186,6 +186,8 @@ urlpatterns += [path('api/joint-schedule',joint_schedule.studies),path('api/join
 urlpatterns += [path('api/crew-schedule',crew_schedule.studies),path('api/crew-schedule/<str:key>',crew_schedule.board),path('api/crew-schedule/<str:key>/sources',crew_schedule.sources),path('api/crew-schedule/<str:key>/tasks/<str:task_id>',crew_schedule.detail),path('api/crew-schedule/<str:key>/export',crew_schedule.export)]
 
 from app import oee_views as oee
+from app import curing_views as curing
+urlpatterns += [path('api/curing',curing.board),path('api/curing/sources',curing.sources),path('api/curing/export',curing.export),path('api/curing/runs/<str:key>',curing.detail)]
 urlpatterns += [path('api/oee',oee.studies),path('api/oee/<str:key>',oee.board),path('api/oee/<str:key>/sources',oee.sources),path('api/oee/<str:key>/windows/<str:window_id>',oee.detail),path('api/oee/<str:key>/export',oee.export)]
 urlpatterns += [path('api/finite-schedule',finite_schedule.studies),path('api/finite-schedule/<str:key>',finite_schedule.board),
  path('api/finite-schedule/<str:key>/tasks/<str:task_id>',finite_schedule.detail),path('api/finite-schedule/<str:key>/sources',finite_schedule.sources),path('api/finite-schedule/<str:key>/export',finite_schedule.export)]

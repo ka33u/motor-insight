@@ -186,3 +186,6 @@ register_launch(register)
 
 from .first_review_schema import register as register_first_review
 register_first_review(register)
+
+from .curing_schema import register_curing
+register_curing(register)

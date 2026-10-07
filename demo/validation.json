@@ -1,22 +1,22 @@
 {
   "success": true,
-  "version": "0.17.0",
-  "record_count": 230802,
-  "record_hash_digest": "cbcc34abae9f7093f534ff396b911f3f47e8fae1eadd28fd72493117f6dd9cf4",
+  "version": "0.18.0",
+  "record_count": 232200,
+  "record_hash_digest": "0206fed03b9befe314bdd457ae0ee38f97e70f0300ee95d74ba54a68cfd704b3",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
   "public_configuration_counts": {
-    "app_record": 230802,
+    "app_record": 232200,
     "app_analysismodel": 52,
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2630,
+  "tests": 2659,
   "fresh_xlsx_replay": true,
-  "effective_workbooks": 41,
-  "original_workbooks": 42,
+  "effective_workbooks": 42,
+  "original_workbooks": 43,
   "prior_business_facts_preserved": 230802,
-  "new_business_facts": 0,
-  "raw_contracts": 149,
+  "new_business_facts": 1398,
+  "raw_contracts": 154,
   "original_files_preserved": 457,
   "native_http_roles": 6,
   "pure_js_presentation": true,
@@ -46,7 +46,7 @@
     "invalid": 3,
     "contradicted": 2
   },
-  "last_fresh_xlsx_replay_version": "0.17.0",
+  "last_fresh_xlsx_replay_version": "0.18.0",
   "existing_replayed_database_verified": true,
   "topic_journey": {
     "modes": [
@@ -59,7 +59,9 @@
     "date_roles_checked": true,
     "all_main_database_bytes_unchanged": true,
     "signed_scope_only_navigation": true,
-    "url_contains_only_local_handle": true
+    "url_contains_only_local_handle": true,
+    "verified_in_version": "0.15.0",
+    "scope": "历史版本验收记录；当前版本的完整回归含相关测试，但未重跑本节全部本地演练"
   },
   "object_hub": {
     "common_types": 14,
@@ -68,7 +70,9 @@
     "leading_zero_identifiers_preserved": true,
     "unit_reference_pagination_rows": 30,
     "role_scoped_fields_and_references": true,
-    "all_main_database_bytes_unchanged": true
+    "all_main_database_bytes_unchanged": true,
+    "verified_in_version": "0.16.0",
+    "scope": "历史版本验收记录；当前版本的完整回归含相关测试，但未重跑本节全部本地演练"
   },
   "model_changes": {
     "additive_metadata_migration": "0022_analysis_model_change",
@@ -85,6 +89,49 @@
     "new_main_model_changes": 0,
     "main_business_facts_unchanged": true,
     "historical_numeric_results_saved": false,
+    "browser_acceptance": false,
+    "verified_in_version": "0.17.0",
+    "scope": "历史版本验收记录；当前版本的完整回归含相关测试，但未重跑本节全部本地演练"
+  },
+  "curing_curves": {
+    "workbooks_new": 1,
+    "source_rows": 1398,
+    "counts": {
+      "cure_profiles": 35,
+      "cure_channels": 68,
+      "cure_runs": 34,
+      "cure_loads": 32,
+      "cure_samples": 1229
+    },
+    "summary": {
+      "runs": 34,
+      "states": {
+        "ready": 5,
+        "missing": 6,
+        "open": 2,
+        "attention": 16,
+        "voided": 1,
+        "future": 1,
+        "out": 3
+      },
+      "sample_rows": 1229,
+      "load_rows": 32,
+      "grain": "炉次计数；装載件数不合并为整机台数；日期筛选按曲线起点"
+    },
+    "new_regression_tests": 29,
+    "source_rows_http": 1942,
+    "normal_excel_import": true,
+    "idempotent_reimport": true,
+    "all_excel_fields_exact": true,
+    "old_fact_and_metadata_rows_preserved": true,
+    "first_piece_and_launch_unchanged": true,
+    "published_delivery_metric_unchanged": true,
+    "mapping_template_version": 12,
+    "discrete_points_no_interpolation": true,
+    "global_overlap_before_filter": true,
+    "source_filters_in_post_body": true,
+    "current_scope_receipt": true,
+    "all_selected_raw_inputs_exported": true,
     "browser_acceptance": false
   }
 }
