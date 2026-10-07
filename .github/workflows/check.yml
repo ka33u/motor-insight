@@ -15,3 +15,7 @@ jobs:
       - run: python scripts/repository_check.py
       - run: python manage.py check
       - run: python manage.py test --noinput --verbosity 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/check_workbench.mjs

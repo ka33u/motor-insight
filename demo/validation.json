@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "0.18.0",
+  "version": "0.19.0",
   "record_count": 232200,
   "record_hash_digest": "0206fed03b9befe314bdd457ae0ee38f97e70f0300ee95d74ba54a68cfd704b3",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
@@ -10,14 +10,14 @@
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2659,
+  "tests": 2681,
   "fresh_xlsx_replay": true,
   "effective_workbooks": 42,
   "original_workbooks": 43,
-  "prior_business_facts_preserved": 230802,
-  "new_business_facts": 1398,
+  "prior_business_facts_preserved": 232200,
+  "new_business_facts": 0,
   "raw_contracts": 154,
-  "original_files_preserved": 457,
+  "original_files_preserved": 458,
   "native_http_roles": 6,
   "pure_js_presentation": true,
   "browser_validation": false,
@@ -46,7 +46,7 @@
     "invalid": 3,
     "contradicted": 2
   },
-  "last_fresh_xlsx_replay_version": "0.18.0",
+  "last_fresh_xlsx_replay_version": "0.19.0",
   "existing_replayed_database_verified": true,
   "topic_journey": {
     "modes": [
@@ -132,6 +132,44 @@
     "source_filters_in_post_body": true,
     "current_scope_receipt": true,
     "all_selected_raw_inputs_exported": true,
-    "browser_acceptance": false
+    "browser_acceptance": false,
+    "verified_in_version": "0.18.0",
+    "scope": "历史版本验收记录；当前版本完整回归含相关测试，核对主库完整结果一致，但未重跑本节全部HTTP与Excel演练"
+  },
+  "personal_workbench": {
+    "additive_metadata_migration": "0023_personal_workbench",
+    "target_kinds": 7,
+    "new_regression_tests": 22,
+    "pure_js_checks": 14,
+    "native_http_roles": 6,
+    "native_http_targets": 42,
+    "native_http_mutations": 114,
+    "old_tables_checked": 57,
+    "old_tables_original_rows_preserved_excluding_sequences": 56,
+    "sequence_advances": [
+      "django_migrations",
+      "django_content_type",
+      "auth_permission"
+    ],
+    "new_empty_main_tables": 2,
+    "metadata_rows_added": {
+      "django_migrations": 1,
+      "django_content_type": 2,
+      "auth_permission": 8
+    },
+    "main_business_facts_unchanged": true,
+    "main_models_topics_coding_unchanged": true,
+    "first_piece_launch_curing_unchanged": true,
+    "published_delivery_metric_unchanged": true,
+    "private_other_users_not_enumerated": true,
+    "current_access_and_definition_checked": true,
+    "optimistic_revision": true,
+    "default_explicit_route_priority": true,
+    "arbitrary_urls": false,
+    "temporary_filters_saved": false,
+    "numeric_results_saved": false,
+    "real_usage_telemetry": false,
+    "browser_acceptance": false,
+    "verified_in_version": "0.19.0"
   }
 }

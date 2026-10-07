@@ -187,6 +187,8 @@ urlpatterns += [path('api/crew-schedule',crew_schedule.studies),path('api/crew-s
 
 from app import oee_views as oee
 from app import curing_views as curing
+from app import workbench_views as workbench
+urlpatterns += [path('api/workbench',workbench.collection),path('api/workbench/catalog',workbench.catalog),path('api/workbench/open',workbench.open_entry),path('api/workbench/start',workbench.start)]
 urlpatterns += [path('api/curing',curing.board),path('api/curing/sources',curing.sources),path('api/curing/export',curing.export),path('api/curing/runs/<str:key>',curing.detail)]
 urlpatterns += [path('api/oee',oee.studies),path('api/oee/<str:key>',oee.board),path('api/oee/<str:key>/sources',oee.sources),path('api/oee/<str:key>/windows/<str:window_id>',oee.detail),path('api/oee/<str:key>/export',oee.export)]
 urlpatterns += [path('api/finite-schedule',finite_schedule.studies),path('api/finite-schedule/<str:key>',finite_schedule.board),

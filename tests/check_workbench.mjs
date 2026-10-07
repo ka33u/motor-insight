@@ -1,0 +1,41 @@
+// Pure JavaScript contract/state checks; this does not render or automate a browser.
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {targetFromRoute,groupedEntries,reorderEntries,workbenchMarkup,createWorkbench} from '../static/workbench.js';
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const deferred=()=>{let resolve;const promise=new Promise(r=>resolve=r);return {promise,resolve}};
+const tick=()=>new Promise(r=>setImmediate(r));let checks=0;
+async function check(fn){await fn();checks++}
+const uuid='12345678-1234-1234-1234-123456789012';
+await check(()=>{for(const [url,kind,target] of [['#delivery','module','delivery'],['#analysis?model=12','model','12'],['#topics?id=2','topic','2'],['#topics?id=2&view=4','view','4'],['#topics?id=2&page='+uuid,'page',uuid],['#topic-pages?id='+uuid,'page',uuid],['#model-cards?id='+uuid,'card',uuid],['#coding?id=6','coding','6']])assert.deepEqual(targetFromRoute(url),{kind,target});for(const url of ['#analysis?model=01','#coding?id=-1','#topics?view=bad','#topic-pages?id=BAD','#javascript:alert(1)','#//external'])assert.equal(targetFromRoute(url),null)});
+const row=(id,section='',extra={})=>({id,kind:'module',target:'delivery',alias:'',label:'交付',note:'当前资料',state:'ready',section,position:0,...extra});
+const board=(revision,rows=[],extra={})=>({revision,rows,limit:100,notice:'临时筛选不保存',home_mode:'overview',home_entry:null,...extra});
+await check(()=>{const rows=[row('a','早会'),row('b','车间'),row('c','早会')],before=JSON.stringify(rows);assert.deepEqual(groupedEntries(rows).map(g=>g.name),['早会','车间']);assert.deepEqual(reorderEntries(rows,'c',-1),['c','a','b']);assert.equal(JSON.stringify(rows),before);assert.throws(()=>reorderEntries(rows,'missing',1))});
+await check(()=>{const html=workbenchMarkup(board(1,[row('a','<script>',{alias:'<img onerror=x>',note:'<svg>',state:'unavailable'}),row('b','',{state:'review',is_home:true})]),esc);assert(!html.includes('<script>'));assert(!html.includes('<img'));assert(html.includes('&lt;svg&gt;'));assert(html.includes('disabled'));assert(html.includes('打开核对'));assert(html.includes('登录入口'));assert(workbenchMarkup(board(0),esc).includes('把每天的工作放在这里'))});
+function harness(api){
+ const nodes=new Map(),events=new Map(),collections=new Map(),navigations=[],applied=[],toasts=[];let current=true,modalRev=0;
+ const node=id=>{if(!nodes.has(id))nodes.set(id,{innerHTML:'',textContent:'',value:'',disabled:false,open:false,dataset:{},close(){this.open=false}});return nodes.get(id)};
+ const h={api,esc,header:(a,b,c)=>a+b+c,modal:()=>{modalRev++;node('#detail').open=true},toast:v=>toasts.push(v),go:(...v)=>navigations.push(v),$:node,$$:id=>collections.get(id)||[],on:(id,event,fn)=>events.set(id+':'+event,fn),isCurrent:()=>current,getModalRevision:()=>modalRev,refreshModels:async()=>[],applyModels:m=>applied.push(m)};
+ return {h,node,events,collections,navigations,applied,toasts,leave:()=>{current=false},replaceModal:()=>{modalRev++},fire:(id,event='click',e={})=>events.get(id+':'+event)(e)};
+}
+await check(async()=>{const pending=deferred(),x=harness(()=>pending.promise),w=createWorkbench(x.h),p=w.render(null,1);x.leave();pending.resolve(board(1));await p;assert.equal(x.node('#main').innerHTML,'')});
+await check(async()=>{let gets=0;const old=deferred(),x=harness((path,opts)=>opts?Promise.resolve(board(2,[row('new')],{home_mode:'workbench'})):++gets===1?Promise.resolve(board(1)):old.promise);await createWorkbench(x.h).render(null,1);const refresh=x.fire('#desk-refresh');await x.fire('#desk-start');old.resolve(board(1));await refresh;assert(x.node('#main').innerHTML.includes('登录时进入我的工作台'));assert(x.node('#main').innerHTML.includes('1 / 100'))});
+await check(async()=>{const first=deferred(),second=deferred();let requests=0;const x=harness((path)=>path.endsWith('/open')?(++requests===1?first.promise:second.promise):Promise.resolve(board(2,[row('a'),row('b')])));const buttons=['a','b'].map(id=>({dataset:{deskOpen:id},addEventListener:(e,fn)=>x.events.set(id,fn)}));x.collections.set('[data-desk-open]',buttons);await createWorkbench(x.h).render(null,1);const a=x.events.get('a')(),b=x.events.get('b')();second.resolve({kind:'module',route:'quality',params:{}});await b;first.resolve({kind:'module',route:'delivery',params:{}});await a;assert.deepEqual(x.navigations,[['quality',{}]])});
+await check(async()=>{const models=deferred(),x=harness(path=>Promise.resolve(path.endsWith('/open')?{kind:'model',route:'analysis',params:{model:'1'}}:board(1,[row('a')])));x.h.refreshModels=()=>models.promise;x.collections.set('[data-desk-open]',[{dataset:{deskOpen:'a'},addEventListener:(e,fn)=>x.events.set('open',fn)}]);await createWorkbench(x.h).render(null,1);const opening=x.events.get('open')();await tick();x.leave();models.resolve([{id:1}]);await opening;assert.deepEqual(x.applied,[]);assert.deepEqual(x.navigations,[])});
+await check(async()=>{const old=deferred(),latest=deferred();let catalog=0;const x=harness((path)=>path.endsWith('/catalog')?(++catalog===1?old.promise:latest.promise):Promise.resolve(board(0)));const w=createWorkbench(x.h);await w.render(null,1);const opening=x.fire('#desk-add-open');x.node('#desk-kind').value='model';const newer=x.fire('#desk-kind','change');assert.equal(x.node('#desk-add-save').disabled,true);latest.resolve({page:1,total:1,rows:[{kind:'model',target:'2',label:'新模型',note:''}]});await newer;old.resolve({page:1,total:1,rows:[{kind:'module',target:'delivery',label:'过期页面',note:''}]});await opening;assert(x.node('#desk-pick-list').innerHTML.includes('新模型'));assert(!x.node('#desk-pick-list').innerHTML.includes('过期页面'))});
+await check(async()=>{const pending=deferred(),x=harness(()=>pending.promise);const p=createWorkbench(x.h).quickAdd('#delivery',1);x.replaceModal();pending.resolve(board(0));await p;assert.equal(x.node('#detail').open,false)});
+// Execute the actual bootstrap function with plain state/network objects only.
+const app=fs.readFileSync(new URL('../static/app.js',import.meta.url),'utf8'),source=app.slice(app.indexOf('async function bootstrap(){'),app.indexOf('\nfunction showLogin(){'));
+function bootHarness(api,hash=''){
+ const state={},location={hash},navigated=[],messages=[];let routed=0,login=0;
+ const history={replaceState:(a,b,url)=>{navigated.push(url);location.hash=url}},route=async()=>{routed++},toast=s=>messages.push(s);
+ const run=Function('api','state','location','history','route','toast',`let bootstrapSerial=0;function showLogin(){bootstrapSerial++;state.ready=false;} ${source};return {bootstrap,invalidate:showLogin}`)(api,state,location,history,route,toast);
+ return {...run,state,location,navigated,messages,get routed(){return routed}};
+}
+const normal=(path)=>Promise.resolve(path==='auth'?{authenticated:true,name:'current'}:path==='workbench/start'?{route:'workbench',params:{},reason:''}:[]);
+await check(async()=>{const x=bootHarness(normal);await x.bootstrap();assert.deepEqual(x.navigated,['#workbench']);assert.equal(x.state.ready,true);assert.equal(x.routed,1)});
+await check(async()=>{const calls=[],x=bootHarness(path=>{calls.push(path);return normal(path)},'#topics?id=2');await x.bootstrap();assert(!calls.includes('workbench/start'));assert.deepEqual(x.navigated,[])});
+await check(async()=>{const pending=deferred(),x=bootHarness(path=>path==='workbench/start'?pending.promise:normal(path));const p=x.bootstrap();await tick();x.location.hash='#quality';pending.resolve({route:'workbench',params:{},reason:''});await p;assert.deepEqual(x.navigated,[])});
+await check(async()=>{const pending=deferred();let auth=0;const x=bootHarness(path=>path==='auth'&&++auth===1?pending.promise:normal(path));const old=x.bootstrap();await x.bootstrap();pending.resolve({authenticated:true,name:'stale'});await old;assert.equal(x.state.user.name,'current');assert.equal(x.routed,1)});
+await check(async()=>{const pending=deferred(),x=bootHarness(path=>path==='workbench/start'?pending.promise:normal(path));const p=x.bootstrap();await tick();x.invalidate();pending.resolve({route:'workbench',params:{},reason:''});await p;assert.equal(x.state.ready,false);assert.equal(x.state.user,undefined);assert.deepEqual(x.navigated,[])});
+console.log(JSON.stringify({success:true,checks,browser_acceptance:false}));

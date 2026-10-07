@@ -647,3 +647,24 @@ class AnalysisModelChange(models.Model):
             from django.core.exceptions import ValidationError
             raise ValidationError('模型变更记录不可覆盖，请预演并保存新版本')
         return super().save(*args,**kwargs)
+
+class PersonalWorkbench(models.Model):
+    """Private navigation preferences, never query results or source facts."""
+    owner=models.OneToOneField('auth.User',on_delete=models.PROTECT,primary_key=True,related_name='personal_workbench')
+    revision=models.PositiveIntegerField(default=0)
+    home_mode=models.CharField(max_length=20,default='overview')
+    home_entry=models.UUIDField(null=True,blank=True)
+    updated_at=models.DateTimeField(auto_now=True)
+
+class WorkbenchEntry(models.Model):
+    id=models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
+    workbench=models.ForeignKey(PersonalWorkbench,on_delete=models.CASCADE,related_name='entries')
+    kind=models.CharField(max_length=20)
+    target=models.CharField(max_length=80)
+    alias=models.CharField(max_length=80,blank=True)
+    section=models.CharField(max_length=40,blank=True)
+    position=models.PositiveIntegerField()
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+    class Meta:
+        constraints=[models.UniqueConstraint(fields=['workbench','kind','target'],name='workbench_target_unique')]
