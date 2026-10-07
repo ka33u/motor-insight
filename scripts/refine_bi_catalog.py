@@ -722,7 +722,8 @@ def refine(d):
     from refine_bi_launch import refine_launch
     from refine_bi_first_piece import refine_first_piece
     from refine_bi_topic_journey import refine_journey
-    return refine_journey(refine_first_piece(refine_reading(refine_launch(refine_order_baseline(refine_joint(refine_oee(refine_pages(refine_crew(refine_schedule(refine_exports(refine_results(refine_cards(refine_msa(refine_workspace(refine_spc(result))))))))))))))))
+    from refine_bi_object_hub import refine_objects
+    return refine_objects(refine_journey(refine_first_piece(refine_reading(refine_launch(refine_order_baseline(refine_joint(refine_oee(refine_pages(refine_crew(refine_schedule(refine_exports(refine_results(refine_cards(refine_msa(refine_workspace(refine_spc(result)))))))))))))))))
 
 
 if __name__=='__main__':

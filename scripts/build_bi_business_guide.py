@@ -52,6 +52,8 @@ def main():
  '浏览器实际渲染、手机、键盘与下载未验收；真实U8/MES接口、正式生产规范与业务批准仍待核实。',
  '网页打不开时直接读本TXT或《BI完整382项需求清单.txt》；离线HTML内含样式脚本，不需要启动平台服务。',
  '《BI个人专题页面编排说明_20261007.txt》说明页面入口与版本边界。设计ZIP不含数据库/凭据；应用恢复包独立保存。'])
+ if d['framework'].get('object_hub'):
+  c=d['framework']['object_hub'];lines.extend(['','统一对象检索增量',c['state'],c['boundary']])
  if d['framework'].get('topic_journey'):
   c=d['framework']['topic_journey'];lines.extend(['','跨专题探索增量',c['state'],c['boundary']])
  if d['framework'].get('oee_trial'):

@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {objectRoute,objectHref,objectRows,relationMarkup,sourceMarkup,businessEntrypoint} from '../static/object_hub.js';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const table=(heads,rows)=>'<table><thead><tr>'+heads.map(h=>`<th>${esc(h)}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(c=>`<td>${c}</td>`).join('')+'</tr>').join('')+'</tbody></table>';
+const source={filename:'<img src=x onerror=evil()>.xlsx',sheet:'<svg onload=evil()>',row:29,batch_id:'0000-0001',revision:2};
+const row={record_id:19,key:'000019',dataset:'materials',dataset_label:'物料 <script>bad()</script>',revision:2,matched:['编码精确匹配'],description:[{label:'名称',value:'铜线 <img src=x>'}],source};
+const snapshot=JSON.stringify(row),rows=objectRows([row],esc,table);
+assert.equal(JSON.stringify(row),snapshot);assert(rows.includes('000019'));assert(rows.includes('#objects?record=19'));assert(!/<img|<script|<svg/.test(rows));assert(!/undefined|NaN|\[object Object\]/.test(rows));
+const related=objectRows([{...row,matched_fields:[{name:'stator_batch',label:'定子批次'},{name:'rotor_batch',label:'转子批次'}]}],esc,table,7);
+assert(related.includes('定子批次精确引用、转子批次精确引用'));assert(related.includes('record=19&amp;from=7'));
+const relations=relationMarkup({object:row,outgoing:[{field:'supplier_id',label:'供应商',key:'00001',state:'found',record_id:20,dataset_label:'供方'},{field:'product_id',label:'配置',key:'P1',state:'missing',record_id:null,dataset_label:'配置档案'},{field:'x',label:'受限资料',key:'X1',state:'restricted',record_id:null}]},esc,table);
+assert(relations.includes('当前未找到'));assert(relations.includes('目标当前不可访问'));assert.equal((relations.match(/<a /g)||[]).length,1);
+assert(!sourceMarkup(source,esc,false).includes('href='));assert(sourceMarkup(source,esc,true).includes('/api/imports/0000-0001/file'));assert(!sourceMarkup(source,esc,true).includes('<img'));
+assert.equal(objectHref(19,7),'#objects?record=19&from=7');assert.deepEqual(objectRoute(new URLSearchParams({record:'19',from:'7'})),{record:'19',from:'7'});
+for(const query of ['record=0','record=-1','record=x','record=1&record=2','record=1&q=secret','from=2','record=1&from=2&from=3','record=99999999999999999'])assert.throws(()=>objectRoute(new URLSearchParams(query)));
+for(const value of [0,-1,1.2,NaN,'19',Number.MAX_SAFE_INTEGER+1])assert.throws(()=>objectHref(value));
+assert.equal(businessEntrypoint(row,esc),'');assert(businessEntrypoint({...row,dataset:'units',key:'M/A&1'},esc).includes('sn=M%2FA%261'));assert(businessEntrypoint({...row,dataset:'batches'},esc).includes('kind=batch'));assert(businessEntrypoint({...row,dataset:'order_lines'},esc).includes('#delivery?line=000019'));
+console.log(JSON.stringify({success:true,pure_js_markup_and_routes:true,leading_zeros_preserved:true,source_download_visibility:true,missing_and_restricted_separate:true,declared_business_routes:true,untrusted_text_escaped:true,browser_acceptance:false,mobile_acceptance:false,actual_download_acceptance:false}));

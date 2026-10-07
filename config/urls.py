@@ -3,6 +3,7 @@ from app import issue_workspace_views as iw
 from app import bi_field_catalog_views as field_catalog
 from app import topic_page_views
 from app import topic_journey_views
+from app import object_hub_views
 from app import device_intake_views as device_intake
 from app import device_collector_views as collector
 from app import views,delivery_views,metric_views,lineage_views,coding_views
@@ -18,6 +19,7 @@ process_quality_urls=[path('api/process-quality',process_quality_views.board),pa
 urlpatterns=[path('api/metrics',metric_views.collection),path('api/metrics/<int:version_id>',metric_views.version),path('api/metrics/<int:version_id>/preview',metric_views.preview)]
 urlpatterns += [path('api/topic-pages',topic_page_views.collection),path('api/topic-pages/preview',topic_page_views.preview),path('api/topic-pages/<uuid:key>',topic_page_views.detail),path('api/topic-pages/<uuid:key>/history',topic_page_views.history),path('api/topic-pages/<uuid:key>/archive',topic_page_views.archive),path('api/topic-pages/<uuid:key>/navigate',topic_page_views.navigate),path('api/topic-pages/<uuid:key>/export',topic_page_views.export)]
 urlpatterns += [path('api/topics/<int:key>/journey/preview',topic_journey_views.preview),path('api/topics/<int:key>/journey/open',topic_journey_views.open_journey),path('api/topics/<int:key>/journey/resolve',topic_journey_views.resolve)]
+urlpatterns += [path('api/object-hub/search',object_hub_views.search),path('api/object-hub/<int:record_id>',object_hub_views.detail),path('api/object-hub/<int:record_id>/related',object_hub_views.related)]
 urlpatterns += [path('api/bi-field-catalog',field_catalog.board),path('api/bi-field-catalog/export',field_catalog.export)]
 urlpatterns += [path('api/device-intake',device_intake.board),path('api/device-intake/export',device_intake.export),path('api/device-intake/rows/<str:key>',device_intake.detail)]
 urlpatterns += [path('api/device-collection',collector.board),path('api/device-collection/preview',collector.preview),path('api/device-collection/runs',collector.create),path('api/device-collection/runs/<uuid:run_id>',collector.detail),path('api/device-collection/runs/<uuid:run_id>/collect',collector.collect),path('api/device-collection/runs/<uuid:run_id>/export',collector.export)]
