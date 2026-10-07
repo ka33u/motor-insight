@@ -195,6 +195,11 @@
       "filename": "39_物料人机联立试排_模拟.xlsx",
       "sha256": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
       "mapping": {}
+    },
+    {
+      "filename": "40_订单与BOM基线_模拟.xlsx",
+      "sha256": "94c24845ac0e353612e9ef3e79e9c61203d163bca6f540c8fe109b7970c54ee1",
+      "mapping": {}
     }
   ],
   "legacy_plan_rows": [

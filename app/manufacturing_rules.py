@@ -16,6 +16,9 @@ def parsed(value,kind):
 
 
 def issues(dataset,row):
+    if dataset in {'order_baselines','order_baseline_links','order_baseline_bom'}:
+        from .order_baseline_contract import issues as baseline_issues
+        return baseline_issues(dataset,row)
     if dataset in {'joint_studies','joint_bindings','joint_demands','joint_supplies'}:
         from .joint_schedule_contract import issues as joint_issues
         return joint_issues(dataset,row)

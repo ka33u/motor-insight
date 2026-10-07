@@ -177,3 +177,6 @@ register_oee(register)
 
 from .joint_schedule_schema import register_joint
 register_joint(register)
+
+from .order_baseline_schema import register_order_baseline
+register_order_baseline(register)

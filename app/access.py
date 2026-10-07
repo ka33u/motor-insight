@@ -7,6 +7,7 @@ FINANCIAL.update({'purchase_terms','ap_invoices','ap_invoice_lines','ap_payments
 PERSONNEL={'attendance','skills','labor_entries'}
 PERSONNEL.update({'crew_studies','crew_credentials','crew_candidates','crew_windows','crew_blocks'})
 PERSONNEL.update({'joint_studies','joint_bindings','joint_demands','joint_supplies'})
+PERSONNEL.update({'order_baselines','order_baseline_links','order_baseline_bom'})
 
 def role(user):
     if not user.is_authenticated or not user.is_active:return None

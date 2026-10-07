@@ -74,10 +74,14 @@ if f.get('oee_trial'):
 if f.get('joint_schedule_trial'):
     c=f['joint_schedule_trial']
     parts.append(section('joint-schedule-design','物料、人机联立：从批次交期追到预留依据','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','demand','supply','method','presentation','measures','boundary']])))
+if f.get('order_baseline_trial'):
+    c=f['order_baseline_trial']
+    parts.append(section('order-baseline-design','订单与BOM基线：覆盖缺口、双交期和版本差异','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','arithmetic','coverage','time','presentation','boundary']])))
 document='<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BI需求与呈现方案</title><style>'+style+'</style></head><body><main>'+''.join(parts)+'</main><script>'+script+'</script></body></html>'
 document=document.replace('href="#spc"','href="#spc-trial"').replace('href="#msa"','href="#msa-trial"').replace('href="#model-cards"','href="#model-cards-design"').replace('href="#crew-schedule"','href="#crew-schedule-design"').replace('href="#topic-pages"','href="#topic-page-composition"')
 document=document.replace('href="#oee"','href="#oee-design"')
 document=document.replace('href="#joint-schedule"','href="#joint-schedule-design"')
+document=document.replace('href="#order-baselines"','href="#order-baseline-design"')
 output.write_text(document)
 print(output)
 

@@ -1,0 +1,5 @@
+.baseline-state{display:flex;gap:18px;align-items:center;padding:15px 18px;margin:18px 0;background:#eaf4ee;border-left:4px solid #4b7c63;border-radius:7px}
+.baseline-state span{font-size:13px;color:#52635b}.baseline-state.review{background:#fff5df;border-color:#b48633}.baseline-state.paused{background:#fbecea;border-color:#ac5148}
+.baseline-coverage{height:9px;min-width:110px;border-radius:5px;background:#e8ecec;overflow:hidden;margin:5px 0 8px}.baseline-coverage i{display:block;height:100%;background:#548a80}
+.baseline-json{white-space:pre-wrap;word-break:break-word;font-size:12px;line-height:1.6;max-width:400px}
+@media(max-width:760px){.baseline-state{align-items:flex-start;flex-direction:column;gap:7px}}
