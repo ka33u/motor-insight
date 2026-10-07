@@ -173,6 +173,8 @@ urlpatterns += [path('api/spc-analysis-views',spc_workspace.views),path('api/spc
 from app import msa_views as msa
 from app import finite_schedule_views as finite_schedule
 from app import crew_schedule_views as crew_schedule
+from app import joint_schedule_views as joint_schedule
+urlpatterns += [path('api/joint-schedule',joint_schedule.studies),path('api/joint-schedule/<str:key>',joint_schedule.board),path('api/joint-schedule/<str:key>/sources',joint_schedule.sources),path('api/joint-schedule/<str:key>/tasks/<str:task_id>',joint_schedule.detail),path('api/joint-schedule/<str:key>/export',joint_schedule.export)]
 urlpatterns += [path('api/crew-schedule',crew_schedule.studies),path('api/crew-schedule/<str:key>',crew_schedule.board),path('api/crew-schedule/<str:key>/sources',crew_schedule.sources),path('api/crew-schedule/<str:key>/tasks/<str:task_id>',crew_schedule.detail),path('api/crew-schedule/<str:key>/export',crew_schedule.export)]
 
 from app import oee_views as oee

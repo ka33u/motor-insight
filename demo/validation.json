@@ -1,15 +1,27 @@
 {
   "success": true,
-  "record_count": 224061,
-  "record_hash_digest": "6df2bfe6bdf998f6e18412c93a23e6179e97d9cf10c91d08aa1c12b49bfa6ed8",
+  "version": "0.10.0",
+  "record_count": 225630,
+  "record_hash_digest": "e038bd099b557d4f7071a40d516e276be8e5c02fd37b87828e06cb2f808fbb95",
+  "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
   "public_configuration_counts": {
-    "app_record": 224061,
+    "app_record": 225630,
     "app_analysismodel": 52,
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2409,
+  "tests": 2438,
   "fresh_xlsx_replay": true,
-  "source_database_unchanged": true,
-  "browser_validation": false
+  "effective_workbooks": 38,
+  "original_workbooks": 39,
+  "prior_business_facts_preserved": 224061,
+  "new_business_facts": 1569,
+  "raw_contracts": 139,
+  "original_files_preserved": 453,
+  "native_http_roles": 6,
+  "pure_js_presentation": true,
+  "browser_validation": false,
+  "mobile_validation": false,
+  "actual_browser_download": false,
+  "real_systems_connected": false
 }

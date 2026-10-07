@@ -190,6 +190,11 @@
       "filename": "38_班次设备效率_模拟.xlsx",
       "sha256": "6424c1b54cff0dc9a86032ec6598f4d1d5e96ffb50219231ad7029fff9b2797e",
       "mapping": {}
+    },
+    {
+      "filename": "39_物料人机联立试排_模拟.xlsx",
+      "sha256": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+      "mapping": {}
     }
   ],
   "legacy_plan_rows": [

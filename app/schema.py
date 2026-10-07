@@ -174,3 +174,6 @@ register_crew(register)
 
 from .oee_schema import register_oee
 register_oee(register)
+
+from .joint_schedule_schema import register_joint
+register_joint(register)

@@ -16,6 +16,9 @@ def parsed(value,kind):
 
 
 def issues(dataset,row):
+    if dataset in {'joint_studies','joint_bindings','joint_demands','joint_supplies'}:
+        from .joint_schedule_contract import issues as joint_issues
+        return joint_issues(dataset,row)
     if dataset in {'oee_studies','oee_windows','oee_events','oee_cycles','oee_outputs'}:
         from .oee_contract import issues as oee_issues
         return oee_issues(dataset,row)
