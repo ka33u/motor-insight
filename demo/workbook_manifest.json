@@ -230,6 +230,11 @@
       "filename": "46_生产领退料核对_模拟.xlsx",
       "sha256": "f31668e422d628b011515684391290f5953d3054e083fa281f3e91d5a2cb7d42",
       "mapping": {}
+    },
+    {
+      "filename": "47_退料库存状态_模拟.xlsx",
+      "sha256": "a928d497ed9f01228d95a5670fdb6a555c5f8d4147bb4cc65b508d80341d51eb",
+      "mapping": {}
     }
   ],
   "legacy_plan_rows": [

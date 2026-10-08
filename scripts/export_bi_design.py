@@ -86,6 +86,9 @@ if f.get('joint_setup_reading'):
 if f.get('material_return_reading'):
     c=f['material_return_reading']
     parts.append(section('material-return-design','生产领退料：数量关联与库存可用性分别核对','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','measures','presentation','boundary']])))
+if f.get('return_stock_reading'):
+    c=f['return_stock_reading']
+    parts.append(section('return-stock-design','退料与库位：单据、时序和当前状态并列核对','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','measures','presentation','boundary']])))
 if f.get('mixed_product_changeover'):
     c=f['mixed_product_changeover']
     parts.append(section('changeover-design','三品种演练：换型时间与批次交期的取舍','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','presentation','boundary']])))

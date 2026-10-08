@@ -1,23 +1,23 @@
 {
   "success": true,
-  "version": "0.33.0",
-  "record_count": 233902,
-  "record_hash_digest": "ac6a3825a117a6d9a0144e91fd2c654ffc6d98d326ae339e46f161ebf1f523d2",
+  "version": "0.34.0",
+  "record_count": 234037,
+  "record_hash_digest": "0a6c15c5ce7de3d94300758836d9e16dec97aa92dc7d2491c72910ae49b2d9db",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
   "public_configuration_counts": {
-    "app_record": 233902,
+    "app_record": 234037,
     "app_analysismodel": 52,
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2877,
+  "tests": 2900,
   "fresh_xlsx_replay": true,
-  "effective_workbooks": 45,
-  "original_workbooks": 46,
-  "prior_business_facts_preserved": 233788,
-  "new_business_facts": 114,
+  "effective_workbooks": 46,
+  "original_workbooks": 47,
+  "prior_business_facts_preserved": 233902,
+  "new_business_facts": 135,
   "raw_contracts": 154,
-  "original_files_preserved": 473,
+  "original_files_preserved": 474,
   "native_http_roles": 6,
   "pure_js_presentation": true,
   "browser_validation": false,
@@ -46,7 +46,7 @@
     "invalid": 3,
     "contradicted": 2
   },
-  "last_fresh_xlsx_replay_version": "0.33.0",
+  "last_fresh_xlsx_replay_version": "0.34.0",
   "existing_replayed_database_verified": true,
   "topic_journey": {
     "modes": [
@@ -1108,6 +1108,164 @@
     "fresh_xlsx_replay": true,
     "effective_workbooks": 45,
     "original_workbooks": 46,
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "keyboard_acceptance": false,
+    "actual_download_acceptance": false,
+    "scope": "0.33.0领退料数量核对的历史验收；0.34.0保留原算法及26份联立结果，增加独立退料库存状态阅读并复跑完整回归。"
+  },
+  "return_stock": {
+    "verified_in_version": "0.34.0",
+    "definition": "return-stock-reading-v1",
+    "http": {
+      "success": true,
+      "roles": [
+        {
+          "role": "admin",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "analyst",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "operations",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "quality",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "finance",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "viewer",
+          "allowed": true,
+          "no_financial_fields": true
+        }
+      ],
+      "boards": 24,
+      "details": 48,
+      "exports": 24,
+      "source_rows": 378,
+      "independent_target_lot_checks": 7,
+      "facts_unchanged": true,
+      "sources_exact": true,
+      "main_database_bytes_unchanged": true,
+      "browser_acceptance": false
+    },
+    "public_source": {
+      "success": true,
+      "public_files": 1113,
+      "bi_regenerated_identically": true,
+      "scenario_reproduced_identically": true,
+      "public_source_backend_tests": 23,
+      "public_js_groups": 9,
+      "fresh_xlsx_replay": true,
+      "effective_workbooks": 46,
+      "records": 234037
+    },
+    "workbook": {
+      "filename": "47_退料库存状态_模拟.xlsx",
+      "sha256": "a928d497ed9f01228d95a5670fdb6a555c5f8d4147bb4cc65b508d80341d51eb",
+      "source_rows": 135,
+      "sheets": 10,
+      "visual_review": true,
+      "normal_import_duplicate_safe": true
+    },
+    "profiles": [
+      {
+        "work_order": "MO-260928-Q001",
+        "returns": 1,
+        "returned": 3.0,
+        "balance": 3.0,
+        "usable": 0.0,
+        "arrival": "待检",
+        "current": "待检"
+      },
+      {
+        "work_order": "MO-260928-Q002",
+        "returns": 1,
+        "returned": 4.0,
+        "balance": 3.0,
+        "usable": 3.0,
+        "arrival": "待检",
+        "current": "可用"
+      },
+      {
+        "work_order": "MO-260928-Q003",
+        "returns": 1,
+        "returned": 5.0,
+        "balance": 5.0,
+        "usable": 0.0,
+        "arrival": "待检",
+        "current": "隔离"
+      },
+      {
+        "work_order": "MO-260928-Q004",
+        "returns": 1,
+        "returned": 2.0,
+        "balance": 2.0,
+        "usable": null,
+        "arrival": "待检",
+        "current": null
+      },
+      {
+        "work_order": "MO-260928-Q005",
+        "returns": 1,
+        "returned": 3.0,
+        "balance": 3.0,
+        "usable": 3.0,
+        "arrival": null,
+        "current": "可用"
+      },
+      {
+        "work_order": "MO-260928-Q006",
+        "returns": 1,
+        "returned": 2.0,
+        "balance": 2.0,
+        "usable": 0.0,
+        "arrival": "待检",
+        "current": "待检"
+      },
+      {
+        "work_order": "MO-260928-Q007",
+        "returns": 2,
+        "returned": 3.0,
+        "balance": 3.0,
+        "usable": 3.0,
+        "arrival": "待检",
+        "current": "可用"
+      }
+    ],
+    "independent_target_lot_checks": 7,
+    "full_regression_tests": 2900,
+    "all_js_groups": 252,
+    "new_backend_tests": 23,
+    "new_js_groups": 9,
+    "original_joint_outputs_preserved": 26,
+    "old_business_facts_preserved": 233902,
+    "original_archive_paths_preserved": 474,
+    "old_initialization_workbooks_preserved": 45,
+    "public_analysis_configuration_unchanged": true,
+    "core_inventory_material_and_joint_engines_unchanged": true,
+    "no_new_migration": true,
+    "new_business_facts": 135,
+    "fresh_xlsx_replay": true,
+    "effective_workbooks": 46,
+    "original_workbooks": 47,
+    "return_rows": 8,
+    "deduplicated_target_lots": 7,
+    "returned_qty": 22,
+    "target_balance_qty": 21,
+    "target_usable_qty": null,
     "browser_acceptance": false,
     "mobile_acceptance": false,
     "keyboard_acceptance": false,
