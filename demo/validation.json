@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "0.28.0",
+  "version": "0.29.0",
   "record_count": 232941,
   "record_hash_digest": "2e0a72b20acd7e72393fa0433a170f3349dbf7698d583b6e20aec5060b44d473",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
@@ -557,6 +557,76 @@
     "original_comparison_fields_preserved": true,
     "core_scheduling_algorithm_unchanged": true,
     "zero_database_query_rebuild": true,
+    "no_new_business_input": true,
+    "no_new_migration": true,
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "actual_download_acceptance": false,
+    "scope": "0.28.0批次获料对照的历史验收；0.29.0复跑相关纯JS和完整回归，新增人机占用核查另列。"
+  },
+  "occupancy_comparison": {
+    "verified_in_version": "0.29.0",
+    "definition": "joint-occupancy-v1",
+    "http": {
+      "success": true,
+      "roles": [
+        {
+          "role": "admin",
+          "allowed": true
+        },
+        {
+          "role": "analyst",
+          "allowed": true
+        },
+        {
+          "role": "operations",
+          "allowed": true
+        },
+        {
+          "role": "quality",
+          "denied": true
+        },
+        {
+          "role": "finance",
+          "denied": true
+        },
+        {
+          "role": "viewer",
+          "denied": true
+        }
+      ],
+      "comparisons": 36,
+      "original_boards": 72,
+      "exports": 39,
+      "interval_checks": 14088,
+      "projected_comparisons": 36,
+      "original_heuristic_outputs": 24,
+      "facts_unchanged": true,
+      "sources_exact": true,
+      "main_database_bytes_unchanged": true,
+      "browser_acceptance": false
+    },
+    "public_files": {
+      "success": true,
+      "public_files": 1058,
+      "bi_regenerated_identically": true,
+      "public_fixture_js_groups": 22,
+      "existing_v027_xlsx_replay_verified": true,
+      "fresh_xlsx_replay": false,
+      "record_count": 232941
+    },
+    "new_backend_tests": 0,
+    "new_js_groups": 22,
+    "all_js_groups": 205,
+    "full_regression_tests": 2818,
+    "original_heuristic_outputs_preserved": 24,
+    "main_business_facts_preserved": 232941,
+    "existing_archive_paths_preserved": 472,
+    "initialization_workbooks_preserved": 43,
+    "public_analysis_configuration_unchanged": true,
+    "original_comparison_fields_preserved": true,
+    "core_scheduling_algorithm_unchanged": true,
+    "zero_database_query_projection": true,
     "no_new_business_input": true,
     "no_new_migration": true,
     "browser_acceptance": false,
