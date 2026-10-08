@@ -4,14 +4,14 @@ from pathlib import Path
 from django.contrib.auth import get_user_model
 from django.core import signing
 from django.db import transaction
-from . import joint_comparison as comparison,joint_schedule_data as data,joint_schedule_views as original,finite_schedule as finite
+from . import joint_comparison as comparison,joint_schedule_data as data,joint_schedule_views as original,finite_schedule as finite,joint_batch_material
 from .views import api,body,reply
 from .models import AuditEvent,Record
 from .import_review import ReviewConflict
 SALT='motor.joint-policy-comparison.v1';AGE=600
 
 def rules():
-    return finite.digest({name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ('joint_comparison.py','joint_comparison_views.py')})
+    return finite.digest(dict(files={name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ('joint_comparison.py','joint_comparison_views.py')},batch_material=joint_batch_material.definition_hash()))
 
 def request_data(request,extra=(),required=False):
     if request.GET:raise ValueError('对照条件须放在JSON正文')
@@ -31,6 +31,7 @@ def request_data(request,extra=(),required=False):
 def load(user,key,receipt=None):
     user=get_user_model().objects.get(pk=user.pk);account=original.account(user)
     left=data.load(key,'due');right=data.load(key,'priority');comparison.same_inputs(left,right);result=comparison.compare(left['result'],right['result'])
+    result['batch_materials']=joint_batch_material.build(left['result'],right['result'])
     stamp=dict(key=key,account=account,source_hash=left['source_hash'],rule_hash=left['rule_hash'],comparison_rules=rules(),left=finite.digest(left['result']),right=finite.digest(right['result']),result=finite.digest(result))
     if receipt is not None:
         if not isinstance(receipt,str) or len(receipt)>4096:raise ValueError('对照凭据无效')
@@ -100,6 +101,10 @@ def export(request,key):
         section('对照范围',[dict(study=key,notice=comparison.NOTICE,state=d['result']['state'],source_hash=d['stamp']['source_hash'],rule_hash=d['stamp']['rule_hash'],comparison_rules=d['stamp']['comparison_rules'])])
         for name in ('summary','columns','jobs','tasks','materials','allocations','transitions'):
             value=d['result'][name];section('对照/'+name,value if isinstance(value,list) else [value] if value is not None else [])
+        batch_materials=d['result']['batch_materials']
+        section('批次获料/定义',[{k:batch_materials[k] for k in ('version','notice','state')}])
+        section('批次获料/汇总',[batch_materials['summary']] if batch_materials['summary'] is not None else [])
+        for name in ('materials','rows'):section('批次获料/'+name,batch_materials[name])
         for side in ('left','right'):
             section(side+'/结果',[doc[side]['result']])
             for group in ('material_inputs','crew_inputs','resource_inputs','references'):

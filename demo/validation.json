@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "0.27.0",
+  "version": "0.28.0",
   "record_count": 232941,
   "record_hash_digest": "2e0a72b20acd7e72393fa0433a170f3349dbf7698d583b6e20aec5060b44d473",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
@@ -10,14 +10,14 @@
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2797,
-  "fresh_xlsx_replay": true,
+  "tests": 2818,
+  "fresh_xlsx_replay": false,
   "effective_workbooks": 43,
   "original_workbooks": 44,
-  "prior_business_facts_preserved": 232200,
-  "new_business_facts": 741,
+  "prior_business_facts_preserved": 232941,
+  "new_business_facts": 0,
   "raw_contracts": 154,
-  "original_files_preserved": 471,
+  "original_files_preserved": 472,
   "native_http_roles": 6,
   "pure_js_presentation": true,
   "browser_validation": false,
@@ -47,7 +47,7 @@
     "contradicted": 2
   },
   "last_fresh_xlsx_replay_version": "0.27.0",
-  "existing_replayed_database_verified": false,
+  "existing_replayed_database_verified": true,
   "topic_journey": {
     "modes": [
       "inherit",
@@ -372,7 +372,7 @@
     "actual_download_acceptance": false,
     "scope": "0.26.0历史验收；0.27.0复跑完整回归及17组纯JS，新共享案例HTTP与空库回放另列。"
   },
-  "original_files_preserved_scope": "本次核对471个既有归档路径（包括此前458份原件清单）；另正常导入新增1份Excel原件。",
+  "original_files_preserved_scope": "本次核对472个既有归档路径，包含0.27.0新增的正常导入Excel；本轮没有新增原件。",
   "shared_material_scenario": {
     "success": true,
     "workbook": "44_跨批次共享物料试排_模拟.xlsx",
@@ -492,6 +492,75 @@
     "workbench_js_groups": 14,
     "new_core_calculation": false,
     "new_migrations": false,
-    "browser_acceptance": false
+    "browser_acceptance": false,
+    "scope": "0.27.0正常Excel导入及空库回放的历史验收；0.28.0在该回放库隔离副本核查新获料视图，不重复初始化。"
+  },
+  "batch_material_comparison": {
+    "verified_in_version": "0.28.0",
+    "definition": "joint-batch-material-v1",
+    "http": {
+      "success": true,
+      "roles": [
+        {
+          "role": "admin",
+          "allowed": true
+        },
+        {
+          "role": "analyst",
+          "allowed": true
+        },
+        {
+          "role": "operations",
+          "allowed": true
+        },
+        {
+          "role": "quality",
+          "denied": true
+        },
+        {
+          "role": "finance",
+          "denied": true
+        },
+        {
+          "role": "viewer",
+          "denied": true
+        }
+      ],
+      "comparisons": 36,
+      "original_boards": 72,
+      "pair_checks": 1104,
+      "exports": 39,
+      "zero_query_rebuilds": 36,
+      "original_heuristic_outputs": 24,
+      "facts_unchanged": true,
+      "sources_exact": true,
+      "main_database_bytes_unchanged": true,
+      "browser_acceptance": false
+    },
+    "public_files": {
+      "success": true,
+      "public_files": 1051,
+      "bi_regenerated_identically": true,
+      "public_fixture_js_groups": 19,
+      "existing_v027_xlsx_replay_verified": true,
+      "fresh_xlsx_replay": false,
+      "record_count": 232941
+    },
+    "new_backend_tests": 21,
+    "new_js_groups": 19,
+    "related_js_groups": 164,
+    "original_heuristic_outputs_preserved": 24,
+    "main_business_facts_preserved": 232941,
+    "existing_archive_paths_preserved": 472,
+    "initialization_workbooks_preserved": 43,
+    "public_analysis_configuration_unchanged": true,
+    "original_comparison_fields_preserved": true,
+    "core_scheduling_algorithm_unchanged": true,
+    "zero_database_query_rebuild": true,
+    "no_new_business_input": true,
+    "no_new_migration": true,
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "actual_download_acceptance": false
   }
 }

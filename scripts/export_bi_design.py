@@ -77,6 +77,9 @@ if f.get('joint_blocker_reading'):
 if f.get('joint_material_evidence'):
     c=f['joint_material_evidence']
     parts.append(section('joint-material-design','逐物料核对：需求、供给与原序预留','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','measures','time','presentation','boundary']])))
+if f.get('joint_batch_material_comparison'):
+    c=f['joint_batch_material_comparison']
+    parts.append(section('batch-material-design','批次获料对照：总量相同也要核对获配对象','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','measures','presentation','boundary']])))
 if f.get('joint_schedule_trial'):
     c=f['joint_schedule_trial']
     parts.append(section('joint-schedule-design','物料、人机联立：从批次交期追到预留依据','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','demand','supply','method','presentation','measures','boundary']])))
