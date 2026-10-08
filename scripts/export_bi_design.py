@@ -77,6 +77,9 @@ if f.get('joint_blocker_reading'):
 if f.get('joint_material_evidence'):
     c=f['joint_material_evidence']
     parts.append(section('joint-material-design','逐物料核对：需求、供给与原序预留','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','measures','time','presentation','boundary']])))
+if f.get('workbench_trial_favorites'):
+    c=f['workbench_trial_favorites']
+    parts.append(section('trial-favorites-design','方案收藏：保存明确的方案与阅读方式','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','presentation','boundary']])))
 if f.get('joint_occupancy_comparison'):
     c=f['joint_occupancy_comparison']
     parts.append(section('occupancy-design','人机占用对照：同一对象并排核查安排','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','measures','presentation','boundary']])))

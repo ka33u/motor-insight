@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "0.29.0",
+  "version": "0.30.0",
   "record_count": 232941,
   "record_hash_digest": "2e0a72b20acd7e72393fa0433a170f3349dbf7698d583b6e20aec5060b44d473",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
@@ -10,7 +10,7 @@
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2818,
+  "tests": 2838,
   "fresh_xlsx_replay": false,
   "effective_workbooks": 43,
   "original_workbooks": 44,
@@ -627,6 +627,81 @@
     "original_comparison_fields_preserved": true,
     "core_scheduling_algorithm_unchanged": true,
     "zero_database_query_projection": true,
+    "no_new_business_input": true,
+    "no_new_migration": true,
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "actual_download_acceptance": false,
+    "scope": "0.29.0人机占用对照的历史验收；0.30.0复跑全部相关纯JS和回归，新增个人方案收藏验收另列。"
+  },
+  "trial_favorites": {
+    "verified_in_version": "0.30.0",
+    "definition": "workbench-trial-favorites-v1",
+    "http": {
+      "success": true,
+      "roles": [
+        {
+          "role": "admin",
+          "catalog_targets": 104,
+          "reopened": 11
+        },
+        {
+          "role": "analyst",
+          "catalog_targets": 104,
+          "reopened": 11
+        },
+        {
+          "role": "operations",
+          "catalog_targets": 104,
+          "reopened": 11
+        },
+        {
+          "role": "quality",
+          "catalog_targets": 14,
+          "reopened": 2
+        },
+        {
+          "role": "finance",
+          "catalog_targets": 14,
+          "reopened": 2
+        },
+        {
+          "role": "viewer",
+          "catalog_targets": 14,
+          "reopened": 2
+        }
+      ],
+      "catalog_targets": 354,
+      "saved_reopened": 39,
+      "destination_reads": 39,
+      "home_checks": 6,
+      "removed": 39,
+      "facts_unchanged": true,
+      "source_identifiers_exact": true,
+      "disposable_preferences_restored": true,
+      "main_database_bytes_unchanged": true,
+      "browser_acceptance": false
+    },
+    "public_files": {
+      "success": true,
+      "public_files": 1064,
+      "bi_regenerated_identically": true,
+      "public_fixture_js_groups": 13,
+      "existing_v027_xlsx_replay_verified": true,
+      "fresh_xlsx_replay": false,
+      "record_count": 232941
+    },
+    "new_backend_tests": 20,
+    "new_js_groups": 13,
+    "all_js_groups": 218,
+    "full_regression_tests": 2838,
+    "original_heuristic_outputs_preserved": 24,
+    "main_business_facts_preserved": 232941,
+    "existing_archive_paths_preserved": 472,
+    "initialization_workbooks_preserved": 43,
+    "public_analysis_configuration_unchanged": true,
+    "main_personal_preferences_unchanged": true,
+    "core_scheduling_algorithm_unchanged": true,
     "no_new_business_input": true,
     "no_new_migration": true,
     "browser_acceptance": false,

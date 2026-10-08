@@ -30,3 +30,4 @@ jobs:
       - run: node tests/check_joint_material.mjs
       - run: node tests/check_batch_material.mjs
       - run: node tests/check_joint_occupancy.mjs
+      - run: node tests/check_trial_favorites.mjs

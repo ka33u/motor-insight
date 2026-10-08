@@ -736,7 +736,8 @@ def refine(d):
     from refine_bi_joint_material import refine_material
     from refine_bi_batch_material import refine_batch_material
     from refine_bi_joint_occupancy import refine_occupancy
-    return refine_occupancy(refine_batch_material(refine_material(refine_blockers(result))))
+    from refine_bi_trial_favorites import refine_trial_favorites
+    return refine_trial_favorites(refine_occupancy(refine_batch_material(refine_material(refine_blockers(result)))))
 
 
 if __name__=='__main__':

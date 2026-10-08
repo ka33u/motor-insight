@@ -10,8 +10,9 @@ from .analysis_engine import validate_definition
 from .views import visible
 from .import_review import ReviewConflict
 from .workbench_routes import ROUTES
+from . import workbench_trials
 
-KINDS={'module':'系统页面','model':'分析模型','topic':'分析专题','view':'个人视角','page':'个人专题页面','card':'个人口径卡','coding':'编码规则'}
+KINDS={'module':'系统页面','model':'分析模型','topic':'分析专题','view':'个人视角','page':'个人专题页面','card':'个人口径卡','coding':'编码规则','trial':'试排与基线方案'}
 LIMIT=100
 NOTICE='收藏只保存本人导航、别名、分组与顺序。打开时重新核对访问和定义状态；结果、单位、范围和Excel来源由原页面提供。临时筛选不随入口保存，常用筛选请先另存个人专题视角。'
 
@@ -34,6 +35,7 @@ def target_key(kind,value):
     if kind not in KINDS or not isinstance(value,str):raise ValidationError('收藏类型或目标编号无效')
     if kind=='module':
         if value not in ROUTES:raise ValidationError('系统页面不在可选目录内')
+    elif kind=='trial':workbench_trials.parse(value)
     elif kind in ('page','card'):
         try:
             if str(uuid.UUID(value))!=value:raise ValueError()
@@ -55,6 +57,7 @@ def module_allowed(user,key):
 def resolve(user,kind,target):
     """Only whitelisted internal routes. Never return inaccessible target labels."""
     target_key(kind,target);state='ready';note='打开当前定义与当前资料';version=None
+    if kind=='trial':return workbench_trials.resolve(user,target)
     if kind=='module':
         if not module_allowed(user,target):raise PermissionDenied('目标当前不可用')
         label=ROUTES[target];route=target;params={}
@@ -107,6 +110,7 @@ def catalog(user,data):
     u=fresh(user);exact(data,('kind','q','page'));kind=data['kind'];term=text(data['q'],120)
     if kind not in KINDS or type(data['page']) is not int or not 1<=data['page']<=1000:raise ValidationError('目录类型或页码无效')
     if kind=='module':keys=list(ROUTES)
+    elif kind=='trial':keys=workbench_trials.keys(u)
     else:
         q={'model':AnalysisModel,'topic':Topic,'view':TopicView,'page':TopicPage,'card':AnalysisModelCard,'coding':CodingRule}[kind].objects.all()
         if kind in ('model','topic'):q=visible(u,q)

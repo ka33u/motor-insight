@@ -28,3 +28,9 @@ def open_entry(request):
 @transaction.atomic
 def start(request):
     clean(request);return response(workbench.start(request.user))
+
+@api(('POST',))
+@transaction.atomic
+def trial_target(request):
+    clean(request)
+    return response(workbench.workbench_trials.lookup(workbench.fresh(request.user), body(request)))

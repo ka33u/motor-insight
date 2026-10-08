@@ -1,6 +1,12 @@
-export const targetKinds={module:'系统页面',model:'分析模型',topic:'分析专题',view:'个人视角',page:'个人专题页面',card:'个人口径卡',coding:'编码规则'};
+export const targetKinds={module:'系统页面',model:'分析模型',topic:'分析专题',view:'个人视角',page:'个人专题页面',card:'个人口径卡',coding:'编码规则',trial:'试排与基线方案'};
 export function targetFromRoute(hash){
  const [route,q='']=hash.replace(/^#/,'').split('?'),p=new URLSearchParams(q),positive=v=>/^[1-9][0-9]{0,14}$/.test(v||''),uuid=v=>/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/.test(v||'');
+ if(['finite-schedule','crew-schedule','joint-schedule','order-baselines'].includes(route)&&p.has('study')){
+  if([...p.keys()].some(k=>!['study','policy','view','receipt'].includes(k)||p.getAll(k).length!==1))return null;
+  const study=p.get('study'),policy=p.get('policy')||'due',view=p.get('view')||'';
+  if(!study||study.length>150||/[\x00-\x1f\x7f]/.test(study)||!['due','priority'].includes(policy)||!(view===''||route==='joint-schedule'&&view==='compare'||route==='order-baselines'&&view==='trial'))return null;
+  return {kind:'trial',lookup:{route,study,policy,view}};
+ }
  if(route==='analysis'&&p.has('model'))return positive(p.get('model'))?{kind:'model',target:p.get('model')}:null;
  if(route==='topics'&&p.has('page'))return uuid(p.get('page'))?{kind:'page',target:p.get('page')}:null;
  if(route==='topics'&&p.has('view'))return positive(p.get('view'))?{kind:'view',target:p.get('view')}:null;
@@ -56,6 +62,6 @@ export function createWorkbench(h){
   }
   await draw();
  }
- async function quickAdd(hash,token){const target=targetFromRoute(hash);if(!target)throw Error('当前地址不是可收藏的固定入口，请保存模型或视角后再收藏');const id=++quickSerial,rev=getModalRevision(),d=await api('workbench'),valid=()=>isCurrent(token)&&id===quickSerial;if(!valid()||rev!==getModalRevision())return;const existing=d.rows.find(r=>r.kind===target.kind&&r.target===target.target);if(existing){editDialog(d,existing,()=>toast('本人工作台已更新'),valid);return}await addDialog(d,()=>toast('已收藏到我的工作台'),valid,target)}
+ async function quickAdd(hash,token){let target=targetFromRoute(hash);if(!target)throw Error('当前地址不是可收藏的固定入口，请保存模型或视角后再收藏');const id=++quickSerial,rev=getModalRevision(),d=await api('workbench'),valid=()=>isCurrent(token)&&id===quickSerial;if(!valid()||rev!==getModalRevision())return;if(target.lookup){target=await post('/trial-target',target.lookup);if(!valid()||rev!==getModalRevision())return;}const existing=d.rows.find(r=>r.kind===target.kind&&r.target===target.target);if(existing){editDialog(d,existing,()=>toast('本人工作台已更新'),valid);return}await addDialog(d,()=>toast('已收藏到我的工作台'),valid,target)}
  return {render,quickAdd};
 }
