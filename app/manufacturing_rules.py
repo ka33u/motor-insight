@@ -16,6 +16,9 @@ def parsed(value,kind):
 
 
 def issues(dataset,row):
+    if dataset.startswith('wip_trial_'):
+        from .wip_trial_contract import issues as wip_trial_issues
+        return wip_trial_issues(dataset,row)
     if dataset == 'first_piece_reviews':
         from .first_review import issues as first_review_issues
         return first_review_issues(row)

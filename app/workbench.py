@@ -49,7 +49,7 @@ def module_allowed(user,key):
     if key in ('imports','audit','accounts'):return role=='admin'
     if key=='targets':return access.can_edit(user)
     if key in ('scenarios','receivables','payables'):return access.can_money(user)
-    if key in ('workforce','crew-schedule','joint-schedule','order-baselines','launch-review'):return role in ('admin','analyst','operations')
+    if key in ('workforce','crew-schedule','joint-schedule','order-baselines','launch-review','wip-trial'):return role in ('admin','analyst','operations')
     if key in ('device-files','device-intake','device-collection','device-transform'):return role in ('admin','quality')
     return bool(role)
 

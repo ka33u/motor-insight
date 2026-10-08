@@ -1,22 +1,22 @@
 {
   "success": true,
-  "version": "0.35.0",
-  "record_count": 234037,
-  "record_hash_digest": "0a6c15c5ce7de3d94300758836d9e16dec97aa92dc7d2491c72910ae49b2d9db",
+  "version": "0.36.0",
+  "record_count": 235614,
+  "record_hash_digest": "cd2f15cf01217925d22f29b3ba3414b7c29620bdb5f0c62c662dc3bc15f6eb5b",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
   "public_configuration_counts": {
-    "app_record": 234037,
+    "app_record": 235614,
     "app_analysismodel": 52,
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2920,
+  "tests": 2955,
   "fresh_xlsx_replay": true,
-  "effective_workbooks": 46,
-  "original_workbooks": 47,
+  "effective_workbooks": 47,
+  "original_workbooks": 48,
   "prior_business_facts_preserved": 234037,
-  "new_business_facts": 0,
-  "raw_contracts": 154,
+  "new_business_facts": 1577,
+  "raw_contracts": 159,
   "original_files_preserved": 475,
   "native_http_roles": 6,
   "pure_js_presentation": true,
@@ -46,7 +46,7 @@
     "invalid": 3,
     "contradicted": 2
   },
-  "last_fresh_xlsx_replay_version": "0.34.0",
+  "last_fresh_xlsx_replay_version": "0.36.0",
   "existing_replayed_database_verified": true,
   "topic_journey": {
     "modes": [
@@ -1271,8 +1271,8 @@
     "keyboard_acceptance": false,
     "actual_download_acceptance": false
   },
-  "fresh_replay_verified_in_version": "0.34.0",
-  "input_manifest_unchanged": true,
+  "fresh_replay_verified_in_version": "0.36.0",
+  "input_manifest_unchanged": false,
   "wip_readiness": {
     "verified_in_version": "0.35.0",
     "definition": "wip-replanning-evidence-v1",
@@ -1377,6 +1377,291 @@
     "business_inputs_unchanged": true,
     "new_business_facts": 0,
     "remaining_schedule_computed": false,
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "keyboard_acceptance": false,
+    "actual_download_acceptance": false
+  },
+  "wip_trial": {
+    "verified_in_version": "0.36.0",
+    "rule_version": "WIP_REMAINDER_SHARED_POOLS_1",
+    "workbook": {
+      "success": true,
+      "source_rows": 1577,
+      "normal_import": true,
+      "duplicate_safe": true,
+      "workbook_sha256": "5b0e2306e18d2f56d9b55f9164d2bdc2bb278d08c9d5cc7818a1eaec5893570e",
+      "worksheets": 30,
+      "visual_review_ranges": 64,
+      "scope": "Normal imported workbook, sampled rendered ranges of every sheet; no browser acceptance."
+    },
+    "cases": [
+      {
+        "id": "WR-261001-001",
+        "policy": "due",
+        "state": "trial",
+        "summary": {
+          "tasks": 52,
+          "historical_completed_tasks": 2,
+          "carried_tasks": 1,
+          "scheduled_tasks": 49,
+          "blocked_tasks": 0,
+          "jobs": 2,
+          "qty": 12,
+          "covered_jobs": 2,
+          "late_jobs": 0,
+          "blocked_jobs": 0
+        }
+      },
+      {
+        "id": "WR-261001-001",
+        "policy": "priority",
+        "state": "trial",
+        "summary": {
+          "tasks": 52,
+          "historical_completed_tasks": 2,
+          "carried_tasks": 1,
+          "scheduled_tasks": 49,
+          "blocked_tasks": 0,
+          "jobs": 2,
+          "qty": 12,
+          "covered_jobs": 2,
+          "late_jobs": 0,
+          "blocked_jobs": 0
+        }
+      },
+      {
+        "id": "WR-261001-002",
+        "policy": "due",
+        "state": "trial",
+        "summary": {
+          "tasks": 52,
+          "historical_completed_tasks": 2,
+          "carried_tasks": 1,
+          "scheduled_tasks": 9,
+          "blocked_tasks": 40,
+          "jobs": 2,
+          "qty": 12,
+          "covered_jobs": 0,
+          "late_jobs": 0,
+          "blocked_jobs": 2
+        }
+      },
+      {
+        "id": "WR-261001-002",
+        "policy": "priority",
+        "state": "trial",
+        "summary": {
+          "tasks": 52,
+          "historical_completed_tasks": 2,
+          "carried_tasks": 1,
+          "scheduled_tasks": 9,
+          "blocked_tasks": 40,
+          "jobs": 2,
+          "qty": 12,
+          "covered_jobs": 0,
+          "late_jobs": 0,
+          "blocked_jobs": 2
+        }
+      },
+      {
+        "id": "WR-261001-003",
+        "policy": "due",
+        "state": "trial",
+        "summary": {
+          "tasks": 52,
+          "historical_completed_tasks": 2,
+          "carried_tasks": 1,
+          "scheduled_tasks": 23,
+          "blocked_tasks": 26,
+          "jobs": 2,
+          "qty": 12,
+          "covered_jobs": 1,
+          "late_jobs": 0,
+          "blocked_jobs": 1
+        }
+      },
+      {
+        "id": "WR-261001-003",
+        "policy": "priority",
+        "state": "trial",
+        "summary": {
+          "tasks": 52,
+          "historical_completed_tasks": 2,
+          "carried_tasks": 1,
+          "scheduled_tasks": 23,
+          "blocked_tasks": 26,
+          "jobs": 2,
+          "qty": 12,
+          "covered_jobs": 1,
+          "late_jobs": 0,
+          "blocked_jobs": 1
+        }
+      },
+      {
+        "id": "WR-261001-004",
+        "policy": "due",
+        "state": "paused",
+        "issues": [
+          "SP-261001-W001-B001-T03-P000原人机、资格或连续窗口不能从截止续作"
+        ]
+      },
+      {
+        "id": "WR-261001-004",
+        "policy": "priority",
+        "state": "paused",
+        "issues": [
+          "SP-261001-W001-B001-T03-P000原人机、资格或连续窗口不能从截止续作"
+        ]
+      },
+      {
+        "id": "WR-261001-005",
+        "policy": "due",
+        "state": "paused",
+        "issues": [
+          "SP-261001-W001-B001-T03-P000完成与剩余数量未覆盖原任务数量",
+          "SP-261001-W001-B001-T03-P000报工投入/良品与进度数量不一致"
+        ]
+      },
+      {
+        "id": "WR-261001-005",
+        "policy": "priority",
+        "state": "paused",
+        "issues": [
+          "SP-261001-W001-B001-T03-P000完成与剩余数量未覆盖原任务数量",
+          "SP-261001-W001-B001-T03-P000报工投入/良品与进度数量不一致"
+        ]
+      },
+      {
+        "id": "WR-261001-006",
+        "policy": "due",
+        "state": "trial",
+        "summary": {
+          "tasks": 52,
+          "historical_completed_tasks": 2,
+          "carried_tasks": 1,
+          "scheduled_tasks": 49,
+          "blocked_tasks": 0,
+          "jobs": 2,
+          "qty": 12,
+          "covered_jobs": 2,
+          "late_jobs": 0,
+          "blocked_jobs": 0
+        }
+      },
+      {
+        "id": "WR-261001-006",
+        "policy": "priority",
+        "state": "trial",
+        "summary": {
+          "tasks": 52,
+          "historical_completed_tasks": 2,
+          "carried_tasks": 1,
+          "scheduled_tasks": 49,
+          "blocked_tasks": 0,
+          "jobs": 2,
+          "qty": 12,
+          "covered_jobs": 2,
+          "late_jobs": 0,
+          "blocked_jobs": 0
+        }
+      },
+      {
+        "id": "WR-261001-007",
+        "policy": "due",
+        "state": "paused",
+        "issues": [
+          "原始工单、报工或试排依据已变化，须新版本重核"
+        ]
+      },
+      {
+        "id": "WR-261001-007",
+        "policy": "priority",
+        "state": "paused",
+        "issues": [
+          "原始工单、报工或试排依据已变化，须新版本重核"
+        ]
+      },
+      {
+        "id": "WR-261001-008",
+        "policy": "due",
+        "state": "paused",
+        "issues": [
+          "WR-261001-008-M020剩余需求须等于逐任务剩余定额减声明已投入量"
+        ]
+      },
+      {
+        "id": "WR-261001-008",
+        "policy": "priority",
+        "state": "paused",
+        "issues": [
+          "WR-261001-008-M020剩余需求须等于逐任务剩余定额减声明已投入量"
+        ]
+      }
+    ],
+    "full_regression_tests": 2955,
+    "all_js_groups": 270,
+    "new_backend_tests": 35,
+    "new_js_groups": 10,
+    "http": {
+      "success": true,
+      "roles": [
+        {
+          "role": "admin",
+          "allowed": true
+        },
+        {
+          "role": "analyst",
+          "allowed": true
+        },
+        {
+          "role": "operations",
+          "allowed": true
+        },
+        {
+          "role": "quality",
+          "allowed": false
+        },
+        {
+          "role": "finance",
+          "allowed": false
+        },
+        {
+          "role": "viewer",
+          "allowed": false
+        }
+      ],
+      "boards": 48,
+      "details": 9,
+      "exports": 96,
+      "source_rows": 2868,
+      "facts_unchanged": true,
+      "main_database_bytes_unchanged": true,
+      "browser_acceptance": false,
+      "export_replayed": true
+    },
+    "preservation": {
+      "success": true,
+      "old_facts": 234037,
+      "new_facts": 1577,
+      "originals": 475,
+      "old_workbooks": 46,
+      "old_joint_results": 26,
+      "analysis_configuration_unchanged": true
+    },
+    "fresh_xlsx_replay": true,
+    "effective_workbooks": 47,
+    "original_workbooks": 48,
+    "records": 235614,
+    "new_business_facts": 1577,
+    "tasks_independently_checked": 416,
+    "reservations_checked": 190,
+    "export_replay": true,
+    "raw_contracts": 159,
+    "no_new_migration": true,
+    "local_mapping_template_version": 13,
+    "local_mapping_old_payloads_preserved": true,
+    "public_analysis_configuration_unchanged": true,
     "browser_acceptance": false,
     "mobile_acceptance": false,
     "keyboard_acceptance": false,

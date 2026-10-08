@@ -220,3 +220,6 @@ urlpatterns += [path('api/baseline-trial/<str:key>', baseline_trial.board), path
 
 from app import wip_readiness_views
 urlpatterns += [path('api/wip-readiness',wip_readiness_views.board),path('api/wip-readiness/export',wip_readiness_views.export),path('api/wip-readiness/rows/<str:key>',wip_readiness_views.detail),path('api/wip-readiness/rows/<str:key>/evidence',wip_readiness_views.evidence)]
+
+from app import wip_trial_views as wip_trial
+urlpatterns += [path('api/wip-trial',wip_trial.studies),path('api/wip-trial/<str:key>',wip_trial.board),path('api/wip-trial/<str:key>/sources',wip_trial.sources),path('api/wip-trial/<str:key>/tasks/<str:task_id>',wip_trial.detail),path('api/wip-trial/<str:key>/export',wip_trial.export)]

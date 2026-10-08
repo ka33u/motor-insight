@@ -235,6 +235,11 @@
       "filename": "47_退料库存状态_模拟.xlsx",
       "sha256": "a928d497ed9f01228d95a5670fdb6a555c5f8d4147bb4cc65b508d80341d51eb",
       "mapping": {}
+    },
+    {
+      "filename": "48_在制剩余试排_模拟.xlsx",
+      "sha256": "5b0e2306e18d2f56d9b55f9164d2bdc2bb278d08c9d5cc7818a1eaec5893570e",
+      "mapping": {}
     }
   ],
   "legacy_plan_rows": [

@@ -189,3 +189,6 @@ register_first_review(register)
 
 from .curing_schema import register_curing
 register_curing(register)
+
+from .wip_trial_schema import register_wip_trial
+register_wip_trial(register)

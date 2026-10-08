@@ -743,7 +743,8 @@ def refine(d):
     from refine_bi_return_stock import refine_return_stock
     from refine_bi_wip_readiness import refine_readiness
     result = refine_return_stock(refine_material_returns(refine_setup_reading(refine_changeover(refine_trial_favorites(refine_occupancy(refine_batch_material(refine_material(refine_blockers(result)))))))))
-    return refine_readiness(result)
+    from refine_bi_wip_trial import refine_wip_trial
+    return refine_wip_trial(refine_readiness(result))
 
 
 if __name__=='__main__':

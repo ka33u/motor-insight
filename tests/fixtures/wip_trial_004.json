@@ -1,0 +1,89 @@
+{
+  "state": "paused",
+  "study": {
+    "id": "WR-261001-004",
+    "name": "加工中连续窗口不足",
+    "series": "WR-261001-S4",
+    "version": 1,
+    "supersedes_id": null,
+    "joint_study_id": "MP-261001-W001",
+    "cutoff": "2026-10-01T18:00:00",
+    "job_count": 2,
+    "task_count": 52,
+    "material_count": 38,
+    "supply_count": 8,
+    "reference_hash": "b0daf5be3d2475a4cb8f1418eb7c5dab57d2aecf914d97231ddf47a79b73a3a8",
+    "content_hash": "d9e268b2defb1a1230b0705caf9e9358e7d1524e53a100352c30f16d936b6189",
+    "owner_id": "E00001",
+    "basis": "合成模拟；供核对输入与规则，不是现场盘点、业务批准或正式派工。 加工中连续窗口不足"
+  },
+  "rule_version": "WIP_REMAINDER_SHARED_POOLS_1",
+  "notice": "合成在制剩余试排：逐任务明确报工与剩余量；完成任务只保留实际时点，加工中任务固定原人机续作。逐任务按剩余数量计算定额并扣除声明已投入在制品的材料，未耗用余料另列独立共享或专属池；按任务取整与原整批取整不同，不把净领料当作线边实存，不复用原方案供给。连续窗口、单容量、保守尾部追加，不抢占或回填；试排不等于实物盘点证明、质量批准或正式派工。",
+  "issues": [
+    "SP-261001-W001-B001-T03-P000原人机、资格或连续窗口不能从截止续作"
+  ],
+  "summary": null,
+  "policy": "due",
+  "policy_name": "应完成时间优先",
+  "resource_study": {
+    "id": "SP-261001-W001",
+    "name": "两工单在制试排原始假设",
+    "version": "SP-ASSUME-V1",
+    "baseline": "2026-10-01T18:00:00",
+    "horizon_end": "2026-10-05T18:00:00",
+    "job_count": 2,
+    "task_count": 52,
+    "edge_count": 60,
+    "option_count": 104,
+    "window_count": 180,
+    "block_count": 4,
+    "owner_id": "E00001",
+    "scope": "2张完整工单，每单6台；原始整批参考与余量试排分开。",
+    "assumptions": "合成模拟；供核对输入与规则，不是现场盘点、业务批准或正式派工。 保留原工艺与人机候选；另声明截止后2小时续作窗口。",
+    "reference": "SIM-APS-ASSUME-001"
+  },
+  "tasks": [],
+  "jobs": [],
+  "resources": [],
+  "workers": [],
+  "demands": [],
+  "lots": [],
+  "reservations": [],
+  "balances": [],
+  "work_orders": [
+    {
+      "id": "WR-261001-004-J1",
+      "study_id": "WR-261001-004",
+      "job_id": "SP-261001-W001-B001",
+      "work_order_id": "MO-261001-W001",
+      "basis": "合成模拟；供核对输入与规则，不是现场盘点、业务批准或正式派工。 全工单6台，与独立原批次数量相等。"
+    },
+    {
+      "id": "WR-261001-004-J2",
+      "study_id": "WR-261001-004",
+      "job_id": "SP-261001-W001-B002",
+      "work_order_id": "MO-261001-W002",
+      "basis": "合成模拟；供核对输入与规则，不是现场盘点、业务批准或正式派工。 全工单6台，与独立原批次数量相等。"
+    }
+  ],
+  "parent_reference": {
+    "id": "MP-261001-W001",
+    "summary": {
+      "tasks": 52,
+      "scheduled_tasks": 52,
+      "blocked_tasks": 0,
+      "jobs": 2,
+      "qty": 12,
+      "complete_jobs": 2,
+      "late_jobs": 0,
+      "blocked_jobs": 0,
+      "demands": 18,
+      "reserved_demands": 18,
+      "direct_shortage_tasks": 0,
+      "material_delayed_tasks": 0
+    },
+    "notice": "原整批假设参考使用原供给及整批取整；本次独立余料与逐任务取整，不提供因果差值。"
+  },
+  "source_count": 955,
+  "receipt": "test-only-placeholder"
+}

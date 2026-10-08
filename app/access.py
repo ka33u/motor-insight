@@ -11,6 +11,9 @@ PERSONNEL.update({'crew_studies','crew_credentials','crew_candidates','crew_wind
 PERSONNEL.update({'joint_studies','joint_bindings','joint_demands','joint_supplies'})
 PERSONNEL.update({'order_baselines','order_baseline_links','order_baseline_bom'})
 
+from .wip_trial_schema import DATASETS as WIP_TRIAL_DATASETS
+PERSONNEL.update(WIP_TRIAL_DATASETS)
+
 def role(user):
     if not user.is_authenticated or not user.is_active:return None
     if user.is_superuser:return 'admin'

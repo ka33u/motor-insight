@@ -63,7 +63,7 @@ export function createWipReadiness({api,esc,num,header,panel,table,chart,modal,t
   token=activeToken;const sn=++serial;receipt='';scope=Object.fromEntries([...params].filter(([k])=>['q','work_order_id','stage','page'].includes(k)));
   const d=await api('wip-readiness?'+new URLSearchParams(scope));if(!isCurrent(activeToken)||sn!==serial)return;receipt=d.receipt;
   const s=d.summary,f=d.filters;
-  $('#main').innerHTML=header('在制重排准备核对','按工单核对报工、位置与整单待领资料。','<a href="#joint-schedule">独立联立试排 ↗</a>')+
+  $('#main').innerHTML=header('在制重排准备核对','按工单核对报工、位置与整单待领资料。','<a href="#wip-trial">在制剩余方案试排 ↗</a> · <a href="#joint-schedule">独立联立试排 ↗</a>')+
    `<div class="notice">已导入模拟Excel · 业务与登记截止 ${esc(d.as_of.replace('T',' '))}</div>`+
    `<form id="wr-scope" class="supply-filters"><label>工单编号<input name="work_order_id" value="${esc(f.work_order_id)}"></label><label>工单、配置或型号<input name="q" value="${esc(f.q)}"></label><div><button class="primary">应用范围</button><button type="button" id="wr-reset">重置</button></div></form>`+
    `<div class="quality-kpis">${[['范围内工单',s.work_orders,'以工单为粒度'],['有截止前报工',s.reported,'记录存在，不表示路线已完工'],['有核定在制份额',s.positions,'仅已知部分，分支不合计台数'],['完工登记仍有在制',s.closed_wip,'核对耗用、报废与结单登记']].map(([a,b,c])=>`<article><small>${a}</small><strong>${b}</strong><span>${c}</span></article>`).join('')}</div>`+
