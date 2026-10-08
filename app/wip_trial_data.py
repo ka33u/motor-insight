@@ -47,7 +47,7 @@ def load(key,policy='due'):
     result=engine.analyze(study.values,tables,joint,refs,AS_OF)
     # No raw prices or employee names/pay rates in the public export.
     safe_refs={ds:[{f:r.get(f) for f in fields} for _,r in sorted(refs[ds].items())] for ds,fields in REFERENCE_FIELDS.items()}
-    return dict(result=result,version_history=[r for _,r in sorted(refs['wip_trial_studies'].items())],tables=tables,parent_inputs=engine.parent_tables(joint),references=safe_refs,sources=sources,
+    return dict(result=result,joint_context=joint,version_history=[r for _,r in sorted(refs['wip_trial_studies'].items())],tables=tables,parent_inputs=engine.parent_tables(joint),references=safe_refs,sources=sources,
         source_hash=finite_schedule.digest(dict(parent=joint['source_hash'],sources=sources,
             facts=[dict(dataset=ds,key=k,hash=r.record_hash) for (ds,k),r in sorted(records.items())])),rule_hash=engine.rule_hash(),
         parent_reference=dict(id=joint['result']['study']['id'],summary=joint['result']['summary'],

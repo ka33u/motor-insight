@@ -1,5 +1,6 @@
 """Pinned remainder scheduler: explicit carry-in locks and task-level material pools."""
 from collections import defaultdict
+from copy import deepcopy
 from datetime import timedelta
 from decimal import Decimal
 from . import finite_schedule as resource, crew_schedule as crew
@@ -8,7 +9,7 @@ from .joint_schedule import quantity
 from .wip_trial import VERSION
 
 
-def schedule(study,tables,joint,refs,progress,actual,demands,notice):
+def schedule(study,tables,joint,refs,progress,actual,demands,notice,observations=None):
     parent=joint['parent'];base=parent['base'];original=parent['result']
     start=resource.time(original['resource_study']['baseline']);end=resource.time(original['resource_study']['horizon_end'])
     result=dict(state='trial',study=study,rule_version=VERSION,notice=notice,issues=[],summary=None,
@@ -84,6 +85,14 @@ def schedule(study,tables,joint,refs,progress,actual,demands,notice):
             demand_ids=[d['id'] for d in by_task[key]],shortages=[])
         return r
 
+    def observe(key,ready,available,failed,shortages,choices,carried):
+        # Optional diagnostics receive a copy of this dispatch-turn state;
+        # observation never changes the choice list or any shared pool.
+        if observations is None or key not in observations:return
+        observations[key]=deepcopy(dict(ready=ready,available=available,failed=failed,shortages=shortages,
+            choices=choices,carried=carried,assigned=assigned,tails=dict(tails),worker_tails=dict(worker_tails),families=families,
+            lots=lots,credentials=credentials,resource_spans=rs,worker_spans=ws,resource_blocks=rblocks,worker_blocks=wblocks))
+
     # Historical tasks contribute predecessor times, never future capacity.
     for key,p in progress.items():
         if p['state']=='已完成':
@@ -101,6 +110,7 @@ def schedule(study,tables,joint,refs,progress,actual,demands,notice):
                 slot=crew.fit(start,length,windows(res,person,credential),rblocks.get(res,[])+wblocks.get(person,[]))
                 if slot and slot[0]==start:choices.append((o['id'],c['id'],credential['id']))
         available,shortages=material_ready(key,start)
+        observe(key,start,available,[],shortages,choices,True)
         if not choices:result['issues'].append(key+'原人机、资格或连续窗口不能从截止续作')
         if available!=start:result['issues'].append(key+'加工中剩余用料不能在截止时一次覆盖')
         if not choices or available!=start:continue
@@ -135,6 +145,7 @@ def schedule(study,tables,joint,refs,progress,actual,demands,notice):
                         person=credential['employee_id'];slot=crew.fit(max(available,tails[res],worker_tails[person]),length,windows(res,person,credential),rblocks.get(res,[])+wblocks.get(person,[]))
                         if slot:
                             at,_=slot;choices.append((at+length,at,res,person,o['id'],c['id'],credential['id'],setup))
+            observe(key,ready,available,failed,shortages,choices,False)
             r.update(dependency_ready=resource.stamp(ready),material_ready=resource.stamp(available) if available else None,shortages=shortages,
                 root_tasks=sorted({root for k in failed for root in assigned[k]['root_tasks']}) or [key],
                 reason='前序未排入：'+'、'.join(failed) if failed else '剩余物料不足' if shortages else '没有符合剩余批量的候选资源' if not allowed else '没有有效人员资格候选' if not people else '没有人机、资格与物料共同连续窗口')

@@ -7,6 +7,7 @@ from django.db import transaction
 from django.http import HttpResponse
 from . import wip_trial as engine,wip_trial_data as data,finite_schedule as finite,spc_data,access,analytics
 from .wip_trial_schema import DATASETS
+from . import wip_trial_decision as decision, wip_trial_selection as selection
 from .models import Record,AuditEvent
 from .views import api,reply,require
 from .import_review import ReviewConflict
@@ -27,7 +28,7 @@ def params(request,allowed=()):
 
 def stamp(d,user):
     return dict(study=d['result']['study']['id'],policy=d['result']['policy'],source_hash=d['source_hash'],rule_hash=d['rule_hash'],
-        result_hash=finite.digest(d['result']),account=account(user),view_hash=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),as_of=analytics.AS_OF)
+        decision_hash=decision.definition_hash(),selection_hash=selection.definition_hash(),result_hash=finite.digest(d['result']),account=account(user),view_hash=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),as_of=analytics.AS_OF)
 
 
 def context(request,key,required=False):
@@ -63,7 +64,7 @@ def studies(request):
 @transaction.atomic
 def board(request,key):
     params(request,('policy','receipt'));d=context(request,key);finish(request,d)
-    return response(dict(**d['result'],receipt=d['receipt'],receipt_seconds=AGE,source_hash=d['source_hash'],rule_hash=d['rule_hash'],source_count=len(d['sources']),parent_reference=d['parent_reference'],work_orders=d['tables']['wip_trial_jobs'],synthetic=True))
+    return response(dict(**d['result'],receipt=d['receipt'],receipt_seconds=AGE,source_hash=d['source_hash'],rule_hash=d['rule_hash'],source_count=len(d['sources']),parent_reference=d['parent_reference'],work_orders=d['tables']['wip_trial_jobs'],capabilities=dict(task_decision=decision.VERSION,task_selection=selection.VERSION),synthetic=True))
 
 
 @api()
@@ -82,8 +83,9 @@ def detail(request,key,task_id):
     if row is None:raise Record.DoesNotExist()
     demands=[x for x in r['demands'] if x['task_id']==task_id];mids={x['material_id'] for x in demands}
     progress=next(x for x in d['tables']['wip_trial_tasks'] if x['task_id']==task_id)
+    explanation=decision.build(d,task_id,analytics.AS_OF)
     finish(request,d)
-    return response(dict(row=row,progress=progress,operation=next((x for x in d['references']['operations'] if x['id']==row['operation_id']),None),
+    return response(dict(row=row,progress=progress,decision=explanation,operation=next((x for x in d['references']['operations'] if x['id']==row['operation_id']),None),
         demands=demands,reservations=[x for x in r['reservations'] if x['task_id']==task_id],lots=[x for x in r['lots'] if x['material_id'] in mids],
         receipt=d['receipt'],notice='明细保留原报工、剩余用料和预留。余料为全方案共享或专属池，不能再次加到需求上；请连同全方案来源核对竞争关系。'))
 
@@ -96,10 +98,13 @@ def document(d):
 
 @api()
 @transaction.atomic
-def export(request,key):
+def export(request,key,task_id=None):
     params(request,('policy','receipt','format'));fmt=request.GET.get('format','json')
     if fmt not in ('csv','json'):raise ValueError('支持CSV或JSON')
     d=context(request,key,True);doc=document(d);name='wip-remainder-'+finite.digest(key)[:16]
+    if task_id is not None:
+        if not any(r['id']==task_id for r in d['result']['tasks']):raise Record.DoesNotExist()
+        doc.update(task_id=task_id,decision=decision.build(d,task_id,analytics.AS_OF));name+='-task-'+finite.digest(task_id)[:12]
     if fmt=='json':
         file=HttpResponse(json.dumps(doc,ensure_ascii=False,indent=2,allow_nan=False)+'\n',content_type='application/json; charset=utf-8')
         file['Content-Disposition']='attachment; filename="'+name+'.json"'
@@ -109,10 +114,44 @@ def export(request,key):
             rows.append([]);rows.append([label]);fields=list(dict.fromkeys(k for r in items for k in r));rows.append(fields or ['无行，不能推定为零或已完成'])
             for r in items:rows.append([json.dumps(r[k],ensure_ascii=False,allow_nan=False) if isinstance(r.get(k),(dict,list)) else r.get(k) for k in fields])
         section('完整结果',[doc['result']])
+        if task_id is not None:section('任务派序解释',[doc['decision']])
         for name_,tables in [('输入',doc['inputs']),('原始试排输入',doc['parent_inputs']),('依据',doc['references'])]:
             for ds,items in tables.items():section(name_+'/'+ds,items if isinstance(items,list) else [items])
         section('版本历史',doc['version_history']);section('来源',d['sources']);file=csv_reply(rows,name)
     finish(request,d)
     AuditEvent.objects.create(action='wip_trial.export',actor=request.user.username,object_type='WipRemainderTrial',object_id=key,
-        detail=dict(format=fmt,policy=d['result']['policy'],source_hash=d['source_hash'],rule_hash=d['rule_hash'],file_sha256=hashlib.sha256(file.content).hexdigest(),business_facts_changed=False))
+        detail=dict(format=fmt,task_id=task_id,decision_hash=decision.definition_hash() if task_id else None,policy=d['result']['policy'],source_hash=d['source_hash'],rule_hash=d['rule_hash'],file_sha256=hashlib.sha256(file.content).hexdigest(),business_facts_changed=False))
+    file['Cache-Control']='no-store';return file
+
+
+@api()
+@transaction.atomic
+def selection_export(request,key):
+    params(request,('policy','receipt','format','job','state','root'))
+    fmt=request.GET.get('format','csv')
+    if fmt not in ('csv','json'):raise ValueError('支持CSV或JSON')
+    filters=selection.normalize({k:request.GET.get(k,'') for k in ('job','state','root')})
+    d=context(request,key,True);chosen=selection.select(d['result'],d['tables']['wip_trial_jobs'],filters)
+    name='wip-selected-'+finite.digest(key)[:12]+'-'+chosen['selection_hash'][:12]
+    if fmt=='json':
+        doc=document(d)|dict(selection=chosen)
+        file=HttpResponse(json.dumps(doc,ensure_ascii=False,indent=2,allow_nan=False)+'\n',content_type='application/json; charset=utf-8')
+        file['Content-Disposition']='attachment; filename="'+name+'.json"'
+    else:
+        rows=[['在制筛选任务清单 · 合成模拟',key],['定义',selection.VERSION],['筛选定义摘要',selection.definition_hash()],['边界',selection.NOTICE],['进度截止',d['result']['study']['cutoff']],
+            ['完整方案版本',d['result']['study']['version']],['派序策略',d['result']['policy']],['筛选工单批次',filters['job'] or '全部'],['筛选任务状态',filters['state'] or '全部'],
+            ['筛选首阻断',filters['root'] or '全部'],['当前任务数',chosen['selected_count']],['完整方案任务数',chosen['whole_task_count']],
+            ['筛选摘要',chosen['selection_hash']],['原始依据',d['source_hash']],['原试排结果摘要',finite.digest(d['result'])],['规则',d['rule_hash']]]
+        def section(label,items,empty_fields=()):
+            fields=list(dict.fromkeys(k for r in items for k in r)) or list(empty_fields)
+            rows.extend([[],[label],fields or ['此范围无记录；不是完整方案无任务']])
+            for r in items:rows.append([json.dumps(r[k],ensure_ascii=False,allow_nan=False) if isinstance(r.get(k),(dict,list)) else r.get(k) for k in fields])
+        section('筛选任务 · 一行一原任务',chosen['selected_tasks'],('id','job_id','state','root_tasks'))
+        section('所属工单映射',chosen['work_orders']);section('所属工单 · 完整原结果未按筛选重算',chosen['whole_job_results'])
+        ids=set(chosen['task_ids']);section('筛选任务进度声明',[r for r in d['tables']['wip_trial_tasks'] if r['task_id'] in ids])
+        section('完整方案来源 · 保留共享竞争依据',d['sources']);file=csv_reply(rows,name)
+    finish(request,d)
+    AuditEvent.objects.create(action='wip_trial.selection_export',actor=request.user.username,object_type='WipTaskSelection',object_id=key,
+        detail=dict(format=fmt,policy=d['result']['policy'],filters=filters,task_count=chosen['selected_count'],selection_hash=chosen['selection_hash'],definition_hash=selection.definition_hash(),
+            source_hash=d['source_hash'],rule_hash=d['rule_hash'],file_sha256=hashlib.sha256(file.content).hexdigest(),business_facts_changed=False))
     file['Cache-Control']='no-store';return file

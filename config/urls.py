@@ -223,3 +223,7 @@ urlpatterns += [path('api/wip-readiness',wip_readiness_views.board),path('api/wi
 
 from app import wip_trial_views as wip_trial
 urlpatterns += [path('api/wip-trial',wip_trial.studies),path('api/wip-trial/<str:key>',wip_trial.board),path('api/wip-trial/<str:key>/sources',wip_trial.sources),path('api/wip-trial/<str:key>/tasks/<str:task_id>',wip_trial.detail),path('api/wip-trial/<str:key>/export',wip_trial.export)]
+
+urlpatterns += [path('api/wip-trial/<str:key>/tasks/<str:task_id>/export',wip_trial.export)]
+
+urlpatterns += [path('api/wip-trial/<str:key>/selection/export',wip_trial.selection_export)]

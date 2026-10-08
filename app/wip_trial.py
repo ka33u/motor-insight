@@ -30,7 +30,7 @@ def rule_hash():
     return h.hexdigest()
 
 
-def analyze(study,tables,joint,refs,as_of):
+def analyze(study,tables,joint,refs,as_of,observations=None):
     result=dict(state='paused',study=study,rule_version=VERSION,notice=NOTICE,issues=[],summary=None,
         tasks=[],jobs=[],resources=[],workers=[],demands=[],lots=[],reservations=[],balances=[],
         policy=joint['result']['policy'],policy_name=joint['result']['policy_name'])
@@ -197,4 +197,4 @@ def analyze(study,tables,joint,refs,as_of):
     if problems:
         result['issues']=list(dict.fromkeys(problems));return result
     from .wip_trial_schedule import schedule
-    return schedule(study,tables,joint,refs,progress,actual,demands,NOTICE)
+    return schedule(study,tables,joint,refs,progress,actual,demands,NOTICE,observations=observations)

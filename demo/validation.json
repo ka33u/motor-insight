@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "0.36.0",
+  "version": "0.37.0",
   "record_count": 235614,
   "record_hash_digest": "cd2f15cf01217925d22f29b3ba3414b7c29620bdb5f0c62c662dc3bc15f6eb5b",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
@@ -10,14 +10,14 @@
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2955,
-  "fresh_xlsx_replay": true,
+  "tests": 2989,
+  "fresh_xlsx_replay": false,
   "effective_workbooks": 47,
   "original_workbooks": 48,
-  "prior_business_facts_preserved": 234037,
-  "new_business_facts": 1577,
+  "prior_business_facts_preserved": 235614,
+  "new_business_facts": 0,
   "raw_contracts": 159,
-  "original_files_preserved": 475,
+  "original_files_preserved": 476,
   "native_http_roles": 6,
   "pure_js_presentation": true,
   "browser_validation": false,
@@ -372,7 +372,7 @@
     "actual_download_acceptance": false,
     "scope": "0.26.0历史验收；0.27.0复跑完整回归及17组纯JS，新共享案例HTTP与空库回放另列。"
   },
-  "original_files_preserved_scope": "本次核对472个既有归档路径，包含0.27.0新增的正常导入Excel；本轮没有新增原件。",
+  "original_files_preserved_scope": "本轮核对476个既有归档路径，未增加业务原件。",
   "shared_material_scenario": {
     "success": true,
     "workbook": "44_跨批次共享物料试排_模拟.xlsx",
@@ -1272,7 +1272,7 @@
     "actual_download_acceptance": false
   },
   "fresh_replay_verified_in_version": "0.36.0",
-  "input_manifest_unchanged": false,
+  "input_manifest_unchanged": true,
   "wip_readiness": {
     "verified_in_version": "0.35.0",
     "definition": "wip-replanning-evidence-v1",
@@ -1666,5 +1666,516 @@
     "mobile_acceptance": false,
     "keyboard_acceptance": false,
     "actual_download_acceptance": false
+  },
+  "wip_dispatch_evidence": {
+    "verified_in_version": "0.37.0",
+    "definition": "WIP_DISPATCH_EVIDENCE_1",
+    "full_regression_tests": 2989,
+    "full_regression_seconds": 380.484,
+    "all_js_groups": 313,
+    "new_backend_tests": 22,
+    "new_js_groups": 11,
+    "validation": {
+      "success": true,
+      "definition": "WIP_DISPATCH_EVIDENCE_1",
+      "records": 235614,
+      "tasks": 416,
+      "pairs": 1600,
+      "selected": 268,
+      "blocked": 132,
+      "historical": 16,
+      "replays": 36,
+      "cases": [
+        {
+          "id": "WR-261001-001",
+          "policy": "due",
+          "state": "trial",
+          "result_hash": "b6671726bcd40d9d51a51bc8e500b4fab99a39272c63ea28c94caa1a9fa8ea36"
+        },
+        {
+          "id": "WR-261001-001",
+          "policy": "priority",
+          "state": "trial",
+          "result_hash": "3b3809ef789786a038fbd45a455719da9278071b74e3f88435b3a62cb87d46b7"
+        },
+        {
+          "id": "WR-261001-002",
+          "policy": "due",
+          "state": "trial",
+          "result_hash": "9aff00d3ad04cbf4eb2b0986110fa560e875e43f62f26a2eda582e507f92963c"
+        },
+        {
+          "id": "WR-261001-002",
+          "policy": "priority",
+          "state": "trial",
+          "result_hash": "808feb59cd1291a57e6f5b3250c229d211a5ffdede8b101f76b4d32de5c9366e"
+        },
+        {
+          "id": "WR-261001-003",
+          "policy": "due",
+          "state": "trial",
+          "result_hash": "bdaca0ac3a0e75fad763183fff225d314388484a933ba002478e354c0b572d73"
+        },
+        {
+          "id": "WR-261001-003",
+          "policy": "priority",
+          "state": "trial",
+          "result_hash": "c9e582deb57662fd07e4bc5ae479f4f22df8c25e1e506a0044d5a36ab44e2891"
+        },
+        {
+          "id": "WR-261001-004",
+          "policy": "due",
+          "state": "paused",
+          "result_hash": "a3b374351781ef49552556e02177b952fa89cc3b244db3ef3adb3ca4f705347c"
+        },
+        {
+          "id": "WR-261001-004",
+          "policy": "priority",
+          "state": "paused",
+          "result_hash": "3873e887932345b5738717909f3bc768e8a8258454676f81c1e6d6bdfe183ed7"
+        },
+        {
+          "id": "WR-261001-005",
+          "policy": "due",
+          "state": "paused",
+          "result_hash": "343b51d0e1f24082f51d101f149dc917d6462d3ee934d56a9de0b55409717bf0"
+        },
+        {
+          "id": "WR-261001-005",
+          "policy": "priority",
+          "state": "paused",
+          "result_hash": "0f5a2961c7d74051d6102e22c102ac6d9bda5c24a259b6aabbee796d9fdebd25"
+        },
+        {
+          "id": "WR-261001-006",
+          "policy": "due",
+          "state": "trial",
+          "result_hash": "21b2435e09f2eaa2e983b2fc34e7ccf81f1f56d8aa72b178f6b50f33cf3ae58e"
+        },
+        {
+          "id": "WR-261001-006",
+          "policy": "priority",
+          "state": "trial",
+          "result_hash": "7a1112dad9d718f32273536e9a5075fd84edca86213ec71e58bcaa7c98e5e386"
+        },
+        {
+          "id": "WR-261001-007",
+          "policy": "due",
+          "state": "paused",
+          "result_hash": "01f1bb0c97b7327f0b6acb549ee69cd98dfe974ab5152fa3e0f3834eec3cdb12"
+        },
+        {
+          "id": "WR-261001-007",
+          "policy": "priority",
+          "state": "paused",
+          "result_hash": "3becbcf0c7d5a12d8e539e93c26c88b15fe7f41e2b2463b6a4bc8f5672b07285"
+        },
+        {
+          "id": "WR-261001-008",
+          "policy": "due",
+          "state": "paused",
+          "result_hash": "3bc784575cbd71dfdd9164065ba4fda7a2815fe63d3f480aff6133179d6603a4"
+        },
+        {
+          "id": "WR-261001-008",
+          "policy": "priority",
+          "state": "paused",
+          "result_hash": "8d9d246515cbabe7192ee7f75f08ebd957eb48094a71b430fa6fe4cdc60dee85"
+        }
+      ],
+      "browser_acceptance": false
+    },
+    "http": {
+      "success": true,
+      "roles": [
+        {
+          "role": "admin",
+          "allowed": true
+        },
+        {
+          "role": "analyst",
+          "allowed": true
+        },
+        {
+          "role": "operations",
+          "allowed": true
+        },
+        {
+          "role": "quality",
+          "allowed": false
+        },
+        {
+          "role": "finance",
+          "allowed": false
+        },
+        {
+          "role": "viewer",
+          "allowed": false
+        }
+      ],
+      "boards": 12,
+      "details": 36,
+      "exports": 72,
+      "json_replays": 36,
+      "facts_unchanged": true,
+      "main_database_bytes_unchanged": true,
+      "browser_acceptance": false
+    },
+    "preservation": {
+      "success": true,
+      "facts": 235614,
+      "originals": 476,
+      "workbooks": 47,
+      "joint_results": 28,
+      "wip_results": 16,
+      "configuration_sha256": "47d8d4c49b1db5e273c5d50bd67b2031992cf3e314ea0074befb701c0e685e21"
+    },
+    "fresh_xlsx_replay": false,
+    "last_fresh_xlsx_replay_version": "0.36.0",
+    "input_manifest_unchanged": true,
+    "no_new_migration": true,
+    "new_business_facts": 0,
+    "scheduling_results_unchanged": true,
+    "optional_copied_observation": true,
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "keyboard_acceptance": false,
+    "actual_download_acceptance": false,
+    "aggregated_root_queue_implemented": true,
+    "public_source": {
+      "root_reading_cases": 16,
+      "index_module_present": true,
+      "success": true,
+      "public_files": 1161,
+      "backend_tests": 69,
+      "js_scripts": 5,
+      "js_groups": 91,
+      "bi_export_equal": true,
+      "reused_public_xlsx_database_version": "0.36.0",
+      "database_facts_equal": 235614,
+      "fresh_xlsx_replay": false,
+      "input_manifest_unchanged": true,
+      "browser_acceptance": false,
+      "pending_files_audited": true,
+      "ui_verified_sha256": {
+        "static/wip_trial.js": "3f080eca472e0ea9997bee3bdce0a25df944d4ce138aa5ece6553e2572296f10",
+        "static/wip_blockers.js": "0ffed395818d3fb6a2b490012480b977913c9c476d58d674d4ecb2987360cf47",
+        "static/schedule_reading.js": "4b0dd581c06d030936d570e2d8b7f8dcb3d97f200acb46cb774c8ef7c18f9c3f",
+        "tests/check_wip_selection.mjs": "ce9554927d4e53b2246bf0ec193db82d5c4ad58afcd99ef770202a0dcbe0fc9b"
+      }
+    },
+    "export_modal_close_guard_verified": true,
+    "native_http_validated_before_selection_extension": true
+  },
+  "wip_blocker_reading": {
+    "verified_in_version": "0.37.0",
+    "definition": "wip-blocker-reading-v1",
+    "validation": {
+      "success": true,
+      "cases": 16,
+      "independent_method": "downstream traversal from original roots; exact task/root membership equality",
+      "results": [
+        {
+          "study": "WR-261001-001",
+          "policy": "due",
+          "state": "clear",
+          "summary": {
+            "roots": 0,
+            "tasks": 0,
+            "jobs": 0,
+            "whole_job_qty": 0,
+            "overlapping_tasks": 0
+          }
+        },
+        {
+          "study": "WR-261001-001",
+          "policy": "priority",
+          "state": "clear",
+          "summary": {
+            "roots": 0,
+            "tasks": 0,
+            "jobs": 0,
+            "whole_job_qty": 0,
+            "overlapping_tasks": 0
+          }
+        },
+        {
+          "study": "WR-261001-002",
+          "policy": "due",
+          "state": "blocked",
+          "summary": {
+            "roots": 2,
+            "tasks": 40,
+            "jobs": 2,
+            "whole_job_qty": 12,
+            "overlapping_tasks": 0
+          }
+        },
+        {
+          "study": "WR-261001-002",
+          "policy": "priority",
+          "state": "blocked",
+          "summary": {
+            "roots": 2,
+            "tasks": 40,
+            "jobs": 2,
+            "whole_job_qty": 12,
+            "overlapping_tasks": 0
+          }
+        },
+        {
+          "study": "WR-261001-003",
+          "policy": "due",
+          "state": "blocked",
+          "summary": {
+            "roots": 2,
+            "tasks": 26,
+            "jobs": 1,
+            "whole_job_qty": 6,
+            "overlapping_tasks": 18
+          }
+        },
+        {
+          "study": "WR-261001-003",
+          "policy": "priority",
+          "state": "blocked",
+          "summary": {
+            "roots": 2,
+            "tasks": 26,
+            "jobs": 1,
+            "whole_job_qty": 6,
+            "overlapping_tasks": 18
+          }
+        },
+        {
+          "study": "WR-261001-004",
+          "policy": "due",
+          "state": "paused",
+          "summary": null
+        },
+        {
+          "study": "WR-261001-004",
+          "policy": "priority",
+          "state": "paused",
+          "summary": null
+        },
+        {
+          "study": "WR-261001-005",
+          "policy": "due",
+          "state": "paused",
+          "summary": null
+        },
+        {
+          "study": "WR-261001-005",
+          "policy": "priority",
+          "state": "paused",
+          "summary": null
+        },
+        {
+          "study": "WR-261001-006",
+          "policy": "due",
+          "state": "clear",
+          "summary": {
+            "roots": 0,
+            "tasks": 0,
+            "jobs": 0,
+            "whole_job_qty": 0,
+            "overlapping_tasks": 0
+          }
+        },
+        {
+          "study": "WR-261001-006",
+          "policy": "priority",
+          "state": "clear",
+          "summary": {
+            "roots": 0,
+            "tasks": 0,
+            "jobs": 0,
+            "whole_job_qty": 0,
+            "overlapping_tasks": 0
+          }
+        },
+        {
+          "study": "WR-261001-007",
+          "policy": "due",
+          "state": "paused",
+          "summary": null
+        },
+        {
+          "study": "WR-261001-007",
+          "policy": "priority",
+          "state": "paused",
+          "summary": null
+        },
+        {
+          "study": "WR-261001-008",
+          "policy": "due",
+          "state": "paused",
+          "summary": null
+        },
+        {
+          "study": "WR-261001-008",
+          "policy": "priority",
+          "state": "paused",
+          "summary": null
+        }
+      ],
+      "browser_acceptance": false
+    },
+    "full_regression_tests": 2989,
+    "full_regression_seconds": 380.484,
+    "all_js_groups": 313,
+    "new_js_groups": 20,
+    "public_source": {
+      "root_reading_cases": 16,
+      "index_module_present": true,
+      "success": true,
+      "public_files": 1161,
+      "backend_tests": 69,
+      "js_scripts": 5,
+      "js_groups": 91,
+      "bi_export_equal": true,
+      "reused_public_xlsx_database_version": "0.36.0",
+      "database_facts_equal": 235614,
+      "fresh_xlsx_replay": false,
+      "input_manifest_unchanged": true,
+      "browser_acceptance": false,
+      "pending_files_audited": true,
+      "ui_verified_sha256": {
+        "static/wip_trial.js": "3f080eca472e0ea9997bee3bdce0a25df944d4ce138aa5ece6553e2572296f10",
+        "static/wip_blockers.js": "0ffed395818d3fb6a2b490012480b977913c9c476d58d674d4ecb2987360cf47",
+        "static/schedule_reading.js": "4b0dd581c06d030936d570e2d8b7f8dcb3d97f200acb46cb774c8ef7c18f9c3f",
+        "tests/check_wip_selection.mjs": "ce9554927d4e53b2246bf0ec193db82d5c4ad58afcd99ef770202a0dcbe0fc9b"
+      }
+    },
+    "asset_check": {
+      "success": true,
+      "index_import_map": true,
+      "static_file_lookup": true,
+      "native_network_http": false,
+      "browser_acceptance": false
+    },
+    "preservation": {
+      "success": true,
+      "facts": 235614,
+      "originals": 476,
+      "workbooks": 47,
+      "joint_results": 28,
+      "wip_results": 16,
+      "configuration_sha256": "47d8d4c49b1db5e273c5d50bd67b2031992cf3e314ea0074befb701c0e685e21"
+    },
+    "business_inputs_unchanged": true,
+    "new_business_facts": 0,
+    "no_new_migration": true,
+    "backend_calculations_unchanged": true,
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "keyboard_acceptance": false,
+    "actual_download_acceptance": false,
+    "native_http_rerun_for_root_extension": false,
+    "scope": "Read-only grouping of complete source-bound WIP trial graphs; exact predecessor/root verification, whole-job deduplication and local intersection filters. Full exports remain the complete original graph; no dispatch or recovery-benefit estimate.",
+    "known_rule_version_required": true
+  },
+  "wip_task_selection": {
+    "verified_in_version": "0.37.0",
+    "definition": "WIP_TASK_SELECTION_1",
+    "validation": {
+      "success": true,
+      "cases": 16,
+      "selection_cases": 240,
+      "empty_intersections": 120,
+      "full_input_replays": 16,
+      "original_result_unchanged": true,
+      "independent_root_membership": "downstream graph traversal",
+      "business_writes": false,
+      "browser_acceptance": false
+    },
+    "inprocess_api": {
+      "success": true,
+      "roles": [
+        {
+          "role": "admin",
+          "allowed": true
+        },
+        {
+          "role": "analyst",
+          "allowed": true
+        },
+        {
+          "role": "operations",
+          "allowed": true
+        },
+        {
+          "role": "quality",
+          "allowed": false
+        },
+        {
+          "role": "finance",
+          "allowed": false
+        },
+        {
+          "role": "viewer",
+          "allowed": false
+        }
+      ],
+      "boards": 18,
+      "exports": 72,
+      "json_replays": 36,
+      "paused_rejections": 6,
+      "facts": 235614,
+      "facts_unchanged": true,
+      "main_database_bytes_unchanged": true,
+      "reused_public_xlsx_database_version": "0.36.0",
+      "fresh_xlsx_replay": false,
+      "native_network_http": false,
+      "browser_acceptance": false,
+      "actual_download_acceptance": false
+    },
+    "public_source": {
+      "root_reading_cases": 16,
+      "index_module_present": true,
+      "success": true,
+      "public_files": 1161,
+      "backend_tests": 69,
+      "js_scripts": 5,
+      "js_groups": 91,
+      "bi_export_equal": true,
+      "reused_public_xlsx_database_version": "0.36.0",
+      "database_facts_equal": 235614,
+      "fresh_xlsx_replay": false,
+      "input_manifest_unchanged": true,
+      "browser_acceptance": false,
+      "pending_files_audited": true,
+      "ui_verified_sha256": {
+        "static/wip_trial.js": "3f080eca472e0ea9997bee3bdce0a25df944d4ce138aa5ece6553e2572296f10",
+        "static/wip_blockers.js": "0ffed395818d3fb6a2b490012480b977913c9c476d58d674d4ecb2987360cf47",
+        "static/schedule_reading.js": "4b0dd581c06d030936d570e2d8b7f8dcb3d97f200acb46cb774c8ef7c18f9c3f",
+        "tests/check_wip_selection.mjs": "ce9554927d4e53b2246bf0ec193db82d5c4ad58afcd99ef770202a0dcbe0fc9b"
+      }
+    },
+    "full_regression_tests": 2989,
+    "full_regression_seconds": 380.484,
+    "all_js_groups": 313,
+    "new_backend_tests": 12,
+    "new_js_groups": 12,
+    "preservation": {
+      "success": true,
+      "facts": 235614,
+      "originals": 476,
+      "workbooks": 47,
+      "joint_results": 28,
+      "wip_results": 16,
+      "configuration_sha256": "47d8d4c49b1db5e273c5d50bd67b2031992cf3e314ea0074befb701c0e685e21"
+    },
+    "business_inputs_unchanged": true,
+    "new_business_facts": 0,
+    "no_new_migration": true,
+    "original_scheduling_results_unchanged": true,
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "keyboard_acceptance": false,
+    "actual_download_acceptance": false,
+    "native_http_for_selection": false,
+    "scope": "Exact job/state/original-root intersection of the complete original task graph. CSV is a selected task list; JSON retains all competing inputs, replays the complete result and validates the selection. No reallocation or formal dispatch."
   }
 }

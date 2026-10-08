@@ -36,3 +36,6 @@ jobs:
       - run: node tests/check_return_stock.mjs
       - run: node tests/check_wip_readiness.mjs
       - run: node tests/check_wip_trial.mjs
+      - run: node tests/check_wip_decision.mjs
+      - run: node tests/check_wip_blockers.mjs
+      - run: node tests/check_wip_selection.mjs

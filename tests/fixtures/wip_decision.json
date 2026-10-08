@@ -1,0 +1,2676 @@
+{
+  "completed": {
+    "version": "WIP_DISPATCH_EVIDENCE_1",
+    "definition_hash": "d4fe0d82a2be9263ee9dc5dc6fdb192cd12523eb8f550cadcc45807396c695cf",
+    "task_id": "SP-261001-W001-B001-T01-P000",
+    "notice": "历史完成任务只保留原报工，不重新选择未来人机，也不占用未来产能。",
+    "state": "historical",
+    "issues": [],
+    "rank_fields": [
+      "完成时点",
+      "开始时点",
+      "资源编号",
+      "人员编号",
+      "资源候选编号",
+      "人员候选编号",
+      "资格编号",
+      "准备秒数"
+    ],
+    "pairs": [],
+    "lots": [],
+    "related_tasks": [],
+    "pair_count": 0,
+    "dependency_ready": null,
+    "material_ready": null,
+    "failed_predecessors": [],
+    "predecessors": [],
+    "root_tasks": []
+  },
+  "carried": {
+    "version": "WIP_DISPATCH_EVIDENCE_1",
+    "definition_hash": "d4fe0d82a2be9263ee9dc5dc6fdb192cd12523eb8f550cadcc45807396c695cf",
+    "task_id": "SP-261001-W001-B001-T03-P000",
+    "notice": "这是轮到该任务时的候选比较，物料余额和人机尾部均在该任务预留之前。单容量、连续窗口、保守尾部追加，不回填空档；可行未选只表示排序靠后，不表示全局最优或应替换人机。资格仅来自模拟声明及登记日期，不代表真实上岗批准。",
+    "state": "explained",
+    "issues": [],
+    "rank_fields": [
+      "资源候选编号",
+      "人员候选编号",
+      "资格编号"
+    ],
+    "pairs": [
+      {
+        "option_id": "WIP-schedule_options-B1-005",
+        "candidate_id": "WIP-crew_candidates-B1-005",
+        "credential_id": "CR-261001-W001-Q04-1",
+        "resource_id": "SB-02-01-W01",
+        "employee_id": "E00037",
+        "checked_qty": 6,
+        "capacity_qty": 60,
+        "capacity_basis": "原处理批量",
+        "credential": {
+          "id": "CR-261001-W001-Q04-1",
+          "employee_id": "E00037",
+          "skill_id": "JN-E00037",
+          "process": "叠压",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 0.0,
+        "recovery_minutes": 0,
+        "earliest": "2026-10-01T18:00:00",
+        "started": "2026-10-01T18:00:00",
+        "finished": "2026-10-01T18:12:00",
+        "selected": true,
+        "status": "selected",
+        "reasons": [],
+        "rank": [
+          "WIP-schedule_options-B1-005",
+          "WIP-crew_candidates-B1-005",
+          "CR-261001-W001-Q04-1"
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-003",
+            "worker_window_id": "WIP-CARRY-crew_windows-013"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W03-2-1",
+            "worker_window_id": "CR-261001-W001-W13-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W03-2-2",
+            "worker_window_id": "CR-261001-W001-W13-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W03-3-1",
+            "worker_window_id": "CR-261001-W001-W13-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W03-3-2",
+            "worker_window_id": "CR-261001-W001-W13-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W03-4-1",
+            "worker_window_id": "CR-261001-W001-W13-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W03-4-2",
+            "worker_window_id": "CR-261001-W001-W13-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W03-5-1",
+            "worker_window_id": "CR-261001-W001-W13-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W03-5-2",
+            "worker_window_id": "CR-261001-W001-W13-5-2"
+          }
+        ],
+        "blocks": []
+      },
+      {
+        "option_id": "WIP-schedule_options-B1-005",
+        "candidate_id": "WIP-crew_candidates-B1-006",
+        "credential_id": "CR-261001-W001-Q04-2",
+        "resource_id": "SB-02-01-W01",
+        "employee_id": "E00053",
+        "checked_qty": 6,
+        "capacity_qty": 60,
+        "capacity_basis": "原处理批量",
+        "credential": {
+          "id": "CR-261001-W001-Q04-2",
+          "employee_id": "E00053",
+          "skill_id": "JN-E00053",
+          "process": "叠压",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 0.0,
+        "recovery_minutes": 0,
+        "earliest": null,
+        "started": null,
+        "finished": null,
+        "selected": false,
+        "status": "excluded",
+        "reasons": [
+          "加工中仅允许原锁定人机"
+        ],
+        "rank": null,
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-003",
+            "worker_window_id": "WIP-CARRY-crew_windows-015"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W03-2-1",
+            "worker_window_id": "CR-261001-W001-W15-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W03-2-2",
+            "worker_window_id": "CR-261001-W001-W15-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W03-3-1",
+            "worker_window_id": "CR-261001-W001-W15-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W03-3-2",
+            "worker_window_id": "CR-261001-W001-W15-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W03-4-1",
+            "worker_window_id": "CR-261001-W001-W15-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W03-4-2",
+            "worker_window_id": "CR-261001-W001-W15-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W03-5-1",
+            "worker_window_id": "CR-261001-W001-W15-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W03-5-2",
+            "worker_window_id": "CR-261001-W001-W15-5-2"
+          }
+        ],
+        "blocks": []
+      },
+      {
+        "option_id": "WIP-schedule_options-B1-006",
+        "candidate_id": "WIP-crew_candidates-B1-005",
+        "credential_id": "CR-261001-W001-Q04-1",
+        "resource_id": "SB-02-02-W01",
+        "employee_id": "E00037",
+        "checked_qty": 6,
+        "capacity_qty": 60,
+        "capacity_basis": "原处理批量",
+        "credential": {
+          "id": "CR-261001-W001-Q04-1",
+          "employee_id": "E00037",
+          "skill_id": "JN-E00037",
+          "process": "叠压",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 0.0,
+        "recovery_minutes": 0,
+        "earliest": null,
+        "started": null,
+        "finished": null,
+        "selected": false,
+        "status": "excluded",
+        "reasons": [
+          "加工中仅允许原锁定人机"
+        ],
+        "rank": null,
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-004",
+            "worker_window_id": "WIP-CARRY-crew_windows-013"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W04-2-1",
+            "worker_window_id": "CR-261001-W001-W13-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W04-2-2",
+            "worker_window_id": "CR-261001-W001-W13-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W04-3-1",
+            "worker_window_id": "CR-261001-W001-W13-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W04-3-2",
+            "worker_window_id": "CR-261001-W001-W13-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W04-4-1",
+            "worker_window_id": "CR-261001-W001-W13-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W04-4-2",
+            "worker_window_id": "CR-261001-W001-W13-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W04-5-1",
+            "worker_window_id": "CR-261001-W001-W13-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W04-5-2",
+            "worker_window_id": "CR-261001-W001-W13-5-2"
+          }
+        ],
+        "blocks": []
+      },
+      {
+        "option_id": "WIP-schedule_options-B1-006",
+        "candidate_id": "WIP-crew_candidates-B1-006",
+        "credential_id": "CR-261001-W001-Q04-2",
+        "resource_id": "SB-02-02-W01",
+        "employee_id": "E00053",
+        "checked_qty": 6,
+        "capacity_qty": 60,
+        "capacity_basis": "原处理批量",
+        "credential": {
+          "id": "CR-261001-W001-Q04-2",
+          "employee_id": "E00053",
+          "skill_id": "JN-E00053",
+          "process": "叠压",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 0.0,
+        "recovery_minutes": 0,
+        "earliest": null,
+        "started": null,
+        "finished": null,
+        "selected": false,
+        "status": "excluded",
+        "reasons": [
+          "加工中仅允许原锁定人机"
+        ],
+        "rank": null,
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-004",
+            "worker_window_id": "WIP-CARRY-crew_windows-015"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W04-2-1",
+            "worker_window_id": "CR-261001-W001-W15-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W04-2-2",
+            "worker_window_id": "CR-261001-W001-W15-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W04-3-1",
+            "worker_window_id": "CR-261001-W001-W15-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W04-3-2",
+            "worker_window_id": "CR-261001-W001-W15-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W04-4-1",
+            "worker_window_id": "CR-261001-W001-W15-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W04-4-2",
+            "worker_window_id": "CR-261001-W001-W15-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W04-5-1",
+            "worker_window_id": "CR-261001-W001-W15-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W04-5-2",
+            "worker_window_id": "CR-261001-W001-W15-5-2"
+          }
+        ],
+        "blocks": []
+      }
+    ],
+    "lots": [],
+    "related_tasks": [
+      {
+        "id": "SP-261001-W001-B001-T01-P000",
+        "job_id": "SP-261001-W001-B001",
+        "product_id": "CP.00008.A",
+        "route_id": "GY-00008-01",
+        "process": "冲片",
+        "branch": "定子",
+        "predecessors": [],
+        "input_state": "已完成",
+        "progress_id": "WR-261001-001-P001",
+        "operation_id": "BG-WIP-B1-T01",
+        "original_qty": 6,
+        "completed_qty": 6,
+        "remaining_qty": 0,
+        "process_minutes": 0.0,
+        "recovery_minutes": 0.0,
+        "actual_started": "2026-10-01T14:00:00",
+        "actual_finished": "2026-10-01T15:00:00",
+        "actual_resource_id": "SB-01-01-W01",
+        "actual_employee_id": "E00005",
+        "state": "completed",
+        "reason": "",
+        "root_tasks": [],
+        "resource_id": null,
+        "employee_id": null,
+        "credential_id": null,
+        "option_id": null,
+        "candidate_id": null,
+        "started": null,
+        "process_started": null,
+        "finished": "2026-10-01T15:00:00",
+        "setup_minutes": 0,
+        "dependency_ready": null,
+        "material_ready": null,
+        "demand_ids": [
+          "WR-261001-001-M001"
+        ],
+        "shortages": []
+      }
+    ],
+    "pair_count": 4,
+    "dependency_ready": "2026-10-01T18:00:00",
+    "material_ready": "2026-10-01T18:00:00",
+    "failed_predecessors": [],
+    "predecessors": [
+      "SP-261001-W001-B001-T01-P000"
+    ],
+    "root_tasks": []
+  },
+  "scheduled": {
+    "version": "WIP_DISPATCH_EVIDENCE_1",
+    "definition_hash": "d4fe0d82a2be9263ee9dc5dc6fdb192cd12523eb8f550cadcc45807396c695cf",
+    "task_id": "SP-261001-W001-B001-T05-P000",
+    "notice": "这是轮到该任务时的候选比较，物料余额和人机尾部均在该任务预留之前。单容量、连续窗口、保守尾部追加，不回填空档；可行未选只表示排序靠后，不表示全局最优或应替换人机。资格仅来自模拟声明及登记日期，不代表真实上岗批准。",
+    "state": "explained",
+    "issues": [],
+    "rank_fields": [
+      "完成时点",
+      "开始时点",
+      "资源编号",
+      "人员编号",
+      "资源候选编号",
+      "人员候选编号",
+      "资格编号",
+      "准备秒数"
+    ],
+    "pairs": [
+      {
+        "option_id": "WIP-schedule_options-B1-009",
+        "candidate_id": "WIP-crew_candidates-B1-009",
+        "credential_id": "CR-261001-W001-Q10-1",
+        "resource_id": "SB-11-01-W01",
+        "employee_id": "E00102",
+        "checked_qty": 6,
+        "capacity_qty": 60,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q10-1",
+          "employee_id": "E00102",
+          "skill_id": "JN-E00102-SB-11",
+          "process": "转子铸铝",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 12.0,
+        "recovery_minutes": 0.0,
+        "earliest": "2026-10-01T18:00:00",
+        "started": "2026-10-01T18:00:00",
+        "finished": "2026-10-01T18:21:00",
+        "selected": true,
+        "status": "selected",
+        "reasons": [],
+        "rank": [
+          "2026-10-01T18:21:00",
+          "2026-10-01T18:00:00",
+          "SB-11-01-W01",
+          "E00102",
+          "WIP-schedule_options-B1-009",
+          "WIP-crew_candidates-B1-009",
+          "CR-261001-W001-Q10-1",
+          720
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-019",
+            "worker_window_id": "WIP-CARRY-crew_windows-019"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W19-2-1",
+            "worker_window_id": "CR-261001-W001-W19-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W19-2-2",
+            "worker_window_id": "CR-261001-W001-W19-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W19-3-1",
+            "worker_window_id": "CR-261001-W001-W19-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W19-3-2",
+            "worker_window_id": "CR-261001-W001-W19-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W19-4-1",
+            "worker_window_id": "CR-261001-W001-W19-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W19-4-2",
+            "worker_window_id": "CR-261001-W001-W19-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W19-5-1",
+            "worker_window_id": "CR-261001-W001-W19-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W19-5-2",
+            "worker_window_id": "CR-261001-W001-W19-5-2"
+          }
+        ],
+        "blocks": [
+          {
+            "started": "2026-10-02T09:00:00",
+            "finished": "2026-10-02T10:00:00",
+            "id": "SP-261001-W001-X19"
+          }
+        ]
+      },
+      {
+        "option_id": "WIP-schedule_options-B1-009",
+        "candidate_id": "WIP-crew_candidates-B1-010",
+        "credential_id": "CR-261001-W001-Q10-2",
+        "resource_id": "SB-11-01-W01",
+        "employee_id": "E00118",
+        "checked_qty": 6,
+        "capacity_qty": 60,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q10-2",
+          "employee_id": "E00118",
+          "skill_id": "JN-E00118-SB-11",
+          "process": "转子铸铝",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 12.0,
+        "recovery_minutes": 0.0,
+        "earliest": "2026-10-01T18:00:00",
+        "started": "2026-10-01T18:00:00",
+        "finished": "2026-10-01T18:21:00",
+        "selected": false,
+        "status": "feasible",
+        "reasons": [],
+        "rank": [
+          "2026-10-01T18:21:00",
+          "2026-10-01T18:00:00",
+          "SB-11-01-W01",
+          "E00118",
+          "WIP-schedule_options-B1-009",
+          "WIP-crew_candidates-B1-010",
+          "CR-261001-W001-Q10-2",
+          720
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-019",
+            "worker_window_id": "WIP-CARRY-crew_windows-020"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W19-2-1",
+            "worker_window_id": "CR-261001-W001-W20-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W19-2-2",
+            "worker_window_id": "CR-261001-W001-W20-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W19-3-1",
+            "worker_window_id": "CR-261001-W001-W20-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W19-3-2",
+            "worker_window_id": "CR-261001-W001-W20-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W19-4-1",
+            "worker_window_id": "CR-261001-W001-W20-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W19-4-2",
+            "worker_window_id": "CR-261001-W001-W20-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W19-5-1",
+            "worker_window_id": "CR-261001-W001-W20-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W19-5-2",
+            "worker_window_id": "CR-261001-W001-W20-5-2"
+          }
+        ],
+        "blocks": [
+          {
+            "started": "2026-10-02T09:00:00",
+            "finished": "2026-10-02T10:00:00",
+            "id": "SP-261001-W001-X19"
+          }
+        ]
+      },
+      {
+        "option_id": "WIP-schedule_options-B1-010",
+        "candidate_id": "WIP-crew_candidates-B1-009",
+        "credential_id": "CR-261001-W001-Q10-1",
+        "resource_id": "SB-11-02-W01",
+        "employee_id": "E00102",
+        "checked_qty": 6,
+        "capacity_qty": 60,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q10-1",
+          "employee_id": "E00102",
+          "skill_id": "JN-E00102-SB-11",
+          "process": "转子铸铝",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 12.0,
+        "recovery_minutes": 0.0,
+        "earliest": "2026-10-01T18:00:00",
+        "started": "2026-10-01T18:00:00",
+        "finished": "2026-10-01T18:21:00",
+        "selected": false,
+        "status": "feasible",
+        "reasons": [],
+        "rank": [
+          "2026-10-01T18:21:00",
+          "2026-10-01T18:00:00",
+          "SB-11-02-W01",
+          "E00102",
+          "WIP-schedule_options-B1-010",
+          "WIP-crew_candidates-B1-009",
+          "CR-261001-W001-Q10-1",
+          720
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-020",
+            "worker_window_id": "WIP-CARRY-crew_windows-019"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W20-2-1",
+            "worker_window_id": "CR-261001-W001-W19-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W20-2-2",
+            "worker_window_id": "CR-261001-W001-W19-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W20-3-1",
+            "worker_window_id": "CR-261001-W001-W19-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W20-3-2",
+            "worker_window_id": "CR-261001-W001-W19-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W20-4-1",
+            "worker_window_id": "CR-261001-W001-W19-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W20-4-2",
+            "worker_window_id": "CR-261001-W001-W19-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W20-5-1",
+            "worker_window_id": "CR-261001-W001-W19-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W20-5-2",
+            "worker_window_id": "CR-261001-W001-W19-5-2"
+          }
+        ],
+        "blocks": []
+      },
+      {
+        "option_id": "WIP-schedule_options-B1-010",
+        "candidate_id": "WIP-crew_candidates-B1-010",
+        "credential_id": "CR-261001-W001-Q10-2",
+        "resource_id": "SB-11-02-W01",
+        "employee_id": "E00118",
+        "checked_qty": 6,
+        "capacity_qty": 60,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q10-2",
+          "employee_id": "E00118",
+          "skill_id": "JN-E00118-SB-11",
+          "process": "转子铸铝",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 12.0,
+        "recovery_minutes": 0.0,
+        "earliest": "2026-10-01T18:00:00",
+        "started": "2026-10-01T18:00:00",
+        "finished": "2026-10-01T18:21:00",
+        "selected": false,
+        "status": "feasible",
+        "reasons": [],
+        "rank": [
+          "2026-10-01T18:21:00",
+          "2026-10-01T18:00:00",
+          "SB-11-02-W01",
+          "E00118",
+          "WIP-schedule_options-B1-010",
+          "WIP-crew_candidates-B1-010",
+          "CR-261001-W001-Q10-2",
+          720
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-020",
+            "worker_window_id": "WIP-CARRY-crew_windows-020"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W20-2-1",
+            "worker_window_id": "CR-261001-W001-W20-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W20-2-2",
+            "worker_window_id": "CR-261001-W001-W20-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W20-3-1",
+            "worker_window_id": "CR-261001-W001-W20-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W20-3-2",
+            "worker_window_id": "CR-261001-W001-W20-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W20-4-1",
+            "worker_window_id": "CR-261001-W001-W20-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W20-4-2",
+            "worker_window_id": "CR-261001-W001-W20-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W20-5-1",
+            "worker_window_id": "CR-261001-W001-W20-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W20-5-2",
+            "worker_window_id": "CR-261001-W001-W20-5-2"
+          }
+        ],
+        "blocks": []
+      }
+    ],
+    "lots": [
+      {
+        "id": "WR-261001-001-S08",
+        "material_id": "04.02.0002",
+        "unit": "kg",
+        "owner_job_id": null,
+        "available_from": "2026-10-01T18:00:00",
+        "usable_qty": "1000",
+        "remaining_before_task": "1000",
+        "eligible": true,
+        "reasons": []
+      }
+    ],
+    "related_tasks": [
+      {
+        "id": "SP-261001-W001-B001-T02-P000",
+        "job_id": "SP-261001-W001-B001",
+        "product_id": "CP.00008.A",
+        "route_id": "GY-00008-01-ZZ",
+        "process": "冲片",
+        "branch": "转子",
+        "predecessors": [],
+        "input_state": "已完成",
+        "progress_id": "WR-261001-001-P002",
+        "operation_id": "BG-WIP-B1-T02",
+        "original_qty": 6,
+        "completed_qty": 6,
+        "remaining_qty": 0,
+        "process_minutes": 0.0,
+        "recovery_minutes": 0.0,
+        "actual_started": "2026-10-01T15:00:00",
+        "actual_finished": "2026-10-01T16:00:00",
+        "actual_resource_id": "SB-01-01-W01",
+        "actual_employee_id": "E00005",
+        "state": "completed",
+        "reason": "",
+        "root_tasks": [],
+        "resource_id": null,
+        "employee_id": null,
+        "credential_id": null,
+        "option_id": null,
+        "candidate_id": null,
+        "started": null,
+        "process_started": null,
+        "finished": "2026-10-01T16:00:00",
+        "setup_minutes": 0,
+        "dependency_ready": null,
+        "material_ready": null,
+        "demand_ids": [
+          "WR-261001-001-M002"
+        ],
+        "shortages": []
+      }
+    ],
+    "pair_count": 4,
+    "dependency_ready": "2026-10-01T18:00:00",
+    "material_ready": "2026-10-01T18:00:00",
+    "failed_predecessors": [],
+    "predecessors": [
+      "SP-261001-W001-B001-T02-P000"
+    ],
+    "root_tasks": []
+  },
+  "tail": {
+    "version": "WIP_DISPATCH_EVIDENCE_1",
+    "definition_hash": "d4fe0d82a2be9263ee9dc5dc6fdb192cd12523eb8f550cadcc45807396c695cf",
+    "task_id": "SP-261001-W001-B001-T09-P002",
+    "notice": "这是轮到该任务时的候选比较，物料余额和人机尾部均在该任务预留之前。单容量、连续窗口、保守尾部追加，不回填空档；可行未选只表示排序靠后，不表示全局最优或应替换人机。资格仅来自模拟声明及登记日期，不代表真实上岗批准。",
+    "state": "explained",
+    "issues": [],
+    "rank_fields": [
+      "完成时点",
+      "开始时点",
+      "资源编号",
+      "人员编号",
+      "资源候选编号",
+      "人员候选编号",
+      "资格编号",
+      "准备秒数"
+    ],
+    "pairs": [
+      {
+        "option_id": "WIP-schedule_options-B1-019",
+        "candidate_id": "WIP-crew_candidates-B1-019",
+        "credential_id": "CR-261001-W001-Q09-1",
+        "resource_id": "SB-07-01-W01",
+        "employee_id": "E00008",
+        "checked_qty": 1,
+        "capacity_qty": 1,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q09-1",
+          "employee_id": "E00008",
+          "skill_id": "JN-E00008",
+          "process": "装配",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-02T11:16:09",
+        "worker_tail": "2026-10-02T11:16:09",
+        "resource_tail_tasks": [
+          "SP-261001-W001-B001-T09-P001"
+        ],
+        "worker_tail_tasks": [
+          "SP-261001-W001-B001-T09-P001"
+        ],
+        "previous_family": "FRAME-A",
+        "task_family": "FRAME-A",
+        "setup_minutes": 0.0,
+        "recovery_minutes": 0.0,
+        "earliest": "2026-10-02T11:16:09",
+        "started": "2026-10-02T11:16:09",
+        "finished": "2026-10-02T11:27:42",
+        "selected": false,
+        "status": "feasible",
+        "reasons": [],
+        "rank": [
+          "2026-10-02T11:27:42",
+          "2026-10-02T11:16:09",
+          "SB-07-01-W01",
+          "E00008",
+          "WIP-schedule_options-B1-019",
+          "WIP-crew_candidates-B1-019",
+          "CR-261001-W001-Q09-1",
+          0
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-013",
+            "worker_window_id": "WIP-CARRY-crew_windows-005"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W13-2-1",
+            "worker_window_id": "CR-261001-W001-W05-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W13-2-2",
+            "worker_window_id": "CR-261001-W001-W05-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W13-3-1",
+            "worker_window_id": "CR-261001-W001-W05-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W13-3-2",
+            "worker_window_id": "CR-261001-W001-W05-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W13-4-1",
+            "worker_window_id": "CR-261001-W001-W05-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W13-4-2",
+            "worker_window_id": "CR-261001-W001-W05-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W13-5-1",
+            "worker_window_id": "CR-261001-W001-W05-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W13-5-2",
+            "worker_window_id": "CR-261001-W001-W05-5-2"
+          }
+        ],
+        "blocks": [
+          {
+            "started": "2026-10-02T09:00:00",
+            "finished": "2026-10-02T10:00:00",
+            "id": "SP-261001-W001-X13"
+          }
+        ]
+      },
+      {
+        "option_id": "WIP-schedule_options-B1-019",
+        "candidate_id": "WIP-crew_candidates-B1-020",
+        "credential_id": "CR-261001-W001-Q09-2",
+        "resource_id": "SB-07-01-W01",
+        "employee_id": "E00024",
+        "checked_qty": 1,
+        "capacity_qty": 1,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q09-2",
+          "employee_id": "E00024",
+          "skill_id": "JN-E00024",
+          "process": "装配",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-02T11:16:09",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [
+          "SP-261001-W001-B001-T09-P001"
+        ],
+        "worker_tail_tasks": [],
+        "previous_family": "FRAME-A",
+        "task_family": "FRAME-A",
+        "setup_minutes": 0.0,
+        "recovery_minutes": 0.0,
+        "earliest": "2026-10-02T11:16:09",
+        "started": "2026-10-02T11:16:09",
+        "finished": "2026-10-02T11:27:42",
+        "selected": false,
+        "status": "feasible",
+        "reasons": [],
+        "rank": [
+          "2026-10-02T11:27:42",
+          "2026-10-02T11:16:09",
+          "SB-07-01-W01",
+          "E00024",
+          "WIP-schedule_options-B1-019",
+          "WIP-crew_candidates-B1-020",
+          "CR-261001-W001-Q09-2",
+          0
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-013",
+            "worker_window_id": "WIP-CARRY-crew_windows-010"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W13-2-1",
+            "worker_window_id": "CR-261001-W001-W10-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W13-2-2",
+            "worker_window_id": "CR-261001-W001-W10-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W13-3-1",
+            "worker_window_id": "CR-261001-W001-W10-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W13-3-2",
+            "worker_window_id": "CR-261001-W001-W10-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W13-4-1",
+            "worker_window_id": "CR-261001-W001-W10-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W13-4-2",
+            "worker_window_id": "CR-261001-W001-W10-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W13-5-1",
+            "worker_window_id": "CR-261001-W001-W10-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W13-5-2",
+            "worker_window_id": "CR-261001-W001-W10-5-2"
+          }
+        ],
+        "blocks": [
+          {
+            "started": "2026-10-02T09:00:00",
+            "finished": "2026-10-02T10:00:00",
+            "id": "SP-261001-W001-X13"
+          }
+        ]
+      },
+      {
+        "option_id": "WIP-schedule_options-B1-020",
+        "candidate_id": "WIP-crew_candidates-B1-019",
+        "credential_id": "CR-261001-W001-Q09-1",
+        "resource_id": "SB-07-01-W02",
+        "employee_id": "E00008",
+        "checked_qty": 1,
+        "capacity_qty": 1,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q09-1",
+          "employee_id": "E00008",
+          "skill_id": "JN-E00008",
+          "process": "装配",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-02T11:16:09",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [
+          "SP-261001-W001-B001-T09-P001"
+        ],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 12.0,
+        "recovery_minutes": 0.0,
+        "earliest": "2026-10-02T11:16:09",
+        "started": "2026-10-02T11:16:09",
+        "finished": "2026-10-02T11:39:42",
+        "selected": false,
+        "status": "feasible",
+        "reasons": [],
+        "rank": [
+          "2026-10-02T11:39:42",
+          "2026-10-02T11:16:09",
+          "SB-07-01-W02",
+          "E00008",
+          "WIP-schedule_options-B1-020",
+          "WIP-crew_candidates-B1-019",
+          "CR-261001-W001-Q09-1",
+          720
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-014",
+            "worker_window_id": "WIP-CARRY-crew_windows-005"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W14-2-1",
+            "worker_window_id": "CR-261001-W001-W05-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W14-2-2",
+            "worker_window_id": "CR-261001-W001-W05-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W14-3-1",
+            "worker_window_id": "CR-261001-W001-W05-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W14-3-2",
+            "worker_window_id": "CR-261001-W001-W05-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W14-4-1",
+            "worker_window_id": "CR-261001-W001-W05-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W14-4-2",
+            "worker_window_id": "CR-261001-W001-W05-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W14-5-1",
+            "worker_window_id": "CR-261001-W001-W05-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W14-5-2",
+            "worker_window_id": "CR-261001-W001-W05-5-2"
+          }
+        ],
+        "blocks": []
+      },
+      {
+        "option_id": "WIP-schedule_options-B1-020",
+        "candidate_id": "WIP-crew_candidates-B1-020",
+        "credential_id": "CR-261001-W001-Q09-2",
+        "resource_id": "SB-07-01-W02",
+        "employee_id": "E00024",
+        "checked_qty": 1,
+        "capacity_qty": 1,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q09-2",
+          "employee_id": "E00024",
+          "skill_id": "JN-E00024",
+          "process": "装配",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 12.0,
+        "recovery_minutes": 0.0,
+        "earliest": "2026-10-02T10:52:36",
+        "started": "2026-10-02T10:52:36",
+        "finished": "2026-10-02T11:16:09",
+        "selected": true,
+        "status": "selected",
+        "reasons": [],
+        "rank": [
+          "2026-10-02T11:16:09",
+          "2026-10-02T10:52:36",
+          "SB-07-01-W02",
+          "E00024",
+          "WIP-schedule_options-B1-020",
+          "WIP-crew_candidates-B1-020",
+          "CR-261001-W001-Q09-2",
+          720
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-014",
+            "worker_window_id": "WIP-CARRY-crew_windows-010"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W14-2-1",
+            "worker_window_id": "CR-261001-W001-W10-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W14-2-2",
+            "worker_window_id": "CR-261001-W001-W10-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W14-3-1",
+            "worker_window_id": "CR-261001-W001-W10-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W14-3-2",
+            "worker_window_id": "CR-261001-W001-W10-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W14-4-1",
+            "worker_window_id": "CR-261001-W001-W10-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W14-4-2",
+            "worker_window_id": "CR-261001-W001-W10-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W14-5-1",
+            "worker_window_id": "CR-261001-W001-W10-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W14-5-2",
+            "worker_window_id": "CR-261001-W001-W10-5-2"
+          }
+        ],
+        "blocks": []
+      }
+    ],
+    "lots": [
+      {
+        "id": "WR-261001-001-S03",
+        "material_id": "02.01.0002",
+        "unit": "件",
+        "owner_job_id": null,
+        "available_from": "2026-10-01T18:00:00",
+        "usable_qty": "1000",
+        "remaining_before_task": "997",
+        "eligible": true,
+        "reasons": []
+      },
+      {
+        "id": "WR-261001-001-S06",
+        "material_id": "03.02.0002",
+        "unit": "件",
+        "owner_job_id": null,
+        "available_from": "2026-10-01T18:00:00",
+        "usable_qty": "1000",
+        "remaining_before_task": "998",
+        "eligible": true,
+        "reasons": []
+      }
+    ],
+    "related_tasks": [
+      {
+        "id": "SP-261001-W001-B001-T07-P000",
+        "job_id": "SP-261001-W001-B001",
+        "product_id": "CP.00008.A",
+        "route_id": "GY-00008-05",
+        "process": "浸漆固化",
+        "branch": "定子",
+        "predecessors": [
+          "SP-261001-W001-B001-T06-P000"
+        ],
+        "input_state": "未开始",
+        "progress_id": "WR-261001-001-P007",
+        "operation_id": null,
+        "original_qty": 6,
+        "completed_qty": 0,
+        "remaining_qty": 6,
+        "process_minutes": 69.3,
+        "recovery_minutes": 0.0,
+        "actual_started": null,
+        "actual_finished": null,
+        "actual_resource_id": null,
+        "actual_employee_id": null,
+        "state": "scheduled",
+        "reason": "",
+        "root_tasks": [],
+        "resource_id": "SB-05-01-W01",
+        "employee_id": "E00055",
+        "credential_id": "CR-261001-W001-Q06-1",
+        "option_id": "WIP-schedule_options-B1-013",
+        "candidate_id": "WIP-crew_candidates-B1-013",
+        "started": "2026-10-02T08:00:00",
+        "process_started": "2026-10-02T08:12:00",
+        "finished": "2026-10-02T09:21:18",
+        "setup_minutes": 12.0,
+        "dependency_ready": "2026-10-01T19:43:18",
+        "material_ready": "2026-10-01T19:43:18",
+        "demand_ids": [
+          "WR-261001-001-M007"
+        ],
+        "shortages": []
+      },
+      {
+        "id": "SP-261001-W001-B001-T08-P000",
+        "job_id": "SP-261001-W001-B001",
+        "product_id": "CP.00008.A",
+        "route_id": "GY-00008-06",
+        "process": "动平衡",
+        "branch": "转子",
+        "predecessors": [
+          "SP-261001-W001-B001-T04-P000"
+        ],
+        "input_state": "未开始",
+        "progress_id": "WR-261001-001-P008",
+        "operation_id": null,
+        "original_qty": 6,
+        "completed_qty": 0,
+        "remaining_qty": 6,
+        "process_minutes": 69.3,
+        "recovery_minutes": 0.0,
+        "actual_started": null,
+        "actual_finished": null,
+        "actual_resource_id": null,
+        "actual_employee_id": null,
+        "state": "scheduled",
+        "reason": "",
+        "root_tasks": [],
+        "resource_id": "SB-06-01-W01",
+        "employee_id": "E00038",
+        "credential_id": "CR-261001-W001-Q02-1",
+        "option_id": "WIP-schedule_options-B1-015",
+        "candidate_id": "WIP-crew_candidates-B1-015",
+        "started": "2026-10-02T09:26:18",
+        "process_started": "2026-10-02T09:38:18",
+        "finished": "2026-10-02T10:47:36",
+        "setup_minutes": 12.0,
+        "dependency_ready": "2026-10-02T09:26:18",
+        "material_ready": "2026-10-02T09:26:18",
+        "demand_ids": [],
+        "shortages": []
+      },
+      {
+        "id": "SP-261001-W001-B001-T09-P001",
+        "job_id": "SP-261001-W001-B001",
+        "product_id": "CP.00008.A",
+        "route_id": "GY-00008-07",
+        "process": "装配",
+        "branch": "整机",
+        "predecessors": [
+          "SP-261001-W001-B001-T07-P000",
+          "SP-261001-W001-B001-T08-P000"
+        ],
+        "input_state": "未开始",
+        "progress_id": "WR-261001-001-P009",
+        "operation_id": null,
+        "original_qty": 1,
+        "completed_qty": 0,
+        "remaining_qty": 1,
+        "process_minutes": 11.55,
+        "recovery_minutes": 0.0,
+        "actual_started": null,
+        "actual_finished": null,
+        "actual_resource_id": null,
+        "actual_employee_id": null,
+        "state": "scheduled",
+        "reason": "",
+        "root_tasks": [],
+        "resource_id": "SB-07-01-W01",
+        "employee_id": "E00008",
+        "credential_id": "CR-261001-W001-Q09-1",
+        "option_id": "WIP-schedule_options-B1-017",
+        "candidate_id": "WIP-crew_candidates-B1-017",
+        "started": "2026-10-02T10:52:36",
+        "process_started": "2026-10-02T11:04:36",
+        "finished": "2026-10-02T11:16:09",
+        "setup_minutes": 12.0,
+        "dependency_ready": "2026-10-02T10:52:36",
+        "material_ready": "2026-10-02T10:52:36",
+        "demand_ids": [
+          "WR-261001-001-M008",
+          "WR-261001-001-M009"
+        ],
+        "shortages": []
+      }
+    ],
+    "pair_count": 4,
+    "dependency_ready": "2026-10-02T10:52:36",
+    "material_ready": "2026-10-02T10:52:36",
+    "failed_predecessors": [],
+    "predecessors": [
+      "SP-261001-W001-B001-T07-P000",
+      "SP-261001-W001-B001-T08-P000"
+    ],
+    "root_tasks": []
+  },
+  "recovery": {
+    "version": "WIP_DISPATCH_EVIDENCE_1",
+    "definition_hash": "d4fe0d82a2be9263ee9dc5dc6fdb192cd12523eb8f550cadcc45807396c695cf",
+    "task_id": "SP-261001-W001-B002-T01-P000",
+    "notice": "这是轮到该任务时的候选比较，物料余额和人机尾部均在该任务预留之前。单容量、连续窗口、保守尾部追加，不回填空档；可行未选只表示排序靠后，不表示全局最优或应替换人机。资格仅来自模拟声明及登记日期，不代表真实上岗批准。",
+    "state": "explained",
+    "issues": [],
+    "rank_fields": [
+      "完成时点",
+      "开始时点",
+      "资源编号",
+      "人员编号",
+      "资源候选编号",
+      "人员候选编号",
+      "资格编号",
+      "准备秒数"
+    ],
+    "pairs": [
+      {
+        "option_id": "WIP-schedule_options-B2-001",
+        "candidate_id": "WIP-crew_candidates-B2-001",
+        "credential_id": "CR-261001-W001-Q01-1",
+        "resource_id": "SB-01-01-W01",
+        "employee_id": "E00005",
+        "checked_qty": 3,
+        "capacity_qty": 60,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q01-1",
+          "employee_id": "E00005",
+          "skill_id": "JN-E00005",
+          "process": "冲片",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 17.0,
+        "recovery_minutes": 5.0,
+        "earliest": "2026-10-01T18:00:00",
+        "started": "2026-10-01T18:00:00",
+        "finished": "2026-10-01T18:51:39",
+        "selected": true,
+        "status": "selected",
+        "reasons": [],
+        "rank": [
+          "2026-10-01T18:51:39",
+          "2026-10-01T18:00:00",
+          "SB-01-01-W01",
+          "E00005",
+          "WIP-schedule_options-B2-001",
+          "WIP-crew_candidates-B2-001",
+          "CR-261001-W001-Q01-1",
+          1020
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-001",
+            "worker_window_id": "WIP-CARRY-crew_windows-002"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W01-2-1",
+            "worker_window_id": "CR-261001-W001-W02-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W01-2-2",
+            "worker_window_id": "CR-261001-W001-W02-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W01-3-1",
+            "worker_window_id": "CR-261001-W001-W02-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W01-3-2",
+            "worker_window_id": "CR-261001-W001-W02-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W01-4-1",
+            "worker_window_id": "CR-261001-W001-W02-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W01-4-2",
+            "worker_window_id": "CR-261001-W001-W02-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W01-5-1",
+            "worker_window_id": "CR-261001-W001-W02-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W01-5-2",
+            "worker_window_id": "CR-261001-W001-W02-5-2"
+          }
+        ],
+        "blocks": [
+          {
+            "started": "2026-10-02T09:00:00",
+            "finished": "2026-10-02T10:00:00",
+            "id": "CR-261001-W001-X01"
+          },
+          {
+            "started": "2026-10-02T09:00:00",
+            "finished": "2026-10-02T10:00:00",
+            "id": "SP-261001-W001-X01"
+          }
+        ]
+      },
+      {
+        "option_id": "WIP-schedule_options-B2-001",
+        "candidate_id": "WIP-crew_candidates-B2-002",
+        "credential_id": "CR-261001-W001-Q01-2",
+        "resource_id": "SB-01-01-W01",
+        "employee_id": "E00021",
+        "checked_qty": 3,
+        "capacity_qty": 60,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q01-2",
+          "employee_id": "E00021",
+          "skill_id": "JN-E00021-SB-01",
+          "process": "冲片",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 17.0,
+        "recovery_minutes": 5.0,
+        "earliest": "2026-10-01T18:00:00",
+        "started": "2026-10-01T18:00:00",
+        "finished": "2026-10-01T18:51:39",
+        "selected": false,
+        "status": "feasible",
+        "reasons": [],
+        "rank": [
+          "2026-10-01T18:51:39",
+          "2026-10-01T18:00:00",
+          "SB-01-01-W01",
+          "E00021",
+          "WIP-schedule_options-B2-001",
+          "WIP-crew_candidates-B2-002",
+          "CR-261001-W001-Q01-2",
+          1020
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-001",
+            "worker_window_id": "WIP-CARRY-crew_windows-008"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W01-2-1",
+            "worker_window_id": "CR-261001-W001-W08-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W01-2-2",
+            "worker_window_id": "CR-261001-W001-W08-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W01-3-1",
+            "worker_window_id": "CR-261001-W001-W08-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W01-3-2",
+            "worker_window_id": "CR-261001-W001-W08-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W01-4-1",
+            "worker_window_id": "CR-261001-W001-W08-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W01-4-2",
+            "worker_window_id": "CR-261001-W001-W08-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W01-5-1",
+            "worker_window_id": "CR-261001-W001-W08-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W01-5-2",
+            "worker_window_id": "CR-261001-W001-W08-5-2"
+          }
+        ],
+        "blocks": [
+          {
+            "started": "2026-10-02T09:00:00",
+            "finished": "2026-10-02T10:00:00",
+            "id": "SP-261001-W001-X01"
+          }
+        ]
+      },
+      {
+        "option_id": "WIP-schedule_options-B2-002",
+        "candidate_id": "WIP-crew_candidates-B2-001",
+        "credential_id": "CR-261001-W001-Q01-1",
+        "resource_id": "SB-01-02-W01",
+        "employee_id": "E00005",
+        "checked_qty": 3,
+        "capacity_qty": 60,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q01-1",
+          "employee_id": "E00005",
+          "skill_id": "JN-E00005",
+          "process": "冲片",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 17.0,
+        "recovery_minutes": 5.0,
+        "earliest": "2026-10-01T18:00:00",
+        "started": "2026-10-01T18:00:00",
+        "finished": "2026-10-01T18:51:39",
+        "selected": false,
+        "status": "feasible",
+        "reasons": [],
+        "rank": [
+          "2026-10-01T18:51:39",
+          "2026-10-01T18:00:00",
+          "SB-01-02-W01",
+          "E00005",
+          "WIP-schedule_options-B2-002",
+          "WIP-crew_candidates-B2-001",
+          "CR-261001-W001-Q01-1",
+          1020
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-002",
+            "worker_window_id": "WIP-CARRY-crew_windows-002"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W02-2-1",
+            "worker_window_id": "CR-261001-W001-W02-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W02-2-2",
+            "worker_window_id": "CR-261001-W001-W02-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W02-3-1",
+            "worker_window_id": "CR-261001-W001-W02-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W02-3-2",
+            "worker_window_id": "CR-261001-W001-W02-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W02-4-1",
+            "worker_window_id": "CR-261001-W001-W02-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W02-4-2",
+            "worker_window_id": "CR-261001-W001-W02-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W02-5-1",
+            "worker_window_id": "CR-261001-W001-W02-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W02-5-2",
+            "worker_window_id": "CR-261001-W001-W02-5-2"
+          }
+        ],
+        "blocks": [
+          {
+            "started": "2026-10-02T09:00:00",
+            "finished": "2026-10-02T10:00:00",
+            "id": "CR-261001-W001-X01"
+          }
+        ]
+      },
+      {
+        "option_id": "WIP-schedule_options-B2-002",
+        "candidate_id": "WIP-crew_candidates-B2-002",
+        "credential_id": "CR-261001-W001-Q01-2",
+        "resource_id": "SB-01-02-W01",
+        "employee_id": "E00021",
+        "checked_qty": 3,
+        "capacity_qty": 60,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q01-2",
+          "employee_id": "E00021",
+          "skill_id": "JN-E00021-SB-01",
+          "process": "冲片",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 17.0,
+        "recovery_minutes": 5.0,
+        "earliest": "2026-10-01T18:00:00",
+        "started": "2026-10-01T18:00:00",
+        "finished": "2026-10-01T18:51:39",
+        "selected": false,
+        "status": "feasible",
+        "reasons": [],
+        "rank": [
+          "2026-10-01T18:51:39",
+          "2026-10-01T18:00:00",
+          "SB-01-02-W01",
+          "E00021",
+          "WIP-schedule_options-B2-002",
+          "WIP-crew_candidates-B2-002",
+          "CR-261001-W001-Q01-2",
+          1020
+        ],
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-002",
+            "worker_window_id": "WIP-CARRY-crew_windows-008"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W02-2-1",
+            "worker_window_id": "CR-261001-W001-W08-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W02-2-2",
+            "worker_window_id": "CR-261001-W001-W08-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W02-3-1",
+            "worker_window_id": "CR-261001-W001-W08-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W02-3-2",
+            "worker_window_id": "CR-261001-W001-W08-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W02-4-1",
+            "worker_window_id": "CR-261001-W001-W08-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W02-4-2",
+            "worker_window_id": "CR-261001-W001-W08-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W02-5-1",
+            "worker_window_id": "CR-261001-W001-W08-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W02-5-2",
+            "worker_window_id": "CR-261001-W001-W08-5-2"
+          }
+        ],
+        "blocks": []
+      }
+    ],
+    "lots": [
+      {
+        "id": "WR-261001-001-S01",
+        "material_id": "01.01.0002",
+        "unit": "kg",
+        "owner_job_id": null,
+        "available_from": "2026-10-01T18:00:00",
+        "usable_qty": "1000",
+        "remaining_before_task": "1000",
+        "eligible": true,
+        "reasons": []
+      }
+    ],
+    "related_tasks": [],
+    "pair_count": 4,
+    "dependency_ready": "2026-10-01T18:00:00",
+    "material_ready": "2026-10-01T18:00:00",
+    "failed_predecessors": [],
+    "predecessors": [],
+    "root_tasks": []
+  },
+  "blocked": {
+    "version": "WIP_DISPATCH_EVIDENCE_1",
+    "definition_hash": "d4fe0d82a2be9263ee9dc5dc6fdb192cd12523eb8f550cadcc45807396c695cf",
+    "task_id": "SP-261001-W001-B001-T06-P000",
+    "notice": "这是轮到该任务时的候选比较，物料余额和人机尾部均在该任务预留之前。单容量、连续窗口、保守尾部追加，不回填空档；可行未选只表示排序靠后，不表示全局最优或应替换人机。资格仅来自模拟声明及登记日期，不代表真实上岗批准。",
+    "state": "explained",
+    "issues": [],
+    "rank_fields": [
+      "完成时点",
+      "开始时点",
+      "资源编号",
+      "人员编号",
+      "资源候选编号",
+      "人员候选编号",
+      "资格编号",
+      "准备秒数"
+    ],
+    "pairs": [
+      {
+        "option_id": "WIP-schedule_options-B1-011",
+        "candidate_id": "WIP-crew_candidates-B1-011",
+        "credential_id": "CR-261001-W001-Q08-1",
+        "resource_id": "SB-04-01-W01",
+        "employee_id": "E00001",
+        "checked_qty": 6,
+        "capacity_qty": 60,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q08-1",
+          "employee_id": "E00001",
+          "skill_id": "JN-E00001-SB-04",
+          "process": "绕线嵌线",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 12.0,
+        "recovery_minutes": 0.0,
+        "earliest": null,
+        "started": null,
+        "finished": null,
+        "selected": false,
+        "status": "excluded",
+        "reasons": [
+          "剩余物料不足，未计算连续窗口"
+        ],
+        "rank": null,
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-007",
+            "worker_window_id": "WIP-CARRY-crew_windows-001"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W07-2-1",
+            "worker_window_id": "CR-261001-W001-W01-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W07-2-2",
+            "worker_window_id": "CR-261001-W001-W01-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W07-3-1",
+            "worker_window_id": "CR-261001-W001-W01-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W07-3-2",
+            "worker_window_id": "CR-261001-W001-W01-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W07-4-1",
+            "worker_window_id": "CR-261001-W001-W01-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W07-4-2",
+            "worker_window_id": "CR-261001-W001-W01-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W07-5-1",
+            "worker_window_id": "CR-261001-W001-W01-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W07-5-2",
+            "worker_window_id": "CR-261001-W001-W01-5-2"
+          }
+        ],
+        "blocks": [
+          {
+            "started": "2026-10-02T09:00:00",
+            "finished": "2026-10-02T10:00:00",
+            "id": "SP-261001-W001-X07"
+          }
+        ]
+      },
+      {
+        "option_id": "WIP-schedule_options-B1-011",
+        "candidate_id": "WIP-crew_candidates-B1-012",
+        "credential_id": "CR-261001-W001-Q08-2",
+        "resource_id": "SB-04-01-W01",
+        "employee_id": "E00007",
+        "checked_qty": 6,
+        "capacity_qty": 60,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q08-2",
+          "employee_id": "E00007",
+          "skill_id": "JN-E00007",
+          "process": "绕线嵌线",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 12.0,
+        "recovery_minutes": 0.0,
+        "earliest": null,
+        "started": null,
+        "finished": null,
+        "selected": false,
+        "status": "excluded",
+        "reasons": [
+          "剩余物料不足，未计算连续窗口"
+        ],
+        "rank": null,
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-007",
+            "worker_window_id": "WIP-CARRY-crew_windows-004"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W07-2-1",
+            "worker_window_id": "CR-261001-W001-W04-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W07-2-2",
+            "worker_window_id": "CR-261001-W001-W04-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W07-3-1",
+            "worker_window_id": "CR-261001-W001-W04-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W07-3-2",
+            "worker_window_id": "CR-261001-W001-W04-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W07-4-1",
+            "worker_window_id": "CR-261001-W001-W04-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W07-4-2",
+            "worker_window_id": "CR-261001-W001-W04-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W07-5-1",
+            "worker_window_id": "CR-261001-W001-W04-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W07-5-2",
+            "worker_window_id": "CR-261001-W001-W04-5-2"
+          }
+        ],
+        "blocks": [
+          {
+            "started": "2026-10-02T09:00:00",
+            "finished": "2026-10-02T10:00:00",
+            "id": "SP-261001-W001-X07"
+          }
+        ]
+      },
+      {
+        "option_id": "WIP-schedule_options-B1-012",
+        "candidate_id": "WIP-crew_candidates-B1-011",
+        "credential_id": "CR-261001-W001-Q08-1",
+        "resource_id": "SB-04-01-W02",
+        "employee_id": "E00001",
+        "checked_qty": 6,
+        "capacity_qty": 60,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q08-1",
+          "employee_id": "E00001",
+          "skill_id": "JN-E00001-SB-04",
+          "process": "绕线嵌线",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 12.0,
+        "recovery_minutes": 0.0,
+        "earliest": null,
+        "started": null,
+        "finished": null,
+        "selected": false,
+        "status": "excluded",
+        "reasons": [
+          "剩余物料不足，未计算连续窗口"
+        ],
+        "rank": null,
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-008",
+            "worker_window_id": "WIP-CARRY-crew_windows-001"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W08-2-1",
+            "worker_window_id": "CR-261001-W001-W01-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W08-2-2",
+            "worker_window_id": "CR-261001-W001-W01-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W08-3-1",
+            "worker_window_id": "CR-261001-W001-W01-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W08-3-2",
+            "worker_window_id": "CR-261001-W001-W01-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W08-4-1",
+            "worker_window_id": "CR-261001-W001-W01-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W08-4-2",
+            "worker_window_id": "CR-261001-W001-W01-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W08-5-1",
+            "worker_window_id": "CR-261001-W001-W01-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W08-5-2",
+            "worker_window_id": "CR-261001-W001-W01-5-2"
+          }
+        ],
+        "blocks": []
+      },
+      {
+        "option_id": "WIP-schedule_options-B1-012",
+        "candidate_id": "WIP-crew_candidates-B1-012",
+        "credential_id": "CR-261001-W001-Q08-2",
+        "resource_id": "SB-04-01-W02",
+        "employee_id": "E00007",
+        "checked_qty": 6,
+        "capacity_qty": 60,
+        "capacity_basis": "剩余批量",
+        "credential": {
+          "id": "CR-261001-W001-Q08-2",
+          "employee_id": "E00007",
+          "skill_id": "JN-E00007",
+          "process": "绕线嵌线",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-01T18:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-01T18:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": ""
+        },
+        "resource_tail": "2026-10-01T18:00:00",
+        "worker_tail": "2026-10-01T18:00:00",
+        "resource_tail_tasks": [],
+        "worker_tail_tasks": [],
+        "previous_family": null,
+        "task_family": "FRAME-A",
+        "setup_minutes": 12.0,
+        "recovery_minutes": 0.0,
+        "earliest": null,
+        "started": null,
+        "finished": null,
+        "selected": false,
+        "status": "excluded",
+        "reasons": [
+          "剩余物料不足，未计算连续窗口"
+        ],
+        "rank": null,
+        "windows": [
+          {
+            "started": "2026-10-01T18:00:00",
+            "finished": "2026-10-01T20:00:00",
+            "resource_window_id": "WIP-CARRY-schedule_windows-008",
+            "worker_window_id": "WIP-CARRY-crew_windows-004"
+          },
+          {
+            "started": "2026-10-02T08:00:00",
+            "finished": "2026-10-02T12:00:00",
+            "resource_window_id": "SP-261001-W001-W08-2-1",
+            "worker_window_id": "CR-261001-W001-W04-2-1"
+          },
+          {
+            "started": "2026-10-02T13:00:00",
+            "finished": "2026-10-02T18:00:00",
+            "resource_window_id": "SP-261001-W001-W08-2-2",
+            "worker_window_id": "CR-261001-W001-W04-2-2"
+          },
+          {
+            "started": "2026-10-03T08:00:00",
+            "finished": "2026-10-03T12:00:00",
+            "resource_window_id": "SP-261001-W001-W08-3-1",
+            "worker_window_id": "CR-261001-W001-W04-3-1"
+          },
+          {
+            "started": "2026-10-03T13:00:00",
+            "finished": "2026-10-03T18:00:00",
+            "resource_window_id": "SP-261001-W001-W08-3-2",
+            "worker_window_id": "CR-261001-W001-W04-3-2"
+          },
+          {
+            "started": "2026-10-04T08:00:00",
+            "finished": "2026-10-04T12:00:00",
+            "resource_window_id": "SP-261001-W001-W08-4-1",
+            "worker_window_id": "CR-261001-W001-W04-4-1"
+          },
+          {
+            "started": "2026-10-04T13:00:00",
+            "finished": "2026-10-04T18:00:00",
+            "resource_window_id": "SP-261001-W001-W08-4-2",
+            "worker_window_id": "CR-261001-W001-W04-4-2"
+          },
+          {
+            "started": "2026-10-05T08:00:00",
+            "finished": "2026-10-05T12:00:00",
+            "resource_window_id": "SP-261001-W001-W08-5-1",
+            "worker_window_id": "CR-261001-W001-W04-5-1"
+          },
+          {
+            "started": "2026-10-05T13:00:00",
+            "finished": "2026-10-05T18:00:00",
+            "resource_window_id": "SP-261001-W001-W08-5-2",
+            "worker_window_id": "CR-261001-W001-W04-5-2"
+          }
+        ],
+        "blocks": []
+      }
+    ],
+    "lots": [
+      {
+        "id": "WR-261001-002-S02",
+        "material_id": "01.02.0002",
+        "unit": "kg",
+        "owner_job_id": null,
+        "available_from": "2026-10-01T18:00:00",
+        "usable_qty": "0",
+        "remaining_before_task": "0",
+        "eligible": false,
+        "reasons": [
+          "派序到此任务时已无余量"
+        ]
+      },
+      {
+        "id": "WR-261001-002-S07",
+        "material_id": "04.01.0002",
+        "unit": "kg",
+        "owner_job_id": null,
+        "available_from": "2026-10-01T18:00:00",
+        "usable_qty": "1000",
+        "remaining_before_task": "1000",
+        "eligible": true,
+        "reasons": []
+      }
+    ],
+    "related_tasks": [
+      {
+        "id": "SP-261001-W001-B001-T03-P000",
+        "job_id": "SP-261001-W001-B001",
+        "product_id": "CP.00008.A",
+        "route_id": "GY-00008-02",
+        "process": "叠压",
+        "branch": "定子",
+        "predecessors": [
+          "SP-261001-W001-B001-T01-P000"
+        ],
+        "input_state": "加工中",
+        "progress_id": "WR-261001-002-P003",
+        "operation_id": "BG-WIP-B1-T03",
+        "original_qty": 6,
+        "completed_qty": 3,
+        "remaining_qty": 3,
+        "process_minutes": 12.0,
+        "recovery_minutes": 0.0,
+        "actual_started": "2026-10-01T17:45:00",
+        "actual_finished": null,
+        "actual_resource_id": "SB-02-01-W01",
+        "actual_employee_id": "E00037",
+        "state": "carried",
+        "reason": "",
+        "root_tasks": [],
+        "resource_id": "SB-02-01-W01",
+        "employee_id": "E00037",
+        "credential_id": "CR-261001-W001-Q04-1",
+        "option_id": "WIP-schedule_options-B1-005",
+        "candidate_id": "WIP-crew_candidates-B1-005",
+        "started": "2026-10-01T18:00:00",
+        "process_started": "2026-10-01T18:00:00",
+        "finished": "2026-10-01T18:12:00",
+        "setup_minutes": 0,
+        "dependency_ready": "2026-10-01T18:00:00",
+        "material_ready": "2026-10-01T18:00:00",
+        "demand_ids": [],
+        "shortages": []
+      },
+      {
+        "id": "SP-261001-W001-B001-T06-P000",
+        "job_id": "SP-261001-W001-B001",
+        "product_id": "CP.00008.A",
+        "route_id": "GY-00008-04",
+        "process": "绕线嵌线",
+        "branch": "定子",
+        "predecessors": [
+          "SP-261001-W001-B001-T03-P000"
+        ],
+        "input_state": "未开始",
+        "progress_id": "WR-261001-002-P006",
+        "operation_id": null,
+        "original_qty": 6,
+        "completed_qty": 0,
+        "remaining_qty": 6,
+        "process_minutes": 69.3,
+        "recovery_minutes": 0.0,
+        "actual_started": null,
+        "actual_finished": null,
+        "actual_resource_id": null,
+        "actual_employee_id": null,
+        "state": "blocked",
+        "reason": "剩余物料不足",
+        "root_tasks": [
+          "SP-261001-W001-B001-T06-P000"
+        ],
+        "resource_id": null,
+        "employee_id": null,
+        "credential_id": null,
+        "option_id": null,
+        "candidate_id": null,
+        "started": null,
+        "process_started": null,
+        "finished": null,
+        "setup_minutes": null,
+        "dependency_ready": "2026-10-01T18:17:00",
+        "material_ready": null,
+        "demand_ids": [
+          "WR-261001-002-M005",
+          "WR-261001-002-M006"
+        ],
+        "shortages": [
+          {
+            "material_id": "01.02.0002",
+            "unit": "kg",
+            "required_qty": "20.402",
+            "available_qty": "0",
+            "shortage_qty": "20.402"
+          }
+        ]
+      }
+    ],
+    "pair_count": 4,
+    "dependency_ready": "2026-10-01T18:17:00",
+    "material_ready": null,
+    "failed_predecessors": [],
+    "predecessors": [
+      "SP-261001-W001-B001-T03-P000"
+    ],
+    "root_tasks": [
+      "SP-261001-W001-B001-T06-P000"
+    ]
+  }
+}

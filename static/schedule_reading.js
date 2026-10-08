@@ -75,7 +75,11 @@ export function createScheduleReadGuard(h) {
    try { const value = await load(); return valid() ? value : null; }
    catch (e) { if (valid()) throw e; return null; }
   }
-  return {alive, attempt, read, modalRead, cancelModal};
+  function modalLease() {
+   const request = modalRequest, revision = h.getModalRevision();
+   return () => alive() && request === modalRequest && revision === h.getModalRevision();
+  }
+  return {alive, attempt, read, modalRead, cancelModal, modalLease};
  }
  return {begin, cancel};
 }
