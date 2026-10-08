@@ -728,7 +728,8 @@ def refine(d):
     from refine_bi_workbench import refine_workbench
     from refine_bi_joint_comparison import refine_comparison
     from refine_bi_baseline_trial import refine_baseline_trial
-    return refine_baseline_trial(refine_comparison(refine_workbench(refine_curing(refine_changes(refine_objects(refine_journey(refine_first_piece(refine_reading(refine_launch(refine_order_baseline(refine_joint(refine_oee(refine_pages(refine_crew(refine_schedule(refine_exports(refine_results(refine_cards(refine_msa(refine_workspace(refine_spc(result))))))))))))))))))))))
+    from refine_bi_baseline_reading import refine_baseline_reading
+    return refine_baseline_reading(refine_baseline_trial(refine_comparison(refine_workbench(refine_curing(refine_changes(refine_objects(refine_journey(refine_first_piece(refine_reading(refine_launch(refine_order_baseline(refine_joint(refine_oee(refine_pages(refine_crew(refine_schedule(refine_exports(refine_results(refine_cards(refine_msa(refine_workspace(refine_spc(result)))))))))))))))))))))))
 
 
 if __name__=='__main__':

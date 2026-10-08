@@ -5,7 +5,7 @@ permissions:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -23,3 +23,4 @@ jobs:
       - run: node tests/check_workbench.mjs
       - run: node tests/check_joint_compare.mjs
       - run: node tests/check_baseline_trial.mjs
+      - run: node tests/check_order_baseline.mjs
