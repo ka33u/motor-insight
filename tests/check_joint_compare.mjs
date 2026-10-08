@@ -1,7 +1,7 @@
 // Pure functions and asynchronous state objects; no browser/DOM automation.
 import assert from 'node:assert/strict';import fs from 'node:fs';
 import {compareRows,policySummary,jobComparison,allocationRows,taskComparison,createJointComparison} from '../static/joint_compare.js';
-const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),table=(headers,rows)=>{assert(rows.every(r=>r.length===headers.length));return JSON.stringify({headers,rows})},panel=(a,b)=>a+b;
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),table=(headers,rows)=>{assert(rows.every(r=>r.length===headers.length));return JSON.stringify({headers,rows})},panel=(a,b,c)=>{assert.equal(typeof c,'string');return a+b+c};
 const original=JSON.parse(fs.readFileSync(new URL('fixtures/joint_schedule_board_001_due.json',import.meta.url))),base=structuredClone(original);
 const d={state:'compared',study:base.study,resource_study:base.resource_study,notice:'差值不是因果推断',policies:{due:'应完成时间优先',priority:'批次优先级优先'},columns:{due:{summary:base.summary,issues:[]},priority:{summary:base.summary,issues:[]}},receipt:'SYNTHETIC',policy_receipts:{due:'LEFT',priority:'RIGHT'},source_count:10,
  jobs:base.jobs.map(j=>({id:j.id,product_id:j.product_id,qty:j.qty,due:j.due,left:j,right:j,finish_delta_minutes:0,lateness_delta_minutes:0})),

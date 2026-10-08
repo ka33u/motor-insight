@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "0.22.0",
+  "version": "0.23.0",
   "record_count": 232200,
   "record_hash_digest": "0206fed03b9befe314bdd457ae0ee38f97e70f0300ee95d74ba54a68cfd704b3",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
@@ -249,6 +249,35 @@
     "local_selection_not_saved": true,
     "full_export_scope_explicit": true,
     "stale_response_guards": true,
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "actual_download_acceptance": false,
+    "scope": "0.22.0历史验收；0.23.0重跑完整回归与24组纯JS，未重复订单基线HTTP组合。"
+  },
+  "schedule_evidence_reading": {
+    "success": true,
+    "version": "0.23.0",
+    "tests": 2751,
+    "new_python_tests": 0,
+    "new_js_checks": 38,
+    "related_js_checks": 61,
+    "native_http_roles": 6,
+    "exports": 30,
+    "sources_per_allowed_read": {
+      "finite": 1154,
+      "crew": 1771,
+      "joint": 2030,
+      "comparison": 2030
+    },
+    "main_database_unchanged": true,
+    "original_calculators_and_api_unchanged": true,
+    "original_files_preserved": 458,
+    "new_business_facts": 0,
+    "new_input_workbooks": 0,
+    "new_migrations": 0,
+    "reference_replay_version": "0.19.0",
+    "fixtures_exact": true,
+    "public_design_regeneration_exact": true,
     "browser_acceptance": false,
     "mobile_acceptance": false,
     "actual_download_acceptance": false
