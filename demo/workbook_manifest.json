@@ -215,6 +215,11 @@
       "filename": "43_固化温度曲线_模拟.xlsx",
       "sha256": "19802f72552486c83216741e074cf658e32a27412a1909774f2e29c631f6528c",
       "mapping": {}
+    },
+    {
+      "filename": "44_跨批次共享物料试排_模拟.xlsx",
+      "sha256": "a124ff59b359c3378831b12a2231e3facd5ca47fe13a9c5083a8cbf461243848",
+      "mapping": {}
     }
   ],
   "legacy_plan_rows": [

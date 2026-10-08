@@ -1,23 +1,23 @@
 {
   "success": true,
-  "version": "0.26.0",
-  "record_count": 232200,
-  "record_hash_digest": "0206fed03b9befe314bdd457ae0ee38f97e70f0300ee95d74ba54a68cfd704b3",
+  "version": "0.27.0",
+  "record_count": 232941,
+  "record_hash_digest": "2e0a72b20acd7e72393fa0433a170f3349dbf7698d583b6e20aec5060b44d473",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
   "public_configuration_counts": {
-    "app_record": 232200,
+    "app_record": 232941,
     "app_analysismodel": 52,
     "app_topic": 21,
     "app_metricversion": 11
   },
   "tests": 2797,
-  "fresh_xlsx_replay": false,
-  "effective_workbooks": 42,
-  "original_workbooks": 43,
+  "fresh_xlsx_replay": true,
+  "effective_workbooks": 43,
+  "original_workbooks": 44,
   "prior_business_facts_preserved": 232200,
-  "new_business_facts": 0,
+  "new_business_facts": 741,
   "raw_contracts": 154,
-  "original_files_preserved": 458,
+  "original_files_preserved": 471,
   "native_http_roles": 6,
   "pure_js_presentation": true,
   "browser_validation": false,
@@ -46,8 +46,8 @@
     "invalid": 3,
     "contradicted": 2
   },
-  "last_fresh_xlsx_replay_version": "0.19.0",
-  "existing_replayed_database_verified": true,
+  "last_fresh_xlsx_replay_version": "0.27.0",
+  "existing_replayed_database_verified": false,
   "topic_journey": {
     "modes": [
       "inherit",
@@ -369,6 +369,129 @@
     "reading_definition": "joint-material-evidence-v1",
     "browser_acceptance": false,
     "mobile_acceptance": false,
-    "actual_download_acceptance": false
+    "actual_download_acceptance": false,
+    "scope": "0.26.0历史验收；0.27.0复跑完整回归及17组纯JS，新共享案例HTTP与空库回放另列。"
+  },
+  "original_files_preserved_scope": "本次核对471个既有归档路径（包括此前458份原件清单）；另正常导入新增1份Excel原件。",
+  "shared_material_scenario": {
+    "success": true,
+    "workbook": "44_跨批次共享物料试排_模拟.xlsx",
+    "source_rows": 741,
+    "records": 232941,
+    "record_hash_digest": "2e0a72b20acd7e72393fa0433a170f3349dbf7698d583b6e20aec5060b44d473",
+    "prior_business_facts_preserved": 232200,
+    "source_rows_exact": true,
+    "independent_decimal_checks": 72,
+    "material_ledger_checks": 32,
+    "no_resource_or_worker_overlap": true,
+    "profiles": [
+      {
+        "study": "MP-261009-001",
+        "policy": "due",
+        "complete_jobs": 1,
+        "scheduled_jobs": [
+          "SP-261009-001-B001"
+        ],
+        "reserved_kg": "85.699",
+        "tasks": 26
+      },
+      {
+        "study": "MP-261009-001",
+        "policy": "priority",
+        "complete_jobs": 1,
+        "scheduled_jobs": [
+          "SP-261009-001-B002"
+        ],
+        "reserved_kg": "85.699",
+        "tasks": 26
+      },
+      {
+        "study": "MP-261009-002",
+        "policy": "due",
+        "complete_jobs": 2,
+        "scheduled_jobs": [
+          "SP-261009-001-B001",
+          "SP-261009-001-B002"
+        ],
+        "reserved_kg": "171.398",
+        "tasks": 52
+      },
+      {
+        "study": "MP-261009-002",
+        "policy": "priority",
+        "complete_jobs": 2,
+        "scheduled_jobs": [
+          "SP-261009-001-B001",
+          "SP-261009-001-B002"
+        ],
+        "reserved_kg": "171.398",
+        "tasks": 52
+      }
+    ],
+    "normal_preview_and_commit": true,
+    "idempotent_repeat": true,
+    "old_policy_outputs_preserved": 20,
+    "protected_existing_archive_paths": 471,
+    "old_workbooks_preserved": 42,
+    "protected_other_database_tables": 54,
+    "new_import_batches": 1,
+    "new_audit_events": 2,
+    "public_configuration_unchanged": true,
+    "verified_in_version": "0.27.0",
+    "fresh_xlsx_replay": true,
+    "effective_workbooks": 43,
+    "configuration_sha256": "47d8d4c49b1db5e273c5d50bd67b2031992cf3e314ea0074befb701c0e685e21",
+    "http": {
+      "success": true,
+      "roles": [
+        {
+          "role": "admin",
+          "allowed": true
+        },
+        {
+          "role": "analyst",
+          "allowed": true
+        },
+        {
+          "role": "operations",
+          "allowed": true
+        },
+        {
+          "role": "quality",
+          "denied": true
+        },
+        {
+          "role": "finance",
+          "denied": true
+        },
+        {
+          "role": "viewer",
+          "denied": true
+        }
+      ],
+      "boards": 12,
+      "material_details": 96,
+      "task_details": 24,
+      "comparisons": 6,
+      "exports": 18,
+      "zero_query_rebuilds": 96,
+      "source_rows_exact": true,
+      "business_facts_unchanged": true,
+      "main_database_unchanged": true,
+      "browser_acceptance": false
+    },
+    "rendered_workbook_sheets": 17,
+    "rendered_panels": 39,
+    "excel_cell_types": {
+      "text": 3433,
+      "datetime": 712,
+      "numeric": 378
+    },
+    "formula_cells": 0,
+    "related_schedule_js_groups": 150,
+    "workbench_js_groups": 14,
+    "new_core_calculation": false,
+    "new_migrations": false,
+    "browser_acceptance": false
   }
 }
