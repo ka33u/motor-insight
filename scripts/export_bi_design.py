@@ -71,6 +71,9 @@ if f.get('topic_page_composition'):
 if f.get('oee_trial'):
     c=f['oee_trial']
     parts.append(section('oee-design','班次效率：配置口径、损失时间与采集缺口','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','formula','mixed','time','zero','visuals','sources','permission','boundary']])+'<p>方法参考：'+ ' · '.join('<a href="'+h(url)+'">OEE计算与因素</a>' for url in c['references'])+'</p>'))
+if f.get('joint_blocker_reading'):
+    c=f['joint_blocker_reading']
+    parts.append(section('joint-blocker-design','首阻断关联：去重范围与任务核查','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','measures','time','presentation','boundary']])))
 if f.get('joint_schedule_trial'):
     c=f['joint_schedule_trial']
     parts.append(section('joint-schedule-design','物料、人机联立：从批次交期追到预留依据','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','demand','supply','method','presentation','measures','boundary']])))

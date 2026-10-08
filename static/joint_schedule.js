@@ -1,4 +1,5 @@
 import {scheduleSources,scheduleTaskDetail,createScheduleReadGuard} from './schedule_reading.js';
+import {jointBlockerReport,jointTaskSelection,jointBlockerQueue} from './joint_blockers.js';
 import {crewGantt} from './crew_schedule.js';
 import {createJointComparison} from './joint_compare.js';
 export const canJoint=role=>['admin','analyst','operations'].includes(role);
@@ -21,7 +22,7 @@ export function createJointScheduleWorkspace(h){
  const comparison=createJointComparison(h);
  const sourceTable=rows=>scheduleSources(rows,h);
  async function render(params,token){
-  const {alive,attempt,read,modalRead}=reads.begin(token);
+  const {alive,attempt,read,modalRead,cancelModal}=reads.begin(token);
   if(params.get('view')==='compare')return comparison.render(params,token);
   comparison.cancel();
   const list=await read(()=>api('joint-schedule'));if(!list)return;
@@ -42,16 +43,27 @@ export function createJointScheduleWorkspace(h){
    $$('[data-joint-task]').forEach(el=>el.addEventListener('click',()=>detail(el.dataset.jointTask)));
 
   }
+  const blockers=jointBlockerReport(d),taskScope={job:'',state:'',root:''};let rootPage=1,chartAxis='resource';
   function schedule(){
-   $('#joint-body').innerHTML=panel('同一排程 · 全方案设备与人员占用','','<div class="filterbar"><button id="joint-device">按设备</button><button id="joint-worker">按人员</button></div><div id="joint-chart">'+crewGantt(d)+'</div>')+
-    panel('任务明细与阻断链','',`<div class="filterbar"><label>批次<select id="joint-job"><option value="">全部批次</option>${d.jobs.map(j=>`<option value="${esc(j.id)}">${esc(j.id)}</option>`).join('')}</select></label><label>任务状态<select id="joint-state"><option value="">全部任务</option><option value="blocked">未排入</option><option value="scheduled">已排入</option></select></label></div><div id="joint-tasks"></div>`);
-   function rows(){
-    const job=$('#joint-job').value,state=$('#joint-state').value,selected=d.tasks.filter(t=>(!job||t.job_id===job)&&(!state||t.state===state));
-    $('#joint-tasks').innerHTML=`<p class="source">当前明细 ${selected.length} / 全方案 ${d.tasks.length} 项任务。此处选择不改变上方汇总、甘特图、全方案来源或完整导出。</p>`+table(['任务 / 工序','设备 / 人员','准备开始 / 完成','物料就绪 / 共同等待分钟','本任务新增预留需求号','状态 / 首个阻断'],selected.map(t=>[`<button class="row-link" data-joint-task="${esc(t.id)}">${esc(t.id)}</button><small class="block">${esc(t.process+' / '+t.branch)}</small>`,`${esc(t.resource_id||'未排入')}<br>${esc(t.employee_id||'未指派')}`,`${esc(local(t.started))}<br>${esc(local(t.finished))}`,`${minute(t.material_readiness_delay_minutes)} / ${minute(t.wait_minutes)}`,esc(t.new_reservation_ids.join('、')||'本任务未新增'),`${t.state==='scheduled'?'已排':'未排入'}<small class="block">${esc(t.reason)}</small>${t.root_tasks.length?`<small class="block">${esc(t.root_tasks.join('、'))}</small>`:''}`]));
-    $$('[data-joint-task]').forEach(el=>el.addEventListener('click',()=>detail(el.dataset.jointTask)));
+   $('#joint-body').innerHTML='<div id="joint-root-queue"></div>'+panel('同一排程 · 全方案设备与人员占用','','<div class="filterbar"><button id="joint-device">按设备</button><button id="joint-worker">按人员</button></div><div id="joint-chart">'+crewGantt(d,chartAxis)+'</div>')+
+    panel('任务明细与阻断链','',`<div class="filterbar"><label>批次<select id="joint-job"><option value="">全部批次</option>${d.jobs.map(j=>`<option value="${esc(j.id)}">${esc(j.id)}</option>`).join('')}</select></label><label>任务状态<select id="joint-state"><option value="">全部任务</option><option value="blocked">未排入</option><option value="scheduled">已排入</option></select></label><label>首阻断（仅明细）<select id="joint-root"><option value="">全部首阻断</option>${blockers.rows.map(r=>`<option value="${esc(r.id)}">${esc(r.id)}</option>`).join('')}</select></label><button id="joint-task-reset">重置明细选择</button></div><div id="joint-tasks"></div>`);
+   const setControls=()=>{for(const field of ['job','state','root'])$('#joint-'+field).value=taskScope[field]};
+   function queue(){
+    $('#joint-root-queue').innerHTML=jointBlockerQueue(blockers,h,{page:rootPage,selected:taskScope.root});
+    $$('[data-joint-root-detail]').forEach(el=>el.addEventListener('click',()=>detail(el.dataset.jointRootDetail)));
+    $$('[data-joint-root-focus]').forEach(el=>el.addEventListener('click',()=>{cancelModal();Object.assign(taskScope,{job:'',state:'blocked',root:el.dataset.jointRootFocus});setControls();rows();queue()}));
+    on('#joint-root-prev','click',()=>{if(rootPage>1){rootPage--;queue()}});
+    on('#joint-root-next','click',()=>{if(rootPage*40<blockers.rows.length){rootPage++;queue()}});
    }
-   rows();on('#joint-job','change',rows);on('#joint-state','change',rows);
-   on('#joint-device','click',()=>{$('#joint-chart').innerHTML=crewGantt(d,'resource')});on('#joint-worker','click',()=>{$('#joint-chart').innerHTML=crewGantt(d,'worker')});
+   function rows(){
+    const selected=jointTaskSelection(d,blockers,taskScope);
+    $('#joint-tasks').innerHTML=`<p class="source">当前明细 ${selected.length} / 全方案 ${d.tasks.length} 项任务。首阻断：${esc(taskScope.root||'全部')}；批次、状态与首阻断取交集。此处选择不改变上方汇总、首阻断队列、甘特图、全方案来源或完整导出。</p>`+(selected.length?'':'<p class="empty">当前条件没有匹配任务；不表示全方案没有阻断。可重置明细选择。</p>')+table(['任务 / 工序','设备 / 人员','准备开始 / 完成','物料就绪 / 共同等待分钟','本任务新增预留需求号','状态 / 首个阻断'],selected.map(t=>[`<button class="row-link" data-joint-task="${esc(t.id)}">${esc(t.id)}</button><small class="block">${esc(t.process+' / '+t.branch)}</small>`,`${esc(t.resource_id||'未排入')}<br>${esc(t.employee_id||'未指派')}`,`${esc(local(t.started))}<br>${esc(local(t.finished))}`,`${minute(t.material_readiness_delay_minutes)} / ${minute(t.wait_minutes)}`,esc(t.new_reservation_ids.join('、')||'本任务未新增'),`${t.state==='scheduled'?'已排':'未排入'}<small class="block">${esc(t.reason)}</small>${t.root_tasks.length?`<small class="block">${esc(t.root_tasks.join('、'))}</small>`:''}`]));
+    bindTasks();
+   }
+   setControls();rows();queue();
+   for(const field of ['job','state','root'])on('#joint-'+field,'change',()=>{cancelModal();taskScope[field]=$('#joint-'+field).value;rows();queue()});
+   on('#joint-task-reset','click',()=>{cancelModal();Object.assign(taskScope,{job:'',state:'',root:''});setControls();rows();queue()});
+   on('#joint-device','click',()=>{chartAxis='resource';$('#joint-chart').innerHTML=crewGantt(d,chartAxis)});on('#joint-worker','click',()=>{chartAxis='worker';$('#joint-chart').innerHTML=crewGantt(d,chartAxis)});
    // Chart listeners survive changes to its inner markup.
    on('#joint-chart','click',e=>{const el=e.target.closest('[data-finite-task]');if(el)detail(el.dataset.finiteTask)});
    on('#joint-chart','keydown',e=>{const el=e.target.closest('[data-finite-task]');if(el&&(e.key==='Enter'||e.key===' ')){e.preventDefault();detail(el.dataset.finiteTask)}});
