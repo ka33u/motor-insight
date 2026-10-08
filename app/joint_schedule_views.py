@@ -5,7 +5,7 @@ from pathlib import Path
 from django.core import signing
 from django.db import transaction
 from django.http import HttpResponse
-from . import joint_schedule as engine, joint_schedule_data as data, finite_schedule, spc_data, access, joint_candidate_evidence
+from . import joint_schedule as engine, joint_schedule_data as data, finite_schedule, spc_data, access, joint_candidate_evidence, joint_material_evidence
 from .joint_schedule_schema import DATASETS
 from .models import Record, AuditEvent
 from .views import api, reply, require
@@ -30,7 +30,7 @@ def account(user):
 def stamp(d, user):
     return dict(study=d['result']['study']['id'], policy=d['result']['policy'], source_hash=d['source_hash'], rule_hash=d['rule_hash'],
                 result_hash=finite_schedule.digest(d['result']), account=account(user), view_hash=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-                candidate_definition_hash=joint_candidate_evidence.definition_hash())
+                candidate_definition_hash=joint_candidate_evidence.definition_hash(), material_definition_hash=joint_material_evidence.definition_hash())
 
 
 def context(request, key, required=False):
@@ -124,6 +124,20 @@ def detail(request, key, task_id):
     return response(dict(row=row, demands=demands, reservations=allocations, candidate_evidence=candidate_evidence, sources=[s for s in d['sources'] if (s['dataset'], s['key']) in direct],
                          receipt=d['receipt'], can_download_original=access.can_import(request.user),
                          notice='显示该任务用料、共享候选供给、直接前序、首个阻断与候选人机依据。其他批次会竞争同一供给和人机，请同时核对全方案来源及完整导出。整批用料可能由同工序的其他份号预留。候选资料不代表剩余容量或可立即开工。'))
+
+
+
+@api()
+@transaction.atomic
+def material_detail(request, key, material_id):
+    params(request, ('policy', 'receipt', 'unit'))
+    d=context(request,key,True);unit=request.GET.get('unit')
+    if unit is None:raise ValueError('请指定物料原单位')
+    if not any(r['material_id']==material_id and r['unit']==unit for r in d['result']['balances']):raise Record.DoesNotExist()
+    evidence,refs=joint_material_evidence.build(d['result'],material_id,unit)
+    refs.update({('joint_studies',key),('crew_studies',d['result']['crew_study']['id']),('schedule_studies',d['result']['resource_study']['id'])})
+    finish(request,d)
+    return response(dict(evidence=evidence,receipt=d['receipt'],sources=[s for s in d['sources'] if (s['dataset'],s['key']) in refs],can_download_original=access.can_import(request.user)))
 
 
 def export_document(d):

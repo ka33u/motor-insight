@@ -1,3 +1,4 @@
+import {jointMaterialLink,jointMaterialDetail} from './joint_material.js';
 import {scheduleSources,scheduleTaskDetail,createScheduleReadGuard} from './schedule_reading.js';
 import {jointBlockerReport,jointTaskSelection,jointBlockerQueue} from './joint_blockers.js';
 import {crewGantt} from './crew_schedule.js';
@@ -38,7 +39,9 @@ export function createJointScheduleWorkspace(h){
    `<details class="source"><summary>计算边界与预留规则</summary><p>${esc(d.notice)}</p><p>总量缺口只比较同物料同单位的需求与范围内可用供给；不证明时间齐套。总剩余供给包括范围外到料，未预留需求也可能是人机受阻。不同方案的供给彼此独立，不合并计算。</p></details>`;
   on('#joint-compare','click',()=>go('joint-schedule',{study:key,policy,view:'compare'}));
   on('#joint-study','change',e=>go('joint-schedule',{study:e.target.value,policy}));on('#joint-policy','change',e=>go('joint-schedule',{study:key,policy:e.target.value}));
-  const detail=attempt(async id=>{const p=await modalRead(()=>api(url('/tasks/'+encodeURIComponent(id))));if(p){modal('任务、整批用料与预留依据',scheduleTaskDetail(p,h,'joint'));$$('[data-joint-related-task]').forEach(el=>el.addEventListener('click',()=>detail(el.dataset.jointRelatedTask)))}});
+  const detail=attempt(async (id,back)=>{const p=await modalRead(()=>api(url('/tasks/'+encodeURIComponent(id))));if(p){modal('任务、整批用料与预留依据',(back?'<p>'+jointMaterialLink(back.id,back.unit,'返回物料核对 · '+back.id,h)+'</p>':'')+scheduleTaskDetail(p,h,'joint'));$$('[data-joint-related-task]').forEach(el=>el.addEventListener('click',()=>detail(el.dataset.jointRelatedTask,back)));bindMaterials('#dialog-content')}});
+  const materialDetail=attempt(async(id,unit)=>{const p=await modalRead(()=>api(url('/materials/'+encodeURIComponent(id),{unit})));if(p){modal('同料需求、供给与预留核对',jointMaterialDetail(p,{...h,sourceTable}));$$('#dialog-content [data-joint-material-task]').forEach(el=>el.addEventListener('click',()=>detail(el.dataset.jointMaterialTask,{id,unit})))}});
+  function bindMaterials(scope){$$(scope+' [data-joint-material-id]').forEach(el=>el.addEventListener('click',()=>materialDetail(el.dataset.jointMaterialId,el.dataset.jointMaterialUnit)))}
   function bindTasks(){
    $$('[data-joint-task]').forEach(el=>el.addEventListener('click',()=>detail(el.dataset.jointTask)));
 
@@ -69,11 +72,11 @@ export function createJointScheduleWorkspace(h){
    on('#joint-chart','keydown',e=>{const el=e.target.closest('[data-finite-task]');if(el&&(e.key==='Enter'||e.key===' ')){e.preventDefault();detail(el.dataset.finiteTask)}});
   }
   function material(){
-   $('#joint-body').innerHTML=panel('物料总量核对','',`<p class="source">同物料同单位分别核对，不合计kg和件。范围内可用供给仍需满足具体任务开始时间。隔离量按整批排除，避免与“其中不可预留量”重复扣除。</p>`+table(['物料 / 单位','整批需求','范围内可用供给','总量缺口','已预留','总排除量','总剩余（含范围外）'],d.balances.map(b=>[`${esc(b.material_id+' · '+b.material_name)}<small class="block">${esc(b.unit)}</small>`,esc(b.required_qty),esc(b.horizon_usable_qty),esc(b.initial_supply_gap_qty),esc(b.reserved_qty),esc(b.total_excluded_qty),esc(b.total_remaining_qty)])))+
+   $('#joint-body').innerHTML=panel('物料总量核对','',`<p class="source">同物料同单位分别核对，不合计kg和件。范围内可用供给仍需满足具体任务开始时间。隔离量按整批排除，避免与“其中不可预留量”重复扣除。</p>`+table(['物料 / 单位','整批需求','范围内可用供给','总量缺口','已预留','总排除量','总剩余（含范围外）'],d.balances.map(b=>[`${jointMaterialLink(b.material_id,b.unit,b.material_id+' · '+b.material_name,h)}<small class="block">${esc(b.unit)}</small>`,esc(b.required_qty),esc(b.horizon_usable_qty),esc(b.initial_supply_gap_qty),esc(b.reserved_qty),esc(b.total_excluded_qty),esc(b.total_remaining_qty)])))+
     panel('整批需求与触发任务','',table(['需求 / 批次','BOM / 工序','物料 / 单位','用量与损耗 / 步长','整批需求','预留状态 / 时间'],d.demands.map(n=>[`${esc(n.id)}<small class="block">${esc(n.job_id)}</small>`,`${esc(n.bom_id)}<br>${esc(n.route_id)}`,`${esc(n.material_id)} / ${esc(n.unit)}`,`${esc(n.bom_qty)} × (1 + ${esc(n.scrap_allowance)})<small class="block">向上取整步长 ${esc(n.quantum)}</small>`,esc(n.required_qty),n.reservation?`<button class="row-link" data-joint-task="${esc(n.reservation.task_id)}">${esc(n.reservation.task_id)}</button><small class="block">${esc(local(n.reservation.reserved_at))}</small>`:'未预留；结合任务阻断核查'])))+
     panel('供给批次账 · 可用 = 预留 + 剩余','',table(['供给 / 模拟批号','物料 / 单位','假设可用时间','账面 / 排除','可用 / 预留 / 剩余','状态 / 假设类型'],d.lots.map(l=>[`${esc(l.id)}<small class="block">${esc(l.lot)}</small>`,`${esc(l.material_id)} / ${esc(l.unit)}`,esc(local(l.available_from)),`${esc(l.qty)} / ${esc(l.excluded_qty)}`,`${esc(l.usable_qty)} / ${esc(l.reserved_qty)} / ${esc(l.remaining_qty)}`,`${esc(l.status)}<br>${esc(l.kind)}`])))+
     panel('FIFO预留流水','',table(['需求 / 供给批次','触发任务','物料 / 单位','预留量','可用起点 / 预留时点'],d.reservations.map(a=>[`${esc(a.demand_id)}<br>${esc(a.supply_id)}`,`<button class="row-link" data-joint-task="${esc(a.task_id)}">${esc(a.task_id)}</button>`,`${esc(a.material_id)} / ${esc(a.unit)}`,esc(a.qty),`${esc(local(a.available_from))}<br>${esc(local(a.reserved_at))}`])));
-   bindTasks();
+   bindTasks();bindMaterials('#joint-body');
   }
   on('#joint-tab-schedule','click',schedule);on('#joint-tab-material','click',material);schedule();
   async function evidence(page=1){const s=await modalRead(()=>api(url('/sources',{page})));if(!s)return;modal('共享供给、人机与BOM全部来源',sourceTable(s.rows)+`<p>第 ${page} 页，共 ${s.total} 条。${s.can_download_original?'管理员可在导入页读取归档原件。':'来源索引不授予原件下载权限。'}</p><button id="joint-prev" ${page===1?'disabled':''}>上一页</button> <button id="joint-next" ${page*(s.size||40)>=s.total?'disabled':''}>下一页</button>`);on('#joint-prev','click',attempt(()=>evidence(page-1)));on('#joint-next','click',attempt(()=>evidence(page+1)))}

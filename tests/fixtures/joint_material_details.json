@@ -1,0 +1,2784 @@
+{
+  "1": {
+    "evidence": {
+      "version": "joint-material-evidence-v1",
+      "notice": "仅核对本次独立试排的同物料同单位。未预留不等于缺料，已预留不等于实际领料或批次已排完。供给排除含整批隔离，范围外剩余不参与本次试排；总量足够不证明时间齐套。流水沿原算法预留顺序，不按时刻重排，不释放或重新分配预留，不作正式派工。",
+      "balance": {
+        "material_id": "01.01.0001",
+        "material_name": "无取向硅钢-01",
+        "unit": "kg",
+        "required_qty": "44.216",
+        "horizon_usable_qty": "44.216",
+        "reserved_qty": "44.216",
+        "total_excluded_qty": "0",
+        "total_remaining_qty": "0",
+        "initial_supply_gap_qty": "0"
+      },
+      "baseline": "2026-10-02T08:00:00",
+      "horizon_end": "2026-10-05T18:00:00",
+      "summary": {
+        "demands": 2,
+        "reserved_demands": 2,
+        "jobs": 1,
+        "lots": 1,
+        "allocations": 2,
+        "required_qty": "44.216",
+        "reserved_qty": "44.216",
+        "unreserved_qty": "0",
+        "total_supply_qty": "44.216",
+        "excluded_qty": "0",
+        "horizon_remaining_qty": "0",
+        "outside_remaining_qty": "0"
+      },
+      "jobs": [
+        {
+          "id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "qty": 12,
+          "due": "2026-10-04T18:00:00",
+          "state": "scheduled",
+          "demands": 2,
+          "reserved_demands": 2,
+          "required_qty": "44.216",
+          "reserved_qty": "44.216",
+          "unreserved_qty": "0"
+        }
+      ],
+      "demands": [
+        {
+          "id": "MP-261002-001-D046",
+          "job_id": "SP-261002-001-B006",
+          "binding_id": "MP-261002-001-B046",
+          "product_id": "CP.00043.A",
+          "bom_id": "BOM-00043-01-DZ",
+          "bom_version": "A.02",
+          "route_id": "GY-00043-01",
+          "material_id": "01.01.0001",
+          "unit": "kg",
+          "required_qty": "28.74",
+          "reserved_qty": "28.74",
+          "state": "reserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "0",
+          "reservation": {
+            "task_id": "SP-261002-001-B006-T01-P000",
+            "reserved_at": "2026-10-02T14:37:32"
+          },
+          "task_ids": [
+            "SP-261002-001-B006-T01-P000"
+          ]
+        },
+        {
+          "id": "MP-261002-001-D047",
+          "job_id": "SP-261002-001-B006",
+          "binding_id": "MP-261002-001-B047",
+          "product_id": "CP.00043.A",
+          "bom_id": "BOM-00043-01-ZZ",
+          "bom_version": "A.02",
+          "route_id": "GY-00043-01-ZZ",
+          "material_id": "01.01.0001",
+          "unit": "kg",
+          "required_qty": "15.476",
+          "reserved_qty": "15.476",
+          "state": "reserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "0",
+          "reservation": {
+            "task_id": "SP-261002-001-B006-T02-P000",
+            "reserved_at": "2026-10-02T15:18:36"
+          },
+          "task_ids": [
+            "SP-261002-001-B006-T02-P000"
+          ]
+        }
+      ],
+      "lots": [
+        {
+          "id": "MP-261002-001-L001",
+          "material_id": "01.01.0001",
+          "unit": "kg",
+          "lot": "SIM-JM-261002-01-001",
+          "qty": "44.216",
+          "unavailable_qty": "0",
+          "available_from": "2026-10-02T08:00:00",
+          "status": "可预留",
+          "kind": "期初假设",
+          "reference": "SIM-JM-SUPPLY-01-001",
+          "basis": "自编未来供给池；不代表账面库存、在途采购承诺、检验放行或库存写回。",
+          "usable_qty": "44.216",
+          "excluded_qty": "0",
+          "reserved_qty": "44.216",
+          "remaining_qty": "0",
+          "inside_horizon": true
+        }
+      ],
+      "allocations": [
+        {
+          "sequence": 28,
+          "demand_id": "MP-261002-001-D046",
+          "job_id": "SP-261002-001-B006",
+          "task_id": "SP-261002-001-B006-T01-P000",
+          "supply_id": "MP-261002-001-L001",
+          "material_id": "01.01.0001",
+          "unit": "kg",
+          "qty": "28.74",
+          "reserved_at": "2026-10-02T14:37:32",
+          "available_from": "2026-10-02T08:00:00"
+        },
+        {
+          "sequence": 29,
+          "demand_id": "MP-261002-001-D047",
+          "job_id": "SP-261002-001-B006",
+          "task_id": "SP-261002-001-B006-T02-P000",
+          "supply_id": "MP-261002-001-L001",
+          "material_id": "01.01.0001",
+          "unit": "kg",
+          "qty": "15.476",
+          "reserved_at": "2026-10-02T15:18:36",
+          "available_from": "2026-10-02T08:00:00"
+        }
+      ],
+      "tasks": [
+        {
+          "id": "SP-261002-001-B006-T01-P000",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-01",
+          "process": "冲片",
+          "branch": "定子",
+          "qty": 12,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-02T14:37:32",
+          "finished": "2026-10-02T15:54:42",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B006-T02-P000",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-01-ZZ",
+          "process": "冲片",
+          "branch": "转子",
+          "qty": 12,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-02T15:18:36",
+          "finished": "2026-10-02T16:47:46",
+          "root_tasks": []
+        }
+      ]
+    },
+    "sources": [
+      {
+        "dataset": "bom",
+        "key": "BOM-00043-01-DZ",
+        "revision": 1,
+        "record_hash": "970c08641f16c4d3c1e375ad888e23426c41f93c7cd4b616817db14c4e416ec9",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 380,
+        "source_row_id": 819
+      },
+      {
+        "dataset": "bom",
+        "key": "BOM-00043-01-ZZ",
+        "revision": 1,
+        "record_hash": "22a2561f2606135af14ba219abc5c26cb9d61f62c143f2568a3de7f330d5fcf2",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 381,
+        "source_row_id": 820
+      },
+      {
+        "dataset": "crew_studies",
+        "key": "CR-261002-001",
+        "revision": 1,
+        "record_hash": "113dfe6972260d139c9894a6c4aab1fb6decdb07cc32fc8d646c46c2cfa3c273",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "资源人员联立方案",
+        "row": 2,
+        "source_row_id": 220536
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-001-B046",
+        "revision": 1,
+        "record_hash": "1e7eadb5ea2dbe658d21e7f8f35ad72aef1b66427d4ef0b3bef61998d88512d6",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 47,
+        "source_row_id": 224123
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-001-B047",
+        "revision": 1,
+        "record_hash": "bf0bb08d9e7df482a8cdd3d64d781528df194ac3acd18dd57ca6f3941dbc19b5",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 48,
+        "source_row_id": 224124
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-001-D046",
+        "revision": 1,
+        "record_hash": "fa0cdbf97576623be63a8bfd0ad39ffdd942657aeffda193f9e7c1267a1abe3b",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 47,
+        "source_row_id": 224662
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-001-D047",
+        "revision": 1,
+        "record_hash": "2e541ffc5f8de81b7ad7d802910250c711cd6d86959a14f0923661f69e792e66",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 48,
+        "source_row_id": 224663
+      },
+      {
+        "dataset": "joint_studies",
+        "key": "MP-261002-001",
+        "revision": 1,
+        "record_hash": "298389c96b637bec0d29d9e479e5f4a09baa797138637371f018cc0e7ea490ed",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "物料人机联立方案",
+        "row": 2,
+        "source_row_id": 224068
+      },
+      {
+        "dataset": "joint_supplies",
+        "key": "MP-261002-001-L001",
+        "revision": 1,
+        "record_hash": "080a6a2689aa02d79d32f59234e556bca2f355cb2ead5f35c0fb13a9a1f0c8a9",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排物料可用假设",
+        "row": 2,
+        "source_row_id": 225156
+      },
+      {
+        "dataset": "materials",
+        "key": "01.01.0001",
+        "revision": 1,
+        "record_hash": "63e1c5ec50eba5b341aaff169fc211d2770adaca89123b14b654f26ce009a4a5",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "物料档案",
+        "row": 2,
+        "source_row_id": 257
+      },
+      {
+        "dataset": "products",
+        "key": "CP.00043.A",
+        "revision": 1,
+        "record_hash": "e71efe099895902bdd0a83b1cc0bb41059ffd33e606f042096f62d607a8c93fd",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "产品配置",
+        "row": 44,
+        "source_row_id": 347
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00043-01",
+        "revision": 1,
+        "record_hash": "d0300e7b982263c9a46aab7b6b368b0710ac43b3fa02204f16076fe12d099e17",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 464,
+        "source_row_id": 1335
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00043-01-ZZ",
+        "revision": 1,
+        "record_hash": "157ca3f2e5a2c1bad5f9a6db7cdfb3acfb5308aed772df1940e4a242072dc731",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 468,
+        "source_row_id": 1339
+      },
+      {
+        "dataset": "schedule_jobs",
+        "key": "SP-261002-001-B006",
+        "revision": 1,
+        "record_hash": "897358915ce3705a1bbbb0b54d8da86aeefd512d63b481dda037df4178c66b92",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排模拟批次",
+        "row": 7,
+        "source_row_id": 214541
+      },
+      {
+        "dataset": "schedule_studies",
+        "key": "SP-261002-001",
+        "revision": 1,
+        "record_hash": "3d16865bf77880e03334a7f89bdf9b3201dd018e24fe6cd91a0075d96eb0792d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "有限资源试排方案",
+        "row": 2,
+        "source_row_id": 214530
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T01-P000",
+        "revision": 1,
+        "record_hash": "2fe2c45d41bea05aab8b3a534f08b0d01b49e73c2e424acb7c9e4227eb064d9e",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 156,
+        "source_row_id": 214726
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T02-P000",
+        "revision": 1,
+        "record_hash": "cdce9873b06295745018357105eafd860534f6ff113aa00c4f147b43b372c5e1",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 157,
+        "source_row_id": 214727
+      }
+    ],
+    "can_download_original": true
+  },
+  "pieces": {
+    "evidence": {
+      "version": "joint-material-evidence-v1",
+      "notice": "仅核对本次独立试排的同物料同单位。未预留不等于缺料，已预留不等于实际领料或批次已排完。供给排除含整批隔离，范围外剩余不参与本次试排；总量足够不证明时间齐套。流水沿原算法预留顺序，不按时刻重排，不释放或重新分配预留，不作正式派工。",
+      "balance": {
+        "material_id": "02.01.0001",
+        "material_name": "深沟球轴承-01",
+        "unit": "件",
+        "required_qty": "25",
+        "horizon_usable_qty": "25",
+        "reserved_qty": "25",
+        "total_excluded_qty": "0",
+        "total_remaining_qty": "0",
+        "initial_supply_gap_qty": "0"
+      },
+      "baseline": "2026-10-02T08:00:00",
+      "horizon_end": "2026-10-05T18:00:00",
+      "summary": {
+        "demands": 1,
+        "reserved_demands": 1,
+        "jobs": 1,
+        "lots": 1,
+        "allocations": 1,
+        "required_qty": "25",
+        "reserved_qty": "25",
+        "unreserved_qty": "0",
+        "total_supply_qty": "25",
+        "excluded_qty": "0",
+        "horizon_remaining_qty": "0",
+        "outside_remaining_qty": "0"
+      },
+      "jobs": [
+        {
+          "id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "qty": 12,
+          "due": "2026-10-04T18:00:00",
+          "state": "scheduled",
+          "demands": 1,
+          "reserved_demands": 1,
+          "required_qty": "25",
+          "reserved_qty": "25",
+          "unreserved_qty": "0"
+        }
+      ],
+      "demands": [
+        {
+          "id": "MP-261002-001-D049",
+          "job_id": "SP-261002-001-B006",
+          "binding_id": "MP-261002-001-B049",
+          "product_id": "CP.00043.A",
+          "bom_id": "BOM-00043-03",
+          "bom_version": "A.02",
+          "route_id": "GY-00043-07",
+          "material_id": "02.01.0001",
+          "unit": "件",
+          "required_qty": "25",
+          "reserved_qty": "25",
+          "state": "reserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "0",
+          "reservation": {
+            "task_id": "SP-261002-001-B006-T09-P001",
+            "reserved_at": "2026-10-03T13:00:00"
+          },
+          "task_ids": [
+            "SP-261002-001-B006-T09-P001",
+            "SP-261002-001-B006-T09-P002",
+            "SP-261002-001-B006-T09-P003",
+            "SP-261002-001-B006-T09-P004",
+            "SP-261002-001-B006-T09-P005",
+            "SP-261002-001-B006-T09-P006",
+            "SP-261002-001-B006-T09-P007",
+            "SP-261002-001-B006-T09-P008",
+            "SP-261002-001-B006-T09-P009",
+            "SP-261002-001-B006-T09-P010",
+            "SP-261002-001-B006-T09-P011",
+            "SP-261002-001-B006-T09-P012"
+          ]
+        }
+      ],
+      "lots": [
+        {
+          "id": "MP-261002-001-L013",
+          "material_id": "02.01.0001",
+          "unit": "件",
+          "lot": "SIM-JM-261002-01-013",
+          "qty": "25",
+          "unavailable_qty": "0",
+          "available_from": "2026-10-02T08:00:00",
+          "status": "可预留",
+          "kind": "期初假设",
+          "reference": "SIM-JM-SUPPLY-01-013",
+          "basis": "自编未来供给池；不代表账面库存、在途采购承诺、检验放行或库存写回。",
+          "usable_qty": "25",
+          "excluded_qty": "0",
+          "reserved_qty": "25",
+          "remaining_qty": "0",
+          "inside_horizon": true
+        }
+      ],
+      "allocations": [
+        {
+          "sequence": 35,
+          "demand_id": "MP-261002-001-D049",
+          "job_id": "SP-261002-001-B006",
+          "task_id": "SP-261002-001-B006-T09-P001",
+          "supply_id": "MP-261002-001-L013",
+          "material_id": "02.01.0001",
+          "unit": "件",
+          "qty": "25",
+          "reserved_at": "2026-10-03T13:00:00",
+          "available_from": "2026-10-02T08:00:00"
+        }
+      ],
+      "tasks": [
+        {
+          "id": "SP-261002-001-B006-T09-P001",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-07",
+          "process": "装配",
+          "branch": "整机",
+          "qty": 1,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T13:18:26",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B006-T09-P002",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-07",
+          "process": "装配",
+          "branch": "整机",
+          "qty": 1,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T13:18:26",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B006-T09-P003",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-07",
+          "process": "装配",
+          "branch": "整机",
+          "qty": 1,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T13:18:26",
+          "finished": "2026-10-03T13:24:52",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B006-T09-P004",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-07",
+          "process": "装配",
+          "branch": "整机",
+          "qty": 1,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T13:18:26",
+          "finished": "2026-10-03T13:24:52",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B006-T09-P005",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-07",
+          "process": "装配",
+          "branch": "整机",
+          "qty": 1,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T13:24:52",
+          "finished": "2026-10-03T13:31:18",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B006-T09-P006",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-07",
+          "process": "装配",
+          "branch": "整机",
+          "qty": 1,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T13:24:52",
+          "finished": "2026-10-03T13:31:18",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B006-T09-P007",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-07",
+          "process": "装配",
+          "branch": "整机",
+          "qty": 1,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T13:31:18",
+          "finished": "2026-10-03T13:37:44",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B006-T09-P008",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-07",
+          "process": "装配",
+          "branch": "整机",
+          "qty": 1,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T13:31:18",
+          "finished": "2026-10-03T13:37:44",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B006-T09-P009",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-07",
+          "process": "装配",
+          "branch": "整机",
+          "qty": 1,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T13:37:44",
+          "finished": "2026-10-03T13:44:10",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B006-T09-P010",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-07",
+          "process": "装配",
+          "branch": "整机",
+          "qty": 1,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T13:37:44",
+          "finished": "2026-10-03T13:44:10",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B006-T09-P011",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-07",
+          "process": "装配",
+          "branch": "整机",
+          "qty": 1,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T13:44:10",
+          "finished": "2026-10-03T13:50:36",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B006-T09-P012",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-07",
+          "process": "装配",
+          "branch": "整机",
+          "qty": 1,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T13:44:10",
+          "finished": "2026-10-03T13:50:36",
+          "root_tasks": []
+        }
+      ]
+    },
+    "sources": [
+      {
+        "dataset": "bom",
+        "key": "BOM-00043-03",
+        "revision": 1,
+        "record_hash": "f5948dfe853fe3f07b9de70560c9c400a6a050185c469db43c52e5dc385638d3",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 383,
+        "source_row_id": 822
+      },
+      {
+        "dataset": "crew_studies",
+        "key": "CR-261002-001",
+        "revision": 1,
+        "record_hash": "113dfe6972260d139c9894a6c4aab1fb6decdb07cc32fc8d646c46c2cfa3c273",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "资源人员联立方案",
+        "row": 2,
+        "source_row_id": 220536
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-001-B049",
+        "revision": 1,
+        "record_hash": "cebdef5aaab1e457eca5447433e47ec0af908fdfd0beb7da293b3eb53a1ef55c",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 50,
+        "source_row_id": 224126
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-001-D049",
+        "revision": 1,
+        "record_hash": "c5e0c03c8731a63f318b6f878d4db6afacae29eff63109e32ce0594db71e2de1",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 50,
+        "source_row_id": 224665
+      },
+      {
+        "dataset": "joint_studies",
+        "key": "MP-261002-001",
+        "revision": 1,
+        "record_hash": "298389c96b637bec0d29d9e479e5f4a09baa797138637371f018cc0e7ea490ed",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "物料人机联立方案",
+        "row": 2,
+        "source_row_id": 224068
+      },
+      {
+        "dataset": "joint_supplies",
+        "key": "MP-261002-001-L013",
+        "revision": 1,
+        "record_hash": "9fb8c60d73b351bba7ad2b6af1ff46270eb2f53fcd9454e4fff11cead37d42f0",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排物料可用假设",
+        "row": 14,
+        "source_row_id": 225168
+      },
+      {
+        "dataset": "materials",
+        "key": "02.01.0001",
+        "revision": 1,
+        "record_hash": "e64e290892b6d6f398338e9625389920bf2f0d31445cd88723dd030dbfe329d7",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "物料档案",
+        "row": 14,
+        "source_row_id": 269
+      },
+      {
+        "dataset": "products",
+        "key": "CP.00043.A",
+        "revision": 1,
+        "record_hash": "e71efe099895902bdd0a83b1cc0bb41059ffd33e606f042096f62d607a8c93fd",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "产品配置",
+        "row": 44,
+        "source_row_id": 347
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00043-07",
+        "revision": 1,
+        "record_hash": "764018384cfdbd3cb584503e15dec9783f8db50f3ceedf1e9a18e6fce4687c72",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 472,
+        "source_row_id": 1343
+      },
+      {
+        "dataset": "schedule_jobs",
+        "key": "SP-261002-001-B006",
+        "revision": 1,
+        "record_hash": "897358915ce3705a1bbbb0b54d8da86aeefd512d63b481dda037df4178c66b92",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排模拟批次",
+        "row": 7,
+        "source_row_id": 214541
+      },
+      {
+        "dataset": "schedule_studies",
+        "key": "SP-261002-001",
+        "revision": 1,
+        "record_hash": "3d16865bf77880e03334a7f89bdf9b3201dd018e24fe6cd91a0075d96eb0792d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "有限资源试排方案",
+        "row": 2,
+        "source_row_id": 214530
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T09-P001",
+        "revision": 1,
+        "record_hash": "7bcb9b2765ea82ad9ddbd08b91e568846aa9abd49f5f2a5a4001140c018fe7b8",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 164,
+        "source_row_id": 214734
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T09-P002",
+        "revision": 1,
+        "record_hash": "49cc0cd76fabea6e67ee4b0177edd920b3183a879f90cf04bae03193291b0003",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 165,
+        "source_row_id": 214735
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T09-P003",
+        "revision": 1,
+        "record_hash": "17fe235441f5f01afeb64dcfbede63f5a46f0732ebecd231f91473d46c12573e",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 166,
+        "source_row_id": 214736
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T09-P004",
+        "revision": 1,
+        "record_hash": "948e27f53be152c3b8a87919869c7bc2aa02eca4733aebd2544d594d6bf8aaba",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 167,
+        "source_row_id": 214737
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T09-P005",
+        "revision": 1,
+        "record_hash": "ebfa7a311d3f696dd4616af9734c9cd29dfe1c8578d6cd175a04204789f2ab75",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 168,
+        "source_row_id": 214738
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T09-P006",
+        "revision": 1,
+        "record_hash": "5312df32377927c995553bdc364fb32ecc91c4778e1c2edd303058cc5b41b426",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 169,
+        "source_row_id": 214739
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T09-P007",
+        "revision": 1,
+        "record_hash": "a14fc6c4a5ed146ce1ab08cbe0434d7d67e3ce22d1bb1a4b856fc7d6924ae291",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 170,
+        "source_row_id": 214740
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T09-P008",
+        "revision": 1,
+        "record_hash": "601e9848a33fb251c26bc255c661ef54bb47fd503d9d35467db4750f516b3c89",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 171,
+        "source_row_id": 214741
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T09-P009",
+        "revision": 1,
+        "record_hash": "1882c3e0634509095940f076a302476f6cf64bbedcfba968c095e8c505535241",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 172,
+        "source_row_id": 214742
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T09-P010",
+        "revision": 1,
+        "record_hash": "e1be794c4bbac644d7771e0ba1619732d40b33a55bf5b682956ebc8e1558d5ee",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 173,
+        "source_row_id": 214743
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T09-P011",
+        "revision": 1,
+        "record_hash": "64be1cc7e5a082bd130c0675794e5bc61cbfdc3969c84a6a6c1d134bd0fe1547",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 174,
+        "source_row_id": 214744
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T09-P012",
+        "revision": 1,
+        "record_hash": "180c1b792e9452828cd7dfb1d4eb83646e15a05fe5a4058573cbd10fc7a05b6b",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 175,
+        "source_row_id": 214745
+      }
+    ],
+    "can_download_original": true
+  },
+  "2": {
+    "evidence": {
+      "version": "joint-material-evidence-v1",
+      "notice": "仅核对本次独立试排的同物料同单位。未预留不等于缺料，已预留不等于实际领料或批次已排完。供给排除含整批隔离，范围外剩余不参与本次试排；总量足够不证明时间齐套。流水沿原算法预留顺序，不按时刻重排，不释放或重新分配预留，不作正式派工。",
+      "balance": {
+        "material_id": "01.01.0003",
+        "material_name": "无取向硅钢-03",
+        "unit": "kg",
+        "required_qty": "87.769",
+        "horizon_usable_qty": "35.108",
+        "reserved_qty": "30.719",
+        "total_excluded_qty": "0",
+        "total_remaining_qty": "4.389",
+        "initial_supply_gap_qty": "52.661"
+      },
+      "baseline": "2026-10-02T08:00:00",
+      "horizon_end": "2026-10-05T18:00:00",
+      "summary": {
+        "demands": 2,
+        "reserved_demands": 1,
+        "jobs": 1,
+        "lots": 1,
+        "allocations": 1,
+        "required_qty": "87.769",
+        "reserved_qty": "30.719",
+        "unreserved_qty": "57.05",
+        "total_supply_qty": "35.108",
+        "excluded_qty": "0",
+        "horizon_remaining_qty": "4.389",
+        "outside_remaining_qty": "0"
+      },
+      "jobs": [
+        {
+          "id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "qty": 8,
+          "due": "2026-10-03T18:00:00",
+          "state": "blocked",
+          "demands": 2,
+          "reserved_demands": 1,
+          "required_qty": "87.769",
+          "reserved_qty": "30.719",
+          "unreserved_qty": "57.05"
+        }
+      ],
+      "demands": [
+        {
+          "id": "MP-261002-002-D010",
+          "job_id": "SP-261002-001-B002",
+          "binding_id": "MP-261002-002-B010",
+          "product_id": "CP.00015.A",
+          "bom_id": "BOM-00015-01-DZ",
+          "bom_version": "A.02",
+          "route_id": "GY-00015-01",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "required_qty": "57.05",
+          "reserved_qty": "0",
+          "state": "unreserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "57.05",
+          "reservation": null,
+          "task_ids": [
+            "SP-261002-001-B002-T01-P000"
+          ]
+        },
+        {
+          "id": "MP-261002-002-D011",
+          "job_id": "SP-261002-001-B002",
+          "binding_id": "MP-261002-002-B011",
+          "product_id": "CP.00015.A",
+          "bom_id": "BOM-00015-01-ZZ",
+          "bom_version": "A.02",
+          "route_id": "GY-00015-01-ZZ",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "required_qty": "30.719",
+          "reserved_qty": "30.719",
+          "state": "reserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "0",
+          "reservation": {
+            "task_id": "SP-261002-001-B002-T02-P000",
+            "reserved_at": "2026-10-02T10:00:00"
+          },
+          "task_ids": [
+            "SP-261002-001-B002-T02-P000"
+          ]
+        }
+      ],
+      "lots": [
+        {
+          "id": "MP-261002-002-L003",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "lot": "SIM-JM-261002-02-003",
+          "qty": "35.108",
+          "unavailable_qty": "0",
+          "available_from": "2026-10-02T08:00:00",
+          "status": "可预留",
+          "kind": "期初假设",
+          "reference": "SIM-JM-SUPPLY-02-003",
+          "basis": "自编未来供给池；不代表账面库存、在途采购承诺、检验放行或库存写回。",
+          "usable_qty": "35.108",
+          "excluded_qty": "0",
+          "reserved_qty": "30.719",
+          "remaining_qty": "4.389",
+          "inside_horizon": true
+        }
+      ],
+      "allocations": [
+        {
+          "sequence": 10,
+          "demand_id": "MP-261002-002-D011",
+          "job_id": "SP-261002-001-B002",
+          "task_id": "SP-261002-001-B002-T02-P000",
+          "supply_id": "MP-261002-002-L003",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "qty": "30.719",
+          "reserved_at": "2026-10-02T10:00:00",
+          "available_from": "2026-10-02T08:00:00"
+        }
+      ],
+      "tasks": [
+        {
+          "id": "SP-261002-001-B002-T01-P000",
+          "job_id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "route_id": "GY-00015-01",
+          "process": "冲片",
+          "branch": "定子",
+          "qty": 8,
+          "state": "blocked",
+          "reason": "共享物料在试排范围内不足：01.01.0003",
+          "started": null,
+          "finished": null,
+          "root_tasks": [
+            "SP-261002-001-B002-T01-P000"
+          ]
+        },
+        {
+          "id": "SP-261002-001-B002-T02-P000",
+          "job_id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "route_id": "GY-00015-01-ZZ",
+          "process": "冲片",
+          "branch": "转子",
+          "qty": 8,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-02T10:00:00",
+          "finished": "2026-10-02T11:49:32",
+          "root_tasks": []
+        }
+      ]
+    },
+    "sources": [
+      {
+        "dataset": "bom",
+        "key": "BOM-00015-01-DZ",
+        "revision": 1,
+        "record_hash": "5f70c3a552dded55ce901d5da4d50e07f0dade12eadaaff1bc52f1dd15a33cd7",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 128,
+        "source_row_id": 567
+      },
+      {
+        "dataset": "bom",
+        "key": "BOM-00015-01-ZZ",
+        "revision": 1,
+        "record_hash": "b36c6a23030b92b611dc5e2026f72ebe7668fc173f197172d8b70938d510f2f9",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 129,
+        "source_row_id": 568
+      },
+      {
+        "dataset": "crew_studies",
+        "key": "CR-261002-001",
+        "revision": 1,
+        "record_hash": "113dfe6972260d139c9894a6c4aab1fb6decdb07cc32fc8d646c46c2cfa3c273",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "资源人员联立方案",
+        "row": 2,
+        "source_row_id": 220536
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-002-B010",
+        "revision": 1,
+        "record_hash": "106de0ab313b10c4606698e054a69db20ba3d0855751bfd30eda11335fdfbdee",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 65,
+        "source_row_id": 224141
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-002-B011",
+        "revision": 1,
+        "record_hash": "2c0f2395d83ef977b6d51cf33e0cd6f420b2992e0b2d2240121a211fce8fbd30",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 66,
+        "source_row_id": 224142
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-002-D010",
+        "revision": 1,
+        "record_hash": "0205b95f38d7618d2cc1eb5019bc006fff56621a167fd2af6d65546a1d1da238",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 65,
+        "source_row_id": 224680
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-002-D011",
+        "revision": 1,
+        "record_hash": "6f39e2ee65d43d85c9c1fc140dda8a8b0f9e0eedad45343a93a3c60df07e5ec4",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 66,
+        "source_row_id": 224681
+      },
+      {
+        "dataset": "joint_studies",
+        "key": "MP-261002-002",
+        "revision": 1,
+        "record_hash": "3b068ee1132fdca1f2365ca8f744678e5fabe2a27b7dcf4f25077694f1dcb730",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "物料人机联立方案",
+        "row": 3,
+        "source_row_id": 224069
+      },
+      {
+        "dataset": "joint_supplies",
+        "key": "MP-261002-002-L003",
+        "revision": 1,
+        "record_hash": "9c4ad537fbb6169aa494360cba7a3b8bc7497a3b4fceb949b1387f6ee7bad297",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排物料可用假设",
+        "row": 52,
+        "source_row_id": 225206
+      },
+      {
+        "dataset": "materials",
+        "key": "01.01.0003",
+        "revision": 1,
+        "record_hash": "f446efee0b861e4429c2a96fe14d0bc81e53b62fa657066bdb8ccb06f3b15a7b",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "物料档案",
+        "row": 4,
+        "source_row_id": 259
+      },
+      {
+        "dataset": "products",
+        "key": "CP.00015.A",
+        "revision": 1,
+        "record_hash": "8745acc4863aeb406fcf49d97d67413e48cffdd070aa745128355930dc76890d",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "产品配置",
+        "row": 16,
+        "source_row_id": 319
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00015-01",
+        "revision": 1,
+        "record_hash": "1c7c456dd543da1185fc09b2f55f234866dc9452db6e3b52afb4dcd3ea3541cf",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 156,
+        "source_row_id": 1027
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00015-01-ZZ",
+        "revision": 1,
+        "record_hash": "4d0e805b11fbc3755a6a9de9cae9430414de20704260a5ff29546dc929c32fc2",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 160,
+        "source_row_id": 1031
+      },
+      {
+        "dataset": "schedule_jobs",
+        "key": "SP-261002-001-B002",
+        "revision": 1,
+        "record_hash": "0a59627a82bcecde88362cdcb2fa6c5bdeb45136961a470f3e6c2c01e6eb3678",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排模拟批次",
+        "row": 3,
+        "source_row_id": 214537
+      },
+      {
+        "dataset": "schedule_studies",
+        "key": "SP-261002-001",
+        "revision": 1,
+        "record_hash": "3d16865bf77880e03334a7f89bdf9b3201dd018e24fe6cd91a0075d96eb0792d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "有限资源试排方案",
+        "row": 2,
+        "source_row_id": 214530
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B002-T01-P000",
+        "revision": 1,
+        "record_hash": "0bfe634cd0962fd471f10710eb750f94a6e68936dc7829f64c4facbeb006e0b0",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 28,
+        "source_row_id": 214598
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B002-T02-P000",
+        "revision": 1,
+        "record_hash": "19fbc9769e238b1e62d2d062a80b80752a700df88218d8e5bb2749d44b4d3955",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 29,
+        "source_row_id": 214599
+      }
+    ],
+    "can_download_original": true
+  },
+  "4": {
+    "evidence": {
+      "version": "joint-material-evidence-v1",
+      "notice": "仅核对本次独立试排的同物料同单位。未预留不等于缺料，已预留不等于实际领料或批次已排完。供给排除含整批隔离，范围外剩余不参与本次试排；总量足够不证明时间齐套。流水沿原算法预留顺序，不按时刻重排，不释放或重新分配预留，不作正式派工。",
+      "balance": {
+        "material_id": "01.01.0003",
+        "material_name": "无取向硅钢-03",
+        "unit": "kg",
+        "required_qty": "87.769",
+        "horizon_usable_qty": "87.769",
+        "reserved_qty": "87.769",
+        "total_excluded_qty": "0",
+        "total_remaining_qty": "0",
+        "initial_supply_gap_qty": "0"
+      },
+      "baseline": "2026-10-02T08:00:00",
+      "horizon_end": "2026-10-05T18:00:00",
+      "summary": {
+        "demands": 2,
+        "reserved_demands": 2,
+        "jobs": 1,
+        "lots": 2,
+        "allocations": 3,
+        "required_qty": "87.769",
+        "reserved_qty": "87.769",
+        "unreserved_qty": "0",
+        "total_supply_qty": "87.769",
+        "excluded_qty": "0",
+        "horizon_remaining_qty": "0",
+        "outside_remaining_qty": "0"
+      },
+      "jobs": [
+        {
+          "id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "qty": 8,
+          "due": "2026-10-03T18:00:00",
+          "state": "late",
+          "demands": 2,
+          "reserved_demands": 2,
+          "required_qty": "87.769",
+          "reserved_qty": "87.769",
+          "unreserved_qty": "0"
+        }
+      ],
+      "demands": [
+        {
+          "id": "MP-261002-004-D010",
+          "job_id": "SP-261002-001-B002",
+          "binding_id": "MP-261002-004-B010",
+          "product_id": "CP.00015.A",
+          "bom_id": "BOM-00015-01-DZ",
+          "bom_version": "A.02",
+          "route_id": "GY-00015-01",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "required_qty": "57.05",
+          "reserved_qty": "57.05",
+          "state": "reserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "0",
+          "reservation": {
+            "task_id": "SP-261002-001-B002-T01-P000",
+            "reserved_at": "2026-10-03T09:00:00"
+          },
+          "task_ids": [
+            "SP-261002-001-B002-T01-P000"
+          ]
+        },
+        {
+          "id": "MP-261002-004-D011",
+          "job_id": "SP-261002-001-B002",
+          "binding_id": "MP-261002-004-B011",
+          "product_id": "CP.00015.A",
+          "bom_id": "BOM-00015-01-ZZ",
+          "bom_version": "A.02",
+          "route_id": "GY-00015-01-ZZ",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "required_qty": "30.719",
+          "reserved_qty": "30.719",
+          "state": "reserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "0",
+          "reservation": {
+            "task_id": "SP-261002-001-B002-T02-P000",
+            "reserved_at": "2026-10-03T09:00:00"
+          },
+          "task_ids": [
+            "SP-261002-001-B002-T02-P000"
+          ]
+        }
+      ],
+      "lots": [
+        {
+          "id": "MP-261002-004-L003",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "lot": "SIM-JM-261002-04-003",
+          "qty": "26.331",
+          "unavailable_qty": "0",
+          "available_from": "2026-10-02T08:00:00",
+          "status": "可预留",
+          "kind": "期初假设",
+          "reference": "SIM-JM-SUPPLY-04-003",
+          "basis": "自编未来供给池；不代表账面库存、在途采购承诺、检验放行或库存写回。",
+          "usable_qty": "26.331",
+          "excluded_qty": "0",
+          "reserved_qty": "26.331",
+          "remaining_qty": "0",
+          "inside_horizon": true
+        },
+        {
+          "id": "MP-261002-004-L003-NEXT",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "lot": "SIM-JM-261002-04-003-NEXT",
+          "qty": "61.438",
+          "unavailable_qty": "0",
+          "available_from": "2026-10-03T09:00:00",
+          "status": "可预留",
+          "kind": "未来到料假设",
+          "reference": "SIM-JM-SUPPLY-04-003",
+          "basis": "自编未来供给池；不代表账面库存、在途采购承诺、检验放行或库存写回。",
+          "usable_qty": "61.438",
+          "excluded_qty": "0",
+          "reserved_qty": "61.438",
+          "remaining_qty": "0",
+          "inside_horizon": true
+        }
+      ],
+      "allocations": [
+        {
+          "sequence": 10,
+          "demand_id": "MP-261002-004-D010",
+          "job_id": "SP-261002-001-B002",
+          "task_id": "SP-261002-001-B002-T01-P000",
+          "supply_id": "MP-261002-004-L003",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "qty": "26.331",
+          "reserved_at": "2026-10-03T09:00:00",
+          "available_from": "2026-10-02T08:00:00"
+        },
+        {
+          "sequence": 11,
+          "demand_id": "MP-261002-004-D010",
+          "job_id": "SP-261002-001-B002",
+          "task_id": "SP-261002-001-B002-T01-P000",
+          "supply_id": "MP-261002-004-L003-NEXT",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "qty": "30.719",
+          "reserved_at": "2026-10-03T09:00:00",
+          "available_from": "2026-10-03T09:00:00"
+        },
+        {
+          "sequence": 12,
+          "demand_id": "MP-261002-004-D011",
+          "job_id": "SP-261002-001-B002",
+          "task_id": "SP-261002-001-B002-T02-P000",
+          "supply_id": "MP-261002-004-L003-NEXT",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "qty": "30.719",
+          "reserved_at": "2026-10-03T09:00:00",
+          "available_from": "2026-10-03T09:00:00"
+        }
+      ],
+      "tasks": [
+        {
+          "id": "SP-261002-001-B002-T01-P000",
+          "job_id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "route_id": "GY-00015-01",
+          "process": "冲片",
+          "branch": "定子",
+          "qty": 8,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T09:00:00",
+          "finished": "2026-10-03T10:49:32",
+          "root_tasks": []
+        },
+        {
+          "id": "SP-261002-001-B002-T02-P000",
+          "job_id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "route_id": "GY-00015-01-ZZ",
+          "process": "冲片",
+          "branch": "转子",
+          "qty": 8,
+          "state": "scheduled",
+          "reason": "",
+          "started": "2026-10-03T09:00:00",
+          "finished": "2026-10-03T10:49:32",
+          "root_tasks": []
+        }
+      ]
+    },
+    "sources": [
+      {
+        "dataset": "bom",
+        "key": "BOM-00015-01-DZ",
+        "revision": 1,
+        "record_hash": "5f70c3a552dded55ce901d5da4d50e07f0dade12eadaaff1bc52f1dd15a33cd7",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 128,
+        "source_row_id": 567
+      },
+      {
+        "dataset": "bom",
+        "key": "BOM-00015-01-ZZ",
+        "revision": 1,
+        "record_hash": "b36c6a23030b92b611dc5e2026f72ebe7668fc173f197172d8b70938d510f2f9",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 129,
+        "source_row_id": 568
+      },
+      {
+        "dataset": "crew_studies",
+        "key": "CR-261002-001",
+        "revision": 1,
+        "record_hash": "113dfe6972260d139c9894a6c4aab1fb6decdb07cc32fc8d646c46c2cfa3c273",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "资源人员联立方案",
+        "row": 2,
+        "source_row_id": 220536
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-004-B010",
+        "revision": 1,
+        "record_hash": "96e6f70a6012ae050514fce743f6cafc680a797e93a312997e22a18a38d1e5f7",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 173,
+        "source_row_id": 224249
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-004-B011",
+        "revision": 1,
+        "record_hash": "1a8977892bd852a835933b5db323fb29d1ac60cd6935cf80e7b168e2acb097a1",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 174,
+        "source_row_id": 224250
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-004-D010",
+        "revision": 1,
+        "record_hash": "f460adfe1e87d05db6c152cb1a81920f39969e37ae1a072533f4b944edf4079b",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 173,
+        "source_row_id": 224788
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-004-D011",
+        "revision": 1,
+        "record_hash": "6ad1d39ad965054179c1708063dfdf91be3d2abace2a14392baab99ebbd961dc",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 174,
+        "source_row_id": 224789
+      },
+      {
+        "dataset": "joint_studies",
+        "key": "MP-261002-004",
+        "revision": 1,
+        "record_hash": "4f77d9607a78c5497e0dd6bf324b12547f0654de1ad0c18808a705a02c362887",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "物料人机联立方案",
+        "row": 5,
+        "source_row_id": 224071
+      },
+      {
+        "dataset": "joint_supplies",
+        "key": "MP-261002-004-L003",
+        "revision": 1,
+        "record_hash": "e3bcba2d46f0b9167036fcd4e9a9f6db24caabdc8bdbce275b7ce970dc62de82",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排物料可用假设",
+        "row": 149,
+        "source_row_id": 225303
+      },
+      {
+        "dataset": "joint_supplies",
+        "key": "MP-261002-004-L003-NEXT",
+        "revision": 1,
+        "record_hash": "a5b0752c952be13a61fe96e83b6df618742ed0b54678088c209ecd48583e1223",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排物料可用假设",
+        "row": 148,
+        "source_row_id": 225302
+      },
+      {
+        "dataset": "materials",
+        "key": "01.01.0003",
+        "revision": 1,
+        "record_hash": "f446efee0b861e4429c2a96fe14d0bc81e53b62fa657066bdb8ccb06f3b15a7b",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "物料档案",
+        "row": 4,
+        "source_row_id": 259
+      },
+      {
+        "dataset": "products",
+        "key": "CP.00015.A",
+        "revision": 1,
+        "record_hash": "8745acc4863aeb406fcf49d97d67413e48cffdd070aa745128355930dc76890d",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "产品配置",
+        "row": 16,
+        "source_row_id": 319
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00015-01",
+        "revision": 1,
+        "record_hash": "1c7c456dd543da1185fc09b2f55f234866dc9452db6e3b52afb4dcd3ea3541cf",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 156,
+        "source_row_id": 1027
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00015-01-ZZ",
+        "revision": 1,
+        "record_hash": "4d0e805b11fbc3755a6a9de9cae9430414de20704260a5ff29546dc929c32fc2",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 160,
+        "source_row_id": 1031
+      },
+      {
+        "dataset": "schedule_jobs",
+        "key": "SP-261002-001-B002",
+        "revision": 1,
+        "record_hash": "0a59627a82bcecde88362cdcb2fa6c5bdeb45136961a470f3e6c2c01e6eb3678",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排模拟批次",
+        "row": 3,
+        "source_row_id": 214537
+      },
+      {
+        "dataset": "schedule_studies",
+        "key": "SP-261002-001",
+        "revision": 1,
+        "record_hash": "3d16865bf77880e03334a7f89bdf9b3201dd018e24fe6cd91a0075d96eb0792d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "有限资源试排方案",
+        "row": 2,
+        "source_row_id": 214530
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B002-T01-P000",
+        "revision": 1,
+        "record_hash": "0bfe634cd0962fd471f10710eb750f94a6e68936dc7829f64c4facbeb006e0b0",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 28,
+        "source_row_id": 214598
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B002-T02-P000",
+        "revision": 1,
+        "record_hash": "19fbc9769e238b1e62d2d062a80b80752a700df88218d8e5bb2749d44b4d3955",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 29,
+        "source_row_id": 214599
+      }
+    ],
+    "can_download_original": true
+  },
+  "5": {
+    "evidence": {
+      "version": "joint-material-evidence-v1",
+      "notice": "仅核对本次独立试排的同物料同单位。未预留不等于缺料，已预留不等于实际领料或批次已排完。供给排除含整批隔离，范围外剩余不参与本次试排；总量足够不证明时间齐套。流水沿原算法预留顺序，不按时刻重排，不释放或重新分配预留，不作正式派工。",
+      "balance": {
+        "material_id": "01.01.0003",
+        "material_name": "无取向硅钢-03",
+        "unit": "kg",
+        "required_qty": "87.769",
+        "horizon_usable_qty": "0",
+        "reserved_qty": "0",
+        "total_excluded_qty": "87.769",
+        "total_remaining_qty": "0",
+        "initial_supply_gap_qty": "87.769"
+      },
+      "baseline": "2026-10-02T08:00:00",
+      "horizon_end": "2026-10-05T18:00:00",
+      "summary": {
+        "demands": 2,
+        "reserved_demands": 0,
+        "jobs": 1,
+        "lots": 1,
+        "allocations": 0,
+        "required_qty": "87.769",
+        "reserved_qty": "0",
+        "unreserved_qty": "87.769",
+        "total_supply_qty": "87.769",
+        "excluded_qty": "87.769",
+        "horizon_remaining_qty": "0",
+        "outside_remaining_qty": "0"
+      },
+      "jobs": [
+        {
+          "id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "qty": 8,
+          "due": "2026-10-03T18:00:00",
+          "state": "blocked",
+          "demands": 2,
+          "reserved_demands": 0,
+          "required_qty": "87.769",
+          "reserved_qty": "0",
+          "unreserved_qty": "87.769"
+        }
+      ],
+      "demands": [
+        {
+          "id": "MP-261002-005-D010",
+          "job_id": "SP-261002-001-B002",
+          "binding_id": "MP-261002-005-B010",
+          "product_id": "CP.00015.A",
+          "bom_id": "BOM-00015-01-DZ",
+          "bom_version": "A.02",
+          "route_id": "GY-00015-01",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "required_qty": "57.05",
+          "reserved_qty": "0",
+          "state": "unreserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "57.05",
+          "reservation": null,
+          "task_ids": [
+            "SP-261002-001-B002-T01-P000"
+          ]
+        },
+        {
+          "id": "MP-261002-005-D011",
+          "job_id": "SP-261002-001-B002",
+          "binding_id": "MP-261002-005-B011",
+          "product_id": "CP.00015.A",
+          "bom_id": "BOM-00015-01-ZZ",
+          "bom_version": "A.02",
+          "route_id": "GY-00015-01-ZZ",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "required_qty": "30.719",
+          "reserved_qty": "0",
+          "state": "unreserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "30.719",
+          "reservation": null,
+          "task_ids": [
+            "SP-261002-001-B002-T02-P000"
+          ]
+        }
+      ],
+      "lots": [
+        {
+          "id": "MP-261002-005-L003",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "lot": "SIM-JM-261002-05-003",
+          "qty": "87.769",
+          "unavailable_qty": "1",
+          "available_from": "2026-10-02T08:00:00",
+          "status": "隔离",
+          "kind": "期初假设",
+          "reference": "SIM-JM-SUPPLY-05-003",
+          "basis": "自编未来供给池；不代表账面库存、在途采购承诺、检验放行或库存写回。",
+          "usable_qty": "0",
+          "excluded_qty": "87.769",
+          "reserved_qty": "0",
+          "remaining_qty": "0",
+          "inside_horizon": true
+        }
+      ],
+      "allocations": [],
+      "tasks": [
+        {
+          "id": "SP-261002-001-B002-T01-P000",
+          "job_id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "route_id": "GY-00015-01",
+          "process": "冲片",
+          "branch": "定子",
+          "qty": 8,
+          "state": "blocked",
+          "reason": "共享物料在试排范围内不足：01.01.0003",
+          "started": null,
+          "finished": null,
+          "root_tasks": [
+            "SP-261002-001-B002-T01-P000"
+          ]
+        },
+        {
+          "id": "SP-261002-001-B002-T02-P000",
+          "job_id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "route_id": "GY-00015-01-ZZ",
+          "process": "冲片",
+          "branch": "转子",
+          "qty": 8,
+          "state": "blocked",
+          "reason": "共享物料在试排范围内不足：01.01.0003",
+          "started": null,
+          "finished": null,
+          "root_tasks": [
+            "SP-261002-001-B002-T02-P000"
+          ]
+        }
+      ]
+    },
+    "sources": [
+      {
+        "dataset": "bom",
+        "key": "BOM-00015-01-DZ",
+        "revision": 1,
+        "record_hash": "5f70c3a552dded55ce901d5da4d50e07f0dade12eadaaff1bc52f1dd15a33cd7",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 128,
+        "source_row_id": 567
+      },
+      {
+        "dataset": "bom",
+        "key": "BOM-00015-01-ZZ",
+        "revision": 1,
+        "record_hash": "b36c6a23030b92b611dc5e2026f72ebe7668fc173f197172d8b70938d510f2f9",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 129,
+        "source_row_id": 568
+      },
+      {
+        "dataset": "crew_studies",
+        "key": "CR-261002-001",
+        "revision": 1,
+        "record_hash": "113dfe6972260d139c9894a6c4aab1fb6decdb07cc32fc8d646c46c2cfa3c273",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "资源人员联立方案",
+        "row": 2,
+        "source_row_id": 220536
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-005-B010",
+        "revision": 1,
+        "record_hash": "2c4db97ab6ba33331c1aca5b24519775f20c301d54e67493d0c9698559a7d6f8",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 227,
+        "source_row_id": 224303
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-005-B011",
+        "revision": 1,
+        "record_hash": "47f230b92aec2d52b7773c127201bfa50ec51ff8cf1c2126ff4660dd1b4e7945",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 228,
+        "source_row_id": 224304
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-005-D010",
+        "revision": 1,
+        "record_hash": "8ec4ea9199b1d2e6ed013b9f0a47d545abfd9d69fd11dd8e7c2b85e8eba88595",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 227,
+        "source_row_id": 224842
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-005-D011",
+        "revision": 1,
+        "record_hash": "f6b759ddab4c97c0527a50cd98d4ed9de86e12beff43f5266ea004c814ca18fa",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 228,
+        "source_row_id": 224843
+      },
+      {
+        "dataset": "joint_studies",
+        "key": "MP-261002-005",
+        "revision": 1,
+        "record_hash": "38c625a44a7480d6b4d68c74a12ec9b4abc5e503d373bf2e0cfe8cfe633cbce8",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "物料人机联立方案",
+        "row": 6,
+        "source_row_id": 224072
+      },
+      {
+        "dataset": "joint_supplies",
+        "key": "MP-261002-005-L003",
+        "revision": 1,
+        "record_hash": "34f81f890ee88ef71a4e366cb184d5ea64e8599817835b07faedb07ee1e0b857",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排物料可用假设",
+        "row": 197,
+        "source_row_id": 225351
+      },
+      {
+        "dataset": "materials",
+        "key": "01.01.0003",
+        "revision": 1,
+        "record_hash": "f446efee0b861e4429c2a96fe14d0bc81e53b62fa657066bdb8ccb06f3b15a7b",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "物料档案",
+        "row": 4,
+        "source_row_id": 259
+      },
+      {
+        "dataset": "products",
+        "key": "CP.00015.A",
+        "revision": 1,
+        "record_hash": "8745acc4863aeb406fcf49d97d67413e48cffdd070aa745128355930dc76890d",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "产品配置",
+        "row": 16,
+        "source_row_id": 319
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00015-01",
+        "revision": 1,
+        "record_hash": "1c7c456dd543da1185fc09b2f55f234866dc9452db6e3b52afb4dcd3ea3541cf",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 156,
+        "source_row_id": 1027
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00015-01-ZZ",
+        "revision": 1,
+        "record_hash": "4d0e805b11fbc3755a6a9de9cae9430414de20704260a5ff29546dc929c32fc2",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 160,
+        "source_row_id": 1031
+      },
+      {
+        "dataset": "schedule_jobs",
+        "key": "SP-261002-001-B002",
+        "revision": 1,
+        "record_hash": "0a59627a82bcecde88362cdcb2fa6c5bdeb45136961a470f3e6c2c01e6eb3678",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排模拟批次",
+        "row": 3,
+        "source_row_id": 214537
+      },
+      {
+        "dataset": "schedule_studies",
+        "key": "SP-261002-001",
+        "revision": 1,
+        "record_hash": "3d16865bf77880e03334a7f89bdf9b3201dd018e24fe6cd91a0075d96eb0792d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "有限资源试排方案",
+        "row": 2,
+        "source_row_id": 214530
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B002-T01-P000",
+        "revision": 1,
+        "record_hash": "0bfe634cd0962fd471f10710eb750f94a6e68936dc7829f64c4facbeb006e0b0",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 28,
+        "source_row_id": 214598
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B002-T02-P000",
+        "revision": 1,
+        "record_hash": "19fbc9769e238b1e62d2d062a80b80752a700df88218d8e5bb2749d44b4d3955",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 29,
+        "source_row_id": 214599
+      }
+    ],
+    "can_download_original": true
+  },
+  "6": {
+    "evidence": {
+      "version": "joint-material-evidence-v1",
+      "notice": "仅核对本次独立试排的同物料同单位。未预留不等于缺料，已预留不等于实际领料或批次已排完。供给排除含整批隔离，范围外剩余不参与本次试排；总量足够不证明时间齐套。流水沿原算法预留顺序，不按时刻重排，不释放或重新分配预留，不作正式派工。",
+      "balance": {
+        "material_id": "01.01.0001",
+        "material_name": "无取向硅钢-01",
+        "unit": "kg",
+        "required_qty": "44.216",
+        "horizon_usable_qty": "44.216",
+        "reserved_qty": "0",
+        "total_excluded_qty": "0",
+        "total_remaining_qty": "44.216",
+        "initial_supply_gap_qty": "0"
+      },
+      "baseline": "2026-10-02T08:00:00",
+      "horizon_end": "2026-10-05T18:00:00",
+      "summary": {
+        "demands": 2,
+        "reserved_demands": 0,
+        "jobs": 1,
+        "lots": 1,
+        "allocations": 0,
+        "required_qty": "44.216",
+        "reserved_qty": "0",
+        "unreserved_qty": "44.216",
+        "total_supply_qty": "44.216",
+        "excluded_qty": "0",
+        "horizon_remaining_qty": "44.216",
+        "outside_remaining_qty": "0"
+      },
+      "jobs": [
+        {
+          "id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "qty": 12,
+          "due": "2026-10-04T18:00:00",
+          "state": "blocked",
+          "demands": 2,
+          "reserved_demands": 0,
+          "required_qty": "44.216",
+          "reserved_qty": "0",
+          "unreserved_qty": "44.216"
+        }
+      ],
+      "demands": [
+        {
+          "id": "MP-261002-006-D046",
+          "job_id": "SP-261002-001-B006",
+          "binding_id": "MP-261002-006-B046",
+          "product_id": "CP.00043.A",
+          "bom_id": "BOM-00043-01-DZ",
+          "bom_version": "A.02",
+          "route_id": "GY-00043-01",
+          "material_id": "01.01.0001",
+          "unit": "kg",
+          "required_qty": "28.74",
+          "reserved_qty": "0",
+          "state": "unreserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "28.74",
+          "reservation": null,
+          "task_ids": [
+            "SP-261002-001-B006-T01-P000"
+          ]
+        },
+        {
+          "id": "MP-261002-006-D047",
+          "job_id": "SP-261002-001-B006",
+          "binding_id": "MP-261002-006-B047",
+          "product_id": "CP.00043.A",
+          "bom_id": "BOM-00043-01-ZZ",
+          "bom_version": "A.02",
+          "route_id": "GY-00043-01-ZZ",
+          "material_id": "01.01.0001",
+          "unit": "kg",
+          "required_qty": "15.476",
+          "reserved_qty": "0",
+          "state": "unreserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "15.476",
+          "reservation": null,
+          "task_ids": [
+            "SP-261002-001-B006-T02-P000"
+          ]
+        }
+      ],
+      "lots": [
+        {
+          "id": "MP-261002-006-L001",
+          "material_id": "01.01.0001",
+          "unit": "kg",
+          "lot": "SIM-JM-261002-06-001",
+          "qty": "44.216",
+          "unavailable_qty": "0",
+          "available_from": "2026-10-02T08:00:00",
+          "status": "可预留",
+          "kind": "期初假设",
+          "reference": "SIM-JM-SUPPLY-06-001",
+          "basis": "自编未来供给池；不代表账面库存、在途采购承诺、检验放行或库存写回。",
+          "usable_qty": "44.216",
+          "excluded_qty": "0",
+          "reserved_qty": "0",
+          "remaining_qty": "44.216",
+          "inside_horizon": true
+        }
+      ],
+      "allocations": [],
+      "tasks": [
+        {
+          "id": "SP-261002-001-B006-T01-P000",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-01",
+          "process": "冲片",
+          "branch": "定子",
+          "qty": 12,
+          "state": "blocked",
+          "reason": "设备、人员、资格与物料没有共同连续可用窗口",
+          "started": null,
+          "finished": null,
+          "root_tasks": [
+            "SP-261002-001-B006-T01-P000"
+          ]
+        },
+        {
+          "id": "SP-261002-001-B006-T02-P000",
+          "job_id": "SP-261002-001-B006",
+          "product_id": "CP.00043.A",
+          "route_id": "GY-00043-01-ZZ",
+          "process": "冲片",
+          "branch": "转子",
+          "qty": 12,
+          "state": "blocked",
+          "reason": "设备、人员、资格与物料没有共同连续可用窗口",
+          "started": null,
+          "finished": null,
+          "root_tasks": [
+            "SP-261002-001-B006-T02-P000"
+          ]
+        }
+      ]
+    },
+    "sources": [
+      {
+        "dataset": "bom",
+        "key": "BOM-00043-01-DZ",
+        "revision": 1,
+        "record_hash": "970c08641f16c4d3c1e375ad888e23426c41f93c7cd4b616817db14c4e416ec9",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 380,
+        "source_row_id": 819
+      },
+      {
+        "dataset": "bom",
+        "key": "BOM-00043-01-ZZ",
+        "revision": 1,
+        "record_hash": "22a2561f2606135af14ba219abc5c26cb9d61f62c143f2568a3de7f330d5fcf2",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 381,
+        "source_row_id": 820
+      },
+      {
+        "dataset": "crew_studies",
+        "key": "CR-261002-004",
+        "revision": 1,
+        "record_hash": "cfcc87bf9502a126d1ff151139a086b8d94e8e8c062ad8b7c9a57a92c3d116fe",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "资源人员联立方案",
+        "row": 5,
+        "source_row_id": 220539
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-006-B046",
+        "revision": 1,
+        "record_hash": "8686d6d97e66d8807808069c6545e6421cc6dea223064f560b283da4c24e7c55",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 317,
+        "source_row_id": 224393
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-006-B047",
+        "revision": 1,
+        "record_hash": "b90728e5009ba58020a53de9611f3a8a66548693f5d76a2a358fe055cb29a5fc",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 318,
+        "source_row_id": 224394
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-006-D046",
+        "revision": 1,
+        "record_hash": "26c56e611556a5d9d2cc1c78aa0422a699b1d19913ebdac91421b9c921c09fdb",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 317,
+        "source_row_id": 224932
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-006-D047",
+        "revision": 1,
+        "record_hash": "119256378c34a22a523124a98759933fd30ad997ae640d75d5019a72b0b6ddc5",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 318,
+        "source_row_id": 224933
+      },
+      {
+        "dataset": "joint_studies",
+        "key": "MP-261002-006",
+        "revision": 1,
+        "record_hash": "c3c5d61a592f2f52f67a371cb8fed40e21c1143e72c03d1b34f9d4aa652044f5",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "物料人机联立方案",
+        "row": 7,
+        "source_row_id": 224073
+      },
+      {
+        "dataset": "joint_supplies",
+        "key": "MP-261002-006-L001",
+        "revision": 1,
+        "record_hash": "48caa5fc3470b4083de350e78160bfeb8c633bc69ccac90c87204046a25a37de",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排物料可用假设",
+        "row": 243,
+        "source_row_id": 225397
+      },
+      {
+        "dataset": "materials",
+        "key": "01.01.0001",
+        "revision": 1,
+        "record_hash": "63e1c5ec50eba5b341aaff169fc211d2770adaca89123b14b654f26ce009a4a5",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "物料档案",
+        "row": 2,
+        "source_row_id": 257
+      },
+      {
+        "dataset": "products",
+        "key": "CP.00043.A",
+        "revision": 1,
+        "record_hash": "e71efe099895902bdd0a83b1cc0bb41059ffd33e606f042096f62d607a8c93fd",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "产品配置",
+        "row": 44,
+        "source_row_id": 347
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00043-01",
+        "revision": 1,
+        "record_hash": "d0300e7b982263c9a46aab7b6b368b0710ac43b3fa02204f16076fe12d099e17",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 464,
+        "source_row_id": 1335
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00043-01-ZZ",
+        "revision": 1,
+        "record_hash": "157ca3f2e5a2c1bad5f9a6db7cdfb3acfb5308aed772df1940e4a242072dc731",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 468,
+        "source_row_id": 1339
+      },
+      {
+        "dataset": "schedule_jobs",
+        "key": "SP-261002-001-B006",
+        "revision": 1,
+        "record_hash": "897358915ce3705a1bbbb0b54d8da86aeefd512d63b481dda037df4178c66b92",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排模拟批次",
+        "row": 7,
+        "source_row_id": 214541
+      },
+      {
+        "dataset": "schedule_studies",
+        "key": "SP-261002-001",
+        "revision": 1,
+        "record_hash": "3d16865bf77880e03334a7f89bdf9b3201dd018e24fe6cd91a0075d96eb0792d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "有限资源试排方案",
+        "row": 2,
+        "source_row_id": 214530
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T01-P000",
+        "revision": 1,
+        "record_hash": "2fe2c45d41bea05aab8b3a534f08b0d01b49e73c2e424acb7c9e4227eb064d9e",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 156,
+        "source_row_id": 214726
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B006-T02-P000",
+        "revision": 1,
+        "record_hash": "cdce9873b06295745018357105eafd860534f6ff113aa00c4f147b43b372c5e1",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 157,
+        "source_row_id": 214727
+      }
+    ],
+    "can_download_original": true
+  },
+  "10": {
+    "evidence": {
+      "version": "joint-material-evidence-v1",
+      "notice": "仅核对本次独立试排的同物料同单位。未预留不等于缺料，已预留不等于实际领料或批次已排完。供给排除含整批隔离，范围外剩余不参与本次试排；总量足够不证明时间齐套。流水沿原算法预留顺序，不按时刻重排，不释放或重新分配预留，不作正式派工。",
+      "balance": {
+        "material_id": "01.01.0003",
+        "material_name": "无取向硅钢-03",
+        "unit": "kg",
+        "required_qty": "87.769",
+        "horizon_usable_qty": "0",
+        "reserved_qty": "0",
+        "total_excluded_qty": "0",
+        "total_remaining_qty": "87.769",
+        "initial_supply_gap_qty": "87.769"
+      },
+      "baseline": "2026-10-02T08:00:00",
+      "horizon_end": "2026-10-05T18:00:00",
+      "summary": {
+        "demands": 2,
+        "reserved_demands": 0,
+        "jobs": 1,
+        "lots": 1,
+        "allocations": 0,
+        "required_qty": "87.769",
+        "reserved_qty": "0",
+        "unreserved_qty": "87.769",
+        "total_supply_qty": "87.769",
+        "excluded_qty": "0",
+        "horizon_remaining_qty": "0",
+        "outside_remaining_qty": "87.769"
+      },
+      "jobs": [
+        {
+          "id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "qty": 8,
+          "due": "2026-10-03T18:00:00",
+          "state": "blocked",
+          "demands": 2,
+          "reserved_demands": 0,
+          "required_qty": "87.769",
+          "reserved_qty": "0",
+          "unreserved_qty": "87.769"
+        }
+      ],
+      "demands": [
+        {
+          "id": "MP-261002-010-D010",
+          "job_id": "SP-261002-001-B002",
+          "binding_id": "MP-261002-010-B010",
+          "product_id": "CP.00015.A",
+          "bom_id": "BOM-00015-01-DZ",
+          "bom_version": "A.02",
+          "route_id": "GY-00015-01",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "required_qty": "57.05",
+          "reserved_qty": "0",
+          "state": "unreserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "57.05",
+          "reservation": null,
+          "task_ids": [
+            "SP-261002-001-B002-T01-P000"
+          ]
+        },
+        {
+          "id": "MP-261002-010-D011",
+          "job_id": "SP-261002-001-B002",
+          "binding_id": "MP-261002-010-B011",
+          "product_id": "CP.00015.A",
+          "bom_id": "BOM-00015-01-ZZ",
+          "bom_version": "A.02",
+          "route_id": "GY-00015-01-ZZ",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "required_qty": "30.719",
+          "reserved_qty": "0",
+          "state": "unreserved",
+          "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+          "unreserved_qty": "30.719",
+          "reservation": null,
+          "task_ids": [
+            "SP-261002-001-B002-T02-P000"
+          ]
+        }
+      ],
+      "lots": [
+        {
+          "id": "MP-261002-010-L003",
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "lot": "SIM-JM-261002-10-003",
+          "qty": "87.769",
+          "unavailable_qty": "0",
+          "available_from": "2026-10-06T08:00:00",
+          "status": "可预留",
+          "kind": "未来到料假设",
+          "reference": "SIM-JM-SUPPLY-10-003",
+          "basis": "自编未来供给池；不代表账面库存、在途采购承诺、检验放行或库存写回。",
+          "usable_qty": "87.769",
+          "excluded_qty": "0",
+          "reserved_qty": "0",
+          "remaining_qty": "87.769",
+          "inside_horizon": false
+        }
+      ],
+      "allocations": [],
+      "tasks": [
+        {
+          "id": "SP-261002-001-B002-T01-P000",
+          "job_id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "route_id": "GY-00015-01",
+          "process": "冲片",
+          "branch": "定子",
+          "qty": 8,
+          "state": "blocked",
+          "reason": "共享物料在试排范围内不足：01.01.0003",
+          "started": null,
+          "finished": null,
+          "root_tasks": [
+            "SP-261002-001-B002-T01-P000"
+          ]
+        },
+        {
+          "id": "SP-261002-001-B002-T02-P000",
+          "job_id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "route_id": "GY-00015-01-ZZ",
+          "process": "冲片",
+          "branch": "转子",
+          "qty": 8,
+          "state": "blocked",
+          "reason": "共享物料在试排范围内不足：01.01.0003",
+          "started": null,
+          "finished": null,
+          "root_tasks": [
+            "SP-261002-001-B002-T02-P000"
+          ]
+        }
+      ]
+    },
+    "sources": [
+      {
+        "dataset": "bom",
+        "key": "BOM-00015-01-DZ",
+        "revision": 1,
+        "record_hash": "5f70c3a552dded55ce901d5da4d50e07f0dade12eadaaff1bc52f1dd15a33cd7",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 128,
+        "source_row_id": 567
+      },
+      {
+        "dataset": "bom",
+        "key": "BOM-00015-01-ZZ",
+        "revision": 1,
+        "record_hash": "b36c6a23030b92b611dc5e2026f72ebe7668fc173f197172d8b70938d510f2f9",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 129,
+        "source_row_id": 568
+      },
+      {
+        "dataset": "crew_studies",
+        "key": "CR-261002-001",
+        "revision": 1,
+        "record_hash": "113dfe6972260d139c9894a6c4aab1fb6decdb07cc32fc8d646c46c2cfa3c273",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "资源人员联立方案",
+        "row": 2,
+        "source_row_id": 220536
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-010-B010",
+        "revision": 1,
+        "record_hash": "bca3197776c4bfd374887ba73da376a6ca876229cc48cb6fc244f9a34a1eba95",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 496,
+        "source_row_id": 224572
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-010-B011",
+        "revision": 1,
+        "record_hash": "e676dd3a56406032eb0fe58ee4be935ff570304cc905a7fd882d7d30eadb3261",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 497,
+        "source_row_id": 224573
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-010-D010",
+        "revision": 1,
+        "record_hash": "7691ea2f7c2091c6724926bb956d373941e6edd546a6164665dc3c5bf2c4d3db",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 496,
+        "source_row_id": 225111
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-010-D011",
+        "revision": 1,
+        "record_hash": "e2661d517124d2e3cc76b263a708b1af1ba394977116378399146634739e857c",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 497,
+        "source_row_id": 225112
+      },
+      {
+        "dataset": "joint_studies",
+        "key": "MP-261002-010",
+        "revision": 1,
+        "record_hash": "0fcfb1b8446cb477552c3ce74ca0bde5d9a8d7f04cb3cfa7fc1aa5964d4171f3",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "物料人机联立方案",
+        "row": 11,
+        "source_row_id": 224077
+      },
+      {
+        "dataset": "joint_supplies",
+        "key": "MP-261002-010-L003",
+        "revision": 1,
+        "record_hash": "309c34166e761c4ae1e86f60af1a256cd6868decf2bfa1ffc110e7b99bdfcee9",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排物料可用假设",
+        "row": 437,
+        "source_row_id": 225591
+      },
+      {
+        "dataset": "materials",
+        "key": "01.01.0003",
+        "revision": 1,
+        "record_hash": "f446efee0b861e4429c2a96fe14d0bc81e53b62fa657066bdb8ccb06f3b15a7b",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "物料档案",
+        "row": 4,
+        "source_row_id": 259
+      },
+      {
+        "dataset": "products",
+        "key": "CP.00015.A",
+        "revision": 1,
+        "record_hash": "8745acc4863aeb406fcf49d97d67413e48cffdd070aa745128355930dc76890d",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "产品配置",
+        "row": 16,
+        "source_row_id": 319
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00015-01",
+        "revision": 1,
+        "record_hash": "1c7c456dd543da1185fc09b2f55f234866dc9452db6e3b52afb4dcd3ea3541cf",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 156,
+        "source_row_id": 1027
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00015-01-ZZ",
+        "revision": 1,
+        "record_hash": "4d0e805b11fbc3755a6a9de9cae9430414de20704260a5ff29546dc929c32fc2",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 160,
+        "source_row_id": 1031
+      },
+      {
+        "dataset": "schedule_jobs",
+        "key": "SP-261002-001-B002",
+        "revision": 1,
+        "record_hash": "0a59627a82bcecde88362cdcb2fa6c5bdeb45136961a470f3e6c2c01e6eb3678",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排模拟批次",
+        "row": 3,
+        "source_row_id": 214537
+      },
+      {
+        "dataset": "schedule_studies",
+        "key": "SP-261002-001",
+        "revision": 1,
+        "record_hash": "3d16865bf77880e03334a7f89bdf9b3201dd018e24fe6cd91a0075d96eb0792d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "有限资源试排方案",
+        "row": 2,
+        "source_row_id": 214530
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B002-T01-P000",
+        "revision": 1,
+        "record_hash": "0bfe634cd0962fd471f10710eb750f94a6e68936dc7829f64c4facbeb006e0b0",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 28,
+        "source_row_id": 214598
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B002-T02-P000",
+        "revision": 1,
+        "record_hash": "19fbc9769e238b1e62d2d062a80b80752a700df88218d8e5bb2749d44b4d3955",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 29,
+        "source_row_id": 214599
+      }
+    ],
+    "can_download_original": true
+  }
+}

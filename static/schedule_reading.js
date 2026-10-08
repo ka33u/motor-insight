@@ -1,3 +1,4 @@
+import {jointMaterialLink} from './joint_material.js';
 // Read-only rendering and request lifetimes shared by the three trial workspaces.
 import {jointCandidateEvidence} from './joint_candidates.js';
 const time = v => typeof v === 'string' && v ? v.replace('T', ' ') : '未形成时间';
@@ -36,14 +37,14 @@ export function scheduleTaskDetail(d, h, mode) {
   html += panel('该工序整批需求', '同工序不同份号可共用一次整批预留；需求已预留不等于本任务新领料。',
    table(['需求 / BOM版本 / 路线', '物料 / 单位', '单耗 × (1+损耗) / 步长', '整批需求 / 已预留', '预留触发任务 / 时点'], d.demands.map(n => [
     `${esc(n.id)}<small class="block">${esc(n.bom_id)} / ${esc(n.bom_version)}<br>${esc(n.route_id)}</small>`,
-    `${esc(n.material_id)} / ${esc(n.unit)}`, `${esc(n.bom_qty)} × (1+${esc(n.scrap_allowance)})<small class="block">步长 ${esc(n.quantum)}</small>`,
+    `${jointMaterialLink(n.material_id,n.unit,n.material_id,h)} / ${esc(n.unit)}`, `${esc(n.bom_qty)} × (1+${esc(n.scrap_allowance)})<small class="block">步长 ${esc(n.quantum)}</small>`,
     `${esc(n.required_qty)} / ${esc(n.reserved_qty)}`, n.reservation ? `${esc(n.reservation.task_id)}<br>${esc(time(n.reservation.reserved_at))}` : '未预留，结合阻断核查'
    ])) + `<p class="source">本任务新增预留的需求号：${esc(ids(r.new_reservation_ids))}。不同物料与单位不合计。</p>`);
   html += panel('相关整批预留流水', '', table(['需求 / 供给批次', '实际触发任务', '物料 / 单位', '预留量', '供给可用 / 预留时点'], d.reservations.map(a => [
    `${esc(a.demand_id)}<br>${esc(a.supply_id)}`, esc(a.task_id), `${esc(a.material_id)} / ${esc(a.unit)}`, esc(a.qty), `${esc(time(a.available_from))}<br>${esc(time(a.reserved_at))}`
   ])));
   if (r.shortages?.length) html += panel('本次安排的物料缺口', '按原结果逐项列示，不由未预留状态推断缺料。', table(['物料 / 单位', '所需 / 可用 / 缺口'], r.shortages.map(s => [
-   `${esc(s.material_id)} / ${esc(s.unit)}`, `${esc(s.required_qty)} / ${esc(s.available_qty)} / ${esc(s.shortage_qty)}`
+   `${jointMaterialLink(s.material_id,s.unit,s.material_id,h)} / ${esc(s.unit)}`, `${esc(s.required_qty)} / ${esc(s.available_qty)} / ${esc(s.shortage_qty)}`
   ])));
  }
  if (mode === 'joint' && d.candidate_evidence) html += jointCandidateEvidence(d.candidate_evidence, h);

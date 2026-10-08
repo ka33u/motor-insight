@@ -182,7 +182,7 @@ from app import crew_schedule_views as crew_schedule
 from app import joint_schedule_views as joint_schedule
 from app import order_baseline_views as order_baseline
 urlpatterns += [path('api/order-baselines',order_baseline.studies),path('api/order-baselines/<str:key>',order_baseline.board),path('api/order-baselines/<str:key>/sources',order_baseline.sources),path('api/order-baselines/<str:key>/links/<str:link_id>',order_baseline.detail),path('api/order-baselines/<str:key>/export',order_baseline.export)]
-urlpatterns += [path('api/joint-schedule',joint_schedule.studies),path('api/joint-schedule/<str:key>',joint_schedule.board),path('api/joint-schedule/<str:key>/sources',joint_schedule.sources),path('api/joint-schedule/<str:key>/tasks/<str:task_id>',joint_schedule.detail),path('api/joint-schedule/<str:key>/export',joint_schedule.export)]
+urlpatterns += [path('api/joint-schedule',joint_schedule.studies),path('api/joint-schedule/<str:key>',joint_schedule.board),path('api/joint-schedule/<str:key>/sources',joint_schedule.sources),path('api/joint-schedule/<str:key>/tasks/<str:task_id>',joint_schedule.detail),path('api/joint-schedule/<str:key>/materials/<str:material_id>',joint_schedule.material_detail),path('api/joint-schedule/<str:key>/export',joint_schedule.export)]
 urlpatterns += [path('api/crew-schedule',crew_schedule.studies),path('api/crew-schedule/<str:key>',crew_schedule.board),path('api/crew-schedule/<str:key>/sources',crew_schedule.sources),path('api/crew-schedule/<str:key>/tasks/<str:task_id>',crew_schedule.detail),path('api/crew-schedule/<str:key>/export',crew_schedule.export)]
 
 from app import oee_views as oee
