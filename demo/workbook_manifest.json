@@ -220,6 +220,11 @@
       "filename": "44_跨批次共享物料试排_模拟.xlsx",
       "sha256": "a124ff59b359c3378831b12a2231e3facd5ca47fe13a9c5083a8cbf461243848",
       "mapping": {}
+    },
+    {
+      "filename": "45_三品种换型与交期_模拟.xlsx",
+      "sha256": "891525825c4dd017e8ed108f1c6448a45d3fb8b8f44863232b7691694d1a9cdf",
+      "mapping": {}
     }
   ],
   "legacy_plan_rows": [

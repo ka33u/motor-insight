@@ -80,6 +80,9 @@ if f.get('joint_material_evidence'):
 if f.get('workbench_trial_favorites'):
     c=f['workbench_trial_favorites']
     parts.append(section('trial-favorites-design','方案收藏：保存明确的方案与阅读方式','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','presentation','boundary']])))
+if f.get('mixed_product_changeover'):
+    c=f['mixed_product_changeover']
+    parts.append(section('changeover-design','三品种演练：换型时间与批次交期的取舍','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','presentation','boundary']])))
 if f.get('joint_occupancy_comparison'):
     c=f['joint_occupancy_comparison']
     parts.append(section('occupancy-design','人机占用对照：同一对象并排核查安排','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','measures','presentation','boundary']])))

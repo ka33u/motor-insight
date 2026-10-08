@@ -1,21 +1,21 @@
 {
   "success": true,
-  "version": "0.30.0",
-  "record_count": 232941,
-  "record_hash_digest": "2e0a72b20acd7e72393fa0433a170f3349dbf7698d583b6e20aec5060b44d473",
+  "version": "0.31.0",
+  "record_count": 233788,
+  "record_hash_digest": "01565772db588d470cb47485e0a033013a14751bf20f396f220e363b23868b5d",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
   "public_configuration_counts": {
-    "app_record": 232941,
+    "app_record": 233788,
     "app_analysismodel": 52,
     "app_topic": 21,
     "app_metricversion": 11
   },
   "tests": 2838,
-  "fresh_xlsx_replay": false,
-  "effective_workbooks": 43,
-  "original_workbooks": 44,
+  "fresh_xlsx_replay": true,
+  "effective_workbooks": 44,
+  "original_workbooks": 45,
   "prior_business_facts_preserved": 232941,
-  "new_business_facts": 0,
+  "new_business_facts": 847,
   "raw_contracts": 154,
   "original_files_preserved": 472,
   "native_http_roles": 6,
@@ -703,6 +703,216 @@
     "main_personal_preferences_unchanged": true,
     "core_scheduling_algorithm_unchanged": true,
     "no_new_business_input": true,
+    "no_new_migration": true,
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "actual_download_acceptance": false,
+    "scope": "0.30.0方案收藏的历史验收；0.31.0复跑全部相关纯JS和完整回归，新增Excel演练另列。"
+  },
+  "changeover_scenario": {
+    "verified_in_version": "0.31.0",
+    "definition": "mixed-product-changeover-v1",
+    "http": {
+      "success": true,
+      "roles": [
+        {
+          "role": "admin",
+          "allowed": true
+        },
+        {
+          "role": "analyst",
+          "allowed": true
+        },
+        {
+          "role": "operations",
+          "allowed": true
+        },
+        {
+          "role": "quality",
+          "denied": true
+        },
+        {
+          "role": "finance",
+          "denied": true
+        },
+        {
+          "role": "viewer",
+          "denied": true
+        }
+      ],
+      "boards": 6,
+      "material_details": 144,
+      "task_details": 18,
+      "comparisons": 3,
+      "exports": 9,
+      "zero_query_rebuilds": 144,
+      "source_rows_exact": true,
+      "business_facts_unchanged": true,
+      "main_database_unchanged": true,
+      "browser_acceptance": false
+    },
+    "workbook": {
+      "filename": "45_三品种换型与交期_模拟.xlsx",
+      "sha256": "891525825c4dd017e8ed108f1c6448a45d3fb8b8f44863232b7691694d1a9cdf",
+      "source_rows": 847,
+      "sheets": 17,
+      "visual_review": true
+    },
+    "effective_workbooks": 44,
+    "original_workbooks": 45,
+    "fresh_xlsx_replay": true,
+    "normal_import_duplicate_safe": true,
+    "profiles": [
+      {
+        "policy": "due",
+        "initial_setups": 10,
+        "cross_family_changes": 20,
+        "setup_minutes": 360.0,
+        "summary": {
+          "tasks": 96,
+          "scheduled_tasks": 96,
+          "blocked_tasks": 0,
+          "jobs": 3,
+          "qty": 24,
+          "complete_jobs": 3,
+          "late_jobs": 0,
+          "blocked_jobs": 0,
+          "demands": 27,
+          "reserved_demands": 27,
+          "direct_shortage_tasks": 0,
+          "material_delayed_tasks": 0
+        },
+        "jobs": [
+          {
+            "id": "SP-261016-001-B001",
+            "product_id": "CP.00008.A",
+            "qty": 6,
+            "priority": 1,
+            "due": "2026-10-17T12:00:00",
+            "finished": "2026-10-17T11:44:42",
+            "state": "scheduled",
+            "lateness_minutes": 0,
+            "crew_reference_finished": "2026-10-17T11:44:42",
+            "completion_delta_minutes": 0.0,
+            "task_count": 26,
+            "scheduled_count": 26
+          },
+          {
+            "id": "SP-261016-001-B002",
+            "product_id": "CP.00015.A",
+            "qty": 8,
+            "priority": 3,
+            "due": "2026-10-17T18:00:00",
+            "finished": "2026-10-17T17:42:32",
+            "state": "scheduled",
+            "lateness_minutes": 0,
+            "crew_reference_finished": "2026-10-17T17:42:32",
+            "completion_delta_minutes": 0.0,
+            "task_count": 32,
+            "scheduled_count": 32
+          },
+          {
+            "id": "SP-261016-001-B003",
+            "product_id": "CP.00022.A",
+            "qty": 10,
+            "priority": 2,
+            "due": "2026-10-18T18:00:00",
+            "finished": "2026-10-18T09:43:00",
+            "state": "scheduled",
+            "lateness_minutes": 0,
+            "crew_reference_finished": "2026-10-18T09:43:00",
+            "completion_delta_minutes": 0.0,
+            "task_count": 38,
+            "scheduled_count": 38
+          }
+        ]
+      },
+      {
+        "policy": "priority",
+        "initial_setups": 10,
+        "cross_family_changes": 10,
+        "setup_minutes": 240.0,
+        "summary": {
+          "tasks": 96,
+          "scheduled_tasks": 96,
+          "blocked_tasks": 0,
+          "jobs": 3,
+          "qty": 24,
+          "complete_jobs": 3,
+          "late_jobs": 1,
+          "blocked_jobs": 0,
+          "demands": 27,
+          "reserved_demands": 27,
+          "direct_shortage_tasks": 0,
+          "material_delayed_tasks": 0
+        },
+        "jobs": [
+          {
+            "id": "SP-261016-001-B001",
+            "product_id": "CP.00008.A",
+            "qty": 6,
+            "priority": 1,
+            "due": "2026-10-17T12:00:00",
+            "finished": "2026-10-17T11:44:42",
+            "state": "scheduled",
+            "lateness_minutes": 0,
+            "crew_reference_finished": "2026-10-17T11:44:42",
+            "completion_delta_minutes": 0.0,
+            "task_count": 26,
+            "scheduled_count": 26
+          },
+          {
+            "id": "SP-261016-001-B002",
+            "product_id": "CP.00015.A",
+            "qty": 8,
+            "priority": 3,
+            "due": "2026-10-17T18:00:00",
+            "finished": "2026-10-18T09:49:36",
+            "state": "late",
+            "lateness_minutes": 949.6,
+            "crew_reference_finished": "2026-10-18T09:49:36",
+            "completion_delta_minutes": 0.0,
+            "task_count": 32,
+            "scheduled_count": 32
+          },
+          {
+            "id": "SP-261016-001-B003",
+            "product_id": "CP.00022.A",
+            "qty": 10,
+            "priority": 2,
+            "due": "2026-10-18T18:00:00",
+            "finished": "2026-10-17T14:31:54",
+            "state": "scheduled",
+            "lateness_minutes": 0,
+            "crew_reference_finished": "2026-10-17T14:31:54",
+            "completion_delta_minutes": 0.0,
+            "task_count": 38,
+            "scheduled_count": 38
+          }
+        ]
+      }
+    ],
+    "independent_bom_checks": 54,
+    "independent_material_checks": 48,
+    "occupancy_projection": {
+      "success": true,
+      "real_imported_scenario": true,
+      "tasks": 96,
+      "policy_axis_task_marks": 384,
+      "setup_minutes": [
+        360,
+        240
+      ],
+      "browser_acceptance": false
+    },
+    "all_js_groups": 218,
+    "full_regression_tests": 2838,
+    "original_heuristic_outputs_preserved": 24,
+    "old_business_facts_preserved": 232941,
+    "original_archive_paths_preserved": 472,
+    "old_initialization_workbooks_preserved": 43,
+    "public_analysis_configuration_unchanged": true,
+    "core_scheduling_algorithm_unchanged": true,
     "no_new_migration": true,
     "browser_acceptance": false,
     "mobile_acceptance": false,
