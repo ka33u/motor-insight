@@ -83,6 +83,9 @@ if f.get('workbench_trial_favorites'):
 if f.get('joint_setup_reading'):
     c=f['joint_setup_reading']
     parts.append(section('setup-reading-design','换型准备与交期：按原设备时序核对取舍','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','measures','presentation','boundary']])))
+if f.get('material_return_reading'):
+    c=f['material_return_reading']
+    parts.append(section('material-return-design','生产领退料：数量关联与库存可用性分别核对','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','measures','presentation','boundary']])))
 if f.get('mixed_product_changeover'):
     c=f['mixed_product_changeover']
     parts.append(section('changeover-design','三品种演练：换型时间与批次交期的取舍','<p>'+h(c['state'])+'</p>'+table(['内容','定义与呈现'],[[k,c[k]] for k in ['definition','presentation','boundary']])))

@@ -1,4 +1,4 @@
-import json
+import json,hashlib
 from datetime import date
 from decimal import Decimal
 from django.db import transaction
@@ -68,6 +68,28 @@ def detail(request,kind,key):
     d,f,receipt,rev=context(request,True);obj=object_detail(d,kind,key);verify(f,rev,receipt)
     return respond({**obj,'receipt':receipt,'filters':f,'as_of':d.cutoff,'note':eng.NOTE,'boundary':eng.BOUNDARY,'lot_note':lots.NOTE,'lot_policy_label':lots.POLICIES[f['lot_policy']],'can_follow':can_follow(request.user),
                     'follow_up':follow_info(IssueDisposition.objects.filter(key=object_key(kind,key)).first())})
+
+@api()
+@transaction.atomic
+def return_export(request,key):
+    d,f,receipt,rev=context(request,True);obj=object_detail(d,'orders',key);report=obj['return_reconciliation']
+    rows=[['生产领退料核对 · 合成模拟数据','工单',key,'截止',d.cutoff],['定义',report['version']],['说明',report['notice']],
+          ['范围','当前工单全部需求物料和全部直接/反向关联退料；不按清单状态裁剪。未参与备料的完工/取消工单不计算BOM待领量。'],
+          ['物料','单位','累计领料','可核对退料','净领料','模拟总需求','待领需求','领退料量可核对']]
+    rows += [[x.get(k) for k in ('material_id','unit','gross_issued_qty','returned_qty','issued_qty','gross_required','remaining_required','issue_balance_known')] for x in obj['row']['items']]
+    rows += [[],['退料流水','原领料','退料工单','原工单','物料','批次','退回库位','退料时点','原增减量','单位','关联可核对','问题']]
+    rows += [[r['id'],r['issue_id'],r['work_order_id'],r['issue']['work_order_id'] if r['issue'] else None,r['material_id'],r['lot'],r['location'],r['occurred'],r['qty_signed'],r['unit'],r['verified'],'；'.join(r['issues'])] for r in report['rows']]
+    originals={r['issue']['id']:r['issue'] for r in report['rows'] if r['issue']}
+    rows += [[],['原领料流水','工单','物料','批次','库位','领料时点','原增减量','来源单号']]
+    rows += [[r[k] for k in ('id','work_order_id','material_id','lot','location','occurred','qty_signed','reference')] for r in originals.values()]
+    sources=capture_sources({'sources':[r for r in obj['sources'] if access.allowed(request.user,r['dataset'])]})
+    rows += [[],['Excel来源对象','编号','文件','工作表','行','资料缺失']]
+    rows += [[r.get(k) for k in ('dataset','key','filename','sheet','row','missing')] for r in sources]
+    verify(f,rev,receipt)
+    response=csv_reply(rows,'production-returns-'+hashlib.sha256(key.encode()).hexdigest()[:16]);response['Cache-Control']='no-store'
+    AuditEvent.objects.create(action='material_returns.export',actor=request.user.username,object_type='MaterialPlanning',object_id=key,
+                              detail=dict(filters=f,receipt=receipt,returns=len(report['rows']),file_sha256=hashlib.sha256(response.content).hexdigest(),business_facts_changed=False))
+    return response
 
 @api()
 @transaction.atomic

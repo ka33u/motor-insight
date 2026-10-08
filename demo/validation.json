@@ -1,21 +1,21 @@
 {
   "success": true,
-  "version": "0.32.0",
-  "record_count": 233788,
-  "record_hash_digest": "01565772db588d470cb47485e0a033013a14751bf20f396f220e363b23868b5d",
+  "version": "0.33.0",
+  "record_count": 233902,
+  "record_hash_digest": "ac6a3825a117a6d9a0144e91fd2c654ffc6d98d326ae339e46f161ebf1f523d2",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
   "public_configuration_counts": {
-    "app_record": 233788,
+    "app_record": 233902,
     "app_analysismodel": 52,
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2856,
-  "fresh_xlsx_replay": false,
-  "effective_workbooks": 44,
-  "original_workbooks": 45,
+  "tests": 2877,
+  "fresh_xlsx_replay": true,
+  "effective_workbooks": 45,
+  "original_workbooks": 46,
   "prior_business_facts_preserved": 233788,
-  "new_business_facts": 0,
+  "new_business_facts": 114,
   "raw_contracts": 154,
   "original_files_preserved": 473,
   "native_http_roles": 6,
@@ -46,7 +46,7 @@
     "invalid": 3,
     "contradicted": 2
   },
-  "last_fresh_xlsx_replay_version": "0.31.0",
+  "last_fresh_xlsx_replay_version": "0.33.0",
   "existing_replayed_database_verified": true,
   "topic_journey": {
     "modes": [
@@ -988,6 +988,126 @@
     "new_business_facts": 0,
     "fresh_xlsx_replay": false,
     "last_fresh_xlsx_replay_version": "0.31.0",
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "keyboard_acceptance": false,
+    "actual_download_acceptance": false,
+    "scope": "0.32.0换型准备BI的历史验收；0.33.0保留26份原联立结果并复跑完整回归及全部纯JS，领退料增量另列。"
+  },
+  "production_returns": {
+    "verified_in_version": "0.33.0",
+    "definition": "production-return-links-v1",
+    "http": {
+      "success": true,
+      "roles": [
+        {
+          "role": "admin",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "analyst",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "operations",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "quality",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "finance",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "viewer",
+          "allowed": true,
+          "no_financial_fields": true
+        }
+      ],
+      "boards": 6,
+      "details": 30,
+      "exports": 30,
+      "source_rows": 1092,
+      "independent_material_checks": 40,
+      "facts_unchanged": true,
+      "sources_exact": true,
+      "main_database_bytes_unchanged": true,
+      "browser_acceptance": false
+    },
+    "public_source": {
+      "success": true,
+      "public_files": 1098,
+      "bi_regenerated_identically": true,
+      "scenario_reproduced_identically": true,
+      "public_source_backend_tests": 21,
+      "public_js_groups": 7,
+      "fresh_xlsx_replay": true,
+      "effective_workbooks": 45,
+      "records": 233902
+    },
+    "workbook": {
+      "filename": "46_生产领退料核对_模拟.xlsx",
+      "sha256": "f31668e422d628b011515684391290f5953d3054e083fa281f3e91d5a2cb7d42",
+      "source_rows": 114,
+      "sheets": 9,
+      "visual_review": true,
+      "normal_import_duplicate_safe": true
+    },
+    "profiles": [
+      {
+        "id": "MO-260928-R001",
+        "state": "covered",
+        "net_issued": 6.5,
+        "remaining": 50.632
+      },
+      {
+        "id": "MO-260928-R002",
+        "state": "covered",
+        "net_issued": 0,
+        "remaining": 57.132
+      },
+      {
+        "id": "MO-260928-R003",
+        "state": "covered",
+        "net_issued": 25,
+        "remaining": 32.132
+      },
+      {
+        "id": "MO-260928-R004",
+        "state": "covered",
+        "net_issued": 40,
+        "remaining": 17.132
+      },
+      {
+        "id": "MO-260928-R005",
+        "state": "attention",
+        "net_issued": null,
+        "remaining": null
+      }
+    ],
+    "independent_material_checks": 40,
+    "full_regression_tests": 2877,
+    "all_js_groups": 243,
+    "new_backend_tests": 21,
+    "new_js_groups": 7,
+    "original_joint_outputs_preserved": 26,
+    "old_business_facts_preserved": 233788,
+    "original_archive_paths_preserved": 473,
+    "old_initialization_workbooks_preserved": 44,
+    "public_analysis_configuration_unchanged": true,
+    "core_joint_scheduling_unchanged": true,
+    "no_new_migration": true,
+    "new_business_facts": 114,
+    "fresh_xlsx_replay": true,
+    "effective_workbooks": 45,
+    "original_workbooks": 46,
     "browser_acceptance": false,
     "mobile_acceptance": false,
     "keyboard_acceptance": false,

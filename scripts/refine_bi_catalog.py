@@ -739,7 +739,8 @@ def refine(d):
     from refine_bi_trial_favorites import refine_trial_favorites
     from refine_bi_changeover import refine_changeover
     from refine_bi_setup_reading import refine_setup_reading
-    return refine_setup_reading(refine_changeover(refine_trial_favorites(refine_occupancy(refine_batch_material(refine_material(refine_blockers(result)))))))
+    from refine_bi_material_returns import refine_material_returns
+    return refine_material_returns(refine_setup_reading(refine_changeover(refine_trial_favorites(refine_occupancy(refine_batch_material(refine_material(refine_blockers(result))))))))
 
 
 if __name__=='__main__':

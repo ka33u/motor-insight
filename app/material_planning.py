@@ -4,10 +4,10 @@ from datetime import date,datetime
 from decimal import Decimal,InvalidOperation,ROUND_CEILING
 from pathlib import Path
 import hashlib,json
-from . import analytics,supply,material_impact,material_lot_allocation
+from . import analytics,supply,material_impact,material_lot_allocation,material_returns
 from .models import Record
 
-NOTE='合成数据备料推演：按工单指定BOM版本及计划开工日核对用量，需求＝计划台数×单位用量×(1＋损耗定额)，相同物料跨分支合并；件按工单物料向上取整。扣除截止前可核对的领料后，按所选顺序整单试配。只有全部物料可覆盖的工单才消耗本次模拟池，缺料或资料待核对工单不占用。不是库存预留、领料指令或正式MRP。'
+NOTE='合成数据备料推演：按工单指定BOM版本及计划开工日核对用量，需求＝计划台数×单位用量×(1＋损耗定额)，相同物料跨分支合并；件按工单物料向上取整。扣除截止前可核对的净领料（累计领料减已关联退料）后，按所选顺序整单试配。净领料不是在制实存或实际消耗；退料仅按仓储流水入池一次，可用性另核库位状态。只有全部物料可覆盖的工单才消耗本次模拟池，缺料或资料不全工单不占用。不是库存预留、领料指令或正式MRP。'
 BOUNDARY='仅所选工单队列竞争当前库存；其他工单的需求、外部预留、替代料、在途到货、半成品跨工单调拨及工艺/设备/人员门槛未纳入。可覆盖不等于可承诺交期或允许投产。已知需求缺口不包含资料不全工单的未知需求。'
 STAGES={'orders':{'all':'全部工单','active':'待投料工单','covered':'整单试配可覆盖','short':'已知物料不足','attention':'资料待核对','excluded':'已完工或取消'},
         'materials':{'all':'全部需求物料','short':'已知净需求有缺口','attention':'库存或需求待核对'},'impact':material_impact.STAGES}
@@ -58,7 +58,7 @@ def filters(q):
 
 def receipt(f,revision):
     h=hashlib.sha256()
-    for name in ['material_planning.py','material_planning_views.py','material_lot_allocation.py','inventory_age.py','material_impact.py','supply.py','schema.py']:h.update((Path(__file__).parent/name).read_bytes())
+    for name in ['material_planning.py','material_planning_views.py','material_lot_allocation.py','inventory_age.py','material_impact.py','material_returns.py','supply.py','schema.py']:h.update((Path(__file__).parent/name).read_bytes())
     conf={k:v for k,v in f.items() if k not in ['tab','stage']}
     payload={'scope':conf,'data':list(revision),'as_of':analytics.AS_OF,'calculation':h.hexdigest()}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
@@ -170,10 +170,30 @@ class MaterialPlanning:
                 if plan is not None:raw=plan*qty*(1+scrap);item['gross_unrounded']+=raw;item['net_per_unit']+=qty
             except ValueError as e:local.append(str(e));issues.append(b['id']+'：'+str(e));item['issues']+=local
             item['bom_lines'].append({k:b.get(k) for k in ['id','assembly_level','effective','qty','scrap_allowance']}|{'gross_contribution':raw,'issues':local})
+        for item in items.values():
+            item.update(gross_issued_qty=Decimal(0),returned_qty=Decimal(0),return_rows=[],issue_balance_known=True)
+        related=self.stock.return_reconciliation
+        # Include linked return evidence even when its declared work order is wrong.
+        source_ids={r['id'] for r in self.movements[w['id']]}
+        linked_returns=[r for r in related['returns'].values() if r['work_order_id']==w['id'] or r['issue_id'] in source_ids]
+        for r in linked_returns:
+            sources+=refs('inventory_movements',[r])
+            if r['issue']:sources+=refs('inventory_movements',[r['issue']])
+            if r['issues']:issues.append(r['id']+'：'+'；'.join(r['issues']))
         for r in self.movements[w['id']]:
             try:
                 if stamp(r.get('occurred'))>self.cutoff:continue
                 sources+=refs('inventory_movements',[r]);mid=r.get('material_id');item=items.get(mid)
+                if r.get('movement')=='生产退料':
+                    report=related['returns'][r['id']]
+                    if item:item['return_rows'].append(report)
+                    if not item:raise ValueError('退料物料不属于指定BOM版本')
+                    if not report['verified']:raise ValueError('退料关联待核对，净领料未计算')
+                    lot=self.stock.lot_index.get(supply.lot_id(supply.lot_key(r)))
+                    origin=self.stock.lot_index.get(supply.lot_id(supply.lot_key(report['issue'])))
+                    if not lot or lot['issues'] or not origin or origin['issues']:raise ValueError('领退料批次库位账据待核对')
+                    item['returned_qty']+=Decimal(report['return_qty'])
+                    continue
                 if r.get('movement')!='生产领料':raise ValueError('工单关联流水类型尚未映射，未自动扣减或回退领料')
                 if r.get('reference')!=w['id']:raise ValueError('领料来源单号与工单不一致')
                 if not item:raise ValueError('领料物料不属于指定BOM版本')
@@ -182,13 +202,19 @@ class MaterialPlanning:
                 if item['unit']=='件' and signed!=signed.to_integral_value():raise ValueError('领料件数非整数')
                 lot=self.stock.lot_index.get(supply.lot_id(supply.lot_key(r)))
                 if not lot or lot['issues']:raise ValueError('领料所在批次库位账据待核对')
-                item['issued_qty']-=signed;item['issue_rows'].append({'id':r['id'],'qty':-signed,'lot':r.get('lot'),'location':r.get('location'),'occurred':r['occurred']})
-            except (ValueError,InvalidOperation) as e:issues.append(r['id']+'：'+str(e))
+                item['gross_issued_qty']-=signed;item['issue_rows'].append({'id':r['id'],'qty':-signed,'lot':r.get('lot'),'location':r.get('location'),'occurred':r['occurred']})
+            except (ValueError,InvalidOperation) as e:
+                issues.append(r['id']+'：'+str(e))
+                if items.get(r.get('material_id')):items[r['material_id']]['issue_balance_known']=False
         for item in items.values():
+            if any(r['issues'] and (r['material_id']==item['material_id'] or r['issue'] and r['issue']['material_id']==item['material_id']) for r in linked_returns):item['issue_balance_known']=False
+            item['issued_qty']=item['gross_issued_qty']-item['returned_qty'] if item['issue_balance_known'] else None
+            if not item['issue_balance_known']:
+                item['gross_issued_qty']=None;item['returned_qty']=None
             if plan is not None and not item['issues']:
                 gross=item['gross_unrounded'];gross=gross.to_integral_value(rounding=ROUND_CEILING) if item['unit']=='件' else gross
-                item['gross_required']=gross;item['remaining_required']=max(Decimal(0),gross-item['issued_qty'])
-                if item['issued_qty']>gross:item['warnings'].append('已领量超过模拟需求，不退回模拟库存')
+                item['gross_required']=gross;item['remaining_required']=max(Decimal(0),gross-item['issued_qty']) if item['issued_qty'] is not None else None
+                if item['issued_qty'] is not None and item['issued_qty']>gross:item['warnings'].append('净领量超过模拟需求，不退回模拟库存')
         eligible=not issues
         for mid,item in items.items():
             mat=self.material(mid)
@@ -236,7 +262,13 @@ class MaterialPlanning:
             for item in w['items']:
                 if item['material_id'] in self.stock.stock_index:sources+=self.stock.detail('material',item['material_id'])['sources']
                 if self.lot_pool:sources+=self.lot_pool.sources(item['material_id'])
-            return {'row':w,'sources':unique(sources)}
+            returns=[r for r in self.stock.return_reconciliation['returns'].values() if r['work_order_id']==key or r['issue'] and r['issue']['work_order_id']==key]
+            for row in returns:
+                sources+=refs('inventory_movements',[row])
+                if row['issue']:sources+=refs('inventory_movements',[row['issue']])
+                for record in (row,row['issue']):
+                    if record and record['material_id'] in self.stock.stock_index:sources+=self.stock.detail('material',record['material_id'])['sources']
+            return {'row':w,'sources':unique(sources),'return_reconciliation':dict(version=material_returns.VERSION,notice=material_returns.NOTICE,rows=returns)}
         if kind=='materials':
             if key not in self.material_rows:raise Record.DoesNotExist()
             m=self.material_rows[key];sources=[]

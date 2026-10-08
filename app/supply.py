@@ -3,7 +3,7 @@ from collections import defaultdict,Counter
 from decimal import Decimal,InvalidOperation
 from functools import lru_cache
 import hashlib,json
-from . import analytics
+from . import analytics,material_returns
 from .models import Record
 
 NOTE='库存按物料×批次×库位核算，期初＋流入－流出；到货、检验批准、入库分别计数。可用状态余额未扣预留，不等于可承诺量或订单齐套。仅覆盖已导入模拟数据，截至固定快照，不重放历史。'
@@ -31,6 +31,7 @@ def lot_id(key):return hashlib.sha256(json.dumps(key,ensure_ascii=False).encode(
 class SupplyData:
     def __init__(self,d,cutoff=analytics.AS_OF):
         self.d=d;self.cutoff=cutoff;day=cutoff[:10];self.materials=ix(d['materials']);self.suppliers=ix(d['suppliers']);employees=ix(d['employees'])
+        self.return_reconciliation=material_returns.reconcile(d,cutoff)
         self.purchase=ix([p for p in d['purchase_lines'] if p['ordered']<=day]);self.raw_receipts=ix([r for r in d['receipts'] if r['received']<=cutoff]);work_orders=ix(d['work_orders'])
         inspections=group([q for q in d['incoming_inspections'] if q['inspected']<=cutoff],'receipt_id')
         moves=[m for m in d['inventory_movements'] if m['occurred']<=cutoff];move_refs=group(moves,'reference');self.receipts={}
@@ -103,6 +104,9 @@ class SupplyData:
                         elif receipt['issues'] or not receipt['approved']:local.append('入库关联检验/到货证据待核对')
                     elif row['movement']=='生产领料':
                         if delta>=0 or row.get('work_order_id') not in work_orders:local.append('领料方向或工单待核对')
+                        local.extend(self.return_reconciliation['by_issue'].get(row['id'],{}).get('issues',[]))
+                    elif row['movement']=='生产退料':
+                        local.extend(self.return_reconciliation['returns'][row['id']]['issues'])
                     else:local.append('流水类型尚未映射，需核对数量方向')
                     if delta<0 and state!='可用':local.append('非可用状态发生出库')
                     if delta<0 and stamp==last_change:local.append('出库与状态变更同刻，先后待核对')
@@ -113,7 +117,20 @@ class SupplyData:
             if m.get('unit')=='件' and base!=base.to_integral_value():issues.append('期初件数必须为整数')
             issues=list(dict.fromkeys(issues));qty=base+total(mm,'qty_signed');balance=float(qty) if baseline_known and len(opens)<=1 and not (start and any(r['occurred']<start for r in mm)) else None
             self.lots.append({'id':lot_id(key),'material_id':mid,'lot':lot,'location':loc,'unit':m.get('unit','未知'),'state':state,'opening_qty':float(base) if len(opens)<=1 else None,'inbound_qty':float(total([r for r in mm if dec(r['qty_signed'])>0],'qty_signed')),'outbound_qty':float(-total([r for r in mm if dec(r['qty_signed'])<0],'qty_signed')),'balance_qty':balance,'usable_state_qty':balance if state=='可用' and not issues else 0 if not issues else None,'last_movement':mm[-1]['occurred'] if mm else None,'issues':issues,'_opening':opens,'_moves':mm,'_events':ev,'_timeline':timeline})
-        self.lot_index=ix(self.lots);by_material=group(self.lots,'material_id');po_material=group(self.po_rows,'material_id');self.stock_rows=[]
+        self.lot_index=ix(self.lots)
+        # A valid document link cannot make stock with unresolved origin evidence usable.
+        for _ in range(len(self.lots)+1):
+            changed=False
+            for row in self.return_reconciliation['returns'].values():
+                if not row['issue']:continue
+                origin=self.lot_index.get(lot_id(lot_key(row['issue'])))
+                target=self.lot_index.get(lot_id(lot_key(row)))
+                if target and (not origin or origin['issues']):
+                    message='退料原领料批次库位账据待核对：'+row['issue_id']
+                    if message not in target['issues']:
+                        target['issues'].append(message);target['usable_state_qty']=None;changed=True
+            if not changed:break
+        by_material=group(self.lots,'material_id');po_material=group(self.po_rows,'material_id');self.stock_rows=[]
         for mid,m in sorted(self.materials.items()):
             ll=by_material[mid];pp=po_material[mid];issues=list(dict.fromkeys(x for l in ll for x in l['issues']));covered=bool(ll)
             if not covered:issues.append('尚无期初或库存流水，不能将缺少记录当作零库存')
@@ -135,6 +152,10 @@ class SupplyData:
                 sources+=refs('inventory_opening',l['_opening'])+refs('inventory_movements',l['_moves'])+refs('inventory_status_events',l['_events'])
                 lots.append(clean(l))
             for p in row['_purchase']:sources+=self.po_sources(p)
+            for r in self.return_reconciliation['returns'].values():
+                if r['material_id']==key or r['issue'] and r['issue']['material_id']==key:
+                    sources+=refs('inventory_movements',[r])
+                    if r['issue']:sources+=refs('inventory_movements',[r['issue']])
             return {'row':clean(row),'lots':lots,'purchases':[clean(p) for p in row['_purchase']],'sources':unique_refs(sources)}
         if kind=='purchase':
             row=self.po_index.get(key)

@@ -127,6 +127,7 @@ urlpatterns += [path('api/incoming-quality',iq.board),path('api/incoming-quality
 urlpatterns += [path('api/purchase-commitments',pc.board),path('api/purchase-commitments/export',pc.export),path('api/purchase-commitments/segments-export',pc.export_segments),path('api/purchase-commitments/rows/<str:key>',pc.detail),path('api/purchase-commitments/rows/<str:key>/evidence',pc.evidence)]
 urlpatterns += [path('api/inventory-age',age.board),path('api/inventory-age/export',age.export),path('api/inventory-age/rows/<str:key>',age.detail),path('api/inventory-age/rows/<str:key>/evidence',age.evidence)]
 urlpatterns += [path('api/material-planning/lot-compare',mp.lot_compare),path('api/material-lots/export',mp.lot_export)]
+urlpatterns += [path('api/material-planning/orders/<str:key>/issue-returns.csv',mp.return_export)]
 urlpatterns += [path('api/material-supply/<str:key>',ms.board),path('api/material-supply/<str:key>/evidence',ms.evidence),path('api/material-supply/<str:key>/export',ms.export)]
 urlpatterns += [path('api/material-planning',mp.board),path('api/material-planning/compare',mp.compare),path('api/material-planning/export',mp.export),path('api/material-planning/<str:kind>/<str:key>',mp.detail),path('api/material-planning/<str:kind>/<str:key>/evidence',mp.evidence),path('api/material-planning/<str:kind>/<str:key>/follow-up',mp.follow_up),path('api/material-planning/<str:kind>/<str:key>/history',mp.history)]
 
