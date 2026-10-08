@@ -25,3 +25,4 @@ jobs:
       - run: node tests/check_baseline_trial.mjs
       - run: node tests/check_order_baseline.mjs
       - run: node tests/check_schedule_reading.mjs
+      - run: node tests/check_joint_candidates.mjs

@@ -37,7 +37,7 @@ export function createJointScheduleWorkspace(h){
    `<details class="source"><summary>计算边界与预留规则</summary><p>${esc(d.notice)}</p><p>总量缺口只比较同物料同单位的需求与范围内可用供给；不证明时间齐套。总剩余供给包括范围外到料，未预留需求也可能是人机受阻。不同方案的供给彼此独立，不合并计算。</p></details>`;
   on('#joint-compare','click',()=>go('joint-schedule',{study:key,policy,view:'compare'}));
   on('#joint-study','change',e=>go('joint-schedule',{study:e.target.value,policy}));on('#joint-policy','change',e=>go('joint-schedule',{study:key,policy:e.target.value}));
-  const detail=attempt(async id=>{const p=await modalRead(()=>api(url('/tasks/'+encodeURIComponent(id))));if(p)modal('任务、整批用料与预留依据',scheduleTaskDetail(p,h,'joint'))});
+  const detail=attempt(async id=>{const p=await modalRead(()=>api(url('/tasks/'+encodeURIComponent(id))));if(p){modal('任务、整批用料与预留依据',scheduleTaskDetail(p,h,'joint'));$$('[data-joint-related-task]').forEach(el=>el.addEventListener('click',()=>detail(el.dataset.jointRelatedTask)))}});
   function bindTasks(){
    $$('[data-joint-task]').forEach(el=>el.addEventListener('click',()=>detail(el.dataset.jointTask)));
 

@@ -1,0 +1,4051 @@
+{
+  "scheduled": {
+    "row": {
+      "id": "SP-261002-001-B003-T01-P000",
+      "job_id": "SP-261002-001-B003",
+      "product_id": "CP.00022.A",
+      "route_id": "GY-00022-01",
+      "process": "冲片",
+      "branch": "定子",
+      "qty": 10,
+      "predecessors": [],
+      "state": "scheduled",
+      "reason": "",
+      "root_tasks": [],
+      "dependency_ready": "2026-10-02T08:00:00",
+      "process_minutes": 90.9,
+      "resource_id": "SB-01-02-W01",
+      "employee_id": "E00021",
+      "skill_id": "JN-E00021-SB-01",
+      "credential_id": "CR-261002-001-Q01-2",
+      "candidate_id": "CR-261002-001-C0118",
+      "option_id": "SP-261002-001-B003-T01-P000-R2",
+      "window_id": "SP-261002-001-W02-2-1",
+      "worker_window_id": "CR-261002-001-W08-2-1",
+      "started": "2026-10-02T08:00:00",
+      "process_started": "2026-10-02T08:12:00",
+      "finished": "2026-10-02T09:42:54",
+      "setup_minutes": 12.0,
+      "wait_minutes": 0.0,
+      "material_ready": "2026-10-02T08:00:00",
+      "material_readiness_delay_minutes": 0.0,
+      "demand_ids": [
+        "MP-261002-001-D019"
+      ],
+      "new_reservation_ids": [
+        "MP-261002-001-D019"
+      ],
+      "shortages": []
+    },
+    "demands": [
+      {
+        "id": "MP-261002-001-D019",
+        "study_id": "MP-261002-001",
+        "job_id": "SP-261002-001-B003",
+        "binding_id": "MP-261002-001-B019",
+        "required_qty": "52.475",
+        "unit": "kg",
+        "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+        "product_id": "CP.00022.A",
+        "bom_id": "BOM-00022-01-DZ",
+        "route_id": "GY-00022-01",
+        "material_id": "01.01.0004",
+        "material_name": "无取向硅钢-04",
+        "bom_version": "A.02",
+        "bom_qty": "5.07",
+        "scrap_allowance": "0.035",
+        "quantum": "0.001",
+        "calculated_qty": "52.475",
+        "state": "reserved",
+        "reserved_qty": "52.475",
+        "reservation": {
+          "task_id": "SP-261002-001-B003-T01-P000",
+          "reserved_at": "2026-10-02T08:00:00"
+        }
+      }
+    ],
+    "reservations": [
+      {
+        "demand_id": "MP-261002-001-D019",
+        "job_id": "SP-261002-001-B003",
+        "task_id": "SP-261002-001-B003-T01-P000",
+        "supply_id": "MP-261002-001-L004",
+        "material_id": "01.01.0004",
+        "unit": "kg",
+        "qty": "52.475",
+        "reserved_at": "2026-10-02T08:00:00",
+        "available_from": "2026-10-02T08:00:00"
+      }
+    ],
+    "candidate_evidence": {
+      "version": "joint-candidate-evidence-v1",
+      "task_id": "SP-261002-001-B003-T01-P000",
+      "notice": "本任务候选资料来自同一次试排输入，不代表当前剩余容量或可立即开工。批量符合只核对设备上限；资格交集沿用原人员计算。输入窗口尚未扣除不可用段、其他任务占用或裁剪到试排范围，资格窗口和人机窗口还需共同满足。首次/跨族换型假设不等于本任务实际试排换型。不重排、不推荐替换人机、不生成正式派工。",
+      "baseline": "2026-10-02T08:00:00",
+      "horizon_end": "2026-10-05T18:00:00",
+      "resource_options": [
+        {
+          "id": "SP-261002-001-B003-T01-P000-R1",
+          "task_id": "SP-261002-001-B003-T01-P000",
+          "resource_id": "SB-01-01-W01",
+          "setup_minutes": 12.0,
+          "basis": "独立资源位按单容量演练；首次与跨族完整换型12分钟，同族0分钟。",
+          "process": "冲片",
+          "capacity": 1,
+          "max_batch_qty": 60,
+          "task_qty": 10,
+          "batch_fits": true,
+          "selected": false
+        },
+        {
+          "id": "SP-261002-001-B003-T01-P000-R2",
+          "task_id": "SP-261002-001-B003-T01-P000",
+          "resource_id": "SB-01-02-W01",
+          "setup_minutes": 12.0,
+          "basis": "独立资源位按单容量演练；首次与跨族完整换型12分钟，同族0分钟。",
+          "process": "冲片",
+          "capacity": 1,
+          "max_batch_qty": 60,
+          "task_qty": 10,
+          "batch_fits": true,
+          "selected": true
+        }
+      ],
+      "people_candidates": [
+        {
+          "id": "CR-261002-001-C0117",
+          "task_id": "SP-261002-001-B003-T01-P000",
+          "credential_id": "CR-261002-001-Q01-1",
+          "basis": "本方案明确候选；同一工号跨设备和跨工序共同占用，员工不能重复计容量。",
+          "employee_id": "E00005",
+          "skill_id": "JN-E00005",
+          "process": "冲片",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-02T08:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-02T08:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": "",
+          "selected": false
+        },
+        {
+          "id": "CR-261002-001-C0118",
+          "task_id": "SP-261002-001-B003-T01-P000",
+          "credential_id": "CR-261002-001-Q01-2",
+          "basis": "本方案明确候选；同一工号跨设备和跨工序共同占用，员工不能重复计容量。",
+          "employee_id": "E00021",
+          "skill_id": "JN-E00021-SB-01",
+          "process": "冲片",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-02T08:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-02T08:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": "",
+          "selected": true
+        }
+      ],
+      "schedule_windows": [
+        {
+          "id": "SP-261002-001-W01-2-1",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-2-2",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-3-1",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-3-2",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-4-1",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-4-2",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-5-1",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-5-2",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-2-1",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-2-2",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-3-1",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-3-2",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-4-1",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-4-2",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-5-1",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-5-2",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        }
+      ],
+      "schedule_blocks": [
+        {
+          "id": "SP-261002-001-X01",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-02T09:00:00",
+          "finished": "2026-10-02T10:00:00",
+          "basis": "本次假设的不可用窗口，非真实维修派单。",
+          "reason": "模拟保养占用"
+        }
+      ],
+      "crew_windows": [
+        {
+          "id": "CR-261002-001-W02-2-1",
+          "employee_id": "E00005",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-2-2",
+          "employee_id": "E00005",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-3-1",
+          "employee_id": "E00005",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-3-2",
+          "employee_id": "E00005",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-4-1",
+          "employee_id": "E00005",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-4-2",
+          "employee_id": "E00005",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-5-1",
+          "employee_id": "E00005",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-5-2",
+          "employee_id": "E00005",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-2-1",
+          "employee_id": "E00021",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-2-2",
+          "employee_id": "E00021",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-3-1",
+          "employee_id": "E00021",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-3-2",
+          "employee_id": "E00021",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-4-1",
+          "employee_id": "E00021",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-4-2",
+          "employee_id": "E00021",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-5-1",
+          "employee_id": "E00021",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-5-2",
+          "employee_id": "E00021",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        }
+      ],
+      "crew_blocks": [
+        {
+          "id": "CR-261002-001-X01",
+          "employee_id": "E00005",
+          "started": "2026-10-02T09:00:00",
+          "finished": "2026-10-02T10:00:00",
+          "basis": "独立人员不可用假设，不改考勤或工时。",
+          "reason": "模拟人员培训不可用"
+        }
+      ],
+      "predecessors": [],
+      "root_tasks": []
+    },
+    "sources": [
+      {
+        "dataset": "bom",
+        "key": "BOM-00022-01-DZ",
+        "revision": 1,
+        "record_hash": "afa40c399f95359931556cae30cb1f79eb7160e76a010f41dda942b7c2cc42e2",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 191,
+        "source_row_id": 630
+      },
+      {
+        "dataset": "crew_blocks",
+        "key": "CR-261002-001-X01",
+        "revision": 1,
+        "record_hash": "b49e85b48e893232b8887e3b28e8ae00c3d9ff71eaf58fd29b32d49fd1c7acf7",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员不可用",
+        "row": 2,
+        "source_row_id": 223939
+      },
+      {
+        "dataset": "crew_candidates",
+        "key": "CR-261002-001-C0117",
+        "revision": 1,
+        "record_hash": "3124c0a31531494ae62accf83b5842f1f8a407415a44cde3b6d4363a62aea2f3",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员候选",
+        "row": 118,
+        "source_row_id": 220776
+      },
+      {
+        "dataset": "crew_candidates",
+        "key": "CR-261002-001-C0118",
+        "revision": 1,
+        "record_hash": "ada7db3426d0bb7d07695a39f83352f23f0a261a826d34954eb672105736d65d",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员候选",
+        "row": 119,
+        "source_row_id": 220777
+      },
+      {
+        "dataset": "crew_credentials",
+        "key": "CR-261002-001-Q01-1",
+        "revision": 1,
+        "record_hash": "23a54aaebe6f26ecc8f284b56452ba4256c1d1abb156ee1b681aa7035cc483f9",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排资格窗口",
+        "row": 2,
+        "source_row_id": 220542
+      },
+      {
+        "dataset": "crew_credentials",
+        "key": "CR-261002-001-Q01-2",
+        "revision": 1,
+        "record_hash": "3b1365c3d9b58ca3e00e7bd7989de0b0fdea72578a1f00fdc51402c149f03e67",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排资格窗口",
+        "row": 3,
+        "source_row_id": 220543
+      },
+      {
+        "dataset": "crew_studies",
+        "key": "CR-261002-001",
+        "revision": 1,
+        "record_hash": "113dfe6972260d139c9894a6c4aab1fb6decdb07cc32fc8d646c46c2cfa3c273",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "资源人员联立方案",
+        "row": 2,
+        "source_row_id": 220536
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-2-1",
+        "revision": 1,
+        "record_hash": "39caa3d169f61853a6bb54dc750aeec2facf16b57331e425fc9a17e7fce882a8",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 10,
+        "source_row_id": 223026
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-2-2",
+        "revision": 1,
+        "record_hash": "8c3db06709d04a441b132974ef345d0ae7b2b6f464e76d5c357f636f3395f2f6",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 11,
+        "source_row_id": 223027
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-3-1",
+        "revision": 1,
+        "record_hash": "92e5cfc6a64d124062613eaece3bb09a6a23f9bc6551ec603fd5c1f95ce7df44",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 12,
+        "source_row_id": 223028
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-3-2",
+        "revision": 1,
+        "record_hash": "fc0eb8732fefe6028cd94642207371ee42fd6332c98e75133d1d0650b21964cf",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 13,
+        "source_row_id": 223029
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-4-1",
+        "revision": 1,
+        "record_hash": "c32572530d91ff8d598cf9acbdf3a62504782992797ed088fbbfa67dc60b2769",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 14,
+        "source_row_id": 223030
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-4-2",
+        "revision": 1,
+        "record_hash": "0972a0c81fdde501b53daea140cbde17b23c0b71e1e81cfccd8528d437964770",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 15,
+        "source_row_id": 223031
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-5-1",
+        "revision": 1,
+        "record_hash": "07f1bab40d190489896f1884d24e8b42d2c329177d3db886c4163d69a9691587",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 16,
+        "source_row_id": 223032
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-5-2",
+        "revision": 1,
+        "record_hash": "0a12b875cac4653a78dbfc1a2c960e77d733a6d7974d70342ccf1672c37c2b58",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 17,
+        "source_row_id": 223033
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-2-1",
+        "revision": 1,
+        "record_hash": "901e67faf3221047dd7507d6cafbf0eab02444492c4be484e0fd2ef505e2006a",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 58,
+        "source_row_id": 223074
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-2-2",
+        "revision": 1,
+        "record_hash": "cf39fcac7e6eb8c2cd22f0822907cfd7d829641fa09a2f6613f4ec4aec1e582e",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 59,
+        "source_row_id": 223075
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-3-1",
+        "revision": 1,
+        "record_hash": "aafce992321a9f7f49a553d1d26bf378b3a3e8d892fdb2758ae8457fc35308ce",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 60,
+        "source_row_id": 223076
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-3-2",
+        "revision": 1,
+        "record_hash": "bd3972c3cfff2cf6d059660b053837d0bdd10257a0f977751e5738bb5740ae4f",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 61,
+        "source_row_id": 223077
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-4-1",
+        "revision": 1,
+        "record_hash": "7d3c3423efcd339369581db4ae6f33819b44d5d7c081de8e667a6102364adf79",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 62,
+        "source_row_id": 223078
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-4-2",
+        "revision": 1,
+        "record_hash": "77fa3b2993c784db435100a70e8d9d1aec60ad768aad07159ce01174ac04f77f",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 63,
+        "source_row_id": 223079
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-5-1",
+        "revision": 1,
+        "record_hash": "29cc82a34ca0bf9030ddfa69c407524955e1f89118a3d856df4e17314e4fb2fe",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 64,
+        "source_row_id": 223080
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-5-2",
+        "revision": 1,
+        "record_hash": "108f7cf3fb9150e2b450046b68bc4a15367a6186684d658ea9afad23d7e22945",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 65,
+        "source_row_id": 223081
+      },
+      {
+        "dataset": "employees",
+        "key": "E00005",
+        "revision": 1,
+        "record_hash": "3d7f4656636278911991eff329f33106328246d6ae2fdb82a670c437549f4aa9",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "人员档案",
+        "row": 6,
+        "source_row_id": 21
+      },
+      {
+        "dataset": "employees",
+        "key": "E00021",
+        "revision": 1,
+        "record_hash": "4149ee8d1a5cbde6fbb69dcc6a4736602936b053cae4d4bb60541bc7faed48f3",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "人员档案",
+        "row": 22,
+        "source_row_id": 37
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-001-B019",
+        "revision": 1,
+        "record_hash": "c00b8ea5b52cb4e8070ca484cfedfe10e73d88c43846537080fbd036a0ee5476",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 20,
+        "source_row_id": 224096
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-001-D019",
+        "revision": 1,
+        "record_hash": "89b0631e2e1a176ea52248c3ecebaa9d7234659cf3c628312e47e1206a9f977e",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 20,
+        "source_row_id": 224635
+      },
+      {
+        "dataset": "joint_studies",
+        "key": "MP-261002-001",
+        "revision": 1,
+        "record_hash": "298389c96b637bec0d29d9e479e5f4a09baa797138637371f018cc0e7ea490ed",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "物料人机联立方案",
+        "row": 2,
+        "source_row_id": 224068
+      },
+      {
+        "dataset": "joint_supplies",
+        "key": "MP-261002-001-L004",
+        "revision": 1,
+        "record_hash": "98e1156b5640813cc839bb6ebbccd5c6b0d2c6abfa98f3383a506188215e0a88",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排物料可用假设",
+        "row": 5,
+        "source_row_id": 225159
+      },
+      {
+        "dataset": "materials",
+        "key": "01.01.0004",
+        "revision": 1,
+        "record_hash": "0b94b63cc7de37fbbb0b8aacf2d9ceb1d77be225f0d8f28441d046c12707be8d",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "物料档案",
+        "row": 5,
+        "source_row_id": 260
+      },
+      {
+        "dataset": "production_resources",
+        "key": "SB-01-01-W01",
+        "revision": 1,
+        "record_hash": "69027b94e5f4925768fa487af554c9cd66f4668cad228a644d0ed74283b71856",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "独立资源位",
+        "row": 2,
+        "source_row_id": 385
+      },
+      {
+        "dataset": "production_resources",
+        "key": "SB-01-02-W01",
+        "revision": 1,
+        "record_hash": "faeabbac09fcd9aaecbadb3db71bf6ba98961e9e1bd1f4869ef87248e542fbce",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "独立资源位",
+        "row": 3,
+        "source_row_id": 386
+      },
+      {
+        "dataset": "products",
+        "key": "CP.00022.A",
+        "revision": 1,
+        "record_hash": "563ee1cba42dcd9a8b613ea84ec849c5cc3a3da574ceef4a201a35d557c91740",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "产品配置",
+        "row": 23,
+        "source_row_id": 326
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00022-01",
+        "revision": 1,
+        "record_hash": "a9878affa0cdad4a013eb0597a7ea75c0b7d599a55de2f11c40aa5fd65fa1561",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 233,
+        "source_row_id": 1104
+      },
+      {
+        "dataset": "schedule_blocks",
+        "key": "SP-261002-001-X01",
+        "revision": 1,
+        "record_hash": "b9f19b09f07a6dbc8e1a88aa73dbdb8b2be90f861a9751d230a1ea43c267cc08",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排不可用窗口",
+        "row": 2,
+        "source_row_id": 220512
+      },
+      {
+        "dataset": "schedule_jobs",
+        "key": "SP-261002-001-B003",
+        "revision": 1,
+        "record_hash": "f077e48c7331054f0baf27dd7902096f2ae86f6c91b6ff64f6c6ead5f5291b3d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排模拟批次",
+        "row": 4,
+        "source_row_id": 214538
+      },
+      {
+        "dataset": "schedule_options",
+        "key": "SP-261002-001-B003-T01-P000-R1",
+        "revision": 1,
+        "record_hash": "bf3570741118698aa382a30803332544bd55863be422e0fe1e27701c92008b3f",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排候选资源",
+        "row": 118,
+        "source_row_id": 217293
+      },
+      {
+        "dataset": "schedule_options",
+        "key": "SP-261002-001-B003-T01-P000-R2",
+        "revision": 1,
+        "record_hash": "83946073cd8a247ff7af4d1081ea9505b4f7810cebbdd0360844e717f9959723",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排候选资源",
+        "row": 119,
+        "source_row_id": 217294
+      },
+      {
+        "dataset": "schedule_studies",
+        "key": "SP-261002-001",
+        "revision": 1,
+        "record_hash": "3d16865bf77880e03334a7f89bdf9b3201dd018e24fe6cd91a0075d96eb0792d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "有限资源试排方案",
+        "row": 2,
+        "source_row_id": 214530
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B003-T01-P000",
+        "revision": 1,
+        "record_hash": "efe54be4baf27cfa9cee11e9a94ceee201d34e802ba1e3ac2d9c42dcd05e0a1c",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 60,
+        "source_row_id": 214630
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-2-1",
+        "revision": 1,
+        "record_hash": "2e1a20a07fab6dcb5657d8aa6b44dc44f9c447d68150a962d03bd7f525d74352",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 2,
+        "source_row_id": 219551
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-2-2",
+        "revision": 1,
+        "record_hash": "f0249e95b36efe28aedd0eafbe2c6f63b1023c04f119a5c5202aea08994efeb8",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 3,
+        "source_row_id": 219552
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-3-1",
+        "revision": 1,
+        "record_hash": "f87953d7568649d51683238b42b04de46e0620e2f6ad0ea39e0ce83f7fd5b513",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 4,
+        "source_row_id": 219553
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-3-2",
+        "revision": 1,
+        "record_hash": "e296724904b902741784e559100b895e8c9b0e99db29e03e1ffcc252b435cbfc",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 5,
+        "source_row_id": 219554
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-4-1",
+        "revision": 1,
+        "record_hash": "de88164470cbfd584ad993f25f2684795c734d3a02e6c611c3311ea6bf0cf855",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 6,
+        "source_row_id": 219555
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-4-2",
+        "revision": 1,
+        "record_hash": "e27c2b4fdc757daf90717c8fb092d9bfa3558b497c1f57af128446baa250dbe0",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 7,
+        "source_row_id": 219556
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-5-1",
+        "revision": 1,
+        "record_hash": "9eec957d3895bf2c3fd415b43a077b4207016fa4a39ccface916b6bcf881821f",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 8,
+        "source_row_id": 219557
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-5-2",
+        "revision": 1,
+        "record_hash": "59151275afdeab6ffc1ea33b9f25a4b417ca08470e60dbe2e85668743e9be3ab",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 9,
+        "source_row_id": 219558
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-2-1",
+        "revision": 1,
+        "record_hash": "ee29ad36481321ad74cf6418e5831949847f074767e12b1750d4e9e1c36e080e",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 10,
+        "source_row_id": 219559
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-2-2",
+        "revision": 1,
+        "record_hash": "1ddd5d10a058e8e1085cd3d76122bf4ee5a808fd26f456763f8c46dfb86f44e7",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 11,
+        "source_row_id": 219560
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-3-1",
+        "revision": 1,
+        "record_hash": "e82b14043df4541ecdfdeec2ad13999563301b1f711825552d94a280929c50fc",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 12,
+        "source_row_id": 219561
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-3-2",
+        "revision": 1,
+        "record_hash": "1d20255c97a635169f0cca2bd6bb2450544f54c6c83a23fbd7f5694422669198",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 13,
+        "source_row_id": 219562
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-4-1",
+        "revision": 1,
+        "record_hash": "3a01c4e15d7806392ed1c448fc92c3c83e27e56b08af9a615a60c9717aa45c75",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 14,
+        "source_row_id": 219563
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-4-2",
+        "revision": 1,
+        "record_hash": "2481fdd7fa095523cc14539f5139ee89398bdcf8ac0c6c4c562d19f113113fe4",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 15,
+        "source_row_id": 219564
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-5-1",
+        "revision": 1,
+        "record_hash": "4a0879fa61f05b61faaab4086d728bb786fbe376331530ee31c29b3fcc2380cd",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 16,
+        "source_row_id": 219565
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-5-2",
+        "revision": 1,
+        "record_hash": "c3b264f955335480cd9d580be2ed5e0c1dbd8a1ef8b412543066ac17715591a3",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 17,
+        "source_row_id": 219566
+      },
+      {
+        "dataset": "skills",
+        "key": "JN-E00005",
+        "revision": 1,
+        "record_hash": "ed1255b392c0a51f0a99eae11bc43bdb8e9a5d82e0bfaf4c7a0d1b6da360638b",
+        "batch_id": "5e35ff5b-ff56-40dd-898c-b2843c74cb59",
+        "filename": "09_人事工时_模拟.xlsx",
+        "file_hash": "0457fa7d910afd17d5e910ca2c7696006362e80c6471e26a7d160c42f525ee13",
+        "sheet": "技能授权",
+        "row": 2,
+        "source_row_id": 91826
+      },
+      {
+        "dataset": "skills",
+        "key": "JN-E00021-SB-01",
+        "revision": 1,
+        "record_hash": "f548b64854dc90b221046d03fd92f72410b561e0753c24abf43974ea4d13f137",
+        "batch_id": "5e35ff5b-ff56-40dd-898c-b2843c74cb59",
+        "filename": "09_人事工时_模拟.xlsx",
+        "file_hash": "0457fa7d910afd17d5e910ca2c7696006362e80c6471e26a7d160c42f525ee13",
+        "sheet": "技能授权",
+        "row": 62,
+        "source_row_id": 91886
+      }
+    ],
+    "can_download_original": true,
+    "notice": "显示该任务用料、共享候选供给、直接前序、首个阻断与候选人机依据。其他批次会竞争同一供给和人机，请同时核对全方案来源及完整导出。整批用料可能由同工序的其他份号预留。候选资料不代表剩余容量或可立即开工。"
+  },
+  "shortage": {
+    "row": {
+      "id": "SP-261002-001-B002-T01-P000",
+      "job_id": "SP-261002-001-B002",
+      "product_id": "CP.00015.A",
+      "route_id": "GY-00015-01",
+      "process": "冲片",
+      "branch": "定子",
+      "qty": 8,
+      "predecessors": [],
+      "state": "blocked",
+      "reason": "共享物料在试排范围内不足：01.01.0003",
+      "root_tasks": [
+        "SP-261002-001-B002-T01-P000"
+      ],
+      "dependency_ready": "2026-10-02T08:00:00",
+      "process_minutes": 97.53333333333333,
+      "resource_id": null,
+      "employee_id": null,
+      "skill_id": null,
+      "credential_id": null,
+      "candidate_id": null,
+      "option_id": null,
+      "window_id": null,
+      "worker_window_id": null,
+      "started": null,
+      "process_started": null,
+      "finished": null,
+      "setup_minutes": null,
+      "wait_minutes": null,
+      "material_ready": null,
+      "material_readiness_delay_minutes": null,
+      "demand_ids": [
+        "MP-261002-002-D010"
+      ],
+      "new_reservation_ids": [],
+      "shortages": [
+        {
+          "material_id": "01.01.0003",
+          "unit": "kg",
+          "required_qty": "57.05",
+          "available_qty": "35.108",
+          "shortage_qty": "21.942"
+        }
+      ]
+    },
+    "demands": [
+      {
+        "id": "MP-261002-002-D010",
+        "study_id": "MP-261002-002",
+        "job_id": "SP-261002-001-B002",
+        "binding_id": "MP-261002-002-B010",
+        "required_qty": "57.05",
+        "unit": "kg",
+        "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+        "product_id": "CP.00015.A",
+        "bom_id": "BOM-00015-01-DZ",
+        "route_id": "GY-00015-01",
+        "material_id": "01.01.0003",
+        "material_name": "无取向硅钢-03",
+        "bom_version": "A.02",
+        "bom_qty": "6.89",
+        "scrap_allowance": "0.035",
+        "quantum": "0.001",
+        "calculated_qty": "57.05",
+        "state": "unreserved",
+        "reserved_qty": "0",
+        "reservation": null
+      }
+    ],
+    "reservations": [],
+    "candidate_evidence": {
+      "version": "joint-candidate-evidence-v1",
+      "task_id": "SP-261002-001-B002-T01-P000",
+      "notice": "本任务候选资料来自同一次试排输入，不代表当前剩余容量或可立即开工。批量符合只核对设备上限；资格交集沿用原人员计算。输入窗口尚未扣除不可用段、其他任务占用或裁剪到试排范围，资格窗口和人机窗口还需共同满足。首次/跨族换型假设不等于本任务实际试排换型。不重排、不推荐替换人机、不生成正式派工。",
+      "baseline": "2026-10-02T08:00:00",
+      "horizon_end": "2026-10-05T18:00:00",
+      "resource_options": [
+        {
+          "id": "SP-261002-001-B002-T01-P000-R1",
+          "task_id": "SP-261002-001-B002-T01-P000",
+          "resource_id": "SB-01-01-W01",
+          "setup_minutes": 12.0,
+          "basis": "独立资源位按单容量演练；首次与跨族完整换型12分钟，同族0分钟。",
+          "process": "冲片",
+          "capacity": 1,
+          "max_batch_qty": 60,
+          "task_qty": 8,
+          "batch_fits": true,
+          "selected": false
+        },
+        {
+          "id": "SP-261002-001-B002-T01-P000-R2",
+          "task_id": "SP-261002-001-B002-T01-P000",
+          "resource_id": "SB-01-02-W01",
+          "setup_minutes": 12.0,
+          "basis": "独立资源位按单容量演练；首次与跨族完整换型12分钟，同族0分钟。",
+          "process": "冲片",
+          "capacity": 1,
+          "max_batch_qty": 60,
+          "task_qty": 8,
+          "batch_fits": true,
+          "selected": false
+        }
+      ],
+      "people_candidates": [
+        {
+          "id": "CR-261002-001-C0053",
+          "task_id": "SP-261002-001-B002-T01-P000",
+          "credential_id": "CR-261002-001-Q01-1",
+          "basis": "本方案明确候选；同一工号跨设备和跨工序共同占用，员工不能重复计容量。",
+          "employee_id": "E00005",
+          "skill_id": "JN-E00005",
+          "process": "冲片",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-02T08:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-02T08:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": "",
+          "selected": false
+        },
+        {
+          "id": "CR-261002-001-C0054",
+          "task_id": "SP-261002-001-B002-T01-P000",
+          "credential_id": "CR-261002-001-Q01-2",
+          "basis": "本方案明确候选；同一工号跨设备和跨工序共同占用，员工不能重复计容量。",
+          "employee_id": "E00021",
+          "skill_id": "JN-E00021-SB-01",
+          "process": "冲片",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-02T08:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-02T08:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": "",
+          "selected": false
+        }
+      ],
+      "schedule_windows": [
+        {
+          "id": "SP-261002-001-W01-2-1",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-2-2",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-3-1",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-3-2",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-4-1",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-4-2",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-5-1",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-5-2",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-2-1",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-2-2",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-3-1",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-3-2",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-4-1",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-4-2",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-5-1",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-5-2",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        }
+      ],
+      "schedule_blocks": [
+        {
+          "id": "SP-261002-001-X01",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-02T09:00:00",
+          "finished": "2026-10-02T10:00:00",
+          "basis": "本次假设的不可用窗口，非真实维修派单。",
+          "reason": "模拟保养占用"
+        }
+      ],
+      "crew_windows": [
+        {
+          "id": "CR-261002-001-W02-2-1",
+          "employee_id": "E00005",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-2-2",
+          "employee_id": "E00005",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-3-1",
+          "employee_id": "E00005",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-3-2",
+          "employee_id": "E00005",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-4-1",
+          "employee_id": "E00005",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-4-2",
+          "employee_id": "E00005",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-5-1",
+          "employee_id": "E00005",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W02-5-2",
+          "employee_id": "E00005",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-2-1",
+          "employee_id": "E00021",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-2-2",
+          "employee_id": "E00021",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-3-1",
+          "employee_id": "E00021",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-3-2",
+          "employee_id": "E00021",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-4-1",
+          "employee_id": "E00021",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-4-2",
+          "employee_id": "E00021",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-5-1",
+          "employee_id": "E00021",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W08-5-2",
+          "employee_id": "E00021",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        }
+      ],
+      "crew_blocks": [
+        {
+          "id": "CR-261002-001-X01",
+          "employee_id": "E00005",
+          "started": "2026-10-02T09:00:00",
+          "finished": "2026-10-02T10:00:00",
+          "basis": "独立人员不可用假设，不改考勤或工时。",
+          "reason": "模拟人员培训不可用"
+        }
+      ],
+      "predecessors": [],
+      "root_tasks": [
+        {
+          "id": "SP-261002-001-B002-T01-P000",
+          "job_id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "route_id": "GY-00015-01",
+          "process": "冲片",
+          "branch": "定子",
+          "state": "blocked",
+          "started": null,
+          "finished": null,
+          "reason": "共享物料在试排范围内不足：01.01.0003"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "dataset": "bom",
+        "key": "BOM-00015-01-DZ",
+        "revision": 1,
+        "record_hash": "5f70c3a552dded55ce901d5da4d50e07f0dade12eadaaff1bc52f1dd15a33cd7",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 128,
+        "source_row_id": 567
+      },
+      {
+        "dataset": "crew_blocks",
+        "key": "CR-261002-001-X01",
+        "revision": 1,
+        "record_hash": "b49e85b48e893232b8887e3b28e8ae00c3d9ff71eaf58fd29b32d49fd1c7acf7",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员不可用",
+        "row": 2,
+        "source_row_id": 223939
+      },
+      {
+        "dataset": "crew_candidates",
+        "key": "CR-261002-001-C0053",
+        "revision": 1,
+        "record_hash": "398a0338810195af41f74d942822abf7c15c7469c289a49f3735877cf1eed115",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员候选",
+        "row": 54,
+        "source_row_id": 220712
+      },
+      {
+        "dataset": "crew_candidates",
+        "key": "CR-261002-001-C0054",
+        "revision": 1,
+        "record_hash": "f59d41962b5a3bc388dde4ebbabdbf5f5d83e870ab8aee5f68851efdcbe05c96",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员候选",
+        "row": 55,
+        "source_row_id": 220713
+      },
+      {
+        "dataset": "crew_credentials",
+        "key": "CR-261002-001-Q01-1",
+        "revision": 1,
+        "record_hash": "23a54aaebe6f26ecc8f284b56452ba4256c1d1abb156ee1b681aa7035cc483f9",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排资格窗口",
+        "row": 2,
+        "source_row_id": 220542
+      },
+      {
+        "dataset": "crew_credentials",
+        "key": "CR-261002-001-Q01-2",
+        "revision": 1,
+        "record_hash": "3b1365c3d9b58ca3e00e7bd7989de0b0fdea72578a1f00fdc51402c149f03e67",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排资格窗口",
+        "row": 3,
+        "source_row_id": 220543
+      },
+      {
+        "dataset": "crew_studies",
+        "key": "CR-261002-001",
+        "revision": 1,
+        "record_hash": "113dfe6972260d139c9894a6c4aab1fb6decdb07cc32fc8d646c46c2cfa3c273",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "资源人员联立方案",
+        "row": 2,
+        "source_row_id": 220536
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-2-1",
+        "revision": 1,
+        "record_hash": "39caa3d169f61853a6bb54dc750aeec2facf16b57331e425fc9a17e7fce882a8",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 10,
+        "source_row_id": 223026
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-2-2",
+        "revision": 1,
+        "record_hash": "8c3db06709d04a441b132974ef345d0ae7b2b6f464e76d5c357f636f3395f2f6",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 11,
+        "source_row_id": 223027
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-3-1",
+        "revision": 1,
+        "record_hash": "92e5cfc6a64d124062613eaece3bb09a6a23f9bc6551ec603fd5c1f95ce7df44",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 12,
+        "source_row_id": 223028
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-3-2",
+        "revision": 1,
+        "record_hash": "fc0eb8732fefe6028cd94642207371ee42fd6332c98e75133d1d0650b21964cf",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 13,
+        "source_row_id": 223029
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-4-1",
+        "revision": 1,
+        "record_hash": "c32572530d91ff8d598cf9acbdf3a62504782992797ed088fbbfa67dc60b2769",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 14,
+        "source_row_id": 223030
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-4-2",
+        "revision": 1,
+        "record_hash": "0972a0c81fdde501b53daea140cbde17b23c0b71e1e81cfccd8528d437964770",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 15,
+        "source_row_id": 223031
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-5-1",
+        "revision": 1,
+        "record_hash": "07f1bab40d190489896f1884d24e8b42d2c329177d3db886c4163d69a9691587",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 16,
+        "source_row_id": 223032
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W02-5-2",
+        "revision": 1,
+        "record_hash": "0a12b875cac4653a78dbfc1a2c960e77d733a6d7974d70342ccf1672c37c2b58",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 17,
+        "source_row_id": 223033
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-2-1",
+        "revision": 1,
+        "record_hash": "901e67faf3221047dd7507d6cafbf0eab02444492c4be484e0fd2ef505e2006a",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 58,
+        "source_row_id": 223074
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-2-2",
+        "revision": 1,
+        "record_hash": "cf39fcac7e6eb8c2cd22f0822907cfd7d829641fa09a2f6613f4ec4aec1e582e",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 59,
+        "source_row_id": 223075
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-3-1",
+        "revision": 1,
+        "record_hash": "aafce992321a9f7f49a553d1d26bf378b3a3e8d892fdb2758ae8457fc35308ce",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 60,
+        "source_row_id": 223076
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-3-2",
+        "revision": 1,
+        "record_hash": "bd3972c3cfff2cf6d059660b053837d0bdd10257a0f977751e5738bb5740ae4f",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 61,
+        "source_row_id": 223077
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-4-1",
+        "revision": 1,
+        "record_hash": "7d3c3423efcd339369581db4ae6f33819b44d5d7c081de8e667a6102364adf79",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 62,
+        "source_row_id": 223078
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-4-2",
+        "revision": 1,
+        "record_hash": "77fa3b2993c784db435100a70e8d9d1aec60ad768aad07159ce01174ac04f77f",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 63,
+        "source_row_id": 223079
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-5-1",
+        "revision": 1,
+        "record_hash": "29cc82a34ca0bf9030ddfa69c407524955e1f89118a3d856df4e17314e4fb2fe",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 64,
+        "source_row_id": 223080
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W08-5-2",
+        "revision": 1,
+        "record_hash": "108f7cf3fb9150e2b450046b68bc4a15367a6186684d658ea9afad23d7e22945",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 65,
+        "source_row_id": 223081
+      },
+      {
+        "dataset": "employees",
+        "key": "E00005",
+        "revision": 1,
+        "record_hash": "3d7f4656636278911991eff329f33106328246d6ae2fdb82a670c437549f4aa9",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "人员档案",
+        "row": 6,
+        "source_row_id": 21
+      },
+      {
+        "dataset": "employees",
+        "key": "E00021",
+        "revision": 1,
+        "record_hash": "4149ee8d1a5cbde6fbb69dcc6a4736602936b053cae4d4bb60541bc7faed48f3",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "人员档案",
+        "row": 22,
+        "source_row_id": 37
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-002-B010",
+        "revision": 1,
+        "record_hash": "106de0ab313b10c4606698e054a69db20ba3d0855751bfd30eda11335fdfbdee",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 65,
+        "source_row_id": 224141
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-002-D010",
+        "revision": 1,
+        "record_hash": "0205b95f38d7618d2cc1eb5019bc006fff56621a167fd2af6d65546a1d1da238",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 65,
+        "source_row_id": 224680
+      },
+      {
+        "dataset": "joint_studies",
+        "key": "MP-261002-002",
+        "revision": 1,
+        "record_hash": "3b068ee1132fdca1f2365ca8f744678e5fabe2a27b7dcf4f25077694f1dcb730",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "物料人机联立方案",
+        "row": 3,
+        "source_row_id": 224069
+      },
+      {
+        "dataset": "joint_supplies",
+        "key": "MP-261002-002-L003",
+        "revision": 1,
+        "record_hash": "9c4ad537fbb6169aa494360cba7a3b8bc7497a3b4fceb949b1387f6ee7bad297",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排物料可用假设",
+        "row": 52,
+        "source_row_id": 225206
+      },
+      {
+        "dataset": "materials",
+        "key": "01.01.0003",
+        "revision": 1,
+        "record_hash": "f446efee0b861e4429c2a96fe14d0bc81e53b62fa657066bdb8ccb06f3b15a7b",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "物料档案",
+        "row": 4,
+        "source_row_id": 259
+      },
+      {
+        "dataset": "production_resources",
+        "key": "SB-01-01-W01",
+        "revision": 1,
+        "record_hash": "69027b94e5f4925768fa487af554c9cd66f4668cad228a644d0ed74283b71856",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "独立资源位",
+        "row": 2,
+        "source_row_id": 385
+      },
+      {
+        "dataset": "production_resources",
+        "key": "SB-01-02-W01",
+        "revision": 1,
+        "record_hash": "faeabbac09fcd9aaecbadb3db71bf6ba98961e9e1bd1f4869ef87248e542fbce",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "独立资源位",
+        "row": 3,
+        "source_row_id": 386
+      },
+      {
+        "dataset": "products",
+        "key": "CP.00015.A",
+        "revision": 1,
+        "record_hash": "8745acc4863aeb406fcf49d97d67413e48cffdd070aa745128355930dc76890d",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "产品配置",
+        "row": 16,
+        "source_row_id": 319
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00015-01",
+        "revision": 1,
+        "record_hash": "1c7c456dd543da1185fc09b2f55f234866dc9452db6e3b52afb4dcd3ea3541cf",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 156,
+        "source_row_id": 1027
+      },
+      {
+        "dataset": "schedule_blocks",
+        "key": "SP-261002-001-X01",
+        "revision": 1,
+        "record_hash": "b9f19b09f07a6dbc8e1a88aa73dbdb8b2be90f861a9751d230a1ea43c267cc08",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排不可用窗口",
+        "row": 2,
+        "source_row_id": 220512
+      },
+      {
+        "dataset": "schedule_jobs",
+        "key": "SP-261002-001-B002",
+        "revision": 1,
+        "record_hash": "0a59627a82bcecde88362cdcb2fa6c5bdeb45136961a470f3e6c2c01e6eb3678",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排模拟批次",
+        "row": 3,
+        "source_row_id": 214537
+      },
+      {
+        "dataset": "schedule_options",
+        "key": "SP-261002-001-B002-T01-P000-R1",
+        "revision": 1,
+        "record_hash": "cac4154926d1be6f0d02e6f77d9f7f1f0c8ea9d89e34611f47936abfb5421dbd",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排候选资源",
+        "row": 54,
+        "source_row_id": 217229
+      },
+      {
+        "dataset": "schedule_options",
+        "key": "SP-261002-001-B002-T01-P000-R2",
+        "revision": 1,
+        "record_hash": "dbaccfe6c9a3de395d2a4e5ed7d38b1ff3445921c29edcea49f01ceb081c43ef",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排候选资源",
+        "row": 55,
+        "source_row_id": 217230
+      },
+      {
+        "dataset": "schedule_studies",
+        "key": "SP-261002-001",
+        "revision": 1,
+        "record_hash": "3d16865bf77880e03334a7f89bdf9b3201dd018e24fe6cd91a0075d96eb0792d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "有限资源试排方案",
+        "row": 2,
+        "source_row_id": 214530
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B002-T01-P000",
+        "revision": 1,
+        "record_hash": "0bfe634cd0962fd471f10710eb750f94a6e68936dc7829f64c4facbeb006e0b0",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 28,
+        "source_row_id": 214598
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-2-1",
+        "revision": 1,
+        "record_hash": "2e1a20a07fab6dcb5657d8aa6b44dc44f9c447d68150a962d03bd7f525d74352",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 2,
+        "source_row_id": 219551
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-2-2",
+        "revision": 1,
+        "record_hash": "f0249e95b36efe28aedd0eafbe2c6f63b1023c04f119a5c5202aea08994efeb8",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 3,
+        "source_row_id": 219552
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-3-1",
+        "revision": 1,
+        "record_hash": "f87953d7568649d51683238b42b04de46e0620e2f6ad0ea39e0ce83f7fd5b513",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 4,
+        "source_row_id": 219553
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-3-2",
+        "revision": 1,
+        "record_hash": "e296724904b902741784e559100b895e8c9b0e99db29e03e1ffcc252b435cbfc",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 5,
+        "source_row_id": 219554
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-4-1",
+        "revision": 1,
+        "record_hash": "de88164470cbfd584ad993f25f2684795c734d3a02e6c611c3311ea6bf0cf855",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 6,
+        "source_row_id": 219555
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-4-2",
+        "revision": 1,
+        "record_hash": "e27c2b4fdc757daf90717c8fb092d9bfa3558b497c1f57af128446baa250dbe0",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 7,
+        "source_row_id": 219556
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-5-1",
+        "revision": 1,
+        "record_hash": "9eec957d3895bf2c3fd415b43a077b4207016fa4a39ccface916b6bcf881821f",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 8,
+        "source_row_id": 219557
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-5-2",
+        "revision": 1,
+        "record_hash": "59151275afdeab6ffc1ea33b9f25a4b417ca08470e60dbe2e85668743e9be3ab",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 9,
+        "source_row_id": 219558
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-2-1",
+        "revision": 1,
+        "record_hash": "ee29ad36481321ad74cf6418e5831949847f074767e12b1750d4e9e1c36e080e",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 10,
+        "source_row_id": 219559
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-2-2",
+        "revision": 1,
+        "record_hash": "1ddd5d10a058e8e1085cd3d76122bf4ee5a808fd26f456763f8c46dfb86f44e7",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 11,
+        "source_row_id": 219560
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-3-1",
+        "revision": 1,
+        "record_hash": "e82b14043df4541ecdfdeec2ad13999563301b1f711825552d94a280929c50fc",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 12,
+        "source_row_id": 219561
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-3-2",
+        "revision": 1,
+        "record_hash": "1d20255c97a635169f0cca2bd6bb2450544f54c6c83a23fbd7f5694422669198",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 13,
+        "source_row_id": 219562
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-4-1",
+        "revision": 1,
+        "record_hash": "3a01c4e15d7806392ed1c448fc92c3c83e27e56b08af9a615a60c9717aa45c75",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 14,
+        "source_row_id": 219563
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-4-2",
+        "revision": 1,
+        "record_hash": "2481fdd7fa095523cc14539f5139ee89398bdcf8ac0c6c4c562d19f113113fe4",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 15,
+        "source_row_id": 219564
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-5-1",
+        "revision": 1,
+        "record_hash": "4a0879fa61f05b61faaab4086d728bb786fbe376331530ee31c29b3fcc2380cd",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 16,
+        "source_row_id": 219565
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-5-2",
+        "revision": 1,
+        "record_hash": "c3b264f955335480cd9d580be2ed5e0c1dbd8a1ef8b412543066ac17715591a3",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 17,
+        "source_row_id": 219566
+      },
+      {
+        "dataset": "skills",
+        "key": "JN-E00005",
+        "revision": 1,
+        "record_hash": "ed1255b392c0a51f0a99eae11bc43bdb8e9a5d82e0bfaf4c7a0d1b6da360638b",
+        "batch_id": "5e35ff5b-ff56-40dd-898c-b2843c74cb59",
+        "filename": "09_人事工时_模拟.xlsx",
+        "file_hash": "0457fa7d910afd17d5e910ca2c7696006362e80c6471e26a7d160c42f525ee13",
+        "sheet": "技能授权",
+        "row": 2,
+        "source_row_id": 91826
+      },
+      {
+        "dataset": "skills",
+        "key": "JN-E00021-SB-01",
+        "revision": 1,
+        "record_hash": "f548b64854dc90b221046d03fd92f72410b561e0753c24abf43974ea4d13f137",
+        "batch_id": "5e35ff5b-ff56-40dd-898c-b2843c74cb59",
+        "filename": "09_人事工时_模拟.xlsx",
+        "file_hash": "0457fa7d910afd17d5e910ca2c7696006362e80c6471e26a7d160c42f525ee13",
+        "sheet": "技能授权",
+        "row": 62,
+        "source_row_id": 91886
+      }
+    ],
+    "can_download_original": true,
+    "notice": "显示该任务用料、共享候选供给、直接前序、首个阻断与候选人机依据。其他批次会竞争同一供给和人机，请同时核对全方案来源及完整导出。整批用料可能由同工序的其他份号预留。候选资料不代表剩余容量或可立即开工。"
+  },
+  "downstream": {
+    "row": {
+      "id": "SP-261002-001-B002-T03-P000",
+      "job_id": "SP-261002-001-B002",
+      "product_id": "CP.00015.A",
+      "route_id": "GY-00015-02",
+      "process": "叠压",
+      "branch": "定子",
+      "qty": 8,
+      "predecessors": [
+        "SP-261002-001-B002-T01-P000"
+      ],
+      "state": "blocked",
+      "reason": "前序未排入：SP-261002-001-B002-T01-P000",
+      "root_tasks": [
+        "SP-261002-001-B002-T01-P000"
+      ],
+      "dependency_ready": "2026-10-02T08:00:00",
+      "process_minutes": 97.53333333333333,
+      "resource_id": null,
+      "employee_id": null,
+      "skill_id": null,
+      "credential_id": null,
+      "candidate_id": null,
+      "option_id": null,
+      "window_id": null,
+      "worker_window_id": null,
+      "started": null,
+      "process_started": null,
+      "finished": null,
+      "setup_minutes": null,
+      "wait_minutes": null,
+      "material_ready": null,
+      "material_readiness_delay_minutes": null,
+      "demand_ids": [],
+      "new_reservation_ids": [],
+      "shortages": []
+    },
+    "demands": [],
+    "reservations": [],
+    "candidate_evidence": {
+      "version": "joint-candidate-evidence-v1",
+      "task_id": "SP-261002-001-B002-T03-P000",
+      "notice": "本任务候选资料来自同一次试排输入，不代表当前剩余容量或可立即开工。批量符合只核对设备上限；资格交集沿用原人员计算。输入窗口尚未扣除不可用段、其他任务占用或裁剪到试排范围，资格窗口和人机窗口还需共同满足。首次/跨族换型假设不等于本任务实际试排换型。不重排、不推荐替换人机、不生成正式派工。",
+      "baseline": "2026-10-02T08:00:00",
+      "horizon_end": "2026-10-05T18:00:00",
+      "resource_options": [
+        {
+          "id": "SP-261002-001-B002-T03-P000-R1",
+          "task_id": "SP-261002-001-B002-T03-P000",
+          "resource_id": "SB-02-01-W01",
+          "setup_minutes": 12.0,
+          "basis": "独立资源位按单容量演练；首次与跨族完整换型12分钟，同族0分钟。",
+          "process": "叠压",
+          "capacity": 1,
+          "max_batch_qty": 60,
+          "task_qty": 8,
+          "batch_fits": true,
+          "selected": false
+        },
+        {
+          "id": "SP-261002-001-B002-T03-P000-R2",
+          "task_id": "SP-261002-001-B002-T03-P000",
+          "resource_id": "SB-02-02-W01",
+          "setup_minutes": 12.0,
+          "basis": "独立资源位按单容量演练；首次与跨族完整换型12分钟，同族0分钟。",
+          "process": "叠压",
+          "capacity": 1,
+          "max_batch_qty": 60,
+          "task_qty": 8,
+          "batch_fits": true,
+          "selected": false
+        }
+      ],
+      "people_candidates": [
+        {
+          "id": "CR-261002-001-C0057",
+          "task_id": "SP-261002-001-B002-T03-P000",
+          "credential_id": "CR-261002-001-Q04-1",
+          "basis": "本方案明确候选；同一工号跨设备和跨工序共同占用，员工不能重复计容量。",
+          "employee_id": "E00037",
+          "skill_id": "JN-E00037",
+          "process": "叠压",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-02T08:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-02T08:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": "",
+          "selected": false
+        },
+        {
+          "id": "CR-261002-001-C0058",
+          "task_id": "SP-261002-001-B002-T03-P000",
+          "credential_id": "CR-261002-001-Q04-2",
+          "basis": "本方案明确候选；同一工号跨设备和跨工序共同占用，员工不能重复计容量。",
+          "employee_id": "E00053",
+          "skill_id": "JN-E00053",
+          "process": "叠压",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-02T08:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-02T08:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": "",
+          "selected": false
+        }
+      ],
+      "schedule_windows": [
+        {
+          "id": "SP-261002-001-W03-2-1",
+          "resource_id": "SB-02-01-W01",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W03-2-2",
+          "resource_id": "SB-02-01-W01",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W03-3-1",
+          "resource_id": "SB-02-01-W01",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W03-3-2",
+          "resource_id": "SB-02-01-W01",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W03-4-1",
+          "resource_id": "SB-02-01-W01",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W03-4-2",
+          "resource_id": "SB-02-01-W01",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W03-5-1",
+          "resource_id": "SB-02-01-W01",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W03-5-2",
+          "resource_id": "SB-02-01-W01",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W04-2-1",
+          "resource_id": "SB-02-02-W01",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W04-2-2",
+          "resource_id": "SB-02-02-W01",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W04-3-1",
+          "resource_id": "SB-02-02-W01",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W04-3-2",
+          "resource_id": "SB-02-02-W01",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W04-4-1",
+          "resource_id": "SB-02-02-W01",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W04-4-2",
+          "resource_id": "SB-02-02-W01",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W04-5-1",
+          "resource_id": "SB-02-02-W01",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W04-5-2",
+          "resource_id": "SB-02-02-W01",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        }
+      ],
+      "schedule_blocks": [],
+      "crew_windows": [
+        {
+          "id": "CR-261002-001-W13-2-1",
+          "employee_id": "E00037",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W13-2-2",
+          "employee_id": "E00037",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W13-3-1",
+          "employee_id": "E00037",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W13-3-2",
+          "employee_id": "E00037",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W13-4-1",
+          "employee_id": "E00037",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W13-4-2",
+          "employee_id": "E00037",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W13-5-1",
+          "employee_id": "E00037",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W13-5-2",
+          "employee_id": "E00037",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W15-2-1",
+          "employee_id": "E00053",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W15-2-2",
+          "employee_id": "E00053",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W15-3-1",
+          "employee_id": "E00053",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W15-3-2",
+          "employee_id": "E00053",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W15-4-1",
+          "employee_id": "E00053",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W15-4-2",
+          "employee_id": "E00053",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W15-5-1",
+          "employee_id": "E00053",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        },
+        {
+          "id": "CR-261002-001-W15-5-2",
+          "employee_id": "E00053",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立未来人员窗口假设；不是历史出勤，也不确认实际未来排班。"
+        }
+      ],
+      "crew_blocks": [],
+      "predecessors": [
+        {
+          "id": "SP-261002-001-B002-T01-P000",
+          "job_id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "route_id": "GY-00015-01",
+          "process": "冲片",
+          "branch": "定子",
+          "state": "blocked",
+          "started": null,
+          "finished": null,
+          "reason": "共享物料在试排范围内不足：01.01.0003"
+        }
+      ],
+      "root_tasks": [
+        {
+          "id": "SP-261002-001-B002-T01-P000",
+          "job_id": "SP-261002-001-B002",
+          "product_id": "CP.00015.A",
+          "route_id": "GY-00015-01",
+          "process": "冲片",
+          "branch": "定子",
+          "state": "blocked",
+          "started": null,
+          "finished": null,
+          "reason": "共享物料在试排范围内不足：01.01.0003"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "dataset": "crew_candidates",
+        "key": "CR-261002-001-C0057",
+        "revision": 1,
+        "record_hash": "8f7e2e4ed2447746a78c309df4c143a344149560b1a36262846f502da19148b1",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员候选",
+        "row": 58,
+        "source_row_id": 220716
+      },
+      {
+        "dataset": "crew_candidates",
+        "key": "CR-261002-001-C0058",
+        "revision": 1,
+        "record_hash": "aaaf2036964914140c578d7e3e01236de82b14ad3f012af372d0598c0bc76c8d",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员候选",
+        "row": 59,
+        "source_row_id": 220717
+      },
+      {
+        "dataset": "crew_credentials",
+        "key": "CR-261002-001-Q04-1",
+        "revision": 1,
+        "record_hash": "791ea95715a6c50682c3c9c7bf793f3244822e84e84abd0be68f5033f2a25c59",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排资格窗口",
+        "row": 8,
+        "source_row_id": 220548
+      },
+      {
+        "dataset": "crew_credentials",
+        "key": "CR-261002-001-Q04-2",
+        "revision": 1,
+        "record_hash": "483d2ac523faf2994269774a4dcdde8a04a3d2a57a56f45d88625ab7a31fe70b",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排资格窗口",
+        "row": 9,
+        "source_row_id": 220549
+      },
+      {
+        "dataset": "crew_studies",
+        "key": "CR-261002-001",
+        "revision": 1,
+        "record_hash": "113dfe6972260d139c9894a6c4aab1fb6decdb07cc32fc8d646c46c2cfa3c273",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "资源人员联立方案",
+        "row": 2,
+        "source_row_id": 220536
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W13-2-1",
+        "revision": 1,
+        "record_hash": "30b7a461ec8c0780fe93a3659e91df225615f388dff8d832fe3ab791a1b4390c",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 98,
+        "source_row_id": 223114
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W13-2-2",
+        "revision": 1,
+        "record_hash": "f8817285df58dbb425b16a026196e2d854a23c93dae114cd6e283c6add21b5b6",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 99,
+        "source_row_id": 223115
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W13-3-1",
+        "revision": 1,
+        "record_hash": "2020bdc528f95ff633d54dd27ec908e4c13f20ad59b89f6b44c695f406b4370b",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 100,
+        "source_row_id": 223116
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W13-3-2",
+        "revision": 1,
+        "record_hash": "78ff163c067e3224a7a46e2cf352d8b84879e1df7481e982dc840d887daf88a8",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 101,
+        "source_row_id": 223117
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W13-4-1",
+        "revision": 1,
+        "record_hash": "3b3e86ba6f40d98d06f38c696d59e83f893fcecf02c338a05143d6782079d1d9",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 102,
+        "source_row_id": 223118
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W13-4-2",
+        "revision": 1,
+        "record_hash": "ff417390c3a6c9bb187eb436e5ae385560e36f6bbadce70def2a29886f7c73f7",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 103,
+        "source_row_id": 223119
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W13-5-1",
+        "revision": 1,
+        "record_hash": "56b53c5d05ea3c8ea4aa7db0160b2c9fc938e83226cecf2eaf68df9fb194e486",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 104,
+        "source_row_id": 223120
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W13-5-2",
+        "revision": 1,
+        "record_hash": "aba5e17c95c050d5422ae001a8ca2ec1e0a9d188126ded13e0a1d639fd4b3b66",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 105,
+        "source_row_id": 223121
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W15-2-1",
+        "revision": 1,
+        "record_hash": "c1a3eecef124fd354c7671dbad8b77e1ccc86fc46015a77ba73d21e4b6abd54f",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 114,
+        "source_row_id": 223130
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W15-2-2",
+        "revision": 1,
+        "record_hash": "53497fc6d614258aa981cc97a6ec7454e51989a93a58a941d39f09204aed935f",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 115,
+        "source_row_id": 223131
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W15-3-1",
+        "revision": 1,
+        "record_hash": "1195679c6bcedd1244120274317e778aebbda7d299c7c4dfbc13973a8b8de02a",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 116,
+        "source_row_id": 223132
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W15-3-2",
+        "revision": 1,
+        "record_hash": "8882b1104753df111a98b3f06d4090f6efe42e0f7b74639c441e07c631c65675",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 117,
+        "source_row_id": 223133
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W15-4-1",
+        "revision": 1,
+        "record_hash": "254fa2988cf3c247e2a6dfb94cb21c5d065f9f22b40e1cb2844e48629824e359",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 118,
+        "source_row_id": 223134
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W15-4-2",
+        "revision": 1,
+        "record_hash": "acdbb334f0233810d7d4e36096e64b0fcbbee366886553241dd7757b714f2774",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 119,
+        "source_row_id": 223135
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W15-5-1",
+        "revision": 1,
+        "record_hash": "7e516302dc0d492b87bc1c348695a2a52bf916de21edc6856b1e8440b400b62b",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 120,
+        "source_row_id": 223136
+      },
+      {
+        "dataset": "crew_windows",
+        "key": "CR-261002-001-W15-5-2",
+        "revision": 1,
+        "record_hash": "7f270c7d59e17464fcd2434667f33e7ec93bdf3552ed77ea2b6008ed8a2646bc",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员窗口",
+        "row": 121,
+        "source_row_id": 223137
+      },
+      {
+        "dataset": "employees",
+        "key": "E00037",
+        "revision": 1,
+        "record_hash": "1b2d3436f1e49b87015c46bb55fe41c50e5c1705a3ed89a443c5bc1537fc77d6",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "人员档案",
+        "row": 38,
+        "source_row_id": 53
+      },
+      {
+        "dataset": "employees",
+        "key": "E00053",
+        "revision": 1,
+        "record_hash": "d8ae52fc8b9fa9955afa06d3522629725fb02e224e812bb2346a03f650eff033",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "人员档案",
+        "row": 54,
+        "source_row_id": 69
+      },
+      {
+        "dataset": "joint_studies",
+        "key": "MP-261002-002",
+        "revision": 1,
+        "record_hash": "3b068ee1132fdca1f2365ca8f744678e5fabe2a27b7dcf4f25077694f1dcb730",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "物料人机联立方案",
+        "row": 3,
+        "source_row_id": 224069
+      },
+      {
+        "dataset": "production_resources",
+        "key": "SB-02-01-W01",
+        "revision": 1,
+        "record_hash": "a0874981487ed45f7a78b1b4e30001c2584ec8c4d0a3aefd154e13b2fcd21bd5",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "独立资源位",
+        "row": 5,
+        "source_row_id": 388
+      },
+      {
+        "dataset": "production_resources",
+        "key": "SB-02-02-W01",
+        "revision": 1,
+        "record_hash": "42c1861cda1ba70d527e271c6a29ffdf7069c3700d925ea74889c03148f43505",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "独立资源位",
+        "row": 6,
+        "source_row_id": 389
+      },
+      {
+        "dataset": "products",
+        "key": "CP.00015.A",
+        "revision": 1,
+        "record_hash": "8745acc4863aeb406fcf49d97d67413e48cffdd070aa745128355930dc76890d",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "产品配置",
+        "row": 16,
+        "source_row_id": 319
+      },
+      {
+        "dataset": "route_dependencies",
+        "key": "YL-GY-00015-01-GY-00015-02",
+        "revision": 1,
+        "record_hash": "f6737eb8088673c48ab9ad13457ffeb53fd0ce6919e7a9ae47c3457a253c399a",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "路线依赖",
+        "row": 142,
+        "source_row_id": 1562
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00015-01",
+        "revision": 1,
+        "record_hash": "1c7c456dd543da1185fc09b2f55f234866dc9452db6e3b52afb4dcd3ea3541cf",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 156,
+        "source_row_id": 1027
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00015-02",
+        "revision": 1,
+        "record_hash": "8473a0589b09e257c751c3888c50cac712251ce3ec92d896212d7f6fa10e8083",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 157,
+        "source_row_id": 1028
+      },
+      {
+        "dataset": "schedule_edges",
+        "key": "SP-261002-001-B002-D001",
+        "revision": 1,
+        "record_hash": "49ce567687045d3cb87ed965cac803a80be7209fa47340389245622c936948fc",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排前后依赖",
+        "row": 32,
+        "source_row_id": 215790
+      },
+      {
+        "dataset": "schedule_jobs",
+        "key": "SP-261002-001-B002",
+        "revision": 1,
+        "record_hash": "0a59627a82bcecde88362cdcb2fa6c5bdeb45136961a470f3e6c2c01e6eb3678",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排模拟批次",
+        "row": 3,
+        "source_row_id": 214537
+      },
+      {
+        "dataset": "schedule_options",
+        "key": "SP-261002-001-B002-T03-P000-R1",
+        "revision": 1,
+        "record_hash": "5d767591095cbb5f1cfc1da2c39419aece76240cb49e22ee1841258b4eafb343",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排候选资源",
+        "row": 58,
+        "source_row_id": 217233
+      },
+      {
+        "dataset": "schedule_options",
+        "key": "SP-261002-001-B002-T03-P000-R2",
+        "revision": 1,
+        "record_hash": "dacaae5fe0b9237c4496da3e8e5c82c4c649f9a28c991ed6f0222d3b1422a48b",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排候选资源",
+        "row": 59,
+        "source_row_id": 217234
+      },
+      {
+        "dataset": "schedule_studies",
+        "key": "SP-261002-001",
+        "revision": 1,
+        "record_hash": "3d16865bf77880e03334a7f89bdf9b3201dd018e24fe6cd91a0075d96eb0792d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "有限资源试排方案",
+        "row": 2,
+        "source_row_id": 214530
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B002-T01-P000",
+        "revision": 1,
+        "record_hash": "0bfe634cd0962fd471f10710eb750f94a6e68936dc7829f64c4facbeb006e0b0",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 28,
+        "source_row_id": 214598
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B002-T03-P000",
+        "revision": 1,
+        "record_hash": "ae37d64c693e547b0713197c4d8f51252f4f7254f47de7c7a812357d75d7f563",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 30,
+        "source_row_id": 214600
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W03-2-1",
+        "revision": 1,
+        "record_hash": "67a56dbbe436bef9eaa9237e1b8074f09d4e100b94778fc304479d77555e5725",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 18,
+        "source_row_id": 219567
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W03-2-2",
+        "revision": 1,
+        "record_hash": "0449b78c51bc88291259654540f9736685f4b0743b4d7bd2454ce27c810fd17c",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 19,
+        "source_row_id": 219568
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W03-3-1",
+        "revision": 1,
+        "record_hash": "5c67b8311c6141a6d8721b9227543ef86c537dfa43d982d0409da7395aca7972",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 20,
+        "source_row_id": 219569
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W03-3-2",
+        "revision": 1,
+        "record_hash": "a39e6e029a5e329d541e45010c14ed441bbc965c87b02b79d7137bc3de0b5de2",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 21,
+        "source_row_id": 219570
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W03-4-1",
+        "revision": 1,
+        "record_hash": "dccd408aff2b966cd9c64ed5dae8652f63932bb24ca45678636fc691d967b824",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 22,
+        "source_row_id": 219571
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W03-4-2",
+        "revision": 1,
+        "record_hash": "444d7e3c468da56856ddd1dfdc4e5347a05789ae0ef5fa03dd1a5b0c7e36b1a8",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 23,
+        "source_row_id": 219572
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W03-5-1",
+        "revision": 1,
+        "record_hash": "15fb2432e04cc5b6ae73a5988f971f696f112b6410da9b7adc0feda3393dc187",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 24,
+        "source_row_id": 219573
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W03-5-2",
+        "revision": 1,
+        "record_hash": "0262af05a55e6e08d06fa643f1cbf9811e26aff2dc458afc69ca7d40996b2937",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 25,
+        "source_row_id": 219574
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W04-2-1",
+        "revision": 1,
+        "record_hash": "a86b97902c7256fe626da32ef335356a59c8322f43a03f31c2c2af9a5e5c6939",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 26,
+        "source_row_id": 219575
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W04-2-2",
+        "revision": 1,
+        "record_hash": "2b1a3c56af1cb6d198b23d6b7441e02290c7a8f7c473077832cd2688928071bd",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 27,
+        "source_row_id": 219576
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W04-3-1",
+        "revision": 1,
+        "record_hash": "d223cbc7f6e064c563d7279299fe195bd9eada25e4f12dba097e6e5c683f0b3f",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 28,
+        "source_row_id": 219577
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W04-3-2",
+        "revision": 1,
+        "record_hash": "db2a47f16f01c69bc1a6086e3c65710b49f546a96950e6fbfc679bb8af22fcae",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 29,
+        "source_row_id": 219578
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W04-4-1",
+        "revision": 1,
+        "record_hash": "6d5b5aaeb33c30d268395a52666909423402a2bd4e581e14dc5ac6b6407078b5",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 30,
+        "source_row_id": 219579
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W04-4-2",
+        "revision": 1,
+        "record_hash": "8ab0aefd8aae3001076bafaec464f8d11d8070d607a15dc072b427af5920e137",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 31,
+        "source_row_id": 219580
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W04-5-1",
+        "revision": 1,
+        "record_hash": "4ed0bc4e9bb441cdfe5a56fec3cf1f4b28286fedcd112b2443265fe575c8dbfb",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 32,
+        "source_row_id": 219581
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W04-5-2",
+        "revision": 1,
+        "record_hash": "74d095ec76550ee593f1c7924c97e4b9137a2156e2912d6bffc17c4315e1bbc2",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 33,
+        "source_row_id": 219582
+      },
+      {
+        "dataset": "skills",
+        "key": "JN-E00037",
+        "revision": 1,
+        "record_hash": "f65a575cfe4e1f3e78c4c54ac8205659db113812926e59be81b9836613ed51ee",
+        "batch_id": "5e35ff5b-ff56-40dd-898c-b2843c74cb59",
+        "filename": "09_人事工时_模拟.xlsx",
+        "file_hash": "0457fa7d910afd17d5e910ca2c7696006362e80c6471e26a7d160c42f525ee13",
+        "sheet": "技能授权",
+        "row": 12,
+        "source_row_id": 91836
+      },
+      {
+        "dataset": "skills",
+        "key": "JN-E00053",
+        "revision": 1,
+        "record_hash": "de16db5667aae1c35335f4d9449de577d07ac3ae9b394d826f3ed6d042dbbec8",
+        "batch_id": "5e35ff5b-ff56-40dd-898c-b2843c74cb59",
+        "filename": "09_人事工时_模拟.xlsx",
+        "file_hash": "0457fa7d910afd17d5e910ca2c7696006362e80c6471e26a7d160c42f525ee13",
+        "sheet": "技能授权",
+        "row": 17,
+        "source_row_id": 91841
+      }
+    ],
+    "can_download_original": true,
+    "notice": "显示该任务用料、共享候选供给、直接前序、首个阻断与候选人机依据。其他批次会竞争同一供给和人机，请同时核对全方案来源及完整导出。整批用料可能由同工序的其他份号预留。候选资料不代表剩余容量或可立即开工。"
+  },
+  "no_window": {
+    "row": {
+      "id": "SP-261002-001-B003-T01-P000",
+      "job_id": "SP-261002-001-B003",
+      "product_id": "CP.00022.A",
+      "route_id": "GY-00022-01",
+      "process": "冲片",
+      "branch": "定子",
+      "qty": 10,
+      "predecessors": [],
+      "state": "blocked",
+      "reason": "设备、人员、资格与物料没有共同连续可用窗口",
+      "root_tasks": [
+        "SP-261002-001-B003-T01-P000"
+      ],
+      "dependency_ready": "2026-10-02T08:00:00",
+      "process_minutes": 90.9,
+      "resource_id": null,
+      "employee_id": null,
+      "skill_id": null,
+      "credential_id": null,
+      "candidate_id": null,
+      "option_id": null,
+      "window_id": null,
+      "worker_window_id": null,
+      "started": null,
+      "process_started": null,
+      "finished": null,
+      "setup_minutes": null,
+      "wait_minutes": null,
+      "material_ready": "2026-10-02T08:00:00",
+      "material_readiness_delay_minutes": 0.0,
+      "demand_ids": [
+        "MP-261002-006-D019"
+      ],
+      "new_reservation_ids": [],
+      "shortages": []
+    },
+    "demands": [
+      {
+        "id": "MP-261002-006-D019",
+        "study_id": "MP-261002-006",
+        "job_id": "SP-261002-001-B003",
+        "binding_id": "MP-261002-006-B019",
+        "required_qty": "52.475",
+        "unit": "kg",
+        "basis": "自编整批需求：批量×BOM单耗×(1+损耗)，再按绑定步长向上取整；不是实际领料。",
+        "product_id": "CP.00022.A",
+        "bom_id": "BOM-00022-01-DZ",
+        "route_id": "GY-00022-01",
+        "material_id": "01.01.0004",
+        "material_name": "无取向硅钢-04",
+        "bom_version": "A.02",
+        "bom_qty": "5.07",
+        "scrap_allowance": "0.035",
+        "quantum": "0.001",
+        "calculated_qty": "52.475",
+        "state": "unreserved",
+        "reserved_qty": "0",
+        "reservation": null
+      }
+    ],
+    "reservations": [],
+    "candidate_evidence": {
+      "version": "joint-candidate-evidence-v1",
+      "task_id": "SP-261002-001-B003-T01-P000",
+      "notice": "本任务候选资料来自同一次试排输入，不代表当前剩余容量或可立即开工。批量符合只核对设备上限；资格交集沿用原人员计算。输入窗口尚未扣除不可用段、其他任务占用或裁剪到试排范围，资格窗口和人机窗口还需共同满足。首次/跨族换型假设不等于本任务实际试排换型。不重排、不推荐替换人机、不生成正式派工。",
+      "baseline": "2026-10-02T08:00:00",
+      "horizon_end": "2026-10-05T18:00:00",
+      "resource_options": [
+        {
+          "id": "SP-261002-001-B003-T01-P000-R1",
+          "task_id": "SP-261002-001-B003-T01-P000",
+          "resource_id": "SB-01-01-W01",
+          "setup_minutes": 12.0,
+          "basis": "独立资源位按单容量演练；首次与跨族完整换型12分钟，同族0分钟。",
+          "process": "冲片",
+          "capacity": 1,
+          "max_batch_qty": 60,
+          "task_qty": 10,
+          "batch_fits": true,
+          "selected": false
+        },
+        {
+          "id": "SP-261002-001-B003-T01-P000-R2",
+          "task_id": "SP-261002-001-B003-T01-P000",
+          "resource_id": "SB-01-02-W01",
+          "setup_minutes": 12.0,
+          "basis": "独立资源位按单容量演练；首次与跨族完整换型12分钟，同族0分钟。",
+          "process": "冲片",
+          "capacity": 1,
+          "max_batch_qty": 60,
+          "task_qty": 10,
+          "batch_fits": true,
+          "selected": false
+        }
+      ],
+      "people_candidates": [
+        {
+          "id": "CR-261002-004-C0117",
+          "task_id": "SP-261002-001-B003-T01-P000",
+          "credential_id": "CR-261002-004-Q01-1",
+          "basis": "本方案明确候选；同一工号跨设备和跨工序共同占用，员工不能重复计容量。",
+          "employee_id": "E00005",
+          "skill_id": "JN-E00005",
+          "process": "冲片",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-02T08:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-02T08:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": "",
+          "selected": false
+        },
+        {
+          "id": "CR-261002-004-C0118",
+          "task_id": "SP-261002-001-B003-T01-P000",
+          "credential_id": "CR-261002-004-Q01-2",
+          "basis": "本方案明确候选；同一工号跨设备和跨工序共同占用，员工不能重复计容量。",
+          "employee_id": "E00021",
+          "skill_id": "JN-E00021-SB-01",
+          "process": "冲片",
+          "registered_status": "有效",
+          "registered_approved": "2026-01-10",
+          "registered_expires": "2027-01-10",
+          "assumed_from": "2026-10-02T08:00:00",
+          "assumed_until": "2026-10-05T18:00:00",
+          "effective_from": "2026-10-02T08:00:00",
+          "effective_until": "2026-10-05T18:00:00",
+          "eligible": true,
+          "reason": "",
+          "selected": false
+        }
+      ],
+      "schedule_windows": [
+        {
+          "id": "SP-261002-001-W01-2-1",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-2-2",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-3-1",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-3-2",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-4-1",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-4-2",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-5-1",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W01-5-2",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-2-1",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-02T08:00:00",
+          "finished": "2026-10-02T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-2-2",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-02T13:00:00",
+          "finished": "2026-10-02T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-3-1",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-03T08:00:00",
+          "finished": "2026-10-03T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-3-2",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-03T13:00:00",
+          "finished": "2026-10-03T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-4-1",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-04T08:00:00",
+          "finished": "2026-10-04T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-4-2",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-04T13:00:00",
+          "finished": "2026-10-04T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-5-1",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-05T08:00:00",
+          "finished": "2026-10-05T12:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        },
+        {
+          "id": "SP-261002-001-W02-5-2",
+          "resource_id": "SB-01-02-W01",
+          "started": "2026-10-05T13:00:00",
+          "finished": "2026-10-05T18:00:00",
+          "basis": "独立模拟未来可用窗口；不沿用历史排班，不确认人员和物料。"
+        }
+      ],
+      "schedule_blocks": [
+        {
+          "id": "SP-261002-001-X01",
+          "resource_id": "SB-01-01-W01",
+          "started": "2026-10-02T09:00:00",
+          "finished": "2026-10-02T10:00:00",
+          "basis": "本次假设的不可用窗口，非真实维修派单。",
+          "reason": "模拟保养占用"
+        }
+      ],
+      "crew_windows": [],
+      "crew_blocks": [
+        {
+          "id": "CR-261002-004-X01",
+          "employee_id": "E00005",
+          "started": "2026-10-02T09:00:00",
+          "finished": "2026-10-02T10:00:00",
+          "basis": "独立人员不可用假设，不改考勤或工时。",
+          "reason": "模拟人员培训不可用"
+        }
+      ],
+      "predecessors": [],
+      "root_tasks": [
+        {
+          "id": "SP-261002-001-B003-T01-P000",
+          "job_id": "SP-261002-001-B003",
+          "product_id": "CP.00022.A",
+          "route_id": "GY-00022-01",
+          "process": "冲片",
+          "branch": "定子",
+          "state": "blocked",
+          "started": null,
+          "finished": null,
+          "reason": "设备、人员、资格与物料没有共同连续可用窗口"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "dataset": "bom",
+        "key": "BOM-00022-01-DZ",
+        "revision": 1,
+        "record_hash": "afa40c399f95359931556cae30cb1f79eb7160e76a010f41dda942b7c2cc42e2",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "BOM明细",
+        "row": 191,
+        "source_row_id": 630
+      },
+      {
+        "dataset": "crew_blocks",
+        "key": "CR-261002-004-X01",
+        "revision": 1,
+        "record_hash": "1e96c2f542d8c741135d4da06ddb5ce7ddd521c96090864405fedc94df108092",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员不可用",
+        "row": 5,
+        "source_row_id": 223942
+      },
+      {
+        "dataset": "crew_candidates",
+        "key": "CR-261002-004-C0117",
+        "revision": 1,
+        "record_hash": "bb04c9c019fbcec3bd16cb82bfb5060bf5462099d29ff2b2d7582b560b561b67",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员候选",
+        "row": 1288,
+        "source_row_id": 221946
+      },
+      {
+        "dataset": "crew_candidates",
+        "key": "CR-261002-004-C0118",
+        "revision": 1,
+        "record_hash": "1bc21150eb860ae3986e3a5cb2d814b3797ce8f028e70c27169d144aa26906ee",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排人员候选",
+        "row": 1289,
+        "source_row_id": 221947
+      },
+      {
+        "dataset": "crew_credentials",
+        "key": "CR-261002-004-Q01-1",
+        "revision": 1,
+        "record_hash": "85f8b88b0e1b846cc64f94ce31a41aceee7f57d7bad61a5d6d75f1f864c9f002",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排资格窗口",
+        "row": 60,
+        "source_row_id": 220600
+      },
+      {
+        "dataset": "crew_credentials",
+        "key": "CR-261002-004-Q01-2",
+        "revision": 1,
+        "record_hash": "e3f0dffd601517d59f02d5a678e8bc7f8925b4662dbbf722bbd8a8984ba655e0",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "试排资格窗口",
+        "row": 61,
+        "source_row_id": 220601
+      },
+      {
+        "dataset": "crew_studies",
+        "key": "CR-261002-004",
+        "revision": 1,
+        "record_hash": "cfcc87bf9502a126d1ff151139a086b8d94e8e8c062ad8b7c9a57a92c3d116fe",
+        "batch_id": "5b961e49-49d5-43c0-b8b7-f382b9e20b40",
+        "filename": "37_资源人员联立试排_模拟.xlsx",
+        "file_hash": "3bc799ca17f2f3f14cf79ebffab4954979e6700948fed6fcdc4d15b2aec505be",
+        "sheet": "资源人员联立方案",
+        "row": 5,
+        "source_row_id": 220539
+      },
+      {
+        "dataset": "employees",
+        "key": "E00005",
+        "revision": 1,
+        "record_hash": "3d7f4656636278911991eff329f33106328246d6ae2fdb82a670c437549f4aa9",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "人员档案",
+        "row": 6,
+        "source_row_id": 21
+      },
+      {
+        "dataset": "employees",
+        "key": "E00021",
+        "revision": 1,
+        "record_hash": "4149ee8d1a5cbde6fbb69dcc6a4736602936b053cae4d4bb60541bc7faed48f3",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "人员档案",
+        "row": 22,
+        "source_row_id": 37
+      },
+      {
+        "dataset": "joint_bindings",
+        "key": "MP-261002-006-B019",
+        "revision": 1,
+        "record_hash": "cc4bbe86674abcb80cd231013a4a1ff57ab4439a9aa59580998a0bac05a5a475",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "BOM用料工序绑定",
+        "row": 290,
+        "source_row_id": 224366
+      },
+      {
+        "dataset": "joint_demands",
+        "key": "MP-261002-006-D019",
+        "revision": 1,
+        "record_hash": "fd4e8b7701ed03dab865ad660e4a8e239c1d968ad3ed928d65ea8705ae2bd14e",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排整批物料需求",
+        "row": 290,
+        "source_row_id": 224905
+      },
+      {
+        "dataset": "joint_studies",
+        "key": "MP-261002-006",
+        "revision": 1,
+        "record_hash": "c3c5d61a592f2f52f67a371cb8fed40e21c1143e72c03d1b34f9d4aa652044f5",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "物料人机联立方案",
+        "row": 7,
+        "source_row_id": 224073
+      },
+      {
+        "dataset": "joint_supplies",
+        "key": "MP-261002-006-L004",
+        "revision": 1,
+        "record_hash": "daa5afc44cdfdbc3864c23789b7f36b7e503a08e1224ab23d1eeb13071241ce0",
+        "batch_id": "3cb997d4-fc14-4a55-b4b6-a5f2dc99ca23",
+        "filename": "39_物料人机联立试排_模拟.xlsx",
+        "file_hash": "07ee8f3d793b02bdb3ae1a8132338b0730828c2d6f103187389c1f0844e909ef",
+        "sheet": "试排物料可用假设",
+        "row": 246,
+        "source_row_id": 225400
+      },
+      {
+        "dataset": "materials",
+        "key": "01.01.0004",
+        "revision": 1,
+        "record_hash": "0b94b63cc7de37fbbb0b8aacf2d9ceb1d77be225f0d8f28441d046c12707be8d",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "物料档案",
+        "row": 5,
+        "source_row_id": 260
+      },
+      {
+        "dataset": "production_resources",
+        "key": "SB-01-01-W01",
+        "revision": 1,
+        "record_hash": "69027b94e5f4925768fa487af554c9cd66f4668cad228a644d0ed74283b71856",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "独立资源位",
+        "row": 2,
+        "source_row_id": 385
+      },
+      {
+        "dataset": "production_resources",
+        "key": "SB-01-02-W01",
+        "revision": 1,
+        "record_hash": "faeabbac09fcd9aaecbadb3db71bf6ba98961e9e1bd1f4869ef87248e542fbce",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "独立资源位",
+        "row": 3,
+        "source_row_id": 386
+      },
+      {
+        "dataset": "products",
+        "key": "CP.00022.A",
+        "revision": 1,
+        "record_hash": "563ee1cba42dcd9a8b613ea84ec849c5cc3a3da574ceef4a201a35d557c91740",
+        "batch_id": "7b92c1e6-7b4d-4eee-9229-8677a27bf9fb",
+        "filename": "01_基础档案_模拟.xlsx",
+        "file_hash": "44b5753249644a822c42f0e1ba5218ebe10edf1488211c2a40073282f19035cc",
+        "sheet": "产品配置",
+        "row": 23,
+        "source_row_id": 326
+      },
+      {
+        "dataset": "routes",
+        "key": "GY-00022-01",
+        "revision": 1,
+        "record_hash": "a9878affa0cdad4a013eb0597a7ea75c0b7d599a55de2f11c40aa5fd65fa1561",
+        "batch_id": "b197d55b-9a39-4b67-87fc-8c19e50f4f0c",
+        "filename": "02_研发工艺_模拟.xlsx",
+        "file_hash": "47dbb1a2ef89ddf37b51b40b2e55ee535eaa4a75fc64d25614a7177263cc9005",
+        "sheet": "工艺路线",
+        "row": 233,
+        "source_row_id": 1104
+      },
+      {
+        "dataset": "schedule_blocks",
+        "key": "SP-261002-001-X01",
+        "revision": 1,
+        "record_hash": "b9f19b09f07a6dbc8e1a88aa73dbdb8b2be90f861a9751d230a1ea43c267cc08",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排不可用窗口",
+        "row": 2,
+        "source_row_id": 220512
+      },
+      {
+        "dataset": "schedule_jobs",
+        "key": "SP-261002-001-B003",
+        "revision": 1,
+        "record_hash": "f077e48c7331054f0baf27dd7902096f2ae86f6c91b6ff64f6c6ead5f5291b3d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排模拟批次",
+        "row": 4,
+        "source_row_id": 214538
+      },
+      {
+        "dataset": "schedule_options",
+        "key": "SP-261002-001-B003-T01-P000-R1",
+        "revision": 1,
+        "record_hash": "bf3570741118698aa382a30803332544bd55863be422e0fe1e27701c92008b3f",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排候选资源",
+        "row": 118,
+        "source_row_id": 217293
+      },
+      {
+        "dataset": "schedule_options",
+        "key": "SP-261002-001-B003-T01-P000-R2",
+        "revision": 1,
+        "record_hash": "83946073cd8a247ff7af4d1081ea9505b4f7810cebbdd0360844e717f9959723",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排候选资源",
+        "row": 119,
+        "source_row_id": 217294
+      },
+      {
+        "dataset": "schedule_studies",
+        "key": "SP-261002-001",
+        "revision": 1,
+        "record_hash": "3d16865bf77880e03334a7f89bdf9b3201dd018e24fe6cd91a0075d96eb0792d",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "有限资源试排方案",
+        "row": 2,
+        "source_row_id": 214530
+      },
+      {
+        "dataset": "schedule_tasks",
+        "key": "SP-261002-001-B003-T01-P000",
+        "revision": 1,
+        "record_hash": "efe54be4baf27cfa9cee11e9a94ceee201d34e802ba1e3ac2d9c42dcd05e0a1c",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排工序任务",
+        "row": 60,
+        "source_row_id": 214630
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-2-1",
+        "revision": 1,
+        "record_hash": "2e1a20a07fab6dcb5657d8aa6b44dc44f9c447d68150a962d03bd7f525d74352",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 2,
+        "source_row_id": 219551
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-2-2",
+        "revision": 1,
+        "record_hash": "f0249e95b36efe28aedd0eafbe2c6f63b1023c04f119a5c5202aea08994efeb8",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 3,
+        "source_row_id": 219552
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-3-1",
+        "revision": 1,
+        "record_hash": "f87953d7568649d51683238b42b04de46e0620e2f6ad0ea39e0ce83f7fd5b513",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 4,
+        "source_row_id": 219553
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-3-2",
+        "revision": 1,
+        "record_hash": "e296724904b902741784e559100b895e8c9b0e99db29e03e1ffcc252b435cbfc",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 5,
+        "source_row_id": 219554
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-4-1",
+        "revision": 1,
+        "record_hash": "de88164470cbfd584ad993f25f2684795c734d3a02e6c611c3311ea6bf0cf855",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 6,
+        "source_row_id": 219555
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-4-2",
+        "revision": 1,
+        "record_hash": "e27c2b4fdc757daf90717c8fb092d9bfa3558b497c1f57af128446baa250dbe0",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 7,
+        "source_row_id": 219556
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-5-1",
+        "revision": 1,
+        "record_hash": "9eec957d3895bf2c3fd415b43a077b4207016fa4a39ccface916b6bcf881821f",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 8,
+        "source_row_id": 219557
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W01-5-2",
+        "revision": 1,
+        "record_hash": "59151275afdeab6ffc1ea33b9f25a4b417ca08470e60dbe2e85668743e9be3ab",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 9,
+        "source_row_id": 219558
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-2-1",
+        "revision": 1,
+        "record_hash": "ee29ad36481321ad74cf6418e5831949847f074767e12b1750d4e9e1c36e080e",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 10,
+        "source_row_id": 219559
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-2-2",
+        "revision": 1,
+        "record_hash": "1ddd5d10a058e8e1085cd3d76122bf4ee5a808fd26f456763f8c46dfb86f44e7",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 11,
+        "source_row_id": 219560
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-3-1",
+        "revision": 1,
+        "record_hash": "e82b14043df4541ecdfdeec2ad13999563301b1f711825552d94a280929c50fc",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 12,
+        "source_row_id": 219561
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-3-2",
+        "revision": 1,
+        "record_hash": "1d20255c97a635169f0cca2bd6bb2450544f54c6c83a23fbd7f5694422669198",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 13,
+        "source_row_id": 219562
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-4-1",
+        "revision": 1,
+        "record_hash": "3a01c4e15d7806392ed1c448fc92c3c83e27e56b08af9a615a60c9717aa45c75",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 14,
+        "source_row_id": 219563
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-4-2",
+        "revision": 1,
+        "record_hash": "2481fdd7fa095523cc14539f5139ee89398bdcf8ac0c6c4c562d19f113113fe4",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 15,
+        "source_row_id": 219564
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-5-1",
+        "revision": 1,
+        "record_hash": "4a0879fa61f05b61faaab4086d728bb786fbe376331530ee31c29b3fcc2380cd",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 16,
+        "source_row_id": 219565
+      },
+      {
+        "dataset": "schedule_windows",
+        "key": "SP-261002-001-W02-5-2",
+        "revision": 1,
+        "record_hash": "c3b264f955335480cd9d580be2ed5e0c1dbd8a1ef8b412543066ac17715591a3",
+        "batch_id": "63eaa1e0-39f6-43fb-b9a2-1733d4e85ca7",
+        "filename": "36_有限资源试排_模拟.xlsx",
+        "file_hash": "1d8be55b5367732938e0310fb336c4f7485ff49f35de42db319ffe65f70ed547",
+        "sheet": "试排资源窗口",
+        "row": 17,
+        "source_row_id": 219566
+      },
+      {
+        "dataset": "skills",
+        "key": "JN-E00005",
+        "revision": 1,
+        "record_hash": "ed1255b392c0a51f0a99eae11bc43bdb8e9a5d82e0bfaf4c7a0d1b6da360638b",
+        "batch_id": "5e35ff5b-ff56-40dd-898c-b2843c74cb59",
+        "filename": "09_人事工时_模拟.xlsx",
+        "file_hash": "0457fa7d910afd17d5e910ca2c7696006362e80c6471e26a7d160c42f525ee13",
+        "sheet": "技能授权",
+        "row": 2,
+        "source_row_id": 91826
+      },
+      {
+        "dataset": "skills",
+        "key": "JN-E00021-SB-01",
+        "revision": 1,
+        "record_hash": "f548b64854dc90b221046d03fd92f72410b561e0753c24abf43974ea4d13f137",
+        "batch_id": "5e35ff5b-ff56-40dd-898c-b2843c74cb59",
+        "filename": "09_人事工时_模拟.xlsx",
+        "file_hash": "0457fa7d910afd17d5e910ca2c7696006362e80c6471e26a7d160c42f525ee13",
+        "sheet": "技能授权",
+        "row": 62,
+        "source_row_id": 91886
+      }
+    ],
+    "can_download_original": true,
+    "notice": "显示该任务用料、共享候选供给、直接前序、首个阻断与候选人机依据。其他批次会竞争同一供给和人机，请同时核对全方案来源及完整导出。整批用料可能由同工序的其他份号预留。候选资料不代表剩余容量或可立即开工。"
+  }
+}

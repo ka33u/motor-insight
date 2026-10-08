@@ -5,7 +5,7 @@ from pathlib import Path
 from django.core import signing
 from django.db import transaction
 from django.http import HttpResponse
-from . import joint_schedule as engine, joint_schedule_data as data, finite_schedule, spc_data, access
+from . import joint_schedule as engine, joint_schedule_data as data, finite_schedule, spc_data, access, joint_candidate_evidence
 from .joint_schedule_schema import DATASETS
 from .models import Record, AuditEvent
 from .views import api, reply, require
@@ -29,7 +29,8 @@ def account(user):
 
 def stamp(d, user):
     return dict(study=d['result']['study']['id'], policy=d['result']['policy'], source_hash=d['source_hash'], rule_hash=d['rule_hash'],
-                result_hash=finite_schedule.digest(d['result']), account=account(user), view_hash=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
+                result_hash=finite_schedule.digest(d['result']), account=account(user), view_hash=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                candidate_definition_hash=joint_candidate_evidence.definition_hash())
 
 
 def context(request, key, required=False):
@@ -104,6 +105,7 @@ def detail(request, key, task_id):
     row = next((t for t in d['result']['tasks'] if t['id'] == task_id), None)
     if row is None:
         raise Record.DoesNotExist()
+    candidate_evidence, candidate_refs = joint_candidate_evidence.build(d, row)
     demands = [n for n in d['result']['demands'] if n['id'] in row['demand_ids']]
     allocations = [a for a in d['result']['reservations'] if a['demand_id'] in row['demand_ids']]
     materials = {n['material_id'] for n in demands}
@@ -113,14 +115,15 @@ def detail(request, key, task_id):
     for n in demands:
         direct.update({('joint_demands', n['id']), ('joint_bindings', n['binding_id']), ('bom', n['bom_id']), ('materials', n['material_id'])})
     direct.update(('joint_supplies', s['id']) for s in d['tables']['joint_supplies'] if s['material_id'] in materials)
+    direct.update(candidate_refs)
     for ds, field in [('production_resources', 'resource_id'), ('employees', 'employee_id'), ('skills', 'skill_id'), ('crew_credentials', 'credential_id'),
                       ('crew_candidates', 'candidate_id'), ('schedule_options', 'option_id'), ('schedule_windows', 'window_id'), ('crew_windows', 'worker_window_id')]:
         if row.get(field):
             direct.add((ds, row[field]))
     finish(request, d)
-    return response(dict(row=row, demands=demands, reservations=allocations, sources=[s for s in d['sources'] if (s['dataset'], s['key']) in direct],
+    return response(dict(row=row, demands=demands, reservations=allocations, candidate_evidence=candidate_evidence, sources=[s for s in d['sources'] if (s['dataset'], s['key']) in direct],
                          receipt=d['receipt'], can_download_original=access.can_import(request.user),
-                         notice='显示该任务用料、共享候选供给、直接前序与选中人机依据。其他批次会竞争同一供给和人机，请同时核对全方案来源及完整导出。整批用料可能由同工序的其他份号预留。'))
+                         notice='显示该任务用料、共享候选供给、直接前序、首个阻断与候选人机依据。其他批次会竞争同一供给和人机，请同时核对全方案来源及完整导出。整批用料可能由同工序的其他份号预留。候选资料不代表剩余容量或可立即开工。'))
 
 
 def export_document(d):

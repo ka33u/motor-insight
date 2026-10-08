@@ -1,4 +1,5 @@
 // Read-only rendering and request lifetimes shared by the three trial workspaces.
+import {jointCandidateEvidence} from './joint_candidates.js';
 const time = v => typeof v === 'string' && v ? v.replace('T', ' ') : '未形成时间';
 const number = v => typeof v === 'number' && Number.isFinite(v) ? v.toLocaleString('zh-CN', {maximumFractionDigits: 2}) : '未计算';
 const state = v => ({scheduled: '已排入', blocked: '未排入', late: '晚于假设交期'}[v] || '未计算');
@@ -45,6 +46,7 @@ export function scheduleTaskDetail(d, h, mode) {
    `${esc(s.material_id)} / ${esc(s.unit)}`, `${esc(s.required_qty)} / ${esc(s.available_qty)} / ${esc(s.shortage_qty)}`
   ])));
  }
+ if (mode === 'joint' && d.candidate_evidence) html += jointCandidateEvidence(d.candidate_evidence, h);
  html += panel('任务直接 Excel 来源', '共享竞争仍须核对全方案来源与完整导出。', scheduleSources(d.sources, h));
  return html + `<p class="source">${d.can_download_original ? '管理员可在导入页读取归档原件。' : '来源索引不授予原件下载权限。'}</p>`;
 }
