@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "0.31.0",
+  "version": "0.32.0",
   "record_count": 233788,
   "record_hash_digest": "01565772db588d470cb47485e0a033013a14751bf20f396f220e363b23868b5d",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
@@ -10,14 +10,14 @@
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2838,
-  "fresh_xlsx_replay": true,
+  "tests": 2856,
+  "fresh_xlsx_replay": false,
   "effective_workbooks": 44,
   "original_workbooks": 45,
-  "prior_business_facts_preserved": 232941,
-  "new_business_facts": 847,
+  "prior_business_facts_preserved": 233788,
+  "new_business_facts": 0,
   "raw_contracts": 154,
-  "original_files_preserved": 472,
+  "original_files_preserved": 473,
   "native_http_roles": 6,
   "pure_js_presentation": true,
   "browser_validation": false,
@@ -46,7 +46,7 @@
     "invalid": 3,
     "contradicted": 2
   },
-  "last_fresh_xlsx_replay_version": "0.27.0",
+  "last_fresh_xlsx_replay_version": "0.31.0",
   "existing_replayed_database_verified": true,
   "topic_journey": {
     "modes": [
@@ -916,6 +916,81 @@
     "no_new_migration": true,
     "browser_acceptance": false,
     "mobile_acceptance": false,
+    "actual_download_acceptance": false,
+    "scope": "0.31.0新增模拟Excel及空库回放的历史验收；0.32.0输入不变，新增BI核对另列。"
+  },
+  "setup_reading": {
+    "verified_in_version": "0.32.0",
+    "definition": "joint-setup-reading-v1",
+    "http": {
+      "success": true,
+      "roles": [
+        {
+          "role": "admin",
+          "allowed": true
+        },
+        {
+          "role": "analyst",
+          "allowed": true
+        },
+        {
+          "role": "operations",
+          "allowed": true
+        },
+        {
+          "role": "quality",
+          "denied": true
+        },
+        {
+          "role": "finance",
+          "denied": true
+        },
+        {
+          "role": "viewer",
+          "denied": true
+        }
+      ],
+      "comparisons": 39,
+      "original_boards": 78,
+      "event_checks": 7620,
+      "task_details": 132,
+      "exports": 42,
+      "zero_query_rebuilds": 39,
+      "original_heuristic_outputs": 26,
+      "facts_unchanged": true,
+      "sources_exact": true,
+      "main_database_bytes_unchanged": true,
+      "browser_acceptance": false
+    },
+    "public_source": {
+      "success": true,
+      "public_files": 1084,
+      "bi_regenerated_identically": true,
+      "public_fixture_js_groups": 18,
+      "public_source_backend_tests": 18,
+      "existing_v031_xlsx_replay_verified": true,
+      "fresh_xlsx_replay": false,
+      "initialized_workbooks_unchanged": 44,
+      "record_count": 233788,
+      "record_hash_digest": "01565772db588d470cb47485e0a033013a14751bf20f396f220e363b23868b5d"
+    },
+    "full_regression_tests": 2856,
+    "all_js_groups": 236,
+    "new_backend_tests": 18,
+    "new_js_groups": 18,
+    "original_heuristic_outputs_preserved": 26,
+    "old_business_facts_preserved": 233788,
+    "original_archive_paths_preserved": 473,
+    "old_initialization_workbooks_preserved": 44,
+    "public_analysis_configuration_unchanged": true,
+    "core_scheduling_algorithm_unchanged": true,
+    "no_new_migration": true,
+    "new_business_facts": 0,
+    "fresh_xlsx_replay": false,
+    "last_fresh_xlsx_replay_version": "0.31.0",
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "keyboard_acceptance": false,
     "actual_download_acceptance": false
   }
 }

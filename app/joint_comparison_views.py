@@ -4,14 +4,14 @@ from pathlib import Path
 from django.contrib.auth import get_user_model
 from django.core import signing
 from django.db import transaction
-from . import joint_comparison as comparison,joint_schedule_data as data,joint_schedule_views as original,finite_schedule as finite,joint_batch_material
+from . import joint_comparison as comparison,joint_schedule_data as data,joint_schedule_views as original,finite_schedule as finite,joint_batch_material,joint_setup
 from .views import api,body,reply
 from .models import AuditEvent,Record
 from .import_review import ReviewConflict
 SALT='motor.joint-policy-comparison.v1';AGE=600
 
 def rules():
-    return finite.digest(dict(files={name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ('joint_comparison.py','joint_comparison_views.py')},batch_material=joint_batch_material.definition_hash()))
+    return finite.digest(dict(files={name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ('joint_comparison.py','joint_comparison_views.py')},batch_material=joint_batch_material.definition_hash(),setup_reading=joint_setup.definition_hash()))
 
 def request_data(request,extra=(),required=False):
     if request.GET:raise ValueError('对照条件须放在JSON正文')
@@ -32,6 +32,7 @@ def load(user,key,receipt=None):
     user=get_user_model().objects.get(pk=user.pk);account=original.account(user)
     left=data.load(key,'due');right=data.load(key,'priority');comparison.same_inputs(left,right);result=comparison.compare(left['result'],right['result'])
     result['batch_materials']=joint_batch_material.build(left['result'],right['result'])
+    result['setup_reading']=joint_setup.build(left['result'],right['result'],left['parent']['base']['tables'])
     stamp=dict(key=key,account=account,source_hash=left['source_hash'],rule_hash=left['rule_hash'],comparison_rules=rules(),left=finite.digest(left['result']),right=finite.digest(right['result']),result=finite.digest(result))
     if receipt is not None:
         if not isinstance(receipt,str) or len(receipt)>4096:raise ValueError('对照凭据无效')
@@ -77,7 +78,8 @@ def detail(request,key,task):
         r=d[side]['result'];ids=set(row[side]['demand_ids'])
         sides[side]=dict(demands=[n for n in r['demands'] if n['id'] in ids],reservations=[a for a in r['reservations'] if a['demand_id'] in ids])
     finish(d,request.user)
-    return response(dict(task=row,**sides,notice='每列包含该任务关联整批需求的全部预留；实际触发任务可能是同工序其他份号。完整来源覆盖整方案的共享竞争。'))
+    setup=dict(version=joint_setup.VERSION,**{side:next((e for e in d['result']['setup_reading']['events'] if e['policy']==policy and e['task_id']==task),None) for side,policy in [('left','due'),('right','priority')]})
+    return response(dict(task=row,**sides,setup_reading=setup,notice='每列包含该任务关联整批需求的全部预留；实际触发任务可能是同工序其他份号。完整来源覆盖整方案的共享竞争。'))
 
 def document(d):
     return dict(format='motor-joint-policy-comparison-v1',synthetic=True,comparison=d['result'],left=original.export_document(d['left']),right=original.export_document(d['right']),comparison_rules=d['stamp']['comparison_rules'])
@@ -105,6 +107,11 @@ def export(request,key):
         section('批次获料/定义',[{k:batch_materials[k] for k in ('version','notice','state')}])
         section('批次获料/汇总',[batch_materials['summary']] if batch_materials['summary'] is not None else [])
         for name in ('materials','rows'):section('批次获料/'+name,batch_materials[name])
+        setup=d['result']['setup_reading']
+        section('换型准备/定义',[{k:setup[k] for k in ('version','notice','state')}])
+        section('换型准备/汇总',[setup['summary']] if setup['summary'] is not None else [])
+        section('换型准备/策略',[dict(policy=p,**row) for p,row in setup['columns'].items()])
+        for name in ('resources','events'):section('换型准备/'+name,setup[name])
         for side in ('left','right'):
             section(side+'/结果',[doc[side]['result']])
             for group in ('material_inputs','crew_inputs','resource_inputs','references'):
