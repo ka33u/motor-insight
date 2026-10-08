@@ -1,4 +1,7 @@
-import json,sys,copy,hashlib
+import argparse,json,sys,copy,hashlib
+parser=argparse.ArgumentParser(description="Validate the current catalog and offline artifacts; local historical checkpoints are version-specific.")
+parser.add_argument("--current-only",action="store_true",help="Check current public artifacts without replaying older local recovery checkpoints.")
+args=parser.parse_args()
 from pathlib import Path
 from collections import Counter
 from html.parser import HTMLParser
@@ -176,7 +179,8 @@ evidence['plain_text_coverage']={'requirements':len(items),'metrics':len(d['metr
 evidence['execution_design']=d['planning_summary']['execution_design']
 evidence['supplement_sha256']=hashlib.sha256(supplement.encode()).hexdigest()
 baseline=root/'data/backups/bi-execution-before/manifest.json'
-if baseline.exists():
+evidence['historical_checkpoint_check'] = 'explicitly_skipped_current_only' if args.current_only else 'available_local_checkpoint' if baseline.exists() else 'not_available'
+if baseline.exists() and not args.current_only:
  before=json.loads(baseline.read_text());old=before['catalog']
  # Presentation additions have their own exact before-catalog/DB preservation
  # check. Strip only those named fields for the older implementation checkpoint.

@@ -210,3 +210,7 @@ urlpatterns += [path('api/launch-review',launch_views.studies),path('api/launch-
 
 from app import first_piece_views
 urlpatterns += [path('api/first-piece',first_piece_views.board),path('api/first-piece/export',first_piece_views.export),path('api/first-piece/<str:key>',first_piece_views.detail)]
+
+from app import baseline_trial_views as baseline_trial
+urlpatterns += [path('api/baseline-trial/<str:key>', baseline_trial.board), path('api/baseline-trial/<str:key>/sources', baseline_trial.sources),
+                path('api/baseline-trial/<str:key>/tasks/<str:task>', baseline_trial.detail), path('api/baseline-trial/<str:key>/export', baseline_trial.export)]

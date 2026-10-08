@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "0.20.0",
+  "version": "0.21.0",
   "record_count": 232200,
   "record_hash_digest": "0206fed03b9befe314bdd457ae0ee38f97e70f0300ee95d74ba54a68cfd704b3",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
@@ -10,7 +10,7 @@
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2705,
+  "tests": 2751,
   "fresh_xlsx_replay": false,
   "effective_workbooks": 42,
   "original_workbooks": 43,
@@ -192,6 +192,35 @@
     "new_migrations": 0,
     "reference_replay_version": "0.19.0",
     "browser_acceptance": false,
-    "verified_in_version": "0.20.0"
+    "verified_in_version": "0.20.0",
+    "scope": "历史0.20.0验收；当前完整回归含原用例，但未重演本节全部HTTP。新基线试排另核对20种原物料结果。"
+  },
+  "baseline_bom_conditional": {
+    "success": true,
+    "version": "0.21.0",
+    "tests": 2751,
+    "new_tests": 46,
+    "pure_js_checks": 26,
+    "main_database_bytes_unchanged": true,
+    "protected_calculators_unchanged": true,
+    "original_files": 458,
+    "new_business_facts": 0,
+    "new_workbooks": 0,
+    "new_migrations": 0,
+    "native_http_roles": 6,
+    "studies_per_allowed_role": 10,
+    "policies": 2,
+    "sources_checked": 2113,
+    "exports": 9,
+    "old_baseline_results": 20,
+    "old_joint_results": 20,
+    "offline_recalculation_cases": 4,
+    "offline_recalculation_orm_queries": 0,
+    "public_design_regeneration_exact": true,
+    "browser_acceptance": false,
+    "reference_replay_version": "0.19.0",
+    "history_verified": false,
+    "formal_dispatch": false,
+    "real_systems_connected": false
   }
 }

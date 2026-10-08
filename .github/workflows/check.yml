@@ -13,6 +13,8 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install --require-hashes -r requirements.lock
       - run: python scripts/repository_check.py
+      - run: python scripts/export_bi_design.py
+      - run: python scripts/validate_bi_design.py --current-only
       - run: python manage.py check
       - run: python manage.py test --noinput --verbosity 1
       - uses: actions/setup-node@v4
@@ -20,3 +22,4 @@ jobs:
           node-version: '22'
       - run: node tests/check_workbench.mjs
       - run: node tests/check_joint_compare.mjs
+      - run: node tests/check_baseline_trial.mjs
