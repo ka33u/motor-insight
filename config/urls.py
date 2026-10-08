@@ -217,3 +217,6 @@ urlpatterns += [path('api/first-piece',first_piece_views.board),path('api/first-
 from app import baseline_trial_views as baseline_trial
 urlpatterns += [path('api/baseline-trial/<str:key>', baseline_trial.board), path('api/baseline-trial/<str:key>/sources', baseline_trial.sources),
                 path('api/baseline-trial/<str:key>/tasks/<str:task>', baseline_trial.detail), path('api/baseline-trial/<str:key>/export', baseline_trial.export)]
+
+from app import wip_readiness_views
+urlpatterns += [path('api/wip-readiness',wip_readiness_views.board),path('api/wip-readiness/export',wip_readiness_views.export),path('api/wip-readiness/rows/<str:key>',wip_readiness_views.detail),path('api/wip-readiness/rows/<str:key>/evidence',wip_readiness_views.evidence)]

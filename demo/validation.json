@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "0.34.0",
+  "version": "0.35.0",
   "record_count": 234037,
   "record_hash_digest": "0a6c15c5ce7de3d94300758836d9e16dec97aa92dc7d2491c72910ae49b2d9db",
   "record_digest_encoding": "Sorted (dataset,business_key,record_hash) JSON tuples, one per UTF-8 line",
@@ -10,14 +10,14 @@
     "app_topic": 21,
     "app_metricversion": 11
   },
-  "tests": 2900,
+  "tests": 2920,
   "fresh_xlsx_replay": true,
   "effective_workbooks": 46,
   "original_workbooks": 47,
-  "prior_business_facts_preserved": 233902,
-  "new_business_facts": 135,
+  "prior_business_facts_preserved": 234037,
+  "new_business_facts": 0,
   "raw_contracts": 154,
-  "original_files_preserved": 474,
+  "original_files_preserved": 475,
   "native_http_roles": 6,
   "pure_js_presentation": true,
   "browser_validation": false,
@@ -1266,6 +1266,117 @@
     "returned_qty": 22,
     "target_balance_qty": 21,
     "target_usable_qty": null,
+    "browser_acceptance": false,
+    "mobile_acceptance": false,
+    "keyboard_acceptance": false,
+    "actual_download_acceptance": false
+  },
+  "fresh_replay_verified_in_version": "0.34.0",
+  "input_manifest_unchanged": true,
+  "wip_readiness": {
+    "verified_in_version": "0.35.0",
+    "definition": "wip-replanning-evidence-v1",
+    "summary": {
+      "work_orders": 312,
+      "reported": 200,
+      "open": 0,
+      "positions": 0,
+      "unknown": 119,
+      "closed_wip": 0,
+      "unknown_reports": 0
+    },
+    "matrix": [
+      {
+        "label": "完工待清尾",
+        "orders": 200,
+        "reported": 200,
+        "positions": 0
+      },
+      {
+        "label": "已下达",
+        "orders": 12,
+        "reported": 0,
+        "positions": 0
+      },
+      {
+        "label": "未开工",
+        "orders": 100,
+        "reported": 0,
+        "positions": 0
+      }
+    ],
+    "full_regression_tests": 2920,
+    "all_js_groups": 260,
+    "new_backend_tests": 20,
+    "new_js_groups": 8,
+    "integration_tests": 42,
+    "http": {
+      "success": true,
+      "roles": [
+        {
+          "role": "admin",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "analyst",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "operations",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "quality",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "finance",
+          "allowed": true,
+          "no_financial_fields": true
+        },
+        {
+          "role": "viewer",
+          "allowed": true,
+          "no_financial_fields": true
+        }
+      ],
+      "boards": 18,
+      "details": 12,
+      "exports": 12,
+      "source_rows": 3960,
+      "independent_material_checks": 8,
+      "facts_unchanged": true,
+      "sources_exact": true,
+      "main_database_bytes_unchanged": true,
+      "browser_acceptance": false
+    },
+    "public_source": {
+      "success": true,
+      "public_files": 1123,
+      "bi_regenerated_identically": true,
+      "public_source_tests": "42",
+      "public_js_groups": 8,
+      "isolated_public_replay_database_reused": true,
+      "fresh_replay_verified_in_version": "0.34.0",
+      "input_manifest_unchanged": true,
+      "effective_workbooks": 46,
+      "records": 234037
+    },
+    "preservation": {
+      "success": true,
+      "business_facts_preserved": 234037,
+      "original_archive_paths_preserved": 475,
+      "initialization_workbooks_preserved": 46,
+      "original_joint_outputs_preserved": 26,
+      "analysis_configuration_unchanged": true
+    },
+    "business_inputs_unchanged": true,
+    "new_business_facts": 0,
+    "remaining_schedule_computed": false,
     "browser_acceptance": false,
     "mobile_acceptance": false,
     "keyboard_acceptance": false,

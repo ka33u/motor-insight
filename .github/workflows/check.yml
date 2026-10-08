@@ -34,3 +34,4 @@ jobs:
       - run: node tests/check_joint_setup.mjs
       - run: node tests/check_material_returns.mjs
       - run: node tests/check_return_stock.mjs
+      - run: node tests/check_wip_readiness.mjs
