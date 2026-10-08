@@ -1,5 +1,6 @@
 """Audit tracked public-release files without printing secret values."""
 import re
+import json
 import subprocess
 from pathlib import Path
 
@@ -11,6 +12,12 @@ PATTERNS = {
 }
 
 def main():
+    version=(ROOT/'VERSION').read_text().strip()
+    if not re.fullmatch(r'\d+\.\d+\.\d+',version):raise SystemExit('VERSION must contain one semantic version.')
+    if f'当前版本：**{version}**' not in (ROOT/'README.md').read_text():raise SystemExit('README and VERSION differ.')
+    latest=re.search(r'^## (\d+\.\d+\.\d+) —', (ROOT/'CHANGELOG.md').read_text(), re.MULTILINE)
+    if not latest or latest.group(1)!=version:raise SystemExit('Latest CHANGELOG and VERSION differ.')
+    if json.loads((ROOT/'demo/validation.json').read_text())['version']!=version:raise SystemExit('Demo validation and VERSION differ.')
     result = subprocess.run(['git','ls-files','-z'], cwd=ROOT, check=True, capture_output=True)
     files = [Path(v.decode()) for v in result.stdout.split(b'\0') if v]
     problems = []

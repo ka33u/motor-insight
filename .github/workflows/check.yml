@@ -19,3 +19,4 @@ jobs:
         with:
           node-version: '22'
       - run: node tests/check_workbench.mjs
+      - run: node tests/check_joint_compare.mjs

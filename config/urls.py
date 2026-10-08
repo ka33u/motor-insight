@@ -188,6 +188,8 @@ urlpatterns += [path('api/crew-schedule',crew_schedule.studies),path('api/crew-s
 from app import oee_views as oee
 from app import curing_views as curing
 from app import workbench_views as workbench
+from app import joint_comparison_views as joint_compare
+urlpatterns += [path('api/joint-comparison/<str:key>',joint_compare.board),path('api/joint-comparison/<str:key>/sources',joint_compare.sources),path('api/joint-comparison/<str:key>/tasks/<str:task>',joint_compare.detail),path('api/joint-comparison/<str:key>/export',joint_compare.export)]
 urlpatterns += [path('api/workbench',workbench.collection),path('api/workbench/catalog',workbench.catalog),path('api/workbench/open',workbench.open_entry),path('api/workbench/start',workbench.start)]
 urlpatterns += [path('api/curing',curing.board),path('api/curing/sources',curing.sources),path('api/curing/export',curing.export),path('api/curing/runs/<str:key>',curing.detail)]
 urlpatterns += [path('api/oee',oee.studies),path('api/oee/<str:key>',oee.board),path('api/oee/<str:key>/sources',oee.sources),path('api/oee/<str:key>/windows/<str:window_id>',oee.detail),path('api/oee/<str:key>/export',oee.export)]

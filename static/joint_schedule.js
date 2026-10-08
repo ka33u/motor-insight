@@ -1,4 +1,5 @@
 import {crewGantt} from './crew_schedule.js';
+import {createJointComparison} from './joint_compare.js';
 export const canJoint=role=>['admin','analyst','operations'].includes(role);
 const minute=v=>typeof v==='number'&&Number.isFinite(v)?v.toLocaleString('zh-CN',{maximumFractionDigits:2}):'未计算';
 const local=v=>v?.replace('T',' ')||'未形成时间';
@@ -16,9 +17,11 @@ export function jointOverview(d,{esc,table,panel}){
 }
 export function createJointScheduleWorkspace(h){
  const {api,esc,header,panel,table,modal,toast,go,$,$$,on,isCurrent,getModalRevision}=h;let serial=0;
+ const comparison=createJointComparison(h);
  const attempt=fn=>async(...args)=>{try{await fn(...args)}catch(e){toast(e.message)}};
  const sourceTable=rows=>table(['对象','Excel / 表 / 行','当前版本'],rows.map(s=>[`${esc(s.dataset)}<small class="block">${esc(s.key)}</small>`,s.missing?'来源缺失':`${esc(s.filename)}<br>${esc(s.sheet)} · 第 ${s.row} 行`,s.missing?'未计算':`v${s.revision} · 源行 ${s.source_row_id}`]));
  async function render(params,token){
+  if(params.get('view')==='compare')return comparison.render(params,token);
   const list=await api('joint-schedule');if(!isCurrent(token))return;
   if(!list.rows.length){$('#main').innerHTML=header('物料、人机联立试排','在同一份未来假设中，核对用料、设备与人员是否同时可用。')+'<div class="empty">导入39号模拟工作簿后可选择联立方案。</div>';return}
   const key=params.get('study')||list.rows[0].id,policy=params.get('policy')||'due',query=new URLSearchParams({policy});if(params.get('receipt'))query.set('receipt',params.get('receipt'));
@@ -30,6 +33,7 @@ export function createJointScheduleWorkspace(h){
    jointOverview(d,h)+
    `<div class="filterbar joint-tabs"><button id="joint-tab-schedule">排程与阻断</button><button id="joint-tab-material">物料与预留</button></div><div id="joint-body"></div>`+
    `<details class="source"><summary>计算边界与预留规则</summary><p>${esc(d.notice)}</p><p>总量缺口只比较同物料同单位的需求与范围内可用供给；不证明时间齐套。总剩余供给包括范围外到料，未预留需求也可能是人机受阻。不同方案的供给彼此独立，不合并计算。</p></details>`;
+  const compareButton=document.createElement('button');compareButton.textContent='并排比较两种派序';compareButton.addEventListener('click',()=>go('joint-schedule',{study:key,policy,view:'compare'}));$('#joint-policy').closest('.filterbar').append(compareButton);
   on('#joint-study','change',e=>go('joint-schedule',{study:e.target.value,policy}));on('#joint-policy','change',e=>go('joint-schedule',{study:key,policy:e.target.value}));
   const detail=attempt(async id=>{const revision=getModalRevision(),p=await api(url('/tasks/'+encodeURIComponent(id)));if(!alive()||revision!==getModalRevision())return;modal('任务、整批用料与预留依据',`<p>${esc(p.notice)}</p><pre class="code-block">${esc(JSON.stringify({任务:p.row,用料:p.demands,预留:p.reservations},null,2))}</pre>`+sourceTable(p.sources))});
   function bindTasks(){
